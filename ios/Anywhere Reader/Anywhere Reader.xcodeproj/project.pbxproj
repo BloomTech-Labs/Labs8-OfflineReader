@@ -7,17 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13FB2E2A21921B7D00A8888B /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* Content.swift */; };
+		13FB2E2C21921B8C00A8888B /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ContentController.swift */; };
+		13FB2E2F21921CD200A8888B /* ContentCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */; };
+		13FB2E3121922C9F00A8888B /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3021922C9F00A8888B /* Account.storyboard */; };
+		13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3221922CFA00A8888B /* AccountViewController.swift */; };
+		13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */; };
+		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
+		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
+		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
-		2233F7C821920A06001A82FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C721920A06001A82FF /* ViewController.swift */; };
 		2233F7CB21920A07001A82FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7C921920A07001A82FF /* Main.storyboard */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
 		2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13FB2E2921921B7D00A8888B /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
+		13FB2E2B21921B8C00A8888B /* ContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
+		13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentCollection.storyboard; sourceTree = "<group>"; };
+		13FB2E3021922C9F00A8888B /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		13FB2E3221922CFA00A8888B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
+		13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
+		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2233F7C521920A06001A82FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2233F7C721920A06001A82FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2233F7CA21920A07001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2233F7CC21920A09001A82FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2233F7CF21920A09001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -35,6 +51,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13FB2E2321921AA600A8888B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2E2921921B7D00A8888B /* Content.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		13FB2E2421921AAA00A8888B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13FB2E2521921AAE00A8888B /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2E3221922CFA00A8888B /* AccountViewController.swift */,
+				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
+				13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */,
+				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		13FB2E2621921AB600A8888B /* Model Controller */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2E2B21921B8C00A8888B /* ContentController.swift */,
+			);
+			path = "Model Controller";
+			sourceTree = "<group>";
+		};
+		13FB2E2721921ABC00A8888B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		13FB2E2821921AD400A8888B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2E2D21921C9E00A8888B /* Storyboard */,
+				2233F7CC21920A09001A82FF /* Assets.xcassets */,
+				2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */,
+				2233F7D121920A09001A82FF /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		13FB2E2D21921C9E00A8888B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				2233F7C921920A07001A82FF /* Main.storyboard */,
+				13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */,
+				13FB2E3021922C9F00A8888B /* Account.storyboard */,
+				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
 		2233F7B921920A06001A82FF = {
 			isa = PBXGroup;
 			children = (
@@ -55,11 +134,12 @@
 			isa = PBXGroup;
 			children = (
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				2233F7C721920A06001A82FF /* ViewController.swift */,
-				2233F7C921920A07001A82FF /* Main.storyboard */,
-				2233F7CC21920A09001A82FF /* Assets.xcassets */,
-				2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */,
-				2233F7D121920A09001A82FF /* Info.plist */,
+				13FB2E2321921AA600A8888B /* Model */,
+				13FB2E2621921AB600A8888B /* Model Controller */,
+				13FB2E2521921AAE00A8888B /* View Controller */,
+				13FB2E2421921AAA00A8888B /* View */,
+				13FB2E2721921ABC00A8888B /* Service */,
+				13FB2E2821921AD400A8888B /* Resources */,
 			);
 			path = "Anywhere Reader";
 			sourceTree = "<group>";
@@ -122,8 +202,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */,
 				2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */,
 				2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */,
+				13FB2E3121922C9F00A8888B /* Account.storyboard in Resources */,
+				13FB2E2F21921CD200A8888B /* ContentCollection.storyboard in Resources */,
 				2233F7CB21920A07001A82FF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,8 +218,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2233F7C821920A06001A82FF /* ViewController.swift in Sources */,
 				2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */,
+				13FB2E2C21921B8C00A8888B /* ContentController.swift in Sources */,
+				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
+				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
+				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
+				13FB2E2A21921B7D00A8888B /* Content.swift in Sources */,
+				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84AK8SAYG2;
-				INFOPLIST_FILE = "Anywhere Reader/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 84AK8SAYG2;
-				INFOPLIST_FILE = "Anywhere Reader/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

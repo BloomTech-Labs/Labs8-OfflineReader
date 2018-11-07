@@ -21,6 +21,8 @@
 		2233F7CB21920A07001A82FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7C921920A07001A82FF /* Main.storyboard */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
 		2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */; };
+		22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */; };
+		22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		2233F7CC21920A09001A82FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2233F7CF21920A09001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2233F7D121920A09001A82FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentCollectionViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
+		22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				13FB2E3221922CFA00A8888B /* AccountViewController.swift */,
-				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
+				22661E0A219268940072A4B8 /* Content Collection */,
 				13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */,
 				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
 			);
@@ -137,6 +141,16 @@
 				13FB2E2821921AD400A8888B /* Resources */,
 			);
 			path = "Anywhere Reader";
+			sourceTree = "<group>";
+		};
+		22661E0A219268940072A4B8 /* Content Collection */ = {
+			isa = PBXGroup;
+			children = (
+				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
+				22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */,
+				22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */,
+			);
+			path = "Content Collection";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,7 +232,9 @@
 				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
+				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* Content.swift in Sources */,
+				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
 			);

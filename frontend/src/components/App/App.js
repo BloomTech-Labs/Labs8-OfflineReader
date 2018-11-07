@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { SignInPage } from '../SignInPage';
-import { SignUpPage } from '../SignUpPage';
+import { SignInPage, SignUpPage } from '../';
 
 class App extends Component {
 	render() {

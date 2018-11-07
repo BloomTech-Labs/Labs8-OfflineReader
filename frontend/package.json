@@ -22,7 +22,10 @@
     "precommit": "pretty-quick --staged"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ]
   },
   "browserslist": [
     ">0.2%",

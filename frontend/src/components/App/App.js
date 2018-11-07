@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import SignInPage from './SignInPage/SignInPage';
-import SignUpPage from './SignUpPage/SignUpPage';
+import { SignInPage } from '../SignInPage';
+import { SignUpPage } from '../SignUpPage';
 
 class App extends Component {
 	render() {

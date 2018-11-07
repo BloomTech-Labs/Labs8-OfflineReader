@@ -58,41 +58,42 @@
                                             <blurEffect style="light"/>
                                         </visualEffectView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-b2-k0p">
-                                            <rect key="frame" x="30" y="30" width="269" height="226"/>
+                                            <rect key="frame" x="40" y="40" width="249" height="206"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fvn-rv-U3w">
-                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="205.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="189"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="BBC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzc-EV-HaU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="269" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="249" height="17"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'Human Spider' banned from climbing any UK building" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CDq-of-HfL">
-                                                            <rect key="frame" x="0.0" y="20.5" width="269" height="95.5"/>
+                                                            <rect key="frame" x="0.0" y="17" width="249" height="95.5"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" horizontalHuggingPriority="242" verticalHuggingPriority="244" horizontalCompressionResistancePriority="743" verticalCompressionResistancePriority="743" translatesAutoresizingMaskIntoConstraints="NO" id="Bfd-jH-sdN">
-                                                            <rect key="frame" x="0.0" y="116" width="269" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="112.5" width="249" height="50"/>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="xeV-LT-59c">
-                                                            <rect key="frame" x="0.0" y="175.5" width="269" height="30"/>
+                                                            <rect key="frame" x="0.0" y="162.5" width="249" height="26.5"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qFS-vm-3FQ">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="269" height="30"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" alignment="bottom" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qFS-vm-3FQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="249" height="26.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOCUMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRn-rg-e9y">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="220" height="30"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <rect key="frame" x="0.0" y="9.5" width="180" height="17"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="663-tB-1QM">
-                                                                            <rect key="frame" x="228" y="0.0" width="41" height="30"/>
+                                                                            <rect key="frame" x="188" y="2.5" width="61" height="24"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <inset key="contentEdgeInsets" minX="10" minY="3" maxX="10" maxY="3"/>
                                                                             <state key="normal" title="OPEN"/>
                                                                         </button>
                                                                     </subviews>
@@ -102,9 +103,9 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="News" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTA-H2-lOa">
-                                                    <rect key="frame" x="0.0" y="205.5" width="269" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="0.0" y="189" width="249" height="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -118,10 +119,10 @@
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="KT7-eJ-GQ9"/>
                                     <constraint firstItem="n6b-x8-VEx" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="MWy-ac-cIG"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="height" secondItem="Cmv-51-zLa" secondAttribute="height" constant="-60" id="OkF-2v-y6d"/>
-                                    <constraint firstItem="qfk-b2-k0p" firstAttribute="height" secondItem="8un-6F-gtg" secondAttribute="height" id="Sn3-8b-Pia"/>
+                                    <constraint firstItem="qfk-b2-k0p" firstAttribute="height" secondItem="8un-6F-gtg" secondAttribute="height" constant="-20" id="Sn3-8b-Pia"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="dqQ-vI-Ovz"/>
                                     <constraint firstItem="n6b-x8-VEx" firstAttribute="width" secondItem="8un-6F-gtg" secondAttribute="width" id="du6-Fc-YFc"/>
-                                    <constraint firstItem="qfk-b2-k0p" firstAttribute="width" secondItem="8un-6F-gtg" secondAttribute="width" id="dzF-4D-MxC"/>
+                                    <constraint firstItem="qfk-b2-k0p" firstAttribute="width" secondItem="8un-6F-gtg" secondAttribute="width" constant="-20" id="dzF-4D-MxC"/>
                                     <constraint firstItem="qfk-b2-k0p" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="eur-7z-eAl"/>
                                     <constraint firstItem="n6b-x8-VEx" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="kzh-pL-X4O"/>
                                 </constraints>

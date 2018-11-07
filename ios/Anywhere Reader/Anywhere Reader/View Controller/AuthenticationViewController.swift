@@ -12,19 +12,18 @@ class AuthenticationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - IBOutlets
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var passwordTextField: UITextField!
+    @IBOutlet var usernameTextField: UITextField!
+    
+    // MARK: - IBActions
+    @IBAction func logInButtonTapped(_ sender: Any) {
+        // Pass information to AuthService.instance.loginUser
     }
-    */
-
+    @IBAction func signUpButtonTapped(_ sender: Any) {
+        // Pass information to AuthService.instance.registerUser
+    }
 }

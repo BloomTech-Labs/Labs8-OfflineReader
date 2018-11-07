@@ -155,5 +155,8 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
 
 # End of https://www.gitignore.io/api/xcode

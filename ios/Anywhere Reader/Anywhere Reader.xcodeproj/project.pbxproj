@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13126F53219255A700A1ED13 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13126F52219255A700A1ED13 /* AuthService.swift */; };
 		13FB2E2A21921B7D00A8888B /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* Content.swift */; };
 		13FB2E2C21921B8C00A8888B /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ContentController.swift */; };
 		13FB2E2F21921CD200A8888B /* ContentCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13126F52219255A700A1ED13 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		13FB2E2921921B7D00A8888B /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		13FB2E2B21921B8C00A8888B /* ContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
 		13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentCollection.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13126F512192559900A1ED13 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				13126F52219255A700A1ED13 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		13FB2E2321921AA600A8888B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 				13FB2E2321921AA600A8888B /* Model */,
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
+				13126F512192559900A1ED13 /* Services */,
 				13FB2E2821921AD400A8888B /* Resources */,
 			);
 			path = "Anywhere Reader";
@@ -225,6 +236,7 @@
 				13FB2E2A21921B7D00A8888B /* Content.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
+				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

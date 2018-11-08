@@ -25,13 +25,13 @@ class AuthService {
         request.httpMethod = "POST"
         
         //  encode the user and set the httpBody to the newly encoded user
-         do {
+        do {
             request.httpBody = try JSONEncoder().encode(user)
-         } catch {
+        } catch {
             NSLog("Unable to encode \(user): \(error)")
             userRegistrationComplete(false, error)
             return
-         }
+        }
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
@@ -41,7 +41,7 @@ class AuthService {
             }
             
             userRegistrationComplete(true, nil)
-        }
+        }.resume()
     }
     
     // MARK: - Login User
@@ -73,7 +73,7 @@ class AuthService {
             }
             
             userLoginComplete(true, nil)
-        }
+        }.resume()
     }
 }
 

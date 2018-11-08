@@ -25,6 +25,7 @@ class SignInPage extends Component {
 			<div>
 				<h2>Sign In</h2>
 				<form className="signin" onSubmit={this.handleSubmit}>
+					<label className="label">Username: </label>
 					<input
 						type="text"
 						className="input"
@@ -33,6 +34,7 @@ class SignInPage extends Component {
 						value={this.state.username}
 						onChange={this.handleInput}
 					/>
+					<label className="label">Password: </label>
 					<input
 						type="text"
 						className="input"

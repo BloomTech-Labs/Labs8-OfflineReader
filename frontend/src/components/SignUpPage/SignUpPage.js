@@ -29,6 +29,7 @@ class SignUpPage extends Component {
 			<div>
 				<h2>Sign Up</h2>
 				<form onSubmit={this.handleSubmit}>
+					<label className="label">Email: </label>
 					<input
 						type="text"
 						className="input"
@@ -37,6 +38,7 @@ class SignUpPage extends Component {
 						value={this.state.email}
 						onChange={this.handleInput}
 					/>
+					<label className="label">Username: </label>
 					<input
 						type="text"
 						className="input"
@@ -45,6 +47,7 @@ class SignUpPage extends Component {
 						value={this.state.username}
 						onChange={this.handleInput}
 					/>
+					<label className="label">Password: </label>
 					<input
 						type="text"
 						className="input"
@@ -53,6 +56,7 @@ class SignUpPage extends Component {
 						value={this.state.password}
 						onChange={this.handleInput}
 					/>
+					<label className="label">Comfirm password: </label>
 					<input
 						type="text"
 						className="input"

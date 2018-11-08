@@ -34,7 +34,7 @@ class AuthService {
                    andPassword password: String,
                    userLoginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error else {
+            if let error = error {
                 userLoginComplete(false, error)
                 return
             }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>709694306055-es7ohl54fib63cvael09ju84oivvd1ht.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.709694306055-es7ohl54fib63cvael09ju84oivvd1ht</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCwdyCAaTNu3Q8VeZIqW5g7ITpjMyZYG5Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>709694306055</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.SamanthaGatt.Anywhere-Reader</string>
+	<key>PROJECT_ID</key>
+	<string>ios-offline-reader</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ios-offline-reader.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:709694306055:ios:a5ba5610b85fb850</string>
+	<key>DATABASE_URL</key>
+	<string>https://ios-offline-reader.firebaseio.com</string>
+</dict>
+</plist>

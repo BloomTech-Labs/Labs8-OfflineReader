@@ -222,7 +222,11 @@
                         <viewLayoutGuide key="safeArea" id="yK5-Nb-voi"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ncz-MJ-tNV">
-                        <barButtonItem key="rightBarButtonItem" title="Aa" id="5xw-ld-K33"/>
+                        <barButtonItem key="rightBarButtonItem" title="Aa" id="5xw-ld-K33">
+                            <connections>
+                                <action selector="presentPreferences:" destination="cgX-9W-mbb" id="55d-gH-mi3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-ag-5e8" userLabel="First Responder" sceneMemberID="firstResponder"/>

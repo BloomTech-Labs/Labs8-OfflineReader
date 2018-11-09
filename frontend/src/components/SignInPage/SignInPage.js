@@ -15,8 +15,6 @@ class SignInPage extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const user = this.state.username;
-		localStorage.setItem('user', user);
 		window.location.reload(this.props.history.push('/signedIn'));
 	};
 

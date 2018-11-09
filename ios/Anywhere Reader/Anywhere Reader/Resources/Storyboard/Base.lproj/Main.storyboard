@@ -9,10 +9,18 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Authentication-->
+        <scene sceneID="eTN-DO-JIo">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="AuthenticationViewController" storyboardName="Authentication" id="iRa-t8-3uT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQr-uI-WMb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-693" y="-466"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZOK-y1-lHx">
             <objects>
-                <tabBarController id="FXS-fE-Hcu" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" id="FXS-fE-Hcu" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ujo-G8-2Xb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

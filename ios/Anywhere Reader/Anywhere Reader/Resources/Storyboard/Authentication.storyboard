@@ -45,7 +45,7 @@
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPx-66-jlS">
                                         <rect key="frame" x="0.0" y="215" width="303" height="30"/>
@@ -92,10 +92,10 @@
             </objects>
             <point key="canvasLocation" x="604" y="-143.47826086956522"/>
         </scene>
-        <!--Authentication View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="389-oe-f0r">
             <objects>
-                <viewController id="Rcg-2l-HNe" customClass="AuthenticationViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Rcg-2l-HNe" customClass="SignUpViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KJh-84-Aji">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,7 +134,7 @@
                                         <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clm-Bw-sj7">
                                         <rect key="frame" x="0.0" y="250" width="303" height="30"/>
@@ -173,7 +173,9 @@
                         <viewLayoutGuide key="safeArea" id="9Fc-kh-C8A"/>
                     </view>
                     <connections>
-                        <outlet property="usernameTextField" destination="kpk-zG-g0I" id="0KD-Oo-6WE"/>
+                        <outlet property="emailTextField" destination="Dll-O8-Nmd" id="hz9-JW-JYD"/>
+                        <outlet property="passwordTextField" destination="wLT-Ru-iTr" id="12U-nH-car"/>
+                        <outlet property="userNameTextField" destination="kpk-zG-g0I" id="cY6-0f-6Lt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Te6-VD-iNS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,4 +183,7 @@
             <point key="canvasLocation" x="1596" y="-143"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="RC0-UF-lyU"/>
+    </inferredMetricsTieBreakers>
 </document>

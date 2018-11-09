@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SegmentedSettingsViewController: UIViewController {
     override func viewDidLoad() {
@@ -37,6 +38,20 @@ class SegmentedSettingsViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func segmentedControlTapped(_ sender: Any) {
         updateViews()
+    }
+    
+    @IBAction func logoutTapped(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Authentication", bundle: nil)
+            let authenticationViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationViewController") as! AuthenticationViewController
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.window?.makeKeyAndVisible()
+            appDelegate.window?.rootViewController?.present(authenticationViewController, animated: true, completion: nil)
+        }
+        catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
 }
 

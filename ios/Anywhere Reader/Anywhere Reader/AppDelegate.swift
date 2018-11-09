@@ -18,10 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         if Auth.auth().currentUser == nil {
-            let storyboard = UIStoryboard(name: "Authentication", bundle: Bundle.main)
-            let authorizationViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationViewController")
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let authenticationViewController = storyboard.instantiateViewController(withIdentifier: "AuthenticationViewController")
             window?.makeKeyAndVisible()
-            window?.rootViewController?.present(authorizationViewController, animated: true, completion: nil)
+            window?.rootViewController?.present(authenticationViewController, animated: true, completion: nil)
         }
         
         return true

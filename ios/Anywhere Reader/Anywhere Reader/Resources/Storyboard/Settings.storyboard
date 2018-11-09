@@ -188,16 +188,26 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-Vd-rtn">
-                                <rect key="frame" x="0.0" y="416" width="83" height="543"/>
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K9w-Of-E31">
+                                <rect key="frame" x="309" y="35" width="55" height="30"/>
+                                <state key="normal" title="Log Out"/>
+                                <connections>
+                                    <action selector="logoutTapped:" destination="Enx-cX-gv1" eventType="touchUpInside" id="V7l-Bu-jir"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="2lp-J6-Ps7" firstAttribute="top" secondItem="K9w-Of-E31" secondAttribute="bottom" constant="23" id="8zn-tD-RfM"/>
                             <constraint firstItem="aZp-eX-WjI" firstAttribute="trailing" secondItem="hYC-nm-OsM" secondAttribute="trailing" id="9Dx-jn-5ko"/>
                             <constraint firstItem="2lp-J6-Ps7" firstAttribute="top" secondItem="aZp-eX-WjI" secondAttribute="bottom" constant="8" id="Cnk-vA-slK"/>
                             <constraint firstItem="O2R-Vd-rtn" firstAttribute="top" secondItem="2lp-J6-Ps7" secondAttribute="bottom" constant="8" id="DRg-B8-Xnt"/>
                             <constraint firstItem="O2R-Vd-rtn" firstAttribute="leading" secondItem="hYC-nm-OsM" secondAttribute="leading" id="Eui-pS-vjm"/>
                             <constraint firstItem="aZp-eX-WjI" firstAttribute="leading" secondItem="hYC-nm-OsM" secondAttribute="leading" id="FnH-yH-U4w"/>
+                            <constraint firstItem="hYC-nm-OsM" firstAttribute="trailing" secondItem="K9w-Of-E31" secondAttribute="trailing" constant="11" id="Gkg-6G-638"/>
+                            <constraint firstItem="K9w-Of-E31" firstAttribute="top" secondItem="hYC-nm-OsM" secondAttribute="top" constant="15" id="K9c-sc-W4Q"/>
                             <constraint firstItem="O2R-Vd-rtn" firstAttribute="bottom" secondItem="hYC-nm-OsM" secondAttribute="bottom" id="Nem-ET-Osu"/>
                             <constraint firstItem="aZp-eX-WjI" firstAttribute="top" secondItem="hYC-nm-OsM" secondAttribute="top" id="jSm-6b-OBv"/>
                             <constraint firstItem="O2R-Vd-rtn" firstAttribute="trailing" secondItem="hYC-nm-OsM" secondAttribute="trailing" id="mWU-Xm-a5R"/>

@@ -5,8 +5,8 @@
 [Anywhere Reader Wiki](https://github.com/Lambda-School-Labs/Labs8-OfflineReader/wiki)
 
 - Testing
-  - [FSW frontend](https://upbeat-shockley-073b78.netlify.com/)
-  - [FSW backend](https://likjshfiljsundiclues.herokuapp.com)
+  - [FSW frontend](https://anywhere-reader-test.netlify.com/)
+  - [FSW backend](https://anywhere-reader-test.herokuapp.com)
 
 * Tooling
   - [Environment Setup: React & Redux](https://github.com/Lambda-School-Labs/Labs8-OfflineReader/wiki/Environment-Setup:-React-&-Redux)

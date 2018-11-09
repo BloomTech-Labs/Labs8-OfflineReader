@@ -21,7 +21,7 @@ class SignUpPage extends Component {
 		e.preventDefault();
 		const user = this.state.username;
 		localStorage.setItem('user', user);
-		window.location.reload();
+		window.location.reload(this.props.history.push('/signedUp'));
 	};
 
 	render() {

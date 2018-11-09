@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
@@ -27,6 +27,11 @@ router.register(r'users', UserViewSet)
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+<<<<<<< HEAD:backend/django/project/urls.py
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+=======
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls'))
+>>>>>>> 5b3846f875b41353ef0dd04fc98630946faa96e8:backend/project/urls.py
 ]

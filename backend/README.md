@@ -1,45 +1,30 @@
 # Endpoints
 
-## /admin
+### /admin
 
 Admin Panel
 
-## /api/users/
+### /api/users/
 
 GET
 Returns list of users
 
-## /api/rest-auth/login/
+### /api/rest-auth/login/
 
 POST
-{
-"username": "",
-"email": "",
-"password": ""
-}
-
+`{ "username": "", "email": "", "password": "" }`
 returns:
-{
-"key": "some-string"
-}
+`{ "key": "some-string" }`
 
-## /api/rest-auth/logout/
+### /api/rest-auth/logout/
 
 GET
 Logouts current user
 
-## /api/rest-auth/registration/
+### /api/rest-auth/registration/
 
 POST
-{
-"username": "",
-"email": "",
-"password1": "",
-"password2": ""
-}
-
+`{ "username": "", "email": "", "password1": "", "password2": "" }`
 registers and logins user
 returns:
-{
-"key": "some-string"
-}
+`{ "key": "some-string" }`

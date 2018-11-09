@@ -1,3 +1,3 @@
-export { SignInPage } from './SignInPage';
-export { SignUpPage } from './SignUpPage';
+export { SignInPage, SignedIn } from './SignInPage';
+export { SignUpPage, SignedUp } from './SignUpPage';
 export { App } from './App';

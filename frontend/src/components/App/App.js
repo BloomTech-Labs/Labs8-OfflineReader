@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { SignInPage, SignUpPage } from '../';
+import { SignInPage, SignUpPage, SignedIn, SignedUp } from '../';
+// import { SignedIn } from '../SignInPage';
+// import { SignedUp } from '../SignUpPage';
 
 class App extends Component {
 	render() {
@@ -12,6 +14,8 @@ class App extends Component {
 					<NavLink to="/signUp">Sign Up</NavLink>
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />
+					<Route path="/signedIn" component={SignedIn} />
+					<Route path="/signedUp" component={SignedUp} />
 				</div>
 			</Router>
 		);

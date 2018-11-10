@@ -5,13 +5,9 @@ name = "pypi"
 
 [packages]
 django = "*"
-<<<<<<< HEAD:backend/django/Pipfile
-python-decouple = "*"
-=======
 djangorestframework = "*"
 django-rest-auth = "*"
 django-allauth = "*"
->>>>>>> 5b3846f875b41353ef0dd04fc98630946faa96e8:backend/Pipfile
 
 [dev-packages]
 

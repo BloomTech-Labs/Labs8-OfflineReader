@@ -38,9 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD:backend/django/project/settings.py
-    'rest_framework',
-=======
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
@@ -48,11 +45,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-
     'api',
     'apps.scraper',
     'users',
->>>>>>> 5b3846f875b41353ef0dd04fc98630946faa96e8:backend/project/settings.py
 ]
 
 MIDDLEWARE = [
@@ -148,19 +143,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-<<<<<<< HEAD:backend/django/project/settings.py
-# Rest framework setup
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-=======
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
->>>>>>> 5b3846f875b41353ef0dd04fc98630946faa96e8:backend/project/settings.py
 

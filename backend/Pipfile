@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+python-decouple = "*"
 djangorestframework = "*"
 django-rest-auth = "*"
 django-allauth = "*"

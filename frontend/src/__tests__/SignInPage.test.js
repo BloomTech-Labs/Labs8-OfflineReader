@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from '../components/App/App';
+import SignInPage from '../components/SignInPage/SignInPage';
 
-describe('<App />', () => {
+describe('<SignInPage />', () => {
 	it('renders without crashing', () => {
 		const div = document.createElement('div');
-		ReactDOM.render(<App />, div);
+		ReactDOM.render(<SignInPage />, div);
 	});
 });

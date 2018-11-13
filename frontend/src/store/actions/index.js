@@ -113,3 +113,33 @@ export const addArticle = article => {
 			.catch(err => dispatch({ type: ERROR, err }));
 	};
 };
+
+export const deleteArticle = article => {
+	return dispatch => {
+		dispatch({ type: FETCH_DATA });
+		axios
+			.delete(
+				'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles',
+				article
+			)
+			.then(response =>
+				dispatch({
+					type: DELETE_ARTICLE,
+					payload: {
+						//the payload you're giving the API to populate the new article
+					}
+				})
+			)
+			.then(
+				// Re-GET all the notes, with the newly added one included
+				axios
+					.get(
+						'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles'
+					)
+					.then(response =>
+						dispatch({ type: DATA_FETCHED, payload: response.data })
+					)
+			)
+			.catch(err => dispatch({ type: ERROR, err }));
+	};
+};

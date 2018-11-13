@@ -47,7 +47,7 @@ class SignUpPage extends Component {
 					/>
 					<label className="label">Password: </label>
 					<input
-						type="text"
+						type="password"
 						className="input"
 						name="password"
 						placeholder="password"
@@ -56,7 +56,7 @@ class SignUpPage extends Component {
 					/>
 					<label className="label">Comfirm password: </label>
 					<input
-						type="text"
+						type="password"
 						className="input"
 						name="password_conf"
 						placeholder="password_conf"

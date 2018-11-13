@@ -3,6 +3,7 @@ import {
 	REGISTER_USER,
 	LOGIN_USER,
 	LOGOUT_USER,
+	ADD_ARTICLE,
 	FETCH_DATA,
 	DATA_FETCHED,
 	ERROR
@@ -57,6 +58,19 @@ export const userReducers = (state = initialState, action) => {
 					...state.users,
 					{
 						...userLoggingOut
+					}
+				],
+				fetching: false
+			};
+
+		case ADD_ARTICLE:
+			const article = { ...action.payload };
+			return {
+				// not sure if this should be returned
+				articles: [
+					...state.articles,
+					{
+						...article
 					}
 				],
 				fetching: false

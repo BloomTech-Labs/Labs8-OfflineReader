@@ -96,12 +96,12 @@ export const addArticle = article => {
 				dispatch({
 					type: ADD_ARTICLE,
 					payload: {
-						//the payload you're giving the API to populate the new article
+						//the payload you're giving the API to populate the new article, will likely just be the article url that's fed to the scraper
 					}
 				})
 			)
 			.then(
-				// Re-GET all the notes, with the newly added one included
+				// Re-GET all the articles, with the newly added one included
 				axios
 					.get(
 						'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles'
@@ -126,12 +126,12 @@ export const deleteArticle = article => {
 				dispatch({
 					type: DELETE_ARTICLE,
 					payload: {
-						//the payload you're giving the API to populate the new article
+						//the payload you're giving the API to delete the article
 					}
 				})
 			)
 			.then(
-				// Re-GET all the notes, with the newly added one included
+				// Re-GET all the articles of that user to confirm the deleted article isnt there
 				axios
 					.get(
 						'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles'

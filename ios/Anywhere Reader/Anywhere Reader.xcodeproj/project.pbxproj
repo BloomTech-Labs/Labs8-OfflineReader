@@ -28,8 +28,6 @@
 		22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E0C219380900072A4B8 /* ContentImageView.swift */; };
 		22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */; };
 		22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E112194E5430072A4B8 /* PreferencesViewController.swift */; };
-		22661E152194EA680072A4B8 /* PreferencesTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E142194EA680072A4B8 /* PreferencesTransitionAnimator.swift */; };
-		22661E172194EE3F0072A4B8 /* ContentDetailViewController+TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E162194EE3F0072A4B8 /* ContentDetailViewController+TransitioningDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +54,6 @@
 		22661E0C219380900072A4B8 /* ContentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImageView.swift; sourceTree = "<group>"; };
 		22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualPreferencesPanel.storyboard; sourceTree = "<group>"; };
 		22661E112194E5430072A4B8 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
-		22661E142194EA680072A4B8 /* PreferencesTransitionAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTransitionAnimator.swift; sourceTree = "<group>"; };
-		22661E162194EE3F0072A4B8 /* ContentDetailViewController+TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentDetailViewController+TransitioningDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +129,6 @@
 				2233F7C921920A07001A82FF /* Main.storyboard */,
 				13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */,
 				22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */,
-				13FB2E3021922C9F00A8888B /* Account.storyboard */,
 				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
 			);
@@ -192,8 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */,
-				22661E162194EE3F0072A4B8 /* ContentDetailViewController+TransitioningDelegate.swift */,
-				22661E142194EA680072A4B8 /* PreferencesTransitionAnimator.swift */,
 				22661E112194E5430072A4B8 /* PreferencesViewController.swift */,
 			);
 			path = "Content Detail";
@@ -284,10 +277,8 @@
 				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* Content.swift in Sources */,
-				22661E172194EE3F0072A4B8 /* ContentDetailViewController+TransitioningDelegate.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
-				22661E152194EA680072A4B8 /* PreferencesTransitionAnimator.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 			);

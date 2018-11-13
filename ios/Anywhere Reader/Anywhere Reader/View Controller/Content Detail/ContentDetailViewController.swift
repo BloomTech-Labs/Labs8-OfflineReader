@@ -18,24 +18,8 @@ class ContentDetailViewController: UIViewController {
         preferencesVC.providesPresentationContextTransitionStyle = true
         preferencesVC.definesPresentationContext = true
         preferencesVC.modalPresentationStyle = .overCurrentContext
-        
-        // Uncomment and delte line 20 to use custom transition animation (not fully implemented at the moment)
-        // preferencesVC.modalPresentationStyle = .custom
-        // preferencesVC.transitioningDelegate = self
+        preferencesVC.modalTransitionStyle = .crossDissolve
         
         self.present(preferencesVC, animated: true, completion: nil)
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

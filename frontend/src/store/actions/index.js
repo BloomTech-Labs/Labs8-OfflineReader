@@ -3,7 +3,6 @@ import axios from 'axios';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const EDIT_NOTE = 'EDIT_NOTE';
 export const FETCH_DATA = 'FETCH_DATA';
 export const DATA_FETCHED = 'DATA_FETCHED';
 export const ERROR = 'ERROR';

@@ -34,7 +34,7 @@ class SignInPage extends Component {
 					/>
 					<label className="label">Password: </label>
 					<input
-						type="text"
+						type="password"
 						className="input"
 						name="password"
 						placeholder="password"

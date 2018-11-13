@@ -37,13 +37,26 @@ export const userReducers = (state = initialState, action) => {
 			};
 
 		case LOGIN_USER:
-			const user = { ...action.payload };
+			const userLoggingIn = { ...action.payload };
 			return {
 				// not sure if this should be returned
 				users: [
 					...state.users,
 					{
-						...user
+						...userLoggingIn
+					}
+				],
+				fetching: false
+			};
+
+		case LOGOUT_USER:
+			const userLoggingOut = { ...action.payload };
+			return {
+				// not sure if this should be returned
+				users: [
+					...state.users,
+					{
+						...userLoggingOut
 					}
 				],
 				fetching: false

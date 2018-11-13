@@ -176,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="572" y="54"/>
         </scene>
-        <!--Segmented Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="ltz-w8-HlV">
             <objects>
                 <viewController id="Enx-cX-gv1" customClass="SegmentedSettingsViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,7 +205,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-Vd-rtn">
-                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,6 +223,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hYC-nm-OsM"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" selectedImage="settings-icon" id="DbO-Vo-XcZ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="O2R-Vd-rtn" id="yuu-Al-oMw"/>
                         <outlet property="segmentedControl" destination="2lp-J6-Ps7" id="hjP-N0-fRh"/>
@@ -400,4 +402,7 @@
             <point key="canvasLocation" x="1735" y="54"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings-icon" width="37.5" height="37.5"/>
+    </resources>
 </document>

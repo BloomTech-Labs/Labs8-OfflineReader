@@ -36,6 +36,20 @@ export const userReducers = (state = initialState, action) => {
 				fetching: false
 			};
 
+		case LOGIN_USER:
+			const user = { ...action.payload };
+			return {
+				// not sure if this should be returned
+				users: [
+					...state.users,
+					{
+						...user
+					}
+				],
+				fetching: false
+			};
+
+		//////
 		default:
 			return state;
 	}

@@ -64,27 +64,42 @@ export const userReducers = (state = initialState, action) => {
 				fetching: false
 			};
 
+		//////
+		default:
+			return state;
+	}
+};
+
+export const articleReducers = (state = initialState, action) => {
+	switch (action.type) {
+		case FETCH_DATA:
+			return { ...state, fetching: true };
+		case ERROR:
+			return { ...state, error: 'Error' + action.err };
+		case DATA_FETCHED:
+			return { ...state, notes: action.payload, fetching: false };
+
 		case ADD_ARTICLE:
-			const article = { ...action.payload };
+			const articleAdded = { ...action.payload };
 			return {
 				// not sure if this should be returned
 				articles: [
 					...state.articles,
 					{
-						...article
+						...articleAdded
 					}
 				],
 				fetching: false
 			};
 
 		case DELETE_ARTICLE:
-			const article = { ...action.payload };
+			const articleDeleted = { ...action.payload };
 			return {
 				// not sure if this should be returned
 				articles: [
 					...state.articles,
 					{
-						...article
+						...articleDeleted
 					}
 				],
 				fetching: false

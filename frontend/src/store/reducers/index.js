@@ -4,6 +4,7 @@ import {
 	LOGIN_USER,
 	LOGOUT_USER,
 	ADD_ARTICLE,
+	DELETE_ARTICLE,
 	FETCH_DATA,
 	DATA_FETCHED,
 	ERROR
@@ -76,6 +77,18 @@ export const userReducers = (state = initialState, action) => {
 				fetching: false
 			};
 
+		case DELETE_ARTICLE:
+			const article = { ...action.payload };
+			return {
+				// not sure if this should be returned
+				articles: [
+					...state.articles,
+					{
+						...article
+					}
+				],
+				fetching: false
+			};
 		//////
 		default:
 			return state;

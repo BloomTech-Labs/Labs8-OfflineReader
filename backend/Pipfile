@@ -9,6 +9,8 @@ python-decouple = "*"
 djangorestframework = "*"
 django-rest-auth = "*"
 django-allauth = "*"
+dj-database-url = "*"
+"psycopg2-binary" = "*"
 
 [dev-packages]
 

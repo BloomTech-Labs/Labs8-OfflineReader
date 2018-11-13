@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import dj_database_url
 
 from decouple import config, Csv
 
@@ -85,15 +86,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# Set up to use dj_database_url
+SSL_MODE = '?sslmode=prefer'
+PG_URL = config('DATABASE_URL') + SSL_MODE
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('NAME'),
-        'USER': config('USER'),
-        'PASSWORD': config('PASSWORD'),
-        'HOST': config('HOST'),
-        'PORT': config('PORT', cast=int),
-    }
+    'default' : dj_database_url.config(default=PG_URL)
 }
 
 # REST boilerplate to set up persmissions

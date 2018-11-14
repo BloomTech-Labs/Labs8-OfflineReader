@@ -7,10 +7,11 @@ class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('title')
+        fields = '__all__'
 
 class ArticleViewSet(viewsets.ModelViewSet):
     serializers_class = ArticleSerializer
-    # filter result by user
+    # queryset = Article.objects.all()
     def get_queryset(self):
         user = self.request.user
 

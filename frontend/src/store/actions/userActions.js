@@ -6,21 +6,20 @@ export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
 export const ERROR = 'ERROR';
 
-export const registerUser = user => {
+const apiBaseURL = 'https://anywhere-reader-test.herokuapp.com/api';
+
+export const registerUser = newUser => {
 	return dispatch => {
-		dispatch({
-			type: REGISTER_USER,
-			payload: {
-				//the payload you're giving the API to populate the new user
-			}
-		})
-			.then(
-				// Re-GET all the notes, with the newly added one included
-				axios
-					.get('https://anywhere-reader-test.herokuapp.com/api/users')
-					.then(response =>
-						dispatch({ type: USER_DATA_FETCHED, payload: response.data })
-					)
+		dispatch({ type: REGISTER_USER });
+		axios
+			.post(apiBaseURL + '/users', newUser)
+			.then(response =>
+				dispatch({
+					type: REGISTER_USER,
+					payload: {
+						//the payload you're giving the API to populate the new user
+					}
+				})
 			)
 			.catch(err => dispatch({ type: ERROR, err }));
 	};
@@ -28,9 +27,9 @@ export const registerUser = user => {
 
 export const loginUser = user => {
 	return dispatch => {
-		dispatch({ type: FETCH_DATA });
+		dispatch({ type: LOGIN_USER });
 		axios
-			.post('https://anywhere-reader-test.herokuapp.com/api/users', user)
+			.post(apiBaseURL + '/users', user)
 			.then(response =>
 				dispatch({
 					type: LOGIN_USER,
@@ -39,23 +38,15 @@ export const loginUser = user => {
 					}
 				})
 			)
-			.then(
-				// Re-GET all the notes, with the newly added one included
-				axios
-					.get('https://anywhere-reader-test.herokuapp.com/api/users')
-					.then(response =>
-						dispatch({ type: DATA_FETCHED, payload: response.data })
-					)
-			)
 			.catch(err => dispatch({ type: ERROR, err }));
 	};
 };
 
 export const logoutUser = user => {
 	return dispatch => {
-		dispatch({ type: FETCH_DATA });
+		dispatch({ type: LOGOUT_USER });
 		axios
-			.post('https://anywhere-reader-test.herokuapp.com/api/users', user)
+			.post(apiBaseURL + '/users', user)
 			.then(response =>
 				dispatch({
 					type: LOGOUT_USER,
@@ -63,14 +54,6 @@ export const logoutUser = user => {
 						//the payload you're giving the API to populate the new user
 					}
 				})
-			)
-			.then(
-				// Re-GET all the notes, with the newly added one included
-				axios
-					.get('https://anywhere-reader-test.herokuapp.com/api/users')
-					.then(response =>
-						dispatch({ type: DATA_FETCHED, payload: response.data })
-					)
 			)
 			.catch(err => dispatch({ type: ERROR, err }));
 	};

@@ -13,9 +13,7 @@ import { combineReducers } from './store/reducers';
 const store = createStore(combineReducers, applyMiddleware(thunk, logger));
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
-			<App />
-		</Router>
+		<App />
 	</Provider>,
 	document.getElementById('root')
 );

@@ -15,13 +15,12 @@ class ArticleController {
         return Bundle.main.url(forResource: "example", withExtension: "json")!
     }
     
-    func fetchLocalArticles(completion: @escaping () -> Void) {
+    func fetchLocalArticles() {
         do {
             let mockData = try Data(contentsOf: mockDataURL)
             self.articles = Array(try JSONDecoder().decode(Articles.self, from: mockData).articles)
         } catch {
             NSLog("Error decoding example data: \(error)")
         }
-        completion()
     }
 }

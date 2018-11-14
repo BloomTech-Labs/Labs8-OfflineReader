@@ -90,15 +90,20 @@ WSGI_APPLICATION = 'project.wsgi.application'
 SSL_MODE = '?sslmode=prefer'
 PG_URL = config('DATABASE_URL') + SSL_MODE
 DATABASES = {
-    'default' : dj_database_url.config(default=PG_URL)
+    'default': dj_database_url.config(default=PG_URL)
 }
 
 # REST boilerplate to set up persmissions
-# Allow logged in to read/write and anonymous users read only
+# Setup authentication
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
 }
 
 # Password validation
@@ -145,4 +150,3 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
-

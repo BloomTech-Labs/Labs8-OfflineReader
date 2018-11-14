@@ -17,7 +17,7 @@ from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -34,12 +34,13 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
@@ -52,8 +53,10 @@ INSTALLED_APPS = [
     'users',
 ]
 
+# whitenoise needs to be above everything but SecurityMiddleware. Plan accordingly.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -61,6 +64,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# MIDDLEWARE_CLASSES = (
+#     # Simplified static file serving.
+#     # https://warehouse.python.org/project/whitenoise/
+#     'whitenoise.middleware.WhiteNoiseMiddleware',
+# )
 
 ROOT_URLCONF = 'project.urls'
 
@@ -138,13 +147,22 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+# http://whitenoise.evans.io/en/stable/django.html
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+print(STATIC_ROOT)
 
+# STATICFILES_DIRS = ()
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+#     os.path.join(BASE_DIR, 'api/static'),
+#     os.path.join(BASE_DIR, 'apps/scraper/static')
+# )
 
 # What are these? :3
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
-

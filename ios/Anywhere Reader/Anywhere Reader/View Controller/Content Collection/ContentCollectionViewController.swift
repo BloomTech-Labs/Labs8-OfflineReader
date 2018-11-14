@@ -34,8 +34,10 @@ class ContentCollectionViewController: UICollectionViewController {
 
 
     // MARK: - Properties
+    
     let articleController = ArticleController()
 
+    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,6 +52,9 @@ class ContentCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    
+    // MARK: - Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination as? ContentDetailViewController {

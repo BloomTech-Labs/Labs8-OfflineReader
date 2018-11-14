@@ -2,7 +2,8 @@ import {
 	REGISTER_USER,
 	LOGIN_USER,
 	LOGOUT_USER,
-	DATA_FETCHED,
+	FETCH_USER_DATA,
+	USER_DATA_FETCHED,
 	ERROR
 } from '../actions';
 
@@ -15,11 +16,11 @@ const initialState = {
 
 export const userReducers = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_DATA:
+		case FETCH_USER_DATA:
 			return { ...state, fetching: true };
 		case ERROR:
 			return { ...state, error: 'Error' + action.err };
-		case DATA_FETCHED:
+		case USER_DATA_FETCHED:
 			return { ...state, articles: action.payload, fetching: false };
 		case REGISTER_USER:
 			const newUser = { ...action.payload };

@@ -1,8 +1,8 @@
 import {
 	ADD_ARTICLE,
 	DELETE_ARTICLE,
-	FETCH_DATA,
-	DATA_FETCHED,
+	FETCH_ARTICLE_DATA,
+	ARTICLE_DATA_FETCHED,
 	ERROR
 } from '../actions';
 
@@ -15,11 +15,11 @@ const initialState = {
 
 export const articleReducers = (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_DATA:
+		case FETCH_ARTICLE_DATA:
 			return { ...state, fetching: true };
 		case ERROR:
 			return { ...state, error: 'Error' + action.err };
-		case DATA_FETCHED:
+		case ARTICLE_DATA_FETCHED:
 			return { ...state, articles: action.payload, fetching: false };
 
 		case ADD_ARTICLE:

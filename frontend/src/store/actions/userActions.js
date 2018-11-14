@@ -8,23 +8,18 @@ export const ERROR = 'ERROR';
 
 export const registerUser = user => {
 	return dispatch => {
-		dispatch({ type: FETCH_DATA });
-		axios
-			.post('https://anywhere-reader-test.herokuapp.com/api/users', user)
-			.then(response =>
-				dispatch({
-					type: REGISTER_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
-				})
-			)
+		dispatch({
+			type: REGISTER_USER,
+			payload: {
+				//the payload you're giving the API to populate the new user
+			}
+		})
 			.then(
 				// Re-GET all the notes, with the newly added one included
 				axios
 					.get('https://anywhere-reader-test.herokuapp.com/api/users')
 					.then(response =>
-						dispatch({ type: DATA_FETCHED, payload: response.data })
+						dispatch({ type: USER_DATA_FETCHED, payload: response.data })
 					)
 			)
 			.catch(err => dispatch({ type: ERROR, err }));

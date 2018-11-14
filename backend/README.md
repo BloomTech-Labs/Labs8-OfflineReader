@@ -12,14 +12,16 @@ Returns list of users
 ### /api/rest-auth/login/
 
 POST
-`{ "username": "", "email": "", "password": "" }`
+`{ "username": "", "password": "" }`
 returns:
 `{ "key": "some-string" }`
 
 ### /api/rest-auth/logout/
 
-GET
-Logouts current user
+Deletes token
+POST
+Header
+Authorization: "Token key"
 
 ### /api/rest-auth/registration/
 

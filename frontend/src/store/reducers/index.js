@@ -3,6 +3,6 @@ import userReducers from './userreducers';
 import articleReducers from './articlereducers';
 
 export default combineReducers({
-	notesReducers,
+	userReducers,
 	articleReducers
 });

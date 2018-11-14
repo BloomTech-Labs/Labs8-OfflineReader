@@ -6,16 +6,11 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { userReducers } from './reducers';
-import { articleReducers } from './store/reducers';
+import { combineReducers } from './store/reducers';
 
 // import * as serviceWorker from './serviceWorker';
 
-const store = createStore(
-	userReducers,
-	articleReducers,
-	applyMiddleware(thunk, logger)
-);
+const store = createStore(combineReducers, applyMiddleware(thunk, logger));
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>

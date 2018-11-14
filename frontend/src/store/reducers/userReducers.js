@@ -20,7 +20,7 @@ export const userReducers = (state = initialState, action) => {
 		case ERROR:
 			return { ...state, error: 'Error' + action.err };
 		case DATA_FETCHED:
-			return { ...state, notes: action.payload, fetching: false };
+			return { ...state, articles: action.payload, fetching: false };
 		case REGISTER_USER:
 			const newUser = { ...action.payload };
 			return {

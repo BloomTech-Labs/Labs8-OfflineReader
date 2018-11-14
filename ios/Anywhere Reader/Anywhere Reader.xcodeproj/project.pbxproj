@@ -20,6 +20,8 @@
 		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
+		22005786219C998100808E4B /* AddNewContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22005785219C998100808E4B /* AddNewContent.storyboard */; };
+		22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22005788219C9DC500808E4B /* AddNewContentViewController.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
 		2233F7CB21920A07001A82FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7C921920A07001A82FF /* Main.storyboard */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		22005785219C998100808E4B /* AddNewContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewContent.storyboard; sourceTree = "<group>"; };
+		22005788219C9DC500808E4B /* AddNewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContentViewController.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2233F7C521920A06001A82FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2233F7CA21920A07001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 			children = (
 				13B013DC2193942800DA56B9 /* Segmented */,
 				22661E0A219268940072A4B8 /* Content Collection */,
+				22005788219C9DC500808E4B /* AddNewContentViewController.swift */,
 				22661E132194EA3E0072A4B8 /* Content Detail */,
 				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
 			);
@@ -131,6 +136,7 @@
 			children = (
 				2233F7C921920A07001A82FF /* Main.storyboard */,
 				13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */,
+				22005785219C998100808E4B /* AddNewContent.storyboard */,
 				22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */,
 				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
@@ -259,6 +265,7 @@
 				2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */,
 				13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */,
 				13FB2E2F21921CD200A8888B /* ContentCollection.storyboard in Resources */,
+				22005786219C998100808E4B /* AddNewContent.storyboard in Resources */,
 				2233F7CB21920A07001A82FF /* Main.storyboard in Resources */,
 				22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */,
 			);
@@ -280,6 +287,7 @@
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
 				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
+				22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* Article.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,

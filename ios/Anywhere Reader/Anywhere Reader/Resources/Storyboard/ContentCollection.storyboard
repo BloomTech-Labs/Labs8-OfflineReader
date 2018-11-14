@@ -163,7 +163,13 @@
                             <outlet property="delegate" destination="72u-JM-bAQ" id="Ueg-ck-1F5"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="Ufo-Vv-UdT"/>
+                    <navigationItem key="navigationItem" id="Ufo-Vv-UdT">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PWX-5P-oGM">
+                            <connections>
+                                <action selector="addNewContent:" destination="72u-JM-bAQ" id="vH8-Pr-YnP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihv-gv-3Gg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,16 +14,29 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         articleController.fetchLocalArticles()
     }
     
+    
+    // MARK: - Actions
+
+    @IBAction func addNewContent(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "AddNewContent", bundle: nil)
+        guard let addNewConentVC = storyboard.instantiateInitialViewController() else { return }
+        addNewConentVC.providesPresentationContextTransitionStyle = true
+        addNewConentVC.definesPresentationContext = true
+        addNewConentVC.modalPresentationStyle = .overCurrentContext
+        addNewConentVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(addNewConentVC, animated: true, completion: nil)
+    }
+
+
     // MARK: - Properties
     let articleController = ArticleController()
 
     // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articleController.articles.count
@@ -46,5 +59,4 @@ class ContentCollectionViewController: UICollectionViewController {
             detailViewController.article = articleController.articles[indexPath.row]
         }
     }
-
 }

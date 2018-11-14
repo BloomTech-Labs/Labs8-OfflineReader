@@ -2,8 +2,8 @@ import axios from 'axios';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const FETCH_DATA = 'FETCH_DATA';
-export const DATA_FETCHED = 'DATA_FETCHED';
+export const FETCH_USER_DATA = 'FETCH_USER_DATA';
+export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
 export const ERROR = 'ERROR';
 
 export const registerUser = user => {

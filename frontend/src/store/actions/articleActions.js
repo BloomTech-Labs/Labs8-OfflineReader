@@ -1,18 +1,17 @@
 import axios from 'axios';
 export const ADD_ARTICLE = 'ADD_ARTICLE';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
-export const FETCH_DATA = 'FETCH_DATA';
-export const DATA_FETCHED = 'DATA_FETCHED';
+export const FETCH_ARTICLE_DATA = 'FETCH_ARTICLE_DATA';
+export const ARTICLE_DATA_FETCHED = 'ARTICLE_DATA_FETCHED';
 export const ERROR = 'ERROR';
+
+const apiBaseURL = 'https://anywhere-reader-test.herokuapp.com/api';
 
 export const addArticle = article => {
 	return dispatch => {
-		dispatch({ type: FETCH_DATA });
+		dispatch({ type: FETCH_ARTICLE_DATA });
 		axios
-			.post(
-				'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles',
-				article
-			)
+			.post(apiBaseURL + '/users/{id}/articles', article)
 			.then(response =>
 				dispatch({
 					type: ADD_ARTICLE,
@@ -24,11 +23,9 @@ export const addArticle = article => {
 			.then(
 				// Re-GET all the articles, with the newly added one included
 				axios
-					.get(
-						'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles'
-					)
+					.get(apiBaseURL + '/users/{id}/articles')
 					.then(response =>
-						dispatch({ type: DATA_FETCHED, payload: response.data })
+						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)
 			)
 			.catch(err => dispatch({ type: ERROR, err }));
@@ -37,12 +34,9 @@ export const addArticle = article => {
 
 export const deleteArticle = article => {
 	return dispatch => {
-		dispatch({ type: FETCH_DATA });
+		dispatch({ type: FETCH_ARTICLE_DATA });
 		axios
-			.delete(
-				'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles',
-				article
-			)
+			.delete(apiBaseURL + '/users/{id}/articles', article)
 			.then(response =>
 				dispatch({
 					type: DELETE_ARTICLE,
@@ -54,11 +48,9 @@ export const deleteArticle = article => {
 			.then(
 				// Re-GET all the articles of that user to confirm the deleted article isnt there
 				axios
-					.get(
-						'https://anywhere-reader-test.herokuapp.com/api/users/{id}/articles'
-					)
+					.get(apiBaseURL + '/users/{id}/articles')
 					.then(response =>
-						dispatch({ type: DATA_FETCHED, payload: response.data })
+						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)
 			)
 			.catch(err => dispatch({ type: ERROR, err }));

@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'api',
     'apps.scraper',
     'users',
+    'pages'
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 SSL_MODE = '?sslmode=prefer'
 PG_URL = config('DATABASE_URL') + SSL_MODE
 DATABASES = {
-    'default' : dj_database_url.config(default=PG_URL)
+    'default': dj_database_url.config(default=PG_URL)
 }
 
 # REST boilerplate to set up persmissions
@@ -145,4 +146,3 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
-

@@ -10,4 +10,11 @@ class ArticleSerializer(serializers.ModelSerializer):
 
 class ArticleViewSet(viewsets.ModelViewSet):
     serializers_class = ArticleSerializer
-    queryset = Article.objects.all()
+    # filter result by user
+    def get_queryset(self):
+        user = self.request.user
+
+        if user.is_anonymous:
+            return Article.objects.none()
+        else:
+            return Article.objects.filter(user=user)

@@ -12,7 +12,7 @@ export const registerUser = newUser => {
 	return dispatch => {
 		dispatch({ type: REGISTER_USER });
 		axios
-			.post(apiBaseURL + '/users', newUser)
+			.post(apiBaseURL + '/rest-auth/register/', newUser)
 			.then(response =>
 				dispatch({
 					type: REGISTER_USER,
@@ -29,7 +29,7 @@ export const loginUser = user => {
 	return dispatch => {
 		dispatch({ type: LOGIN_USER });
 		axios
-			.post(apiBaseURL + '/users', user)
+			.post(apiBaseURL + '/rest-auth/register/', user)
 			.then(response =>
 				dispatch({
 					type: LOGIN_USER,
@@ -46,7 +46,7 @@ export const logoutUser = user => {
 	return dispatch => {
 		dispatch({ type: LOGOUT_USER });
 		axios
-			.post(apiBaseURL + '/users', user)
+			.post(apiBaseURL + '/rest-auth/logout/', user)
 			.then(response =>
 				dispatch({
 					type: LOGOUT_USER,

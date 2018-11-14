@@ -37,5 +37,14 @@ class ContentCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? ContentDetailViewController {
+            let cell = sender as! DocumentCollectionViewCell
+            guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+            let _ = detailViewController.view
+            detailViewController.article = articleController.articles[indexPath.row]
+        }
+    }
 
 }

@@ -133,7 +133,6 @@
 				2233F7C921920A07001A82FF /* Main.storyboard */,
 				13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */,
 				22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */,
-				13FB2E3021922C9F00A8888B /* Account.storyboard */,
 				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
 			);

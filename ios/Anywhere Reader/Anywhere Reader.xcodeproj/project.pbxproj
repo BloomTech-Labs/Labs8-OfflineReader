@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		13126F53219255A700A1ED13 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13126F52219255A700A1ED13 /* AuthService.swift */; };
+		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
 		13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DF219394E300DA56B9 /* BillingViewController.swift */; };
-		13FB2E2A21921B7D00A8888B /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* Content.swift */; };
-		13FB2E2C21921B8C00A8888B /* ContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ContentController.swift */; };
+		13FB2E2A21921B7D00A8888B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* Article.swift */; };
+		13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ArticleController.swift */; };
 		13FB2E2F21921CD200A8888B /* ContentCollection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */; };
 		13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3021922C9F00A8888B /* Settings.storyboard */; };
 		13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3221922CFA00A8888B /* AccountViewController.swift */; };
@@ -34,10 +35,11 @@
 
 /* Begin PBXFileReference section */
 		13126F52219255A700A1ED13 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
 		13B013DF219394E300DA56B9 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
-		13FB2E2921921B7D00A8888B /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
-		13FB2E2B21921B8C00A8888B /* ContentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentController.swift; sourceTree = "<group>"; };
+		13FB2E2921921B7D00A8888B /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		13FB2E2B21921B8C00A8888B /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
 		13FB2E2E21921CD200A8888B /* ContentCollection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContentCollection.storyboard; sourceTree = "<group>"; };
 		13FB2E3021922C9F00A8888B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		13FB2E3221922CFA00A8888B /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +94,7 @@
 		13FB2E2321921AA600A8888B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				13FB2E2921921B7D00A8888B /* Content.swift */,
+				13FB2E2921921B7D00A8888B /* Article.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,7 +114,8 @@
 		13FB2E2621921AB600A8888B /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				13FB2E2B21921B8C00A8888B /* ContentController.swift */,
+				13FB2E2B21921B8C00A8888B /* ArticleController.swift */,
+				132AF51F219C9777008701AA /* example.json */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				132AF520219C9777008701AA /* example.json in Resources */,
 				13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */,
 				2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */,
 				2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */,
@@ -275,7 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */,
-				13FB2E2C21921B8C00A8888B /* ContentController.swift in Sources */,
+				13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */,
 				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
@@ -283,8 +287,8 @@
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
 				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
-				13FB2E2A21921B7D00A8888B /* Content.swift in Sources */,
 				22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */,
+				13FB2E2A21921B7D00A8888B /* Article.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,

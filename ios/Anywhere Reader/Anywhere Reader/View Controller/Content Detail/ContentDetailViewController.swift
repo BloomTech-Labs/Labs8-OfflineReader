@@ -9,9 +9,23 @@
 import UIKit
 
 class ContentDetailViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateViews()
+    }
+    
+    // MARK: - Properties
+    var article: Article? {
+        didSet {
+            updateViews()
+        }
+    }
+    
+    // MARK: - IBOutlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentBodyLabel: UILabel!
 
     // MARK: - Actions
-    
     @IBAction func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
@@ -21,5 +35,13 @@ class ContentDetailViewController: UIViewController {
         preferencesVC.modalTransitionStyle = .crossDissolve
         
         self.present(preferencesVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - Private
+    private func updateViews() {
+        guard let article = article else { return }
+        
+        titleLabel.text = article.title
+        contentBodyLabel.text = article.articleContent
     }
 }

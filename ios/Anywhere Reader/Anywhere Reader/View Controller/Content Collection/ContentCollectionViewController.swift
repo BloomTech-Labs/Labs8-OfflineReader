@@ -8,14 +8,14 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "DocumentCell"
 
 class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        articleController.fetchLocalArticles()
     }
     
     
@@ -31,20 +31,32 @@ class ContentCollectionViewController: UICollectionViewController {
         
         self.present(addNewConentVC, animated: true, completion: nil)
     }
-    
-    
+
+
+    // MARK: - Properties
+    let articleController = ArticleController()
+
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        return 4
+        return articleController.articles.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentCell", for: indexPath) as! DocumentCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DocumentCollectionViewCell
         
-        cell.updateViews()
+        let article = articleController.articles[indexPath.row]
+        cell.article = article
     
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? ContentDetailViewController {
+            let cell = sender as! DocumentCollectionViewCell
+            guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+            let _ = detailViewController.view
+            detailViewController.article = articleController.articles[indexPath.row]
+        }
     }
 }

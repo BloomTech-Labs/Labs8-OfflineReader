@@ -1,4 +1,4 @@
 from django.db import models
 
 
-class Articles(modes.Model):
+class Article(modes.Model):

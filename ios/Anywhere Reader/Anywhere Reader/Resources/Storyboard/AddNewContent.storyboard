@@ -63,15 +63,15 @@
                                                 <rect key="frame" x="0.0" y="61" width="208" height="30"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="www.example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IAo-Us-F3B">
-                                                        <rect key="frame" x="0.0" y="0.0" width="146" height="30"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="156" height="30"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YN5-eK-xGE">
-                                                        <rect key="frame" x="154" y="0.0" width="54" height="30"/>
+                                                        <rect key="frame" x="164" y="0.0" width="44" height="30"/>
                                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" title=" Button ">
+                                                        <state key="normal" title="  Add  ">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -100,6 +100,7 @@
                         <viewLayoutGuide key="safeArea" id="CmZ-mT-C8U"/>
                     </view>
                     <connections>
+                        <outlet property="addLinkButton" destination="YN5-eK-xGE" id="5rQ-nI-Ihb"/>
                         <outlet property="mainView" destination="1nY-p9-Hdk" id="i9L-Of-lio"/>
                         <outlet property="urlTextField" destination="IAo-Us-F3B" id="2cL-tW-I5p"/>
                     </connections>

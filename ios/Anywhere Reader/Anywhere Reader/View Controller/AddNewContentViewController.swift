@@ -8,13 +8,14 @@
 
 import UIKit
 
-class AddNewContentViewController: UIViewController {
+class AddNewContentViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(white: 0.0, alpha: 0.2)
         mainView.layer.cornerRadius = 10.0
+        addLinkButton.layer.cornerRadius = 8.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,8 +34,9 @@ class AddNewContentViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var urlTextField: UITextField!
+    @IBOutlet weak var addLinkButton: UIButton!
     
     
     // MARK: - Actions
@@ -69,5 +71,13 @@ class AddNewContentViewController: UIViewController {
             self.mainView.alpha = 0
             self.mainView.frame.origin.y = self.mainView.frame.origin.y + 50
         })
+    }
+    
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        urlTextField.resignFirstResponder()
+        return true
     }
 }

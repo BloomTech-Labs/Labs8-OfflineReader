@@ -3,21 +3,21 @@ import {
 	DELETE_ARTICLE,
 	FETCH_ARTICLE_DATA,
 	ARTICLE_DATA_FETCHED,
-	ERROR
+	ARTICLE_ERROR
 } from '../actions';
 
 const initialState = {
 	articles: [],
 	fetching: false,
 	success: false,
-	error: null
+	error: ''
 };
 
-let articleReducers = (state = initialState, action) => {
+const articleReducers = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_ARTICLE_DATA:
 			return { ...state, fetching: true };
-		case ERROR:
+		case ARTICLE_ERROR:
 			return { ...state, error: 'Error' + action.err };
 		case ARTICLE_DATA_FETCHED:
 			return { ...state, articles: action.payload, fetching: false };

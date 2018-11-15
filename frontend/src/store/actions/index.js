@@ -4,7 +4,8 @@ export const ADD_ARTICLE = 'ADD_ARTICLE';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
 export const FETCH_ARTICLE_DATA = 'FETCH_ARTICLE_DATA';
 export const ARTICLE_DATA_FETCHED = 'ARTICLE_DATA_FETCHED';
-export const ERROR = 'ERROR';
+export const USER_ERROR = 'ERROR';
+export const ARTICLE_ERROR = 'ARTICLE_ERROR';
 //User
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
@@ -28,7 +29,7 @@ export const registerUser = newUser => {
 					}
 				})
 			)
-			.catch(err => dispatch({ type: ERROR, err }));
+			.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };
 
@@ -45,7 +46,7 @@ export const loginUser = user => {
 					}
 				})
 			)
-			.catch(err => dispatch({ type: ERROR, err }));
+			.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };
 
@@ -62,7 +63,7 @@ export const logoutUser = user => {
 					}
 				})
 			)
-			.catch(err => dispatch({ type: ERROR, err }));
+			.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };
 // Article actions //
@@ -87,7 +88,7 @@ export const addArticle = article => {
 						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)
 			)
-			.catch(err => dispatch({ type: ERROR, err }));
+			.catch(err => dispatch({ type: ARTICLE_ERROR, err }));
 	};
 };
 
@@ -112,6 +113,6 @@ export const deleteArticle = article => {
 						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)
 			)
-			.catch(err => dispatch({ type: ERROR, err }));
+			.catch(err => dispatch({ type: ARTICLE_ERROR, err }));
 	};
 };

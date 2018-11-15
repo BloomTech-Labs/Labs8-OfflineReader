@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 // import { BrowserRouter as Router } from 'react-router-dom';
-import { combineReducers } from './store/reducers/index';
+import combineReducers from './store/reducers/index';
 
 // import * as serviceWorker from './serviceWorker';
 

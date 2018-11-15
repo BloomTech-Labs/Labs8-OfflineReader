@@ -7,7 +7,7 @@ name = "pypi"
 django = "*"
 python-decouple = "*"
 djangorestframework = "*"
-django-rest-auth = "*"
+django-rest-auth = {extras = ["with_social"], version = "*"}
 django-allauth = "*"
 dj-database-url = "*"
 "psycopg2-binary" = "*"

@@ -15,38 +15,102 @@ export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
 
 const apiBaseURL = 'https://anywhere-reader-test.herokuapp.com/api';
 
-// User actions //
-export const registerUser = newUser => {
-	return dispatch => {
-		dispatch({ type: REGISTER_USER });
-		axios
-			.post(apiBaseURL + '/rest-auth/register/', newUser)
-			.then(response =>
-				dispatch({
-					type: REGISTER_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
-				})
-			)
-			.catch(err => dispatch({ type: USER_ERROR, err }));
+export const loadUser = () => {
+	return (dispatch, getState) => {
+		dispatch({ type: 'USER_LOADING' });
+
+		const token = getState().auth.token;
+
+		let headers = {
+			'Content-Type': 'application/json'
+		};
+
+		if (token) {
+			headers['Authorization'] = `Token ${token}`;
+		}
+		return fetch(apiBaseURL + '/auth/user/', { headers })
+			.then(res => {
+				if (res.status < 500) {
+					return res.json().then(data => {
+						return { status: res.status, data };
+					});
+				} else {
+					console.log('Server Error!');
+					throw res;
+				}
+			})
+			.then(res => {
+				if (res.status === 200) {
+					dispatch({ type: 'USER_LOADED', user: res.data });
+					return res.data;
+				} else if (res.status >= 400 && res.status < 500) {
+					dispatch({ type: 'AUTHENTICATION_ERROR', data: res.data });
+					throw res.data;
+				}
+			});
 	};
 };
 
-export const loginUser = user => {
-	return dispatch => {
-		dispatch({ type: LOGIN_USER });
-		axios
-			.post(apiBaseURL + '/rest-auth/register/', user)
-			.then(response =>
-				dispatch({
-					type: LOGIN_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
-				})
-			)
-			.catch(err => dispatch({ type: USER_ERROR, err }));
+export const login = (username, password) => {
+	return (dispatch, getState) => {
+		let headers = { 'Content-Type': 'application/json' };
+		let body = JSON.stringify({ username, password });
+
+		return fetch('/api/auth/login/', { headers, body, method: 'POST' })
+			.then(res => {
+				if (res.status < 500) {
+					return res.json().then(data => {
+						return { status: res.status, data };
+					});
+				} else {
+					console.log('Server Error!');
+					throw res;
+				}
+			})
+			.then(res => {
+				if (res.status === 200) {
+					dispatch({ type: 'LOGIN_SUCCESSFUL', data: res.data });
+					return res.data;
+				} else if (res.status === 403 || res.status === 401) {
+					dispatch({ type: 'AUTHENTICATION_ERROR', data: res.data });
+					throw res.data;
+				} else {
+					dispatch({ type: 'LOGIN_FAILED', data: res.data });
+					throw res.data;
+				}
+			});
+	};
+};
+
+// User actions //
+export const register = (username, password) => {
+	return (dispatch, getState) => {
+		let headers = { 'Content-Type': 'application/json' };
+		let body = JSON.stringify({ username, password });
+
+		return fetch('/api/auth/register/', { headers, body, method: 'POST' })
+			.then(res => {
+				if (res.status < 500) {
+					return res.json().then(data => {
+						return { status: res.status, data };
+					});
+				} else {
+					console.log('Server Error!');
+					throw res;
+				}
+			})
+			.then(res => {
+				if (res.status === 200) {
+					dispatch({ type: 'REGISTRATION_SUCCESSFUL', data: res.data });
+					return res.data;
+				} else if (res.status === 403 || res.status === 401) {
+					dispatch({ type: 'AUTHENTICATION_ERROR', data: res.data });
+					throw res.data;
+				} else {
+					dispatch({ type: 'REGISTRATION_FAILED', data: res.data });
+					throw res.data;
+				}
+			});
 	};
 };
 

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import { auth } from '../actions';
 
 class SignUpPage extends Component {
 	constructor(props) {
@@ -19,53 +21,49 @@ class SignUpPage extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		window.location.reload(this.props.history.push('/signedUp'));
+		this.props.register(this.state.username, this.state.password);
 	};
 
 	render() {
+		if (this.props.isAuthenticated) {
+			return <Redirect to="/" />;
+		}
 		return (
-			<div>
-				<h2>Sign Up</h2>
-				<form onSubmit={this.handleSubmit}>
-					<label className="label">Email: </label>
-					<input
-						type="text"
-						className="input"
-						name="email"
-						placeholder="email"
-						value={this.state.email}
-						onChange={this.handleInput}
-					/>
-					<label className="label">Username: </label>
-					<input
-						type="text"
-						className="input"
-						name="username"
-						placeholder="username"
-						value={this.state.username}
-						onChange={this.handleInput}
-					/>
-					<label className="label">Password: </label>
-					<input
-						type="password"
-						className="input"
-						name="password"
-						placeholder="password"
-						value={this.state.password}
-						onChange={this.handleInput}
-					/>
-					<label className="label">Comfirm password: </label>
-					<input
-						type="password"
-						className="input"
-						name="password_conf"
-						placeholder="password_conf"
-						value={this.state.password_conf}
-						onChange={this.handleInput}
-					/>
-					<button>Submit</button>
-				</form>
-			</div>
+			<form onSubmit={this.onSubmit}>
+				<fieldset>
+					<legend>Register</legend>
+					{this.props.errors.length > 0 && (
+						<ul>
+							{this.props.errors.map(error => (
+								<li key={error.field}>{error.message}</li>
+							))}
+						</ul>
+					)}
+					<p>
+						<label htmlFor="username">Username</label>
+						<input
+							type="text"
+							id="username"
+							onChange={e => this.setState({ username: e.target.value })}
+						/>
+					</p>
+					<p>
+						<label htmlFor="password">Password</label>
+						<input
+							type="password"
+							id="password"
+							onChange={e => this.setState({ password: e.target.value })}
+						/>
+					</p>
+					<p>
+						<button type="submit">Register</button>
+					</p>
+
+					<p>
+						Already have an account? <Link to="/login">Login</Link>
+					</p>
+				</fieldset>
+			</form>
 		);
 	}
 }

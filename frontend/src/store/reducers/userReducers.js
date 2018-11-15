@@ -1,70 +1,48 @@
-import {
-	REGISTER_USER,
-	LOGIN_USER,
-	LOGOUT_USER,
-	FETCH_USER_DATA,
-	USER_DATA_FETCHED,
-	USER_ERROR
-} from '../actions';
-
 const initialState = {
-	users: [],
-	fetching: false,
-	success: false,
-	error: ''
+	token: localStorage.getItem('token'),
+	isAuthenticated: null,
+	isLoading: true,
+	user: null,
+	errors: {}
 };
 
-const userReducers = (state = initialState, action) => {
+export default function auth(state = initialState, action) {
 	switch (action.type) {
-		case FETCH_USER_DATA:
-			return { ...state, fetching: true };
-		case USER_ERROR:
-			return { ...state, error: 'Error' + action.err };
-		case USER_DATA_FETCHED:
-			return { ...state, articles: action.payload, fetching: false };
-		case REGISTER_USER:
-			const newUser = { ...action.payload };
+		case 'USER_LOADING':
+			return { ...state, isLoading: true };
+
+		case 'USER_LOADED':
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...newUser
-					}
-				],
-				fetching: false
+				...state,
+				isAuthenticated: true,
+				isLoading: false,
+				user: action.user
 			};
 
-		case LOGIN_USER:
-			const userLoggingIn = { ...action.payload };
+		case 'LOGIN_SUCCESSFUL':
+			localStorage.setItem('token', action.data.token);
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...userLoggingIn
-					}
-				],
-				fetching: false
+				...state,
+				...action.data,
+				isAuthenticated: true,
+				isLoading: false,
+				errors: null
 			};
 
-		case LOGOUT_USER:
-			const userLoggingOut = { ...action.payload };
+		case 'AUTHENTICATION_ERROR':
+		case 'LOGIN_FAILED':
+		case 'LOGOUT_SUCCESSFUL':
+			localStorage.removeItem('token');
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...userLoggingOut
-					}
-				],
-				fetching: false
+				...state,
+				errors: action.data,
+				token: null,
+				user: null,
+				isAuthenticated: false,
+				isLoading: false
 			};
 
-		//////
 		default:
 			return state;
 	}
-};
-
-export default userReducers;
+}

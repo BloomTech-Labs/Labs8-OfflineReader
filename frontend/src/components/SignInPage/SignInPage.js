@@ -1,51 +1,57 @@
-import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-class SignInPage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: '',
-			password: ''
-		};
-	}
+import { auth } from '../actions';
 
-	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value });
-	};
-
-	handleSubmit = e => {
+class Login extends Component {
+	onSubmit = e => {
 		e.preventDefault();
-		window.location.reload(this.props.history.push('/signedIn'));
+		this.props.login(this.state.username, this.state.password);
 	};
 
 	render() {
+		if (this.props.isAuthenticated) {
+			return <Redirect to="/" />;
+		}
 		return (
-			<div>
-				<h2>Sign In</h2>
-				<form className="signin" onSubmit={this.handleSubmit}>
-					<label className="label">Username: </label>
-					<input
-						type="text"
-						className="input"
-						name="username"
-						placeholder="username"
-						value={this.state.username}
-						onChange={this.handleInput}
-					/>
-					<label className="label">Password: </label>
-					<input
-						type="password"
-						className="input"
-						name="password"
-						placeholder="password"
-						value={this.state.password}
-						onChange={this.handleInput}
-					/>
-					<button>Enter</button>
-				</form>
-			</div>
+			<form onSubmit={this.onSubmit}>
+				<fieldset>
+					<legend>Login</legend>
+					{this.props.errors.length > 0 && (
+						<ul>
+							{this.props.errors.map(error => (
+								<li key={error.field}>{error.message}</li>
+							))}
+						</ul>
+					)}
+					{/*KEEP THE OTHER ELEMENTS*/}
+				</fieldset>
+			</form>
 		);
 	}
 }
 
-export default SignInPage;
+const mapStateToProps = state => {
+	let errors = [];
+	if (state.auth.errors) {
+		errors = Object.keys(state.auth.errors).map(field => {
+			return { field, message: state.auth.errors[field] };
+		});
+	}
+	return {
+		errors,
+		isAuthenticated: state.auth.isAuthenticated
+	};
+};
+
+const mapDispatchToProps = dispatch => {
+	return {
+		login: (username, password) => {
+			return dispatch(auth.login(username, password));
+		}
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Login);

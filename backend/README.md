@@ -12,6 +12,7 @@ Returns list of users
 ### /api/rest-auth/login/
 
 POST
+Body
 `{ "username": "", "password": "" }`
 returns:
 `{ "key": "some-string" }`
@@ -26,6 +27,7 @@ Authorization: "Token key"
 ### /api/rest-auth/registration/
 
 POST
+Body
 `{ "username": "", "email": "", "password1": "", "password2": "" }`
 registers and logins user
 returns:
@@ -40,6 +42,7 @@ returns
 PUT
 Header
 Authorization: "Token key"
+Body
 `{ "username": "", "first_name": "", "last_name": "" }`
 
 ### /api/rest-auth/password/change/
@@ -47,6 +50,13 @@ Authorization: "Token key"
 POST
 Header
 Authorization: "Token key"
+Body
 `{ "new_password1": "", "new_password2": "" }`
 Returns the success/fail message
 Logout all sessions after password change. Need to look into keeping current session after password change.
+
+### /rest-auth/facebook/
+
+POST
+Body (Only one is required, access_token or code)
+`{"access_token", "code"}`

@@ -23,9 +23,9 @@ class ShadowView: UIView {
             
             shadowLayer.shadowColor = UIColor.darkGray.cgColor
             shadowLayer.shadowPath = shadowLayer.path
-            shadowLayer.shadowOffset = .zero
-            shadowLayer.shadowOpacity = 0.65
-            shadowLayer.shadowRadius = 10.0
+            shadowLayer.shadowOffset = CGSize(width: 0, height: 10)
+            shadowLayer.shadowOpacity = 0.25
+            shadowLayer.shadowRadius = 5
             
             layer.cornerRadius = cornerRadius ?? 12
             layer.insertSublayer(shadowLayer, at: 0)

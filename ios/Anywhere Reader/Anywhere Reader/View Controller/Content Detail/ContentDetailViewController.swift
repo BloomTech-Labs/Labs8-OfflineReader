@@ -14,6 +14,7 @@ class ContentDetailViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         updateTheme()
+        titleLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -34,7 +35,8 @@ class ContentDetailViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
-
+    @IBOutlet var imageView: UIImageView!
+    
     // MARK: - Actions
     @IBAction func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
@@ -53,7 +55,16 @@ class ContentDetailViewController: UIViewController {
         
         titleLabel.text = article.title
         contentBodyLabel.text = article.articleContent
+        do {
+            let url = URL(string: article.coverImage)!
+            let data = try Data(contentsOf: url)
+            imageView.image = UIImage(data: data)
+        }
+        catch {
+            NSLog("Error setting image in detail view")
+        }
     }
+    
     @objc private func updateTheme() {
         view.backgroundColor = themeHelper.getBackgroundColor()
         contentBodyLabel.textColor = themeHelper.getLabelTextColor()

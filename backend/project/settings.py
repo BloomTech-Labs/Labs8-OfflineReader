@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'api',
     'apps.scraper',
     'users',
+
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [

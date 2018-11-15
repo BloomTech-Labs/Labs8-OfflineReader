@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import { SignInPage, SignUpPage, SignedIn, SignedUp } from '../';
 import { Elements, StripeProvider } from 'react-stripe-elements';
-import { CheckoutForm } from '../CheckoutForm';
+import { CheckoutForm, MyStoreCheckout } from '../CheckoutForm';
 
 class App extends Component {
 	render() {
@@ -21,6 +21,9 @@ class App extends Component {
 						<Elements>
 							<Route path="/payment" component={CheckoutForm} />
 						</Elements>
+					</StripeProvider>
+					<StripeProvider apiKey="pk_test_12345">
+						<MyStoreCheckout />
 					</StripeProvider>
 				</div>
 			</Router>

@@ -13,7 +13,7 @@ const initialState = {
 	error: null
 };
 
-export const articleReducers = (state = initialState, action) => {
+let articleReducers = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_ARTICLE_DATA:
 			return { ...state, fetching: true };
@@ -52,3 +52,5 @@ export const articleReducers = (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default articleReducers;

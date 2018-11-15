@@ -14,7 +14,7 @@ const initialState = {
 	error: null
 };
 
-export const userReducers = (state = initialState, action) => {
+let userReducers = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCH_USER_DATA:
 			return { ...state, fetching: true };
@@ -66,3 +66,5 @@ export const userReducers = (state = initialState, action) => {
 			return state;
 	}
 };
+
+export default userReducers;

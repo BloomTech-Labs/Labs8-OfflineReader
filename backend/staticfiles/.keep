@@ -1,0 +1,3 @@
+# Git won't add empty directories to source control, so here's something to take up some space.
+# While there's no standard, using a '.keep' file seems to be the best practice here according to the google.
+# https://git.wiki.kernel.org/index.php/Git_FAQ#Can_I_add_empty_directories.3F

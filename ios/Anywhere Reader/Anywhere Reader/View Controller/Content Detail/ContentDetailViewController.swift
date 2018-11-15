@@ -9,13 +9,23 @@
 import UIKit
 
 class ContentDetailViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        updateTheme()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    // MARK: - Properties
-    var article: Article? {
+    // MARK: - Private properties
+    let themeHelper = UserDefaultsThemeHelper.shared
+    
+    // MARK: - Public properties
+    public var article: Article? {
         didSet {
             updateViews()
         }
@@ -43,5 +53,14 @@ class ContentDetailViewController: UIViewController {
         
         titleLabel.text = article.title
         contentBodyLabel.text = article.articleContent
+    }
+    @objc private func updateTheme() {
+        view.backgroundColor = themeHelper.getBackgroundColor()
+        contentBodyLabel.textColor = themeHelper.getLabelTextColor()
+        titleLabel.textColor = themeHelper.getLabelTextColor()
+        
+        let font = themeHelper.getFont()
+        contentBodyLabel.font = font
+        titleLabel.font = UIFont(name: font.fontName, size: font.pointSize + 10.0)
     }
 }

@@ -22,9 +22,6 @@ class App extends Component {
 							<Route path="/payment" component={CheckoutForm} />
 						</Elements>
 					</StripeProvider>
-					{/* <StripeProvider apiKey="pk_test_12345">
-						<MyStoreCheckout />
-					</StripeProvider> */}
 				</div>
 			</Router>
 		);

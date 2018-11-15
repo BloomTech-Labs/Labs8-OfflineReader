@@ -6,10 +6,9 @@ import { Switch, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { auth } from './actions';
+import { auth } from '/src/store/actions';
 
 import ArticlesWrapper from '../Articles/ArticlesWrapper';
-import NotFound from './components/NotFound';
 // import { SignedIn } from '../SignInPage';
 // import { SignedUp } from '../SignUpPage';
 
@@ -45,7 +44,6 @@ class RootContainerComponent extends Component {
 					<PrivateRoute exact path="/" component={ArticlesWrapper} />
 					<Route exact path="/signup" component={SignUpPage} />
 					<Route exact path="/signin" component={SignInPage} />
-					<Route component={NotFound} />
 				</Switch>
 			</BrowserRouter>
 		);

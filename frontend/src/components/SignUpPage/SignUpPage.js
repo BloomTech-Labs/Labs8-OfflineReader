@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { auth } from '../actions';
+import { auth } from '../../store/actions';
 
 class SignUpPage extends Component {
 	constructor(props) {

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    'rest_auth.registration',
     'corsheaders',
 
     'allauth',
@@ -53,7 +54,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.twitter',
 
-    'rest_auth.registration',
     'api',
     'apps.scraper',
     'users',

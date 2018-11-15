@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './components/index';
+import { App } from './components';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';

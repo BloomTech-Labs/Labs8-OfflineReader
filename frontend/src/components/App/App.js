@@ -44,6 +44,7 @@ class RootContainerComponent extends Component {
 			<BrowserRouter>
 				<Switch>
 					<PrivateRoute exact path="/" component={PonyNote} />
+					<Route exact path="/register" component={Register} />
 					<Route exact path="/login" component={Login} />
 					<Route component={NotFound} />
 				</Switch>

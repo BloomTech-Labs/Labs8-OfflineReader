@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import { SignInPage, SignUpPage, SignedIn, SignedUp } from '../';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import { SignInPage, SignUpPage } from '../';
 
 import { Switch, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { auth } from './actions';
 
-import ponyApp from './reducers';
-import PonyNote from './components/PonyNote';
+import ArticlesWrapper from '../Articles/ArticlesWrapper';
 import NotFound from './components/NotFound';
 // import { SignedIn } from '../SignInPage';
 // import { SignedUp } from '../SignUpPage';
 
-let store = createStore(ponyApp, applyMiddleware(thunk));
+let store = createStore(combineReducers, applyMiddleware(thunk));
 
 class RootContainerComponent extends Component {
 	componentDidMount() {
@@ -29,7 +28,7 @@ class RootContainerComponent extends Component {
 					if (this.props.auth.isLoading) {
 						return <em>Loading...</em>;
 					} else if (!this.props.auth.isAuthenticated) {
-						return <Redirect to="/login" />;
+						return <Redirect to="/signin" />;
 					} else {
 						return <ChildComponent {...props} />;
 					}
@@ -43,9 +42,9 @@ class RootContainerComponent extends Component {
 		return (
 			<BrowserRouter>
 				<Switch>
-					<PrivateRoute exact path="/" component={PonyNote} />
-					<Route exact path="/register" component={Register} />
-					<Route exact path="/login" component={Login} />
+					<PrivateRoute exact path="/" component={ArticlesWrapper} />
+					<Route exact path="/signup" component={SignUpPage} />
+					<Route exact path="/signin" component={SignInPage} />
 					<Route component={NotFound} />
 				</Switch>
 			</BrowserRouter>

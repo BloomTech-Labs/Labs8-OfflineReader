@@ -28,6 +28,7 @@ class AddNewContentViewController: UIViewController, UITextFieldDelegate {
         super.viewWillDisappear(animated)
         
         deanimateView()
+        // Makes sure the view is dismissed even if a tab bar button is pressed
         dismiss(animated: true, completion: nil)
     }
     
@@ -47,6 +48,14 @@ class AddNewContentViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addLink(_ sender: Any) {
         
+    }
+    
+    @IBAction func dismissFromTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: view)
+        
+        if !mainView.frame.contains(location) {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     

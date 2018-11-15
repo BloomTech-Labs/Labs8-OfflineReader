@@ -93,11 +93,15 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="1nY-p9-Hdk" firstAttribute="centerX" secondItem="Kv3-yd-eqH" secondAttribute="centerX" id="4Jc-cu-1xo"/>
                             <constraint firstItem="1nY-p9-Hdk" firstAttribute="centerY" secondItem="Kv3-yd-eqH" secondAttribute="centerY" id="GIy-56-uDV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CmZ-mT-C8U"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Iz1-qQ-o4Y" appends="YES" id="OpN-CN-c2q"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addLinkButton" destination="YN5-eK-xGE" id="5rQ-nI-Ihb"/>
@@ -106,6 +110,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="leu-Oj-NAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Iz1-qQ-o4Y">
+                    <connections>
+                        <action selector="dismissFromTap:" destination="PIm-GY-r0U" id="r38-Cj-Iab"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-57" y="149"/>
         </scene>

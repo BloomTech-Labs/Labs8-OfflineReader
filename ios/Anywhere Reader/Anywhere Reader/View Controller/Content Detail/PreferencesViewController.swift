@@ -50,9 +50,14 @@ class PreferencesViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func dismiss(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func dismissFromTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: view)
+        
+        if !preferencesView.frame.contains(location) {
+            dismiss(animated: true, completion: nil)
+        }
     }
+    
     
     
     // MARK: - Private functions

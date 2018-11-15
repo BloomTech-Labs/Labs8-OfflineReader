@@ -1,1 +1,1 @@
-export { default as injectStripe } from './CheckoutForm';
+export { default as CheckoutForm } from './CheckoutForm';

@@ -38,7 +38,8 @@ class UserDefaultsThemeHelper {
         let name = defaults.string(forKey: UserDefaultsThemeHelper.fontKey) ?? UIFont.preferredFont(forTextStyle: .body).fontName
         return UIFont(name: name, size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
-    public func setFontSize(_ size: CGFloat) {
+    public func setFont(name: String?, size: CGFloat?) {
         defaults.set(size, forKey: UserDefaultsThemeHelper.fontSizeKey)
+        defaults.set(name, forKey: UserDefaultsThemeHelper.fontKey)
     }
 }

@@ -62,47 +62,37 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tNO-LN-l91">
-                                        <rect key="frame" x="8" y="8" width="37" height="30"/>
-                                        <state key="normal" title="Done"/>
-                                        <connections>
-                                            <action selector="dismiss:" destination="CAE-50-fah" eventType="touchUpInside" id="TAL-7T-zP0"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="tNO-LN-l91" firstAttribute="top" secondItem="CO9-Zr-eZZ" secondAttribute="top" constant="8" id="0sk-LJ-elx"/>
                                     <constraint firstItem="W1j-1a-NJB" firstAttribute="top" secondItem="CO9-Zr-eZZ" secondAttribute="top" constant="20" id="9BO-Gp-nNV"/>
                                     <constraint firstAttribute="height" constant="100" id="AIF-ai-TAh"/>
                                     <constraint firstItem="W1j-1a-NJB" firstAttribute="centerX" secondItem="CO9-Zr-eZZ" secondAttribute="centerX" id="Of3-f8-qng"/>
                                     <constraint firstAttribute="bottom" secondItem="W1j-1a-NJB" secondAttribute="bottom" constant="20" id="aFo-tG-ifC"/>
                                     <constraint firstAttribute="width" secondItem="W1j-1a-NJB" secondAttribute="width" constant="40" id="el2-wt-w0n"/>
-                                    <constraint firstItem="tNO-LN-l91" firstAttribute="leading" secondItem="CO9-Zr-eZZ" secondAttribute="leading" constant="8" id="lkb-7H-T8n"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mRA-82-cUS">
-                                <rect key="frame" x="0.0" y="164" width="768" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="YOh-tD-Bwa"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="CO9-Zr-eZZ" firstAttribute="top" secondItem="cgW-4j-qeI" secondAttribute="top" constant="44" id="DOE-9p-ZoG"/>
-                            <constraint firstItem="mRA-82-cUS" firstAttribute="leading" secondItem="cgW-4j-qeI" secondAttribute="leading" id="XN8-Wp-zeS"/>
-                            <constraint firstItem="mRA-82-cUS" firstAttribute="top" secondItem="CO9-Zr-eZZ" secondAttribute="bottom" id="ZWe-ul-Xsl"/>
-                            <constraint firstItem="cgW-4j-qeI" firstAttribute="trailing" secondItem="mRA-82-cUS" secondAttribute="trailing" id="rdx-Lf-0gI"/>
                             <constraint firstItem="CO9-Zr-eZZ" firstAttribute="trailing" secondItem="cgW-4j-qeI" secondAttribute="trailing" id="rga-wA-Z17"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cgW-4j-qeI"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="zzO-SM-ceo" appends="YES" id="Tov-an-sXr"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7p-MN-y5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="zzO-SM-ceo">
+                    <connections>
+                        <action selector="dismissFromTap:" destination="CAE-50-fah" id="Zc3-nh-YGG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="172" y="27"/>
         </scene>

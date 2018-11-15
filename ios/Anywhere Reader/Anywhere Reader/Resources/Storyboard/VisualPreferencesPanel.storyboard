@@ -30,6 +30,9 @@
                                                 <state key="normal" title=" Aa↑ ">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="increaseFontSize:" destination="CAE-50-fah" eventType="touchUpInside" id="lxe-4k-X0K"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcd-zH-0b2">
                                                 <rect key="frame" x="86" y="10" width="57" height="40"/>
@@ -37,6 +40,9 @@
                                                 <state key="normal" title=" Aa↓ ">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="decreaseFontSize:" destination="CAE-50-fah" eventType="touchUpInside" id="637-hu-WdD"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trp-JI-hXt">
                                                 <rect key="frame" x="151" y="7.5" width="44" height="45"/>
@@ -44,6 +50,9 @@
                                                 <state key="normal" title=" Aa ">
                                                     <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="changeFontColor:" destination="CAE-50-fah" eventType="touchUpInside" id="SaT-4K-cme"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h63-oU-8dH">
                                                 <rect key="frame" x="203" y="7.5" width="44" height="45"/>
@@ -52,6 +61,9 @@
                                                 <state key="normal" title=" Aa ">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="changeBackgroundColor:" destination="CAE-50-fah" eventType="touchUpInside" id="eI8-w3-Lr4"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-kl-jNC">
                                                 <rect key="frame" x="255" y="6.5" width="55" height="47"/>
@@ -59,6 +71,9 @@
                                                 <state key="normal" title=" Aa ">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="changeFont:" destination="CAE-50-fah" eventType="touchUpInside" id="nD7-nu-IYx"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

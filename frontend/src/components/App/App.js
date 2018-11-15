@@ -4,9 +4,10 @@ import { SignInPage, SignUpPage } from '../';
 
 import { Switch, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import combineReducers from '../../store/reducers';
 import thunk from 'redux-thunk';
-import { auth } from '/src/store/actions';
+import { auth } from '../../store/actions';
 
 import ArticlesWrapper from '../Articles/ArticlesWrapper';
 // import { SignedIn } from '../SignInPage';

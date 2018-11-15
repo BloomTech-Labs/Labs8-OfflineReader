@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'api',
     'apps.scraper',
     'users',
-    'pages'
+    'pages',
 ]
 
 MIDDLEWARE = [

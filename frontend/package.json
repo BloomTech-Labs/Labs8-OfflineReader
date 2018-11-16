@@ -12,7 +12,16 @@
 		"react-scripts": "2.1.1",
 		"redux": "^4.0.1",
 		"redux-thunk": "^2.3.0",
-		"styled-components": "^4.0.3"
+		"styled-components": "^4.0.3",
+		"gapi-client": "0.0.3",
+		"history": "^4.7.2",
+		"material-ui": "^1.0.0-beta.29",
+		"material-ui-icons": "^1.0.0-beta.17",
+		"react-github-login": "^1.0.3",
+		"react-google-login": "^3.0.4",
+		"react-router-redux": "^5.0.0-alpha.9",
+		"redux-logger": "^3.0.6",
+		"url-search-params": "^0.10.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -51,6 +60,7 @@
 		"prettier": "^1.15.1",
 		"pretty-quick": "^1.8.0",
 		"react-test-renderer": "^16.6.1",
-		"redux-logger": "^3.0.6"
+		"redux-logger": "^3.0.6",
+		"redux-devtools-extension": "^2.13.2"
 	}
 }

@@ -1,25 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './components';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-// import { BrowserRouter as Router } from 'react-router-dom';
-import combineReducers from './store/reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Route, Switch } from 'react-router-dom';
 
-// import * as serviceWorker from './serviceWorker';
+import Home from './containers/HomeContainer';
+import Navbar from './containers/NavbarContainer';
+import ArticleList from './containers/Secret/ArticleListContainer';
+import { PrivateRoute } from './customRoutes/ProtectedRoutes';
+import rootReducer from './reducers';
+import auth_tokens_mw from './customMiddleware/auth_tokens_mw';
 
-const store = createStore(combineReducers, applyMiddleware(thunk, logger));
+/* Adding React-Router-Redux so I can use dispatch(push('/'))
+    in the middleware
+*/
+
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+
+// Create a history of your choosing (we're using a browser history in this case)
+const history = createHistory();
+const routMiddleware = routerMiddleware(history);
+
+let store = createStore(
+	rootReducer,
+	composeWithDevTools(
+		applyMiddleware(routMiddleware, auth_tokens_mw, thunk, logger)
+	)
+);
+
+if (localStorage.getItem('goog_access_token_conv')) {
+	store.dispatch({ type: 'GOOG_AUTHENTICATE_ACTION' });
+}
+
+if (localStorage.getItem('github_access_token_conv')) {
+	store.dispatch({ type: 'GITHUB_AUTHENTICATE_ACTION' });
+}
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App />
+		<ConnectedRouter history={history}>
+			<div>
+				<Navbar />
+				<Switch>
+					<Route exact path="/" component={Home} />
+					<PrivateRoute exact path="/secret" component={ArticleList} />
+				</Switch>
+			</div>
+		</ConnectedRouter>
 	</Provider>,
 	document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-// serviceWorker.unregister();

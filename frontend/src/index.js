@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch } from 'react-router-dom';
 import Home from './containers/HomeContainer';
-import Navbar from './containers/NavBarContainer';
+import Navbar from './containers/NavbarContainer';
 import ArticleList from './containers/Secret/ArticleListContainer';
 import { PrivateRoute } from './customRoutes/ProtectedRoutes';
 import rootReducer from './reducers';

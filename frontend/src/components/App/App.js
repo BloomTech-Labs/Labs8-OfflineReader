@@ -4,7 +4,6 @@ import { SignInPage, SignUpPage } from '../';
 
 import { Switch, Redirect } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import combineReducers from '../../store/reducers';
 import thunk from 'redux-thunk';
 import { auth } from '../../store/actions';
@@ -13,9 +12,7 @@ import ArticlesWrapper from '../Articles/ArticlesWrapper';
 // import { SignedIn } from '../SignInPage';
 // import { SignedUp } from '../SignUpPage';
 
-let store = createStore(combineReducers, applyMiddleware(thunk));
-
-class RootContainerComponent extends Component {
+class App extends Component {
 	componentDidMount() {
 		this.props.loadUser();
 	}
@@ -70,12 +67,4 @@ let RootContainer = connect(
 	mapDispatchToProps
 )(RootContainerComponent);
 
-export default class App extends Component {
-	render() {
-		return (
-			<Provider store={store}>
-				<RootContainer />
-			</Provider>
-		);
-	}
-}
+export default App;

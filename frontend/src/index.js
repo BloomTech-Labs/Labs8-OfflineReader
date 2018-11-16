@@ -16,7 +16,6 @@ import auth_tokens_mw from './customMiddleware/auth_tokens_mw';
 /* Adding React-Router-Redux so I can use dispatch(push('/'))
     in the middleware
 */
-
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 

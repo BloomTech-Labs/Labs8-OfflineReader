@@ -20,8 +20,8 @@ requests = "*"
 requests-oauthlib = "*"
 social-auth-app-django = "*"
 social-auth-core = "*"
-=======
 whitenoise = "*"
+gunicorn = "*"
 [dev-packages]
 
 [requires]

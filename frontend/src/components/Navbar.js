@@ -17,10 +17,7 @@ function Navbar(props) {
 		}
 	}
 	function userIsNotAuthenticated() {
-		if (
-			!props.goog_auth.isAuthenticated &&
-			!props.github_auth.isAuthenticated
-		) {
+		if (!props.goog_auth.isAuthenticated) {
 			return [
 				<li className="nav-item" key="goog-login-btn">
 					<GoogleLoginButton history={props.history} />
@@ -30,7 +27,7 @@ function Navbar(props) {
 	}
 
 	function userIsAuthenticated() {
-		if (props.goog_auth.isAuthenticated | props.github_auth.isAuthenticated) {
+		if (props.goog_auth.isAuthenticated) {
 			return [
 				<li className="nav-item" key="secret">
 					<NavLink to="/secret/" exact className="nav-link">

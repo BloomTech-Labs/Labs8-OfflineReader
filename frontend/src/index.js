@@ -11,6 +11,7 @@ import combineReducers from './store/reducers';
 // import * as serviceWorker from './serviceWorker';
 
 const store = createStore(combineReducers, applyMiddleware(thunk, logger));
+
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

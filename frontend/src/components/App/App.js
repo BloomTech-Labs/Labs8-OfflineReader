@@ -62,9 +62,7 @@ const mapDispatchToProps = dispatch => {
 	};
 };
 
-let RootContainer = connect(
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(RootContainerComponent);
-
-export default App;
+)(App);

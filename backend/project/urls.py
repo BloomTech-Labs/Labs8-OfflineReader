@@ -31,4 +31,6 @@ urlpatterns = [
     # url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    url('api/', include('stripe_payments.urls')),
+    path('api/', include('payments.urls')),
+
+]

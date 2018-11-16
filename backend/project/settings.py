@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'apps.scraper',
     'users',
 
-    'payments.apps.PaymentsConfig',
+    'payments',
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
@@ -147,4 +149,7 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+
+STRIPE_SECRET_KEY=config("STRIPE_SECRET_KEY")
+
 

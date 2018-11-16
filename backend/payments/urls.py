@@ -1,7 +1,8 @@
 from django.urls import path
 
-from . import views
+from .views import checkout
 
 urlpatterns = [
-    path('', views.HomePageView.as_view(), name='home'),
+    path('create-charge/', checkout, name="cout"),
+
 ]

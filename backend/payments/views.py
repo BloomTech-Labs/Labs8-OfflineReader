@@ -8,7 +8,8 @@ import json
 import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
-stripe.log = 'info'  # or 'debug'
+# print(stripe.api_key)
+stripe.log = 'info'  # 'info' or 'debug'
 
 
 @require_http_methods(['POST'])
@@ -25,7 +26,7 @@ def checkout(request):
         )
 
         # Only confirm an order after you have status: succeeded
-        print("______STATUS_____", charge['status'])  # should be succeeded
+        print("______STATUS______", charge['status'])  # should be succeeded
         if charge['status'] == 'succeeded':
             return HttpResponse(json.dumps(
                 {'message': 'Your transaction has been successful.'})

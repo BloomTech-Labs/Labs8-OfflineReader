@@ -9,7 +9,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 # print(stripe.api_key)
-stripe.log = 'info'  # 'info' or 'debug'
+stripe.log = 'debug'  # 'info' or 'debug'
 
 
 @require_http_methods(['POST'])

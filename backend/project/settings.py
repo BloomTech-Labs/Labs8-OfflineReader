@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'api',
     'apps.scraper',
     'users',
+    'pages',
 ]
 
 # whitenoise needs to be above everything but SecurityMiddleware. Plan accordingly.
@@ -93,15 +94,24 @@ SSL_MODE = '?sslmode=prefer'
 PG_URL = config('DATABASE_URL') + SSL_MODE
 # print(PG_URL)
 DATABASES = {
-    'default' : dj_database_url.config(default=PG_URL)
+    'default': dj_database_url.config(default=PG_URL)
 }
 
 # REST boilerplate to set up permissions
 # Allow logged in to read/write and anonymous users read only
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#     ]
+# }
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Password validation

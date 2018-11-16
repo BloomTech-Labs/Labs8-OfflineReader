@@ -5,7 +5,7 @@ const Home = ({ goog_auth }) => {
 	return (
 		<div>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
-			<h1>Home Page</h1>
+			<h1>Anywhere Reader</h1>
 		</div>
 	);
 };

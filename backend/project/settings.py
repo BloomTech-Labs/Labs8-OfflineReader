@@ -30,12 +30,9 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-<<<<<<< HEAD
 CLIENT_ID = config('CLIENT_ID')
 CLIENT_SECRET = config('CLIENT_SECRET')
 
-=======
->>>>>>> 2a5f0eb8d160c0928813ade1604f109c56bc0f28
 # Application definition
 
 INSTALLED_APPS = [
@@ -185,7 +182,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
-<<<<<<< HEAD
 
 # Need to change before production
 CORS_ORIGIN_ALLOW_ALL = True
@@ -200,5 +196,3 @@ CORS_ALLOW_CREDENTIALS = True
 OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
 }
-=======
->>>>>>> 2a5f0eb8d160c0928813ade1604f109c56bc0f28

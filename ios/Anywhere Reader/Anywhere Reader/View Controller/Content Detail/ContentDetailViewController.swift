@@ -14,30 +14,39 @@ class ContentDetailViewController: UIViewController {
         super.viewDidLoad()
         updateViews()
         updateTheme()
-        titleLabel.font = UIFont.systemFont(ofSize: 35.0, weight: .heavy)
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
     
+    
     // MARK: - Private properties
+    
     let themeHelper = UserDefaultsThemeHelper.shared
     
+    
     // MARK: - Public properties
+    
     public var article: Article? {
         didSet {
             updateViews()
         }
     }
     
+    
     // MARK: - IBOutlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var sourceAndDateLabel: UILabel!
+    
     
     // MARK: - Actions
+    
     @IBAction func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
@@ -49,7 +58,9 @@ class ContentDetailViewController: UIViewController {
         self.present(preferencesVC, animated: true, completion: nil)
     }
     
+    
     // MARK: - Private
+    
     private func updateViews() {
         guard let article = article else { return }
         
@@ -70,8 +81,10 @@ class ContentDetailViewController: UIViewController {
         contentBodyLabel.textColor = themeHelper.getLabelTextColor()
         titleLabel.textColor = themeHelper.getLabelTextColor()
         
-        let font = themeHelper.getFont()
-        contentBodyLabel.font = font
-        titleLabel.font = UIFont(name: font.fontName, size: font.pointSize + 10.0)
+        let titleFont = themeHelper.getTitleFont()
+        titleLabel.font = titleFont
+        let bodyFont = themeHelper.getBodyFont()
+        contentBodyLabel.font = bodyFont
+        sourceAndDateLabel.font = bodyFont
     }
 }

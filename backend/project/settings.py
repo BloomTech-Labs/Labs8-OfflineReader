@@ -14,6 +14,7 @@ import os
 import dj_database_url
 
 from decouple import config, Csv
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -148,6 +149,26 @@ STATIC_URL = '/static/'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+
+# Stripe config
+
+print(config('ALLOWED_HOSTS', cast=Csv()))
+
+CORS_ORIGIN_WHITELIST = config('ALLOWED_HOSTS', cast=Csv())
+
+CSRF_TRUSTED_ORIGINS = config('ALLOWED_HOSTS', cast=Csv())
+
+CORS_ALLOW_HEADERS = default_headers + (
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-disposition',
+    'content-type',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+)
 
 STRIPE_SECRET_KEY=config("STRIPE_SECRET_KEY")
 

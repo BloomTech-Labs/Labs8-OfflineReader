@@ -4,9 +4,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
 
-import GithubLoginButton from '../containers/GithubAuth/GithubLoginButtonContainer';
-import GithubLogoutButton from '../containers/GithubAuth/GithubLogoutButtonContainer';
-
 import '../index.css';
 
 function Navbar(props) {
@@ -27,9 +24,6 @@ function Navbar(props) {
 			return [
 				<li className="nav-item" key="goog-login-btn">
 					<GoogleLoginButton history={props.history} />
-				</li>,
-				<li className="nav-item" key="git-login-btn">
-					<GithubLoginButton />
 				</li>
 			];
 		}
@@ -47,16 +41,6 @@ function Navbar(props) {
 		}
 	}
 
-	function userIsAuthenticategGithub() {
-		if (props.github_auth.isAuthenticated) {
-			return [
-				<li className="nav-item mr-3" key="git-logout-btn">
-					<GithubLogoutButton history={props.history} />
-				</li>
-			];
-		}
-	}
-
 	return (
 		<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
 			<ul className="navbar-nav ">
@@ -66,7 +50,6 @@ function Navbar(props) {
 					</NavLink>
 				</li>
 				{userIsAuthenticatedGoogle()}
-				{userIsAuthenticategGithub()}
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}
 			</ul>

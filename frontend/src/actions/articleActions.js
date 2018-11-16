@@ -1,12 +1,15 @@
 const url = 'http://127.0.0.1:8000';
 
-const requestingDogData = () => ({ type: 'SENDING_DOG_DATA' });
-const receiveResponseDog = resp => ({ type: 'RECEIVE_RESPONSE_DOG', resp });
-const receiveErrorDog = err => ({ type: 'RECEIVE_ERROR_DOG', err });
+const requestingArticleData = () => ({ type: 'SENDING_ARTICLE_DATA' });
+const receiveResponseArticle = resp => ({
+	type: 'RECEIVE_RESPONSE_ARTICLE',
+	resp
+});
+const receiveErrorArticle = err => ({ type: 'RECEIVE_ERROR_ARTICLE', err });
 
-function requestDogs() {
+function requestArticles() {
 	return async function(dispatch) {
-		dispatch(requestingDogData());
+		dispatch(requestingArticleData());
 		try {
 			let token_conv =
 				(await localStorage.getItem('goog_access_token_conv')) ||
@@ -22,11 +25,11 @@ function requestDogs() {
 				throw new Error('Authorized Request Failed');
 			}
 			let responseJson = await response.json();
-			return dispatch(receiveResponseDog(responseJson));
+			return dispatch(receiveResponseArticle(responseJson));
 		} catch (err) {
-			dispatch(receiveErrorDog(err));
+			dispatch(receiveErrorArticle(err));
 		}
 	};
 }
 
-export { requestDogs };
+export { requestArticles };

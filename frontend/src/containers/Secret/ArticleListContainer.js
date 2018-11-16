@@ -1,5 +1,5 @@
 import { requestArticles } from '../../actions/articleActions';
-import ArticleList from '../../components/Secret/articleList';
+import ArticleList from '../../components/Secret/ArticleList';
 
 import { connect } from 'react-redux';
 

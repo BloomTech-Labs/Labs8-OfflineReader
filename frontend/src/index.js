@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './containers/HomeContainer';
 import Navbar from './containers/NavbarContainer';
-import DogList from './containers/Secret/DogListContainer';
+import ArticleList from './containers/Secret/ArticleListContainer';
 import { PrivateRoute } from './customRoutes/ProtectedRoutes';
 import rootReducer from './reducers';
 import auth_tokens_mw from './customMiddleware/auth_tokens_mw';
@@ -47,7 +47,7 @@ ReactDOM.render(
 				<Navbar />
 				<Switch>
 					<Route exact path="/" component={Home} />
-					<PrivateRoute exact path="/secret" component={DogList} />
+					<PrivateRoute exact path="/secret" component={ArticleList} />
 				</Switch>
 			</div>
 		</ConnectedRouter>

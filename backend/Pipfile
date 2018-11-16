@@ -11,6 +11,8 @@ django-rest-auth = "*"
 django-allauth = "*"
 dj-database-url = "*"
 "psycopg2-binary" = "*"
+stripe = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 

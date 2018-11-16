@@ -17,7 +17,7 @@ from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -30,18 +30,22 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+<<<<<<< HEAD
 CLIENT_ID = config('CLIENT_ID')
 CLIENT_SECRET = config('CLIENT_SECRET')
 
+=======
+>>>>>>> 2a5f0eb8d160c0928813ade1604f109c56bc0f28
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
@@ -58,8 +62,10 @@ INSTALLED_APPS = [
     'users',
 ]
 
+# whitenoise needs to be above everything but SecurityMiddleware. Plan accordingly.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -91,18 +97,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://github.com/kennethreitz/dj-database-url
 
 # Set up to use dj_database_url
 SSL_MODE = '?sslmode=prefer'
 PG_URL = config('DATABASE_URL') + SSL_MODE
+# print(PG_URL)
 DATABASES = {
     'default': dj_database_url.config(default=PG_URL)
 }
 
-# REST boilerplate to set up persmissions
+# REST boilerplate to set up permissions
 # Allow logged in to read/write and anonymous users read only
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -159,13 +166,26 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+# http://whitenoise.evans.io/en/stable/django.html
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# print(STATIC_ROOT)
 
+# STATICFILES_DIRS = ()
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+#     os.path.join(BASE_DIR, 'api/static'),
+#     os.path.join(BASE_DIR, 'apps/scraper/static')
+# )
 
+# What are these? :3
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
+<<<<<<< HEAD
 
 # Need to change before production
 CORS_ORIGIN_ALLOW_ALL = True
@@ -180,3 +200,5 @@ CORS_ALLOW_CREDENTIALS = True
 OAUTH2_PROVIDER = {
     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
 }
+=======
+>>>>>>> 2a5f0eb8d160c0928813ade1604f109c56bc0f28

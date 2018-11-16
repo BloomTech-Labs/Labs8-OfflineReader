@@ -6,7 +6,6 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch } from 'react-router-dom';
-
 import Home from './containers/HomeContainer';
 import Navbar from './containers/NavbarContainer';
 import ArticleList from './containers/Secret/ArticleListContainer';
@@ -34,10 +33,6 @@ let store = createStore(
 
 if (localStorage.getItem('goog_access_token_conv')) {
 	store.dispatch({ type: 'GOOG_AUTHENTICATE_ACTION' });
-}
-
-if (localStorage.getItem('github_access_token_conv')) {
-	store.dispatch({ type: 'GITHUB_AUTHENTICATE_ACTION' });
 }
 
 ReactDOM.render(

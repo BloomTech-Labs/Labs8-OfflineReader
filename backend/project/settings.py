@@ -197,12 +197,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 SITE_ID = 1
 
 # Need to change before production
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
-# CORS_ORIGIN_WHITELIST = (
-#     'localhost:3000',
-#     'localhost:3001',
-# )
+CORS_ORIGIN_WHITELIST = config('ALLOWED_HOSTS', cast=Csv())
 
 CORS_ALLOW_CREDENTIALS = True
 

@@ -12,18 +12,28 @@ class AuthenticationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
     }
+    
     
     // MARK: - IBOutlets
+    
+    @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
-    @IBOutlet var usernameTextField: UITextField!
+    
+    @IBOutlet weak var usernameView: UserIconView!
+    @IBOutlet weak var emailView: EmailIconView!
+    @IBOutlet weak var passwordView: PasswordIconView!
+    
     
     // MARK: - IBActions
-    @IBAction func logInButtonTapped(_ sender: Any) {
-        // Pass information to AuthService.instance.loginUser
-    }
-    @IBAction func signUpButtonTapped(_ sender: Any) {
-        // Pass information to AuthService.instance.registerUser
-    }
+    
+    
+    
+    
+    // MARK: - Private functions
+    
+    
 }

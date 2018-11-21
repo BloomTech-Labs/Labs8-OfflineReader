@@ -18,17 +18,17 @@ import UIKit
         }
     }
     
-    @IBInspectable var primaryColor: UIColor = .clear {
+    @IBInspectable var primaryColor: UIColor? {
         didSet {
             layer.sublayers?.removeAll()
-            gradientLayer = self.addGradient(primaryColor: primaryColor, secondaryColor: secondaryColor)
+            gradientLayer = self.addGradient(primaryColor: primaryColor ?? self.backgroundColor ?? .clear, secondaryColor: secondaryColor ?? self.backgroundColor ?? .clear)
         }
     }
     
-    @IBInspectable var secondaryColor: UIColor = .clear {
+    @IBInspectable var secondaryColor: UIColor? {
         didSet {
             layer.sublayers?.removeAll()
-            gradientLayer = self.addGradient(primaryColor: primaryColor, secondaryColor: secondaryColor)
+            gradientLayer = self.addGradient(primaryColor: primaryColor ?? self.backgroundColor ?? .clear, secondaryColor: secondaryColor ?? self.backgroundColor ?? .clear)
         }
     }
     

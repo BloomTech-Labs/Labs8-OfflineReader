@@ -19,4 +19,4 @@ export {
 	logoutUser
 } from './userActions';
 
-export const apiBaseURL = 'https://anywhere-reader-test.herokuapp.com/api';
+export const apiBaseUrl = 'https://anywhere-reader-test.herokuapp.com/api';

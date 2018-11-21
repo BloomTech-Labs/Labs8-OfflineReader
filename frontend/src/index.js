@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 // import { BrowserRouter as Router } from 'react-router-dom';
 
+import { configureStore } from './store';
 import { App } from './components';
-import combineReducers from './store/reducers';
 // import * as serviceWorker from './serviceWorker';
 
-const store = createStore(combineReducers, applyMiddleware(thunk, logger));
+const store = configureStore();
+
 ReactDOM.render(
 	<Provider store={store}>
 		<App />

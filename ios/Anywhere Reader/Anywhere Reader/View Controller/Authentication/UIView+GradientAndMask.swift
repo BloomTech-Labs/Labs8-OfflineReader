@@ -10,22 +10,24 @@ import UIKit
 
 extension UIView {
     
-    func addGradient(primaryColor: UIColor = .red, secondaryColor: UIColor = .orange) {
+    func addGradient(primaryColor: UIColor = .red, secondaryColor: UIColor = .orange) -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [primaryColor.cgColor, secondaryColor.cgColor]
-        self.layer.insertSublayer(gradient, at: 0)
+        self.layer.addSublayer(gradient)
+        return gradient
     }
     
-    func addMask(mask image: UIImage) {
+    func addMask(mask image: UIImage?) {
         let maskLayer = CALayer()
         maskLayer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        maskLayer.contents = image.cgImage
+        maskLayer.contents = image?.cgImage
         self.layer.mask = maskLayer
     }
     
-    func addMaskAndGradient(imageName: String) {
-        addGradient()
+    func addMaskAndGradient(imageName: String) -> CAGradientLayer {
+        let gradient = addGradient()
         addMask(mask: UIImage(named: imageName)!)
+        return gradient
     }
 }

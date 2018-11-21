@@ -6,6 +6,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
+// generates the configuration for and returns a purpose-built store for redux to use
+// preloadedState is in place in case we want to feed in test data later.
 export default preloadedState => {
 	// collect our middleware into a central applyMiddleware redux method
 	const middlewares = [thunk];
@@ -25,6 +27,6 @@ export default preloadedState => {
 		composedEnhancers = composeWithDevTools(...enhancers);
 	}
 
-	// yay! we have a store! preloadedState in place in case we want to feed in test data later.
+	// yay! we have a store!
 	return createStore(rootReducer, preloadedState, composedEnhancers);
 };

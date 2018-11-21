@@ -40,7 +40,9 @@ ReactDOM.render(
 			<div>
 				<Navbar />
 				<Switch>
+					{/* Go to landing page if not logged in */}
 					<Route exact path="/" component={Home} />
+					{/* Go to article list if logged in */}
 					<PrivateRoute exact path="/secret" component={ArticleList} />
 				</Switch>
 			</div>

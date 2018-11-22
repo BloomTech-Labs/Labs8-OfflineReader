@@ -43,6 +43,7 @@ class GradientMaskView: UIView {
     /// The starting point of the gradient
     ///
     /// The gradient's direction is determined by the line created by connecting the startPoint and endPoint.
+    /// x and y should be between 0.0 and 1.0
     /// If gradientLayer is nil, it will have no effect
     @IBInspectable
     var startPoint: CGPoint = CGPoint(x: 0.5, y: 0.0) {
@@ -54,6 +55,7 @@ class GradientMaskView: UIView {
     /// The ending point of the gradient
     ///
     /// The gradient's direction is determined by the line created by connecting the startPoint and endPoint.
+    /// x and y should be between 0.0 and 1.0
     /// If gradientLayer is nil, it will have no effect
     @IBInspectable
     var endPoint: CGPoint = CGPoint(x: 0.5, y: 1.0) {
@@ -79,5 +81,6 @@ class GradientMaskView: UIView {
         
         if let mask = iconImage {
             self.addMask(mask: mask)
-        }    }
+        }
+    }
 }

@@ -23,9 +23,9 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet var emailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     
-    @IBOutlet weak var usernameView: GradientIconView!
-    @IBOutlet weak var emailView: GradientIconView!
-    @IBOutlet weak var passwordView: GradientIconView!
+    @IBOutlet weak var usernameView: GradientMaskView!
+    @IBOutlet weak var emailView: GradientMaskView!
+    @IBOutlet weak var passwordView: GradientMaskView!
     
     
     // MARK: - IBActions

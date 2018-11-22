@@ -33,7 +33,7 @@ extension UIView {
     /// Creates a CALayer with the same frame as the parent view, and uses the mask argument as its contents. Sets the view's layer's mask to the new CALayer.
     ///
     /// - Parameters:
-    ///   - mask: An optional UIImage that will be used as the mask. Image type should support transparency. Otherwise, the entire view will be masked.
+    ///   - mask: An optional UIImage that will be used as the mask. Image type should support transparency. Otherwise, nothing will be masked.
     func addMask(mask image: UIImage?) {
         let maskLayer = CALayer()
         maskLayer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)

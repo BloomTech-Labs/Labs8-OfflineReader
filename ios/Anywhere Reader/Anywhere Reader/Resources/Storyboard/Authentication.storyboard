@@ -18,13 +18,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FqM-UG-BTm" customClass="TrapezoidGradientView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rightHeight">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftHeight">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
+                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="gradientStart">
+                                        <point key="value" x="0.5" y="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="point" keyPath="gradientEnd">
+                                        <point key="value" x="0.5" y="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
                                 <rect key="frame" x="50" y="373" width="314" height="150"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-0d-cmv" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-0d-cmv" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -50,7 +74,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -72,13 +96,16 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="I4L-eQ-Jc4" firstAttribute="width" secondItem="2ik-05-JgQ" secondAttribute="width" id="uhl-FD-ji0"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-Nu-Qec">
                                         <rect key="frame" x="0.0" y="60" width="314" height="30"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-yC-2mH" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-yC-2mH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
@@ -100,7 +127,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
@@ -119,13 +146,16 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="adg-Id-aZ3" firstAttribute="width" secondItem="T3q-hO-DOA" secondAttribute="width" id="czH-v5-xgD"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-dA-Dih">
                                         <rect key="frame" x="0.0" y="120" width="314" height="30"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIo-zh-xvH" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIo-zh-xvH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
@@ -147,7 +177,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientIconView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
@@ -166,6 +196,9 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="VT2-z7-9c9" firstAttribute="width" secondItem="vjY-t5-otO" secondAttribute="width" id="Blt-Ap-TtY"/>
+                                                </constraints>
                                             </stackView>
                                         </subviews>
                                     </stackView>
@@ -182,10 +215,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="FqM-UG-BTm" firstAttribute="width" secondItem="KJh-84-Aji" secondAttribute="width" id="Io7-NW-oZl"/>
                             <constraint firstItem="flh-FK-sRZ" firstAttribute="centerX" secondItem="KJh-84-Aji" secondAttribute="centerX" id="MA2-C9-iQm"/>
-                            <constraint firstItem="9Fc-kh-C8A" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="flh-FK-sRZ" secondAttribute="trailing" constant="50" id="bHl-cA-6Lc"/>
-                            <constraint firstItem="flh-FK-sRZ" firstAttribute="leading" relation="lessThanOrEqual" secondItem="9Fc-kh-C8A" secondAttribute="leading" constant="50" id="ld0-WP-nJb"/>
+                            <constraint firstItem="FqM-UG-BTm" firstAttribute="height" secondItem="KJh-84-Aji" secondAttribute="height" id="YYb-5K-nLu"/>
+                            <constraint firstItem="9Fc-kh-C8A" firstAttribute="trailing" secondItem="flh-FK-sRZ" secondAttribute="trailing" constant="50" id="bHl-cA-6Lc"/>
+                            <constraint firstItem="FqM-UG-BTm" firstAttribute="top" secondItem="KJh-84-Aji" secondAttribute="top" id="fw9-PH-PZd"/>
+                            <constraint firstItem="flh-FK-sRZ" firstAttribute="leading" secondItem="9Fc-kh-C8A" secondAttribute="leading" constant="50" id="ld0-WP-nJb"/>
                             <constraint firstItem="flh-FK-sRZ" firstAttribute="centerY" secondItem="KJh-84-Aji" secondAttribute="centerY" id="rrK-vl-8VX"/>
+                            <constraint firstItem="FqM-UG-BTm" firstAttribute="leading" secondItem="KJh-84-Aji" secondAttribute="leading" id="zkm-BZ-wYf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Fc-kh-C8A"/>
                     </view>

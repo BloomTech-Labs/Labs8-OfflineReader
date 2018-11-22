@@ -1,11 +1,25 @@
 import React from 'react';
+import LoadingSpinner from '../utils_materialui/LoadingSpinner';
+import styled from 'styled-components';
 import { NavLink, withRouter } from 'react-router-dom';
-
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
-import '../index.css';
 
-function AuthContainer(props) {
+const LoginBox = styled.div`
+	text-align: center;
+	width: 200px;
+	background-color: white;
+	border-radius: 10px;
+	box-shadow: 5px 4px 25px 0px rgba(0, 0, 0, 0.75);
+`;
+
+const LoginContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+`;
+
+const LandingPage = (props, goog_auth) => {
 	function userIsAuthenticatedGoogle() {
 		if (props.goog_auth.isAuthenticated) {
 			return [
@@ -24,33 +38,30 @@ function AuthContainer(props) {
 			];
 		}
 	}
-
 	function userIsAuthenticated() {
 		if (props.goog_auth.isAuthenticated) {
 			return [
-				<li className="nav-item" key="secret">
+				<div className="nav-item" key="secret">
 					<NavLink to="/secret/" exact className="nav-link">
 						Secret
 					</NavLink>
-				</li>
+				</div>
 			];
 		}
 	}
 
 	return (
-		<nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-			<ul className="navbar-nav ">
-				<li className="nav-item active">
-					<NavLink className="nav-link" to="/">
-						Home
-					</NavLink>
-				</li>
+		<LoginContainer>
+			{goog_auth.isAuthenticating && <LoadingSpinner />}
+			<LoginBox>
+				<h1>Email</h1>
+				<h1>Password</h1>
 				{userIsAuthenticatedGoogle()}
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}
-			</ul>
-		</nav>
+			</LoginBox>
+		</LoginContainer>
 	);
-}
+};
 
-export default withRouter(AuthContainer);
+export default LandingPage;

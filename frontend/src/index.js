@@ -19,15 +19,7 @@ import auth_tokens_mw from './customMiddleware/auth_tokens_mw';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 
-import styled from 'styled-components';
-
-const LandingPageContainer = styled.div`
-	border: 1px solid black;
-	background-image: url(https://i.imgur.com/SJtRzKA.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-`;
+// import styled from 'styled-components';
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -47,15 +39,15 @@ if (localStorage.getItem('goog_access_token_conv')) {
 ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
-			<LandingPageContainer>
+			<div>
+				<Navbar />
 				<Switch>
 					{/* Go to landing page if not logged in */}
 					<Route exact path="/" component={LandingPage} />
 					{/* Go to article list if logged in */}
 					<PrivateRoute exact path="/secret" component={ArticleList} />
 				</Switch>
-				<Navbar />
-			</LandingPageContainer>
+			</div>
 		</ConnectedRouter>
 	</Provider>,
 	document.getElementById('root')

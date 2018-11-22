@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
-import AuthContainer from '../components/AuthContainer';
+import Navbar from '../components/Navbar';
 
 const mapStateToProps = state => ({
 	goog_auth: state.goog_auth
 });
 
-export default connect(mapStateToProps)(AuthContainer);
+export default connect(mapStateToProps)(Navbar);

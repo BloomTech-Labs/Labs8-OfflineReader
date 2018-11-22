@@ -16,14 +16,20 @@ const initialState = {
 	}
 };
 
-const userReducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_USER_DATA:
-			return { ...state, fetching: true };
 		case USER_ERROR:
-			return { ...state, error: 'Error' + action.err };
+			return {
+				...state,
+				userStatus: { ...state.userStatus, error: action.err }
+			};
+
+		case FETCH_USER_DATA:
+			return { ...state, userStatus: { ...state.userStatus, fetching: true } };
+
 		case USER_DATA_FETCHED:
-			return { ...state, articles: action.payload, fetching: false };
+			return { ...state, userStatus: { ...state.userStatus, fetching: false } };
+
 		case REGISTER_USER:
 			const newUser = { ...action.payload };
 			return {
@@ -34,7 +40,7 @@ const userReducers = (state = initialState, action) => {
 						...newUser
 					}
 				],
-				fetching: false
+				userStatus: { ...state.userStatus, fetching: false }
 			};
 
 		case LOGIN_USER:
@@ -47,7 +53,7 @@ const userReducers = (state = initialState, action) => {
 						...userLoggingIn
 					}
 				],
-				fetching: false
+				userStatus: { ...state.userStatus, fetching: false }
 			};
 
 		case LOGOUT_USER:
@@ -60,13 +66,10 @@ const userReducers = (state = initialState, action) => {
 						...userLoggingOut
 					}
 				],
-				fetching: false
+				userStatus: { ...state.userStatus, fetching: false }
 			};
 
-		//////
 		default:
 			return state;
 	}
 };
-
-export default userReducers;

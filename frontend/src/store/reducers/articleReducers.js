@@ -8,9 +8,11 @@ import {
 
 const initialState = {
 	articles: [],
-	fetching: false,
-	success: false,
-	error: ''
+	articleStatus: {
+		fetching: false,
+		success: false,
+		error: ''
+	}
 };
 
 const articleReducers = (state = initialState, action) => {

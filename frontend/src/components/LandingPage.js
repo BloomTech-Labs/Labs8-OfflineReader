@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadingSpinner from '../utils_materialui/LoadingSpinner';
 import styled from 'styled-components';
-import { NavLink, withRouter } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
 
@@ -11,6 +11,7 @@ const LoginBox = styled.div`
 	background-color: white;
 	border-radius: 10px;
 	box-shadow: 5px 4px 25px 0px rgba(0, 0, 0, 0.75);
+	font-family: 'Roboto', sans-serif;
 `;
 
 const LoginContainer = styled.div`
@@ -19,22 +20,30 @@ const LoginContainer = styled.div`
 	justify-content: center;
 `;
 
+const LoginButtonContainer = styled.div`
+	padding: 0.2rem;
+`;
+
+const LogoContainer = styled.div`
+	width: 200px;
+`;
+
 const LandingPage = (props, goog_auth) => {
 	function userIsAuthenticatedGoogle() {
 		if (props.goog_auth.isAuthenticated) {
 			return [
-				<li className="nav-item" key="goog-logout-btn">
+				<div className="nav-item" key="goog-logout-btn">
 					<GoogleLogoutButton history={props.history} />
-				</li>
+				</div>
 			];
 		}
 	}
 	function userIsNotAuthenticated() {
 		if (!props.goog_auth.isAuthenticated) {
 			return [
-				<li className="nav-item" key="goog-login-btn">
+				<LoginButtonContainer className="nav-item" key="goog-login-btn">
 					<GoogleLoginButton history={props.history} />
-				</li>
+				</LoginButtonContainer>
 			];
 		}
 	}
@@ -54,8 +63,17 @@ const LandingPage = (props, goog_auth) => {
 		<LoginContainer>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
 			<LoginBox>
-				<h1>Email</h1>
-				<h1>Password</h1>
+				<img src="https://i.imgur.com/b0dD4XV.png" alt="" width="200px" />
+				<h1>Anywhere Reader</h1>
+				<form>
+					Email
+					<input type="text" name="firstname" value="" />
+					Password
+					<input type="text" name="firstname" value="" />
+					<input type="submit" value="Submit" />
+				</form>
+				<br />
+				<hr />
 				{userIsAuthenticatedGoogle()}
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}

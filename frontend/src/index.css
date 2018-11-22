@@ -13,7 +13,9 @@
 /*Google Buttons */
 
 body {
-	background: url(https://i.imgur.com/SJtRzKA.jpg) no-repeat center center fixed;
+	background: url(https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
+		no-repeat center center fixed;
+	font-family: 'Roboto', sans-serif;
 }
 
 /* Shared */

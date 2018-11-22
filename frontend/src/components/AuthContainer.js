@@ -5,7 +5,7 @@ import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContain
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
 import '../index.css';
 
-function Navbar(props) {
+function AuthContainer(props) {
 	function userIsAuthenticatedGoogle() {
 		if (props.goog_auth.isAuthenticated) {
 			return [
@@ -53,4 +53,4 @@ function Navbar(props) {
 	);
 }
 
-export default withRouter(Navbar);
+export default withRouter(AuthContainer);

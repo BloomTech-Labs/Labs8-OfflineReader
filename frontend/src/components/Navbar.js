@@ -3,7 +3,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
-
 import '../index.css';
 
 function Navbar(props) {

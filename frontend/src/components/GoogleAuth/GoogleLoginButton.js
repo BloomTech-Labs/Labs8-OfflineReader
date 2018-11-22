@@ -7,6 +7,7 @@ export const google_client_id = GOOGLE_CLIENT_ID;
 const GoogleLoginButton = props => {
 	const responseGoogleSuccess = response => {
 		console.log(response);
+		console.log('google login succeeded');
 		if (response.profileObj) {
 			localStorage.setItem('goog_avatar_url', response.profileObj.imageUrl);
 			localStorage.setItem('goog_name', response.profileObj.name);
@@ -14,8 +15,10 @@ const GoogleLoginButton = props => {
 		}
 		props.convertGoogleToken(response.Zi.access_token);
 	};
+
 	const responseGoogleFailure = response => {
 		console.log(response);
+		console.log('Google Login failed');
 	};
 
 	return (
@@ -26,7 +29,7 @@ const GoogleLoginButton = props => {
 			onFailure={responseGoogleFailure}
 			className="loginBtn loginBtn--google"
 			prompt="select_account"
-			redirectUri="https://anywhere-reader-test.herokuapp.com/secret/"
+			redirectUri="http://localhost:3000/secret/"
 		/>
 	);
 };

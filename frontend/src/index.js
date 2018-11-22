@@ -6,7 +6,7 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Route, Switch } from 'react-router-dom';
-import Home from './containers/HomeContainer';
+import LandingPage from './containers/HomeContainer';
 import Navbar from './containers/NavbarContainer';
 import ArticleList from './containers/Secret/ArticleListContainer';
 import { PrivateRoute } from './customRoutes/ProtectedRoutes';
@@ -48,13 +48,13 @@ ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
 			<LandingPageContainer>
-				<Navbar />
 				<Switch>
 					{/* Go to landing page if not logged in */}
-					<Route exact path="/" component={Home} />
+					<Route exact path="/" component={LandingPage} />
 					{/* Go to article list if logged in */}
 					<PrivateRoute exact path="/secret" component={ArticleList} />
 				</Switch>
+				<Navbar />
 			</LandingPageContainer>
 		</ConnectedRouter>
 	</Provider>,

@@ -7,7 +7,7 @@ const LoginContainer = styled.div`
 	border: 1px black solid;
 `;
 
-const Home = ({ goog_auth }) => {
+const App = ({ goog_auth }) => {
 	return (
 		<div>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
@@ -18,4 +18,4 @@ const Home = ({ goog_auth }) => {
 	);
 };
 
-export default Home;
+export default App;

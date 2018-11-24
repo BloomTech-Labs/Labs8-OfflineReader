@@ -14,10 +14,10 @@ const LoginBox = styled.div`
 	font-family: 'Roboto', sans-serif;
 `;
 
-const LoginContainer = styled.div`
+const LandingPageContainer = styled.div`
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 `;
 
 const LoginButtonContainer = styled.div`
@@ -26,6 +26,15 @@ const LoginButtonContainer = styled.div`
 
 const LogoContainer = styled.div`
 	width: 200px;
+`;
+
+const MarketingBlurb = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	color: white;
+	text-shadow: 0px 0px 9px #000000;
+	margin: 3rem;
 `;
 
 const LandingPage = (props, goog_auth) => {
@@ -60,7 +69,7 @@ const LandingPage = (props, goog_auth) => {
 	}
 
 	return (
-		<LoginContainer>
+		<LandingPageContainer>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
 			<LoginBox>
 				<img src="https://i.imgur.com/b0dD4XV.png" alt="" width="200px" />
@@ -78,7 +87,13 @@ const LandingPage = (props, goog_auth) => {
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}
 			</LoginBox>
-		</LoginContainer>
+			<MarketingBlurb>
+				<h2>
+					Save your favorite articles, videos, and more. View them any time, no
+					internet connection needed.
+				</h2>
+			</MarketingBlurb>
+		</LandingPageContainer>
 	);
 };
 

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
 
-const LoginBox = styled.div`
+const SignupBox = styled.div`
 	text-align: center;
 	width: 200px;
 	background-color: white;
@@ -20,7 +20,7 @@ const LandingPageContainer = styled.div`
 	align-items: center;
 `;
 
-const LoginButtonContainer = styled.div`
+const SignupButtonContainer = styled.div`
 	padding: 0.2rem;
 `;
 
@@ -50,9 +50,9 @@ const LandingPage = (props, goog_auth) => {
 	function userIsNotAuthenticated() {
 		if (!props.goog_auth.isAuthenticated) {
 			return [
-				<LoginButtonContainer className="nav-item" key="goog-login-btn">
+				<SignupButtonContainer className="nav-item" key="goog-login-btn">
 					<GoogleLoginButton history={props.history} />
-				</LoginButtonContainer>
+				</SignupButtonContainer>
 			];
 		}
 	}
@@ -71,7 +71,7 @@ const LandingPage = (props, goog_auth) => {
 	return (
 		<LandingPageContainer>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
-			<LoginBox>
+			<SignupBox>
 				<img src="https://i.imgur.com/b0dD4XV.png" alt="" width="200px" />
 				<h1>Anywhere Reader</h1>
 				<form>
@@ -79,18 +79,18 @@ const LandingPage = (props, goog_auth) => {
 					<input type="text" name="firstname" />
 					Password
 					<input type="text" name="firstname" />
-					<input type="submit" value="Sign in" />
+					<input type="submit" value="Sign Up" />
 				</form>
 				<br />
 				<div>
-					Don't have an account yet? <a href="/SignUpPage">Sign Up</a>
+					Already have an account? <a href="/SignUpPage">Log In</a>
 				</div>
 				<br />
 				<hr />
 				{userIsAuthenticatedGoogle()}
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}
-			</LoginBox>
+			</SignupBox>
 			<MarketingBlurb>
 				<h2>
 					Save your favorite articles, videos, and more. View them any time, no

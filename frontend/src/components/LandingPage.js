@@ -79,7 +79,7 @@ const LandingPage = (props, goog_auth) => {
 					<input type="text" name="firstname" />
 					Password
 					<input type="text" name="firstname" />
-					<input type="submit" value="Submit" />
+					<input type="submit" value="Sign in" />
 				</form>
 				<br />
 				<hr />

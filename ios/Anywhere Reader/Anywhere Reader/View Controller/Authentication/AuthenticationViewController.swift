@@ -13,11 +13,14 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        credentialsView.layer.cornerRadius = 5.0
         
     }
     
     
     // MARK: - IBOutlets
+    
+    @IBOutlet weak var credentialsView: UIView!
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!

@@ -42,6 +42,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
+                                <rect key="frame" x="30" y="353" width="354" height="190"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
                                 <rect key="frame" x="50" y="373" width="314" height="150"/>
                                 <subviews>
@@ -72,7 +76,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="username"/>
                                                     </textField>
                                                     <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -125,7 +129,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
                                                     </textField>
                                                     <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -175,7 +179,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" textContentType="new-password"/>
                                                     </textField>
                                                     <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -206,6 +210,7 @@
                                 <constraints>
                                     <constraint firstItem="adg-Id-aZ3" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="676-0F-mzA"/>
                                     <constraint firstItem="PS2-yC-2mH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="J0h-Jh-RE4"/>
+                                    <constraint firstAttribute="width" constant="314" id="QOr-6Y-ovG"/>
                                     <constraint firstItem="zIo-zh-xvH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="Rvm-Fy-mS7"/>
                                     <constraint firstItem="PS2-yC-2mH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="dYY-XT-RRk"/>
                                     <constraint firstItem="zIo-zh-xvH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="ezH-hX-MH8"/>
@@ -217,16 +222,19 @@
                         <constraints>
                             <constraint firstItem="FqM-UG-BTm" firstAttribute="width" secondItem="KJh-84-Aji" secondAttribute="width" id="Io7-NW-oZl"/>
                             <constraint firstItem="flh-FK-sRZ" firstAttribute="centerX" secondItem="KJh-84-Aji" secondAttribute="centerX" id="MA2-C9-iQm"/>
+                            <constraint firstItem="HCa-DY-0V3" firstAttribute="height" secondItem="flh-FK-sRZ" secondAttribute="height" constant="40" id="OoI-be-s82"/>
                             <constraint firstItem="FqM-UG-BTm" firstAttribute="height" secondItem="KJh-84-Aji" secondAttribute="height" id="YYb-5K-nLu"/>
-                            <constraint firstItem="9Fc-kh-C8A" firstAttribute="trailing" secondItem="flh-FK-sRZ" secondAttribute="trailing" constant="50" id="bHl-cA-6Lc"/>
+                            <constraint firstItem="HCa-DY-0V3" firstAttribute="centerX" secondItem="flh-FK-sRZ" secondAttribute="centerX" id="ain-DS-YsR"/>
+                            <constraint firstItem="HCa-DY-0V3" firstAttribute="centerY" secondItem="flh-FK-sRZ" secondAttribute="centerY" id="ed3-5h-L35"/>
                             <constraint firstItem="FqM-UG-BTm" firstAttribute="top" secondItem="KJh-84-Aji" secondAttribute="top" id="fw9-PH-PZd"/>
-                            <constraint firstItem="flh-FK-sRZ" firstAttribute="leading" secondItem="9Fc-kh-C8A" secondAttribute="leading" constant="50" id="ld0-WP-nJb"/>
                             <constraint firstItem="flh-FK-sRZ" firstAttribute="centerY" secondItem="KJh-84-Aji" secondAttribute="centerY" id="rrK-vl-8VX"/>
+                            <constraint firstItem="HCa-DY-0V3" firstAttribute="width" secondItem="flh-FK-sRZ" secondAttribute="width" constant="40" id="sjO-Jo-PTC"/>
                             <constraint firstItem="FqM-UG-BTm" firstAttribute="leading" secondItem="KJh-84-Aji" secondAttribute="leading" id="zkm-BZ-wYf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Fc-kh-C8A"/>
                     </view>
                     <connections>
+                        <outlet property="credentialsView" destination="HCa-DY-0V3" id="71R-JH-E6r"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>

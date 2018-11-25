@@ -56,6 +56,9 @@
                                             <segment title="Log In"/>
                                         </segments>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="toggleSignUp:" destination="Rcg-2l-HNe" eventType="valueChanged" id="AE9-IT-QiW"/>
+                                        </connections>
                                     </segmentedControl>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
                                         <rect key="frame" x="0.0" y="58" width="314" height="210"/>
@@ -87,7 +90,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="username"/>
                                                             </textField>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -140,7 +143,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                                             </textField>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -190,7 +193,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
                                                                 <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits" textContentType="new-password"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="join" secureTextEntry="YES" textContentType="new-password"/>
                                                             </textField>
                                                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="29" width="274" height="1"/>
@@ -261,6 +264,7 @@
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>
                         <outlet property="passwordView" destination="zIo-zh-xvH" id="08o-6h-hwG"/>
                         <outlet property="segmentedControl" destination="28u-EP-yQu" id="Hw2-BB-gpA"/>
+                        <outlet property="usernameStackView" destination="bT4-Oz-kWj" id="XtQ-e7-qaA"/>
                         <outlet property="usernameTextField" destination="E72-bn-zkX" id="Zdd-gO-Nmh"/>
                         <outlet property="usernameView" destination="zrQ-0d-cmv" id="fiw-L7-Nsk"/>
                     </connections>

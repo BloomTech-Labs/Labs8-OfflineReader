@@ -43,11 +43,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
-                                <rect key="frame" x="30" y="353" width="354" height="190"/>
+                                <rect key="frame" x="30" y="323" width="354" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
-                                <rect key="frame" x="50" y="373" width="314" height="150"/>
+                                <rect key="frame" x="50" y="343" width="314" height="210"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
@@ -206,6 +206,10 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
+                                        <rect key="frame" x="0.0" y="180" width="314" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="adg-Id-aZ3" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="676-0F-mzA"/>
@@ -234,6 +238,7 @@
                         <viewLayoutGuide key="safeArea" id="9Fc-kh-C8A"/>
                     </view>
                     <connections>
+                        <outlet property="authenticateButton" destination="V2l-1D-De8" id="aKs-Us-yWB"/>
                         <outlet property="credentialsView" destination="HCa-DY-0V3" id="71R-JH-E6r"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>

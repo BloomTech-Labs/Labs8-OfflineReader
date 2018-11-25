@@ -13,8 +13,18 @@ class AuthenticationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Makes sure the background is a solid color even if it happens to get layed out on top of the trapezoid gradient
         credentialsView.layer.cornerRadius = 5.0
+        credentialsView.layer.shadowColor = UIColor.white.cgColor
+        credentialsView.layer.shadowRadius = 10.0
+        credentialsView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        credentialsView.layer.shadowOpacity = 1.0
         
+        // Adds gradient to button
+        authenticateButton.addGradient(primaryColor: .red, secondaryColor: .orange, startPoint: CGPoint(x: 0.0, y: 0.0), endPoint: CGPoint(x: 1.0, y: 0.0))
+        authenticateButton.layer.cornerRadius = authenticateButton.frame.height / 2
+        authenticateButton.setTitleColor(.white, for: .normal)
+        authenticateButton.clipsToBounds = true
     }
     
     
@@ -29,6 +39,8 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var usernameView: GradientMaskView!
     @IBOutlet weak var emailView: GradientMaskView!
     @IBOutlet weak var passwordView: GradientMaskView!
+    
+    @IBOutlet weak var authenticateButton: UIButton!
     
     
     // MARK: - IBActions

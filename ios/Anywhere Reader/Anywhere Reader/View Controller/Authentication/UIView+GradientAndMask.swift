@@ -20,10 +20,16 @@ extension UIView {
     ///
     /// - Returns: The appended CAGradientLayer as a discardable result
     @discardableResult
-    func addGradient(primaryColor: UIColor = .red, secondaryColor: UIColor = .orange) -> CAGradientLayer {
+    func addGradient(primaryColor: UIColor = .red, secondaryColor: UIColor = .orange, startPoint: CGPoint? = nil, endPoint: CGPoint? = nil) -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [primaryColor.cgColor, secondaryColor.cgColor]
+        if let start = startPoint {
+            gradient.startPoint = start
+        }
+        if let end = endPoint {
+            gradient.endPoint = end
+        }
         self.layer.addSublayer(gradient)
         return gradient
     }

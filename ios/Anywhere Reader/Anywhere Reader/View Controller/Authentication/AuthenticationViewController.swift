@@ -136,4 +136,27 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
     }
+    
+    private func authenticate() {
+        
+    }
+    
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case usernameTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            authenticate()
+            passwordTextField.resignFirstResponder()
+        default:
+            fatalError("No other textFields implemented")
+        }
+        
+        return true
+    }
 }

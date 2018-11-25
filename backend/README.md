@@ -28,3 +28,13 @@ POST
 registers and logins user
 returns:
 `{ "key": "some-string" }`
+
+### /api/users/pages/
+
+GET
+`{ "title": ""}
+Returns a list of articles
+
+POST
+`{ "title": ""}
+Adding an article

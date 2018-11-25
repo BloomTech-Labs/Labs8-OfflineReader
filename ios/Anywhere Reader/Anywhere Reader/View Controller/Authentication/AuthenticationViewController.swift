@@ -39,12 +39,15 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private var selectedSegmentBarLeftAnchor: NSLayoutConstraint!
+    
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var credentialsView: UIView!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet var selectedSegmentBar: UIView!
     
     @IBOutlet weak var usernameStackView: UIStackView!
     
@@ -62,6 +65,15 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBActions
     
     @IBAction private func toggleSignUp(_ sender: Any) {
+        selectedSegmentBarLeftAnchor.isActive = false
+        let anchorConstant = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) * CGFloat(segmentedControl.selectedSegmentIndex)
+        selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
+        selectedSegmentBarLeftAnchor.isActive = true
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             isSignUp = true
@@ -79,6 +91,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         setUpCredentialsView()
         setUpAuthenticateButton()
         setUpSegmentedControl()
+        setUpSelectedSegmentBar()
         setUpTextFields()
     }
     
@@ -103,8 +116,23 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     /// Sets up segmented control
     private func setUpSegmentedControl() {
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)!], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 15.0)!], for: .normal)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20.0)!], for: .selected)
+    }
+    
+    /// Sets up bar under selected segment
+    private func setUpSelectedSegmentBar() {
+        selectedSegmentBar = UIView()
+        selectedSegmentBar.translatesAutoresizingMaskIntoConstraints = false
+        selectedSegmentBar.backgroundColor = UIColor.orange
+        view.addSubview(selectedSegmentBar)
+        selectedSegmentBar.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 6.0).isActive = true
+        selectedSegmentBar.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
+        // Constrain the button bar to the left side of the segmented control
+        selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor)
+        selectedSegmentBarLeftAnchor.isActive = true
+        // Constrain the button bar to the width of the segmented control divided by the number of segments
+        selectedSegmentBar.widthAnchor.constraint(equalTo: segmentedControl.widthAnchor, multiplier: 1 / CGFloat(segmentedControl.numberOfSegments)).isActive = true
     }
     
     /// Sets up text fields
@@ -156,7 +184,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         default:
             fatalError("No other textFields implemented")
         }
-        
         return true
     }
 }

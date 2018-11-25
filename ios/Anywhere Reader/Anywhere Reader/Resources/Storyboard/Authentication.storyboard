@@ -43,182 +43,198 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
-                                <rect key="frame" x="30" y="323" width="354" height="250"/>
+                                <rect key="frame" x="30" y="294" width="354" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
-                                <rect key="frame" x="50" y="343" width="314" height="210"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
+                                <rect key="frame" x="50" y="314" width="314" height="268"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="28u-EP-yQu">
+                                        <rect key="frame" x="94.5" y="0.0" width="125" height="29"/>
+                                        <segments>
+                                            <segment title="Sign Up"/>
+                                            <segment title="Log In"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </segmentedControl>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
+                                        <rect key="frame" x="0.0" y="58" width="314" height="210"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-0d-cmv" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="vZA-T7-dL9"/>
-                                                    <constraint firstAttribute="height" constant="30" id="ySP-AT-wB9"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="user"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
-                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
-                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-05-JgQ">
-                                                <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E72-bn-zkX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="username"/>
-                                                    </textField>
-                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-0d-cmv" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="1" id="3Ss-MN-3eb"/>
+                                                            <constraint firstAttribute="width" constant="30" id="vZA-T7-dL9"/>
+                                                            <constraint firstAttribute="height" constant="30" id="ySP-AT-wB9"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="user"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                                                 <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
                                                                 <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                                                <point key="value" x="0.0" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                                                <point key="value" x="1" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-05-JgQ">
+                                                        <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E72-bn-zkX">
+                                                                <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                            </textField>
+                                                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="I4L-eQ-Jc4" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="3Ss-MN-3eb"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
+                                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                                                        <point key="value" x="0.0" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                                                        <point key="value" x="1" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="I4L-eQ-Jc4" firstAttribute="width" secondItem="2ik-05-JgQ" secondAttribute="width" id="uhl-FD-ji0"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="I4L-eQ-Jc4" firstAttribute="width" secondItem="2ik-05-JgQ" secondAttribute="width" id="uhl-FD-ji0"/>
-                                                </constraints>
                                             </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-Nu-Qec">
-                                        <rect key="frame" x="0.0" y="60" width="314" height="30"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-yC-2mH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="email"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
-                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
-                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-hO-DOA">
-                                                <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Xb3-Nu-Qec">
+                                                <rect key="frame" x="0.0" y="60" width="314" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eh5-0C-oqQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="email"/>
-                                                    </textField>
-                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PS2-yC-2mH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="email"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                                                 <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
                                                                 <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                                                <point key="value" x="0.0" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                                                <point key="value" x="1" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="T3q-hO-DOA">
+                                                        <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Eh5-0C-oqQ">
+                                                                <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                                                            </textField>
+                                                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="adg-Id-aZ3" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
+                                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                                                        <point key="value" x="0.0" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                                                        <point key="value" x="1" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="adg-Id-aZ3" firstAttribute="width" secondItem="T3q-hO-DOA" secondAttribute="width" id="czH-v5-xgD"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="adg-Id-aZ3" firstAttribute="width" secondItem="T3q-hO-DOA" secondAttribute="width" id="czH-v5-xgD"/>
-                                                </constraints>
                                             </stackView>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-dA-Dih">
-                                        <rect key="frame" x="0.0" y="120" width="314" height="30"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIo-zh-xvH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="password"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
-                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
-                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-t5-otO">
-                                                <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-dA-Dih">
+                                                <rect key="frame" x="0.0" y="120" width="314" height="30"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-rf-oL4">
-                                                        <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
-                                                        <nil key="textColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" textContentType="new-password"/>
-                                                    </textField>
-                                                    <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zIo-zh-xvH" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconImage" value="password"/>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                                                 <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
                                                                 <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                                                <point key="value" x="0.0" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                                                <point key="value" x="1" y="0.5"/>
-                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vjY-t5-otO">
+                                                        <rect key="frame" x="40" y="0.0" width="274" height="30"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvl-rf-oL4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="274" height="29"/>
+                                                                <nil key="textColor"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" textContentType="new-password"/>
+                                                            </textField>
+                                                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="VT2-z7-9c9" customClass="GradientMaskView" customModule="Anywhere_Reader" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="29" width="274" height="1"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
+                                                                        <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondaryColor">
+                                                                        <color key="value" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                                                        <point key="value" x="0.0" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                                                        <point key="value" x="1" y="0.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="VT2-z7-9c9" firstAttribute="width" secondItem="vjY-t5-otO" secondAttribute="width" id="Blt-Ap-TtY"/>
+                                                        </constraints>
+                                                    </stackView>
                                                 </subviews>
-                                                <constraints>
-                                                    <constraint firstItem="VT2-z7-9c9" firstAttribute="width" secondItem="vjY-t5-otO" secondAttribute="width" id="Blt-Ap-TtY"/>
-                                                </constraints>
                                             </stackView>
+                                            <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
+                                                <rect key="frame" x="0.0" y="180" width="314" height="30"/>
+                                                <state key="normal" title="Sign Up"/>
+                                            </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="zIo-zh-xvH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="3zF-gh-nTd"/>
+                                            <constraint firstItem="zIo-zh-xvH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="GlG-Mi-h5b"/>
+                                            <constraint firstItem="PS2-yC-2mH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="QX4-Rd-jzN"/>
+                                            <constraint firstItem="PS2-yC-2mH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="Qwf-4k-dWR"/>
+                                            <constraint firstItem="adg-Id-aZ3" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="kxp-Ih-ggI"/>
+                                            <constraint firstItem="VT2-z7-9c9" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="pjJ-NM-ifU"/>
+                                        </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
-                                        <rect key="frame" x="0.0" y="180" width="314" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="adg-Id-aZ3" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="676-0F-mzA"/>
-                                    <constraint firstItem="PS2-yC-2mH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="J0h-Jh-RE4"/>
+                                    <constraint firstItem="k3W-IO-gfk" firstAttribute="width" secondItem="flh-FK-sRZ" secondAttribute="width" id="PSE-41-4hF"/>
                                     <constraint firstAttribute="width" constant="314" id="QOr-6Y-ovG"/>
-                                    <constraint firstItem="zIo-zh-xvH" firstAttribute="width" secondItem="zrQ-0d-cmv" secondAttribute="width" id="Rvm-Fy-mS7"/>
-                                    <constraint firstItem="PS2-yC-2mH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="dYY-XT-RRk"/>
-                                    <constraint firstItem="zIo-zh-xvH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="ezH-hX-MH8"/>
-                                    <constraint firstItem="VT2-z7-9c9" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="x76-Sr-PiH"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -244,6 +260,7 @@
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>
                         <outlet property="passwordView" destination="zIo-zh-xvH" id="08o-6h-hwG"/>
+                        <outlet property="segmentedControl" destination="28u-EP-yQu" id="Hw2-BB-gpA"/>
                         <outlet property="usernameTextField" destination="E72-bn-zkX" id="Zdd-gO-Nmh"/>
                         <outlet property="usernameView" destination="zrQ-0d-cmv" id="fiw-L7-Nsk"/>
                     </connections>

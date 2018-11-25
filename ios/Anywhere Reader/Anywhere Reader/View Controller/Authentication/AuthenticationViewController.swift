@@ -25,12 +25,19 @@ class AuthenticationViewController: UIViewController {
         authenticateButton.layer.cornerRadius = authenticateButton.frame.height / 2
         authenticateButton.setTitleColor(.white, for: .normal)
         authenticateButton.clipsToBounds = true
+        authenticateButton.contentMode = .redraw
+        
+        // Sets up segmented control
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)!], for: .normal)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.orange, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 20.0)!], for: .selected)
     }
     
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var credentialsView: UIView!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!

@@ -12,7 +12,7 @@ extension ContentCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        var width = collectionView.frame.width
+        var width = collectionView.safeAreaLayoutGuide.layoutFrame.width
         
         if (self.view.traitCollection.horizontalSizeClass == .regular) {
             width /= 2
@@ -20,6 +20,10 @@ extension ContentCollectionViewController: UICollectionViewDelegateFlowLayout {
         
         let size = CGSize(width: width, height: 300.0)
         return size
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout();
     }
 }
 

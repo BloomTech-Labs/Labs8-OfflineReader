@@ -8,17 +8,27 @@ import {
 
 const initialState = {
 	articles: [],
-	fetching: false,
-	success: false,
-	error: ''
+	articleStatus: {
+		fetching: false,
+		success: false,
+		error: ''
+	}
 };
 
-const articleReducers = (state = initialState, action) => {
+export default (state = initialState, action) => {
 	switch (action.type) {
-		case FETCH_ARTICLE_DATA:
-			return { ...state, fetching: true };
 		case ARTICLE_ERROR:
-			return { ...state, error: 'Error' + action.err };
+			return {
+				...state,
+				articleStatus: { ...state.articleStatus, error: action.err }
+			};
+
+		case FETCH_ARTICLE_DATA:
+			return {
+				...state,
+				articleStatus: { ...state.articleStatus, fetching: true }
+			};
+
 		case ARTICLE_DATA_FETCHED:
 			return { ...state, articles: action.payload, fetching: false };
 
@@ -32,7 +42,7 @@ const articleReducers = (state = initialState, action) => {
 						...articleAdded
 					}
 				],
-				fetching: false
+				articleStatus: { ...state.articleStatus, fetching: false }
 			};
 
 		case DELETE_ARTICLE:
@@ -45,12 +55,10 @@ const articleReducers = (state = initialState, action) => {
 						...articleDeleted
 					}
 				],
-				fetching: false
+				articleStatus: { ...state.articleStatus, fetching: false }
 			};
 		//////
 		default:
 			return state;
 	}
 };
-
-export default articleReducers;

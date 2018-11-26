@@ -10,6 +10,7 @@ class Navi extends Component {
 				{/* <NavLink exact to="/">Home</NavLink> */}
 				<NavLink to="/signIn">Sign In</NavLink>
 				<NavLink to="/signUp">Sign Up</NavLink>
+				<NavLink to="/payment">Payment</NavLink>
 			</div>
 		);
 	}

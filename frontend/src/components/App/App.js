@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import { SignInPage, SignUpPage, SignedIn, SignedUp, Navi } from '../';
+import {
+	SignInPage,
+	SignUpPage,
+	SignedIn,
+	SignedUp,
+	Navi,
+	StripeProviderStub
+} from '../';
 
 class App extends Component {
 	render() {
@@ -14,6 +21,7 @@ class App extends Component {
 					<Route path="/signUp" component={SignUpPage} />
 					<Route path="/signedIn" component={SignedIn} />
 					<Route path="/signedUp" component={SignedUp} />
+					<Route path="/payment" component={StripeProviderStub} />
 				</div>
 			</Router>
 		);

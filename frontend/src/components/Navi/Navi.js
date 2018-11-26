@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 // import styled from 'styled-components';
 
+// TODO: Write up Navi test cases after routing has been suitably refactored and no longer throws Route and withRouter errors when doing a Navi render test.
 class Navi extends Component {
 	render() {
 		return (

@@ -42,12 +42,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
-                                <rect key="frame" x="30" y="294" width="354" height="308"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
+                                <rect key="frame" x="30" y="264" width="354" height="368"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
-                                <rect key="frame" x="50" y="314" width="314" height="268"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
+                                <rect key="frame" x="50" y="284" width="314" height="426"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="28u-EP-yQu">
                                         <rect key="frame" x="94.5" y="0.0" width="125" height="29"/>
@@ -60,8 +60,8 @@
                                             <action selector="toggleSignUp:" destination="Rcg-2l-HNe" eventType="valueChanged" id="AE9-IT-QiW"/>
                                         </connections>
                                     </segmentedControl>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
-                                        <rect key="frame" x="0.0" y="58" width="314" height="210"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
+                                        <rect key="frame" x="0.0" y="58" width="314" height="368"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
@@ -224,6 +224,10 @@
                                                 <rect key="frame" x="0.0" y="180" width="314" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
                                             </button>
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-bF-vhj" customClass="GIDSignInButton">
+                                                <rect key="frame" x="0.0" y="240" width="314" height="128"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="zIo-zh-xvH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="3zF-gh-nTd"/>
@@ -261,6 +265,7 @@
                         <outlet property="credentialsView" destination="HCa-DY-0V3" id="71R-JH-E6r"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
+                        <outlet property="googleSignInButton" destination="F9b-bF-vhj" id="f1N-83-Iuq"/>
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>
                         <outlet property="passwordView" destination="zIo-zh-xvH" id="08o-6h-hwG"/>
                         <outlet property="segmentedControl" destination="28u-EP-yQu" id="Hw2-BB-gpA"/>

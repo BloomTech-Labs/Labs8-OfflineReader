@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class AuthenticationViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         updateViews()
     }
@@ -60,7 +64,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordView: GradientMaskView!
     
     @IBOutlet weak var authenticateButton: UIButton!
-    
+    @IBOutlet var googleSignInButton: GIDSignInButton!
     
     // MARK: - IBActions
     
@@ -185,5 +189,24 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
             fatalError("No other textFields implemented")
         }
         return true
+    }
+}
+
+// MARK: - GIDSignInDelegate
+extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Operations for signed in user
+            let email = user.profile.email
+            print("Email: \(String(describing: email))")
+            
+            // Present controller
+            let contentSb = UIStoryboard(name: "Main", bundle: nil)
+            let contentCollectionView = contentSb.instantiateInitialViewController() as! UINavigationController
+            
+            self.present(contentCollectionView, animated: true, completion: nil)
+        }
     }
 }

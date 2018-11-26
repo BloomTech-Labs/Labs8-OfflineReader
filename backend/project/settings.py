@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'apps.scraper',
     'users',
     'pages',
-    'payment',
+    'payments',
     
 ]
 

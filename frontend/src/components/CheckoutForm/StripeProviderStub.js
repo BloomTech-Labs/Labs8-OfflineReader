@@ -10,6 +10,7 @@ class StripeProviderStub extends Component {
 	// constructor(props) {
 	// 	super(props);
 	// }
+	// Router history comes via props. comment out for now.
 
 	render() {
 		return (

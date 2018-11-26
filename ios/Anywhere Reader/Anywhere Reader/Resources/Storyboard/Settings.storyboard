@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Enx-cX-gv1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M3a-Gn-PvF">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -176,7 +176,7 @@
             </objects>
             <point key="canvasLocation" x="572" y="54"/>
         </scene>
-        <!--Settings-->
+        <!--Segmented Settings View Controller-->
         <scene sceneID="ltz-w8-HlV">
             <objects>
                 <viewController id="Enx-cX-gv1" customClass="SegmentedSettingsViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
@@ -185,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZp-eX-WjI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="MYR-Yb-V3h"/>
                                 </constraints>
@@ -194,7 +194,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2lp-J6-Ps7">
-                                <rect key="frame" x="16" y="112" width="382" height="29"/>
+                                <rect key="frame" x="16" y="156" width="382" height="29"/>
                                 <segments>
                                     <segment title="Account"/>
                                     <segment title="Billing"/>
@@ -205,7 +205,7 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2R-Vd-rtn">
-                                <rect key="frame" x="0.0" y="148" width="414" height="665"/>
+                                <rect key="frame" x="0.0" y="192" width="414" height="621"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -223,7 +223,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hYC-nm-OsM"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" selectedImage="settings-icon" id="DbO-Vo-XcZ"/>
+                    <navigationItem key="navigationItem" id="5pe-OV-EVe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MSe-rK-J5c">
+                            <connections>
+                                <action selector="dismissSettingsVC:" destination="Enx-cX-gv1" id="72E-gw-3zS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="O2R-Vd-rtn" id="yuu-Al-oMw"/>
@@ -233,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRu-gD-j9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1160.8" y="-642.72863568215894"/>
+            <point key="canvasLocation" x="2069.5652173913045" y="-642.85714285714278"/>
         </scene>
         <!--Billing View Controller-->
         <scene sceneID="0Pq-Dd-0dn">
@@ -400,6 +406,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="obY-UK-cIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1735" y="54"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="qM3-hP-27w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="M3a-Gn-PvF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings-icon" selectedImage="settings-icon" id="DbO-Vo-XcZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Anl-LU-ZIQ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Enx-cX-gv1" kind="relationship" relationship="rootViewController" id="9E8-Ar-Ztu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RsR-a1-jdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159.4202898550725" y="-642.85714285714278"/>
         </scene>
     </scenes>
     <resources>

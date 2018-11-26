@@ -9,12 +9,14 @@
 import UIKit
 
 class SegmentedSettingsViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
 
-    // MARK: - Properties
+    // MARK: - Private Properties
+    
     private lazy var accountViewController: AccountViewController = {
         let storyboard = UIStoryboard(name: "Settings", bundle: Bundle.main)
         var viewController = storyboard.instantiateViewController(withIdentifier: "AccountViewController") as! AccountViewController
@@ -29,18 +31,27 @@ class SegmentedSettingsViewController: UIViewController {
         return viewController
     }()
 
+    
     // MARK: - IBOutlets
+    
     @IBOutlet var settingsTitle: UILabel!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var containerView: UIView!
 
+    
     // MARK: - IBActions
+    
     @IBAction func segmentedControlTapped(_ sender: Any) {
         updateViews()
     }
+    @IBAction func dismissSettingsVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
+
 // MARK: - Private methods
+
 extension SegmentedSettingsViewController {
     private func updateViews() {
         if segmentedControl.selectedSegmentIndex == 0 {

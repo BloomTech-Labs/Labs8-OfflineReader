@@ -165,6 +165,11 @@
                     </collectionView>
                     <navigationItem key="navigationItem" id="Ufo-Vv-UdT">
                         <barButtonItem key="backBarButtonItem" title=" " id="3Lc-8U-gcU"/>
+                        <barButtonItem key="leftBarButtonItem" image="settings-icon" id="Z7W-1g-Sp9">
+                            <connections>
+                                <segue destination="GOY-gX-Exu" kind="presentation" id="UqU-hy-uWh"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PWX-5P-oGM">
                             <connections>
                                 <action selector="addNewContent:" destination="72u-JM-bAQ" id="vH8-Pr-YnP"/>
@@ -286,9 +291,18 @@
             </objects>
             <point key="canvasLocation" x="548" y="-154"/>
         </scene>
+        <!--Settings-->
+        <scene sceneID="8Kv-0Z-xhu">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="GOY-gX-Exu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uco-J1-YD6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1421" y="409"/>
+        </scene>
     </scenes>
     <resources>
         <image name="human-spider-696x522" width="696" height="522"/>
         <image name="saved-icon" width="37.5" height="37.5"/>
+        <image name="settings-icon" width="37.5" height="37.5"/>
     </resources>
 </document>

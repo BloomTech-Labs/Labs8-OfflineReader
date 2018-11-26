@@ -10,6 +10,7 @@
 		"react-redux": "^5.1.0",
 		"react-router-dom": "^4.3.1",
 		"react-scripts": "2.1.1",
+		"react-stripe-elements": "^2.0.1",
 		"redux": "^4.0.1",
 		"redux-thunk": "^2.3.0",
 		"styled-components": "^4.0.3"
@@ -51,6 +52,7 @@
 		"prettier": "^1.15.1",
 		"pretty-quick": "^1.8.0",
 		"react-test-renderer": "^16.6.1",
+		"redux-devtools-extension": "^2.13.5",
 		"redux-logger": "^3.0.6"
 	}
 }

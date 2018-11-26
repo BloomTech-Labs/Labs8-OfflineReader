@@ -14,11 +14,10 @@ import os
 import dj_database_url
 
 from decouple import config, Csv
-# from corsheaders.defaults import default_headers  (Stripe doesn't work)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -31,16 +30,16 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'corsheaders',
     'rest_framework',
@@ -52,12 +51,16 @@ INSTALLED_APPS = [
     'api',
     'apps.scraper',
     'users',
-    'payments',
+    'pages',
+    'payment',
+    
 ]
 
+# whitenoise needs to be above everything but SecurityMiddleware. Plan accordingly.
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,23 +89,33 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://github.com/kennethreitz/dj-database-url
 
 # Set up to use dj_database_url
 SSL_MODE = '?sslmode=prefer'
 PG_URL = config('DATABASE_URL') + SSL_MODE
+# print(PG_URL)
 DATABASES = {
-    'default' : dj_database_url.config(default=PG_URL)
+    'default': dj_database_url.config(default=PG_URL)
 }
 
-# REST boilerplate to set up persmissions
+# REST boilerplate to set up permissions
 # Allow logged in to read/write and anonymous users read only
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+#     ]
+# }
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Password validation
@@ -142,34 +155,27 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+# http://whitenoise.evans.io/en/stable/django.html
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# print(STATIC_ROOT)
 
+# STATICFILES_DIRS = ()
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+#     os.path.join(BASE_DIR, 'api/static'),
+#     os.path.join(BASE_DIR, 'apps/scraper/static')
+# )
 
+# What are these? :3
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SITE_ID = 1
 
 # Stripe config
-
-# print(config('ALLOWED_HOSTS', cast=Csv()))
-
-# CORS_ORIGIN_WHITELIST = config('ALLOWED_HOSTS', cast=Csv())
-
-# CSRF_TRUSTED_ORIGINS = config('ALLOWED_HOSTS', cast=Csv())
-
-# CORS_ALLOW_HEADERS = default_headers + (
-#     'accept',
-#     'accept-encoding',
-#     'authorization',
-#     'content-disposition',
-#     'content-type',
-#     'origin',
-#     'user-agent',
-#     'x-csrftoken',
-#     'x-requested-with',
-# )  (Stripe doesn't work)
-
 CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_HEADERS = [

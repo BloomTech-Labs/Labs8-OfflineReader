@@ -9,23 +9,44 @@
 import UIKit
 
 class ContentDetailViewController: UIViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        updateTheme()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
     
-    // MARK: - Properties
-    var article: Article? {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    // MARK: - Private properties
+    
+    let themeHelper = UserDefaultsThemeHelper.shared
+    
+    
+    // MARK: - Public properties
+    
+    public var article: Article? {
         didSet {
             updateViews()
         }
     }
     
+    
     // MARK: - IBOutlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
-
+    @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var sourceAndDateLabel: UILabel!
+    
+    
     // MARK: - Actions
+    
     @IBAction func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
@@ -37,11 +58,33 @@ class ContentDetailViewController: UIViewController {
         self.present(preferencesVC, animated: true, completion: nil)
     }
     
+    
     // MARK: - Private
+    
     private func updateViews() {
         guard let article = article else { return }
         
         titleLabel.text = article.title
         contentBodyLabel.text = article.articleContent
+        do {
+            let url = URL(string: article.coverImage)!
+            let data = try Data(contentsOf: url)
+            imageView.image = UIImage(data: data)
+        }
+        catch {
+            NSLog("Error setting image in detail view")
+        }
+    }
+    
+    @objc private func updateTheme() {
+        view.backgroundColor = themeHelper.getBackgroundColor()
+        contentBodyLabel.textColor = themeHelper.getLabelTextColor()
+        titleLabel.textColor = themeHelper.getLabelTextColor()
+        
+        let titleFont = themeHelper.getTitleFont()
+        titleLabel.font = titleFont
+        let bodyFont = themeHelper.getBodyFont()
+        contentBodyLabel.font = bodyFont
+        sourceAndDateLabel.font = bodyFont
     }
 }

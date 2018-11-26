@@ -22,6 +22,11 @@
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
 		22005786219C998100808E4B /* AddNewContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22005785219C998100808E4B /* AddNewContent.storyboard */; };
 		22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22005788219C9DC500808E4B /* AddNewContentViewController.swift */; };
+		2200578B219DB8FB00808E4B /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578A219DB8FB00808E4B /* AppearanceHelper.swift */; };
+		2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */; };
+		222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */; };
+		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
+		222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
 		2233F7CB21920A07001A82FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7C921920A07001A82FF /* Main.storyboard */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
@@ -49,6 +54,11 @@
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		22005785219C998100808E4B /* AddNewContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewContent.storyboard; sourceTree = "<group>"; };
 		22005788219C9DC500808E4B /* AddNewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContentViewController.swift; sourceTree = "<group>"; };
+		2200578A219DB8FB00808E4B /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceHelper.swift; sourceTree = "<group>"; };
+		2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeHelper.swift; sourceTree = "<group>"; };
+		222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMaskView.swift; sourceTree = "<group>"; };
+		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
+		222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidGradientView.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2233F7C521920A06001A82FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2233F7CA21920A07001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,7 +116,7 @@
 				22661E0A219268940072A4B8 /* Content Collection */,
 				22005788219C9DC500808E4B /* AddNewContentViewController.swift */,
 				22661E132194EA3E0072A4B8 /* Content Detail */,
-				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
+				222F5B7D21A4D153002B6436 /* Authentication */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -144,6 +154,17 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		222F5B7D21A4D153002B6436 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
+				222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */,
+				222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */,
+				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		2233F7B921920A06001A82FF = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
+				2200578A219DB8FB00808E4B /* AppearanceHelper.swift */,
+				2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */,
 				13FB2E2321921AA600A8888B /* Model */,
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
@@ -279,6 +302,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */,
+				222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */,
+				2200578B219DB8FB00808E4B /* AppearanceHelper.swift in Sources */,
 				13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */,
 				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */,
@@ -286,6 +311,7 @@
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
 				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
+				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
 				22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* Article.swift in Sources */,
@@ -293,6 +319,8 @@
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
+				2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */,
+				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

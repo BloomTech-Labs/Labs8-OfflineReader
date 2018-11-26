@@ -10,37 +10,32 @@ import UIKit
 
 class PreferencesViewController: UIViewController {
     
-    // MARK: - Initializers
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        
-    }
-    
-    
-    // MARK: - View housekeeping
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferencesView.layer.cornerRadius = 20
+        preferencesView.layer.cornerRadius = 12.0
+        preferencesView.layer.shadowColor = UIColor.darkGray.cgColor
+        preferencesView.layer.shadowOffset = CGSize(width: 0, height: 2.5)
+        preferencesView.layer.shadowOpacity = 0.25
+        preferencesView.layer.shadowRadius = 5
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         animateView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         deanimateView()
-        // If you click on another tab without line 38, the view doesn't get dismissed
+        // If you click on another tab without the line below, the view doesn't get dismissed
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    // MARK: - Private properties
+    
+    private let themeHelper = UserDefaultsThemeHelper.shared
     
     
     // MARK: - Outlets
@@ -50,14 +45,37 @@ class PreferencesViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func dismissFromTap(_ sender: UITapGestureRecognizer) {
+    @IBAction private func dismissFromTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: view)
-        
+        // Makes sure the location of tap was outside the bounds of the preferencesView so it can dismiss the VC
         if !preferencesView.frame.contains(location) {
             dismiss(animated: true, completion: nil)
         }
     }
     
+    @IBAction func increaseFontSize(_ sender: Any) {
+        let oldSize = themeHelper.getBodyFont().pointSize
+        // Increases font size by 1 cgpoint. Increment size can be changed later.
+        themeHelper.setBodyFont(name: nil, size: oldSize + 1)
+    }
+    
+    @IBAction func decreaseFontSize(_ sender: Any) {
+        let oldSize = themeHelper.getBodyFont().pointSize
+        // Decreases font size by 1 cgpoint. Increment size can be changed later.
+        themeHelper.setBodyFont(name: nil, size: oldSize - 1)
+    }
+    
+    @IBAction func changeFontColor(_ sender: Any) {
+        // Unhides a not yet made font color view
+    }
+    
+    @IBAction func changeBackgroundColor(_ sender: Any) {
+        // Unhides a not yet made background color view
+    }
+    
+    @IBAction func changeFont(_ sender: Any) {
+        // Unhides a not yet made font choice view
+    }
     
     
     // MARK: - Private functions

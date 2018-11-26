@@ -6,6 +6,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
+// A note to future devs that update this. By default, CRA recognizes 3 values for
+// process.env.NODE_ENV: development, test, and production. You can read more about
+// environment variables with CRA at
+// https://medium.com/@tacomanator/environments-with-create-react-app-7b645312c09d
+
 // generates the configuration for and returns a purpose-built store for redux to use
 // preloadedState is in place in case we want to feed in test data later.
 export default preloadedState => {

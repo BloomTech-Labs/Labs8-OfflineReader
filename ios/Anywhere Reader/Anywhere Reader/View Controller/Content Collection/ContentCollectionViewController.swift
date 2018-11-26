@@ -53,6 +53,11 @@ class ContentCollectionViewController: UICollectionViewController {
         return cell
     }
     
+    // MARK: UICollectionView Transition
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout();
+    }
     
     // MARK: - Prepare for segue
     

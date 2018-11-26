@@ -27,7 +27,7 @@ class ShadowView: UIView {
             shadowLayer.shadowOpacity = 0.25
             shadowLayer.shadowRadius = 5
             
-            layer.cornerRadius = cornerRadius ?? 12
+//            layer.cornerRadius = cornerRadius ?? 12
             layer.insertSublayer(shadowLayer, at: 0)
             //layer.insertSublayer(shadowLayer, below: nil) // also works
         }

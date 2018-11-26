@@ -32,9 +32,11 @@ returns:
 ### /api/users/pages/
 
 GET
-`{ "title": ""}
-Returns a list of articles
+`{ "title": ""}`
+Currently returning a list of titles of all the articles that are in the database.
+This will be updated once data structure is in place.
 
 POST
-`{ "title": ""}
-Adding an article
+`{ "title": ""}`
+Adding an article.
+This will be updated once data structure is in place.

@@ -76,9 +76,10 @@ const LandingPage = (props, goog_auth) => {
 				<h1>Anywhere Reader</h1>
 				<form>
 					Email
-					<input type="text" name="firstname" />
+					<input type="text" name="email" />
+					<br />
 					Password
-					<input type="text" name="firstname" />
+					<input type="text" name="password" />
 					<input type="submit" value="Sign Up" />
 				</form>
 				<br />

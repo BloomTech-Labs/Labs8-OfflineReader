@@ -12,7 +12,9 @@ import ArticleList from './containers/Secret/ArticleListContainer';
 import { PrivateRoute } from './customRoutes/ProtectedRoutes';
 import rootReducer from './reducers';
 import auth_tokens_mw from './customMiddleware/auth_tokens_mw';
-
+import { configureStore } from './store';
+import { App } from './components';
+// import * as serviceWorker from './serviceWorker';
 /* Adding React-Router-Redux so I can use dispatch(push('/'))
     in the middleware
 */
@@ -35,6 +37,8 @@ let store = createStore(
 if (localStorage.getItem('goog_access_token_conv')) {
 	store.dispatch({ type: 'GOOG_AUTHENTICATE_ACTION' });
 }
+
+const store = configureStore();
 
 ReactDOM.render(
 	<Provider store={store}>

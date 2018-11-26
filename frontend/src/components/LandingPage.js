@@ -2,8 +2,11 @@ import React from 'react';
 import LoadingSpinner from '../utils_materialui/LoadingSpinner';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import GoogleLogin from 'react-google-login';
+
 import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
+import { google_client_id } from './GoogleAuth/GoogleLoginButton';
 
 const LoginBox = styled.div`
 	text-align: center;
@@ -68,6 +71,10 @@ const LandingPage = (props, goog_auth) => {
 		}
 	}
 
+	const responseGoogle = response => {
+		console.log(response);
+	};
+
 	return (
 		<LandingPageContainer>
 			{goog_auth.isAuthenticating && <LoadingSpinner />}
@@ -76,9 +83,13 @@ const LandingPage = (props, goog_auth) => {
 				<h1>Anywhere Reader</h1>
 				<form>
 					Email
-					<input type="text" name="firstname" />
+					<input type="text" name="email" />
+					<br />
+					<br />
 					Password
-					<input type="text" name="firstname" />
+					<input type="text" name="password" />
+					<br />
+					<br />
 					<input type="submit" value="Sign in" />
 				</form>
 				<br />
@@ -87,6 +98,12 @@ const LandingPage = (props, goog_auth) => {
 				</div>
 				<br />
 				<hr />
+				<GoogleLogin
+					clientId={google_client_id}
+					buttonText="Login"
+					onSuccess={responseGoogle}
+					onFailure={responseGoogle}
+				/>
 				{userIsAuthenticatedGoogle()}
 				{userIsNotAuthenticated()}
 				{userIsAuthenticated()}

@@ -41,11 +41,11 @@ class DocumentCollectionViewCell: UICollectionViewCell {
         
         titleLabel.text = article.title
         
-        let cornerRadius: CGFloat = 12.0
-        shadowView.cornerRadius = cornerRadius
-        blurLayer.layer.cornerRadius = cornerRadius
-        imageView.layer.cornerRadius = cornerRadius
+//        let cornerRadius: CGFloat = 12.0
+//        shadowView.cornerRadius = cornerRadius
+//        blurLayer.layer.cornerRadius = cornerRadius
+//        imageView.layer.cornerRadius = cornerRadius
         
-        openButton.layer.cornerRadius = openButton.frame.height / 2.0
+//        openButton.layer.cornerRadius = openButton.frame.height / 2.0
     }
 }

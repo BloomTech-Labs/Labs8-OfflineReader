@@ -203,7 +203,7 @@ extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
             
             // Present controller
             let contentSb = UIStoryboard(name: "Main", bundle: nil)
-            let contentCollectionView = contentSb.instantiateViewController(withIdentifier: "MainTabBar")
+            let contentCollectionView = contentSb.instantiateInitialViewController()
             
             self.present(contentCollectionView, animated: true, completion: nil)
         }

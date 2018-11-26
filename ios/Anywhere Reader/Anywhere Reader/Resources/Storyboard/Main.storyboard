@@ -14,7 +14,7 @@
         <!--Content Collection View Controller-->
         <scene sceneID="kva-FJ-ZoU">
             <objects>
-                <collectionViewController storyboardIdentifier="ContentCollectionView" id="72u-JM-bAQ" customClass="ContentCollectionViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="72u-JM-bAQ" customClass="ContentCollectionViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="I9d-iK-ZUq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -274,7 +274,7 @@
         <!--Saved-->
         <scene sceneID="YKR-A7-dmX">
             <objects>
-                <navigationController storyboardIdentifier="ContentCollectionNavigation" automaticallyAdjustsScrollViewInsets="NO" id="r8L-cw-ph2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r8L-cw-ph2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Saved" image="saved-icon" selectedImage="saved-icon" id="3I8-i2-6mq"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -289,7 +289,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aBB-FV-hrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="548" y="-154"/>
+            <point key="canvasLocation" x="557" y="-155"/>
         </scene>
         <!--Settings-->
         <scene sceneID="8Kv-0Z-xhu">

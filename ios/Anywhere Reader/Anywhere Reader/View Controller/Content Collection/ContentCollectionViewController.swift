@@ -14,6 +14,8 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        collectionView.register(DocumentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        collectionView.register(UINib(nibName: "", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
 
         articleController.fetchLocalArticles()
     }
@@ -23,13 +25,13 @@ class ContentCollectionViewController: UICollectionViewController {
 
     @IBAction func addNewContent(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddNewContent", bundle: nil)
-        guard let addNewConentVC = storyboard.instantiateInitialViewController() else { return }
-        addNewConentVC.providesPresentationContextTransitionStyle = true
-        addNewConentVC.definesPresentationContext = true
-        addNewConentVC.modalPresentationStyle = .overCurrentContext
-        addNewConentVC.modalTransitionStyle = .crossDissolve
+        guard let addNewContentVC = storyboard.instantiateInitialViewController() else { return }
+        addNewContentVC.providesPresentationContextTransitionStyle = true
+        addNewContentVC.definesPresentationContext = true
+        addNewContentVC.modalPresentationStyle = .overCurrentContext
+        addNewContentVC.modalTransitionStyle = .crossDissolve
         
-        self.present(addNewConentVC, animated: true, completion: nil)
+        self.present(addNewContentVC, animated: true, completion: nil)
     }
 
 
@@ -65,8 +67,9 @@ class ContentCollectionViewController: UICollectionViewController {
         if let detailViewController = segue.destination as? ContentDetailViewController {
             let cell = sender as! DocumentCollectionViewCell
             guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+            let article = articleController.articles[indexPath.row]
             let _ = detailViewController.view
-            detailViewController.article = articleController.articles[indexPath.row]
+            detailViewController.article = article
         }
     }
 }

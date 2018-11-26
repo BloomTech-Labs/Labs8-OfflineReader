@@ -12,7 +12,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="ZOK-y1-lHx">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBar" id="FXS-fE-Hcu" sceneMemberID="viewController">
+                <tabBarController id="FXS-fE-Hcu" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ujo-G8-2Xb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>

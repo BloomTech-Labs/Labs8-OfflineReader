@@ -192,6 +192,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: - GIDSignInDelegate
 extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
@@ -203,7 +204,7 @@ extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
             
             // Present controller
             let contentSb = UIStoryboard(name: "Main", bundle: nil)
-            let contentCollectionView = contentSb.instantiateInitialViewController()
+            let contentCollectionView = contentSb.instantiateInitialViewController() as! UINavigationController
             
             self.present(contentCollectionView, animated: true, completion: nil)
         }

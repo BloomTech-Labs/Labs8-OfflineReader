@@ -316,11 +316,7 @@
 				13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */,
 				13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */,
 				22005786219C998100808E4B /* AddNewContent.storyboard in Resources */,
-<<<<<<< HEAD
-=======
 				1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */,
-				2233F7CB21920A07001A82FF /* Main.storyboard in Resources */,
->>>>>>> Add GoogleSignIn Pod and initial setup
 				22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

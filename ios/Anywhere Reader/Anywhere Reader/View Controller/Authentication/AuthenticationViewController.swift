@@ -21,21 +21,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     private var isSignUp = true {
         didSet {
-            switch isSignUp {
-            case true:
-                authenticateButton.setTitle("Sign Up", for: .normal)
-                usernameStackView.isHidden = false
-                passwordTextField.textContentType = .newPassword
-                passwordTextField.returnKeyType = .join
-            case false:
-                authenticateButton.setTitle("Log In", for: .normal)
-                usernameStackView.isHidden = true
-                passwordTextField.textContentType = .password
-                passwordTextField.returnKeyType = .go
-            }
-            
-            // Reloads keyboard return key
-            passwordTextField.reloadInputViews()
+            updateCredentialsViewContents()
         }
     }
     
@@ -65,15 +51,6 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     // MARK: - IBActions
     
     @IBAction private func toggleSignUp(_ sender: Any) {
-        selectedSegmentBarLeftAnchor.isActive = false
-        let anchorConstant = segmentedControl.frame.width / CGFloat(segmentedControl.numberOfSegments) * CGFloat(segmentedControl.selectedSegmentIndex)
-        selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
-        selectedSegmentBarLeftAnchor.isActive = true
-        
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        })
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             isSignUp = true
@@ -163,6 +140,57 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.resignFirstResponder()
         emailTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+    
+    private func updateCredentialsViewContents() {
+        switch isSignUp {
+        case true:
+            // Sets the left anchor of the selectedSegmentBar
+            selectedSegmentBarLeftAnchor.isActive = false
+            let anchorConstant: CGFloat = 0.0
+            selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
+            selectedSegmentBarLeftAnchor.isActive = true
+            
+            // Hides usernameStackView
+            self.usernameStackView.isHidden = false
+            
+            // Animates above changes
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.usernameStackView.alpha = 1.0
+            })
+            
+            // Changes authenticateButton title
+            authenticateButton.setTitle("Sign Up", for: .normal)
+            // Changes passwordTextField content type and keyboard return key
+            passwordTextField.textContentType = .newPassword
+            passwordTextField.returnKeyType = .join
+        case false:
+            // Sets the left anchor of the selectedSegmentBar
+            selectedSegmentBarLeftAnchor.isActive = false
+            let anchorConstant: CGFloat = segmentedControl.frame.width / 2.0
+            selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
+            selectedSegmentBarLeftAnchor.isActive = true
+            usernameStackView.alpha = 1.0
+            
+            // Unhides usernameStackView
+            usernameStackView.isHidden = true
+            
+            // Animates above changes
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+                self.usernameStackView.alpha = 0.0
+            })
+            
+            // Changes authenticateButton title
+            authenticateButton.setTitle("Log In", for: .normal)
+            // Changes passwordTextField content type and keyboard return key
+            passwordTextField.textContentType = .password
+            passwordTextField.returnKeyType = .go
+        }
+        
+        // Reloads keyboard return key
+        passwordTextField.reloadInputViews()
     }
     
     private func authenticate() {

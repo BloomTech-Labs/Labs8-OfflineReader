@@ -262,6 +262,9 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="confirmButtonTapped:" destination="FPG-Pb-7oD" eventType="touchUpInside" id="Rc7-bX-nbS"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="byr-x0-0LG">
                                 <rect key="frame" x="16" y="60" width="382" height="282.5"/>

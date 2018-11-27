@@ -21,6 +21,14 @@ class CheckoutForm extends Component {
 		}
 	};
 
+	backendUrl = () => {
+		if (process.env.NODE_ENV === 'production') {
+			return `https://anywhere-reader-test.herokuapp.com/api/create-charge/`;
+		} else {
+			return `http://127.0.0.1:8000/api/create-charge/`;
+		}
+	};
+
 	handleSubmit = e => {
 		e.preventDefault();
 		this.setState({ ...this.state, card_errors: '', resp_message: '' });
@@ -42,12 +50,13 @@ class CheckoutForm extends Component {
 					// 	'Received Stripe token ---> SENDING TO SERVER: ',
 					// 	result.token
 					// );
+					const backendApi = this.backendUrl();
 					let formData = new FormData();
 					formData.append('description', 'My form description');
 					formData.append('currency', 'usd');
 					formData.append('amount', 999);
 					formData.append('source', result.token.id);
-					return fetch(`http://127.0.0.1:8000/api/create-charge/`, {
+					return fetch(backendApi, {
 						method: 'POST',
 						headers: {
 							accept: 'application/json'

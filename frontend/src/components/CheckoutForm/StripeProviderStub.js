@@ -12,15 +12,16 @@ class StripeProviderStub extends Component {
 		this.state = { stripe: '' };
 	}
 	componentDidMount() {
+		const stripePubKey = 'pk_test_2rPuyENL1sfpQAu8wCPX6Fx5';
 		if (window.Stripe) {
 			this.setState({
-				stripe: window.Stripe(process.env.REACT_APP_stripe_pub)
+				stripe: window.Stripe(stripePubKey)
 			});
 		} else {
 			document.querySelector('#stripe-js').addEventListener('load', () => {
 				//Create Stripe instance once Stripe.js loads
 				this.setState({
-					stripe: window.Stripe(process.env.REACT_APP_stripe_pub)
+					stripe: window.Stripe(stripePubKey)
 				});
 			});
 		}

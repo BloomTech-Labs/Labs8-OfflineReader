@@ -9,13 +9,15 @@
 import UIKit
 import GoogleSignIn
 
-class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().uiDelegate = self
+        
+        googleSignInButton.style = .wide
         
         updateViews()
     }
@@ -85,6 +87,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         credentialsView.layer.shadowRadius = 10.0
         credentialsView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         credentialsView.layer.shadowOpacity = 1.0
+        credentialsView.layer.opacity = 0.75
     }
     
     /// Adds gradient to authenticateButton
@@ -201,10 +204,12 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     private func authenticate() {
         
     }
-    
-    
-    // MARK: - UITextFieldDelegate
-    
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension AuthenticationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case usernameTextField:
@@ -212,8 +217,8 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         case emailTextField:
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
-            authenticate()
             passwordTextField.resignFirstResponder()
+            authenticate()
         default:
             fatalError("No other textFields implemented")
         }

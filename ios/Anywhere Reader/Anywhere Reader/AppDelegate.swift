@@ -15,8 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_2rPuyENL1sfpQAu8wCPX6Fx5"
         GIDSignIn.sharedInstance().clientID = "308606958601-9u35afi45dgjqdljqu43ldqa8012nj0d.apps.googleusercontent.com"
         
         AppearanceHelper.setUpTheme()

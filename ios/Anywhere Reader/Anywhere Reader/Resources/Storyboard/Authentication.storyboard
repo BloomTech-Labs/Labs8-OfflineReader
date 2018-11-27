@@ -42,12 +42,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
-                                <rect key="frame" x="30" y="264" width="354" height="368"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
+                                <rect key="frame" x="30" y="255" width="354" height="386"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
-                                <rect key="frame" x="50" y="284" width="314" height="426"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
+                                <rect key="frame" x="50" y="275" width="314" height="346"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="28u-EP-yQu">
                                         <rect key="frame" x="94.5" y="0.0" width="125" height="29"/>
@@ -60,8 +60,8 @@
                                             <action selector="toggleSignUp:" destination="Rcg-2l-HNe" eventType="valueChanged" id="AE9-IT-QiW"/>
                                         </connections>
                                     </segmentedControl>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
-                                        <rect key="frame" x="0.0" y="58" width="314" height="368"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="k3W-IO-gfk">
+                                        <rect key="frame" x="0.0" y="58" width="314" height="210"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="bT4-Oz-kWj">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
@@ -224,10 +224,6 @@
                                                 <rect key="frame" x="0.0" y="180" width="314" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
                                             </button>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-bF-vhj" customClass="GIDSignInButton">
-                                                <rect key="frame" x="0.0" y="240" width="314" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="zIo-zh-xvH" firstAttribute="height" secondItem="zrQ-0d-cmv" secondAttribute="height" id="3zF-gh-nTd"/>
@@ -238,6 +234,14 @@
                                             <constraint firstItem="VT2-z7-9c9" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="pjJ-NM-ifU"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-bF-vhj" customClass="GIDSignInButton">
+                                        <rect key="frame" x="1" y="298" width="312" height="48"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="312" id="6cF-Y4-KRT"/>
+                                            <constraint firstAttribute="height" constant="48" id="A6P-2q-4Nt"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="k3W-IO-gfk" firstAttribute="width" secondItem="flh-FK-sRZ" secondAttribute="width" id="PSE-41-4hF"/>

@@ -7,16 +7,33 @@ import MyStoreCheckout from './MyStoreCheckout';
 //App loads the stripe script asynchronously in CDM
 
 class StripeProviderStub extends Component {
-	// constructor(props) {
-	// 	super(props);
-	// }
-	// Router history comes via props. comment out for now.
+	constructor(props) {
+		super(props);
+		this.state = { stripe: '' };
+	}
+	componentDidMount() {
+		const stripePubKey = 'pk_test_2rPuyENL1sfpQAu8wCPX6Fx5';
+		if (window.Stripe) {
+			this.setState({
+				stripe: window.Stripe(stripePubKey)
+			});
+		} else {
+			document.querySelector('#stripe-js').addEventListener('load', () => {
+				//Create Stripe instance once Stripe.js loads
+				this.setState({
+					stripe: window.Stripe(stripePubKey)
+				});
+			});
+		}
+	}
 
 	render() {
 		return (
-			<StripeProvider apiKey="pk_test_2rPuyENL1sfpQAu8wCPX6Fx5">
-				<MyStoreCheckout />
-			</StripeProvider>
+			this.state.stripe && (
+				<StripeProvider stripe={this.state.stripe}>
+					<MyStoreCheckout />
+				</StripeProvider>
+			)
 		);
 	}
 }

@@ -16,7 +16,10 @@ content = ""
 for p_tag in p_tags:
     content += (p_tag.text + " ")
 
-headers = {"authorization": "Token "}
+headers = {"authorization": "Token a8a5c3cc97a95105370c08b0dabd01be261e951c"}
 
-r = requests.post('http://127.0.0.1:8000/api/users/pages/',
+r = requests.post('https://radiant-harbor-75417.herokuapp.com/api/users/pages/',
                   data={'title': title}, headers=headers)
+
+# r = requests.post('http://127.0.0.1:8000/api/users/pages/',
+#                   data={'title': title}, headers=headers)

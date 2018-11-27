@@ -224,6 +224,12 @@
                         <viewLayoutGuide key="safeArea" id="hYC-nm-OsM"/>
                     </view>
                     <navigationItem key="navigationItem" id="5pe-OV-EVe">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="XoS-Ek-uJm">
+                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logOut:" destination="Enx-cX-gv1" id="6wO-lP-05d"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MSe-rK-J5c">
                             <connections>
                                 <action selector="dismissSettingsVC:" destination="Enx-cX-gv1" id="72E-gw-3zS"/>

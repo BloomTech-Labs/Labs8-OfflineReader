@@ -20,13 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppearanceHelper.setUpTheme()
         
-        if let _ = GIDSignIn.sharedInstance()?.hasAuthInKeychain() {
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            let vc = sb.instantiateInitialViewController()
-            self.window?.rootViewController = vc
-            self.window?.makeKeyAndVisible()
+        if let isSignedIn = GIDSignIn.sharedInstance()?.hasAuthInKeychain() {
+            if isSignedIn {
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let vc = sb.instantiateInitialViewController()
+                self.window?.rootViewController = vc
+                self.window?.makeKeyAndVisible()
+            }
         }
-        
         return true
     }
     

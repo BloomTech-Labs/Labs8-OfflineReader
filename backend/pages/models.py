@@ -6,5 +6,6 @@ class Article(models.Model):
     title = models.CharField(max_length=128)
     normal_url = models.TextField()
     resolved_url = models.TextField(blank=True, null=True)
-    date_saved = models.DateTimeField(default=timezone.now)
+    date_saved = models.DateTimeField(auto_now_add=True)
+    date_published = models.DateTimeField(blank=True, null=True)
     excerpt = models.TextField(blank=True, null=True)

@@ -10,6 +10,6 @@ class Article(models.Model):
     date_saved = models.DateTimeField(auto_now_add=True)
     date_published = models.DateTimeField(blank=True, null=True)
     excerpt = models.TextField(blank=True, null=True)
-    cover_image = models.TextField()
+    cover_image = models.TextField(blank=True, null=True)
     tags = models.CharField(max_length=128)
     text = models.TextField()

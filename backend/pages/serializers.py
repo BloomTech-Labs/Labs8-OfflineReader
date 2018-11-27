@@ -6,7 +6,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('title')
+        fields = ('title', 'author', 'normal_url', 'resolved_url', 'date_saved', 'date_published', 'excerpt', 'cover_image', 'tags', 'text')
         fields = '__all__'
 
 class ArticleViewSet(viewsets.ModelViewSet):

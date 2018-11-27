@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

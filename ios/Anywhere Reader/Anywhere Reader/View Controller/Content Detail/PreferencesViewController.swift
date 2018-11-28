@@ -51,6 +51,9 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var textColorTableView: UITableView!
     
+    @IBOutlet weak var textColorTableViewFullHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textColorTableViewZeroHeightConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Actions
     
@@ -74,8 +77,18 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
-    @IBAction func changeFontColor(_ sender: Any) {
-        // Unhides a not yet made font color view
+    @IBAction func toggleFontColorTableView(_ sender: Any) {
+        // Unhides font color table view
+        if textColorTableViewFullHeightConstraint.isActive {
+            textColorTableViewFullHeightConstraint.isActive = false
+            textColorTableViewZeroHeightConstraint.isActive = true
+        } else {
+            textColorTableViewZeroHeightConstraint.isActive = false
+            textColorTableViewFullHeightConstraint.isActive = true
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
     
     @IBAction func changeBackgroundColor(_ sender: Any) {

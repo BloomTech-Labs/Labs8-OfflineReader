@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { sendURL } from '../../store/actions';
+import { sendURL, fetchPages } from '../../store/actions';
+import PageList from './PageList';
 import TestScraperForm from './TestScraperForm';
 
-class App extends Component {
+class TestScraperFormContainer extends Component {
 	state = {
 		inputData: {
 			url: ''
@@ -12,7 +13,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		this.props.fetchData();
+		this.props.fetchPages();
 	}
 
 	handleInput = event => {
@@ -43,11 +44,18 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<TestScraperForm
-					inputData={this.state.inputData}
-					handleInput={this.handleInput}
-					handleURL={this.handleURL}
-				/>
+				{!this.props.dataFetched ? (
+					<h1>Loading Articles Please Wait...</h1>
+				) : (
+					<React.Fragment>
+						<TestScraperForm
+							inputData={this.state.inputData}
+							handleInput={this.handleInput}
+							handleURL={this.handleURL}
+						/>
+						<PageList pages={this.props.pages} />
+					</React.Fragment>
+				)}
 			</div>
 		);
 	}
@@ -56,6 +64,8 @@ class App extends Component {
 const mapStateToProps = state => {
 	return {
 		//Mps actions and reducers to the state
+		fetchingPages: state.fetchingPages,
+		pagesFetched: state.pagesFetched,
 		sendingURL: state.sendingURL,
 		urlSent: state.urlSent,
 		error: state.error
@@ -65,6 +75,7 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	{
+		fetchPages,
 		sendURL
 	}
-)(App);
+)(TestScraperFormContainer);

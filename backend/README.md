@@ -29,14 +29,12 @@ registers and logins user
 returns:
 `{ "key": "some-string" }`
 
-### /api/users/pages/
+### /pages/
 
 GET
-`{ "title": ""}`
-Currently returning a list of titles of all the articles that are in the database.
-This will be updated once data structure is in place.
+`{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "tags": "", "text": "" },`
+Returning a list of objects for each article that are in the database.
 
 POST
-`{ "title": ""}`
-Adding an article.
-This will be updated once data structure is in place.
+`{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "tags": "", "text": "" },`
+Adding an article. `id` is auto generated. Only `title` is required.

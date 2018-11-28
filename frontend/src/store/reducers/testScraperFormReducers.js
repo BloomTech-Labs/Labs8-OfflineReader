@@ -8,7 +8,7 @@ import {
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR
-} from '../actions/testScraperFormActions';
+} from '../actions';
 
 const initialState = {
 	pages: [],

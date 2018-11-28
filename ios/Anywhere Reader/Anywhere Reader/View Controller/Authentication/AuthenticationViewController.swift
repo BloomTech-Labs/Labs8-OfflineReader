@@ -72,10 +72,8 @@ class AuthenticationViewController: UIViewController {
     @IBAction func authenticateTapped(_ sender: Any) {
         switch isSignUp {
         case true:
-            print("Tried to sign up")
             signUpUser()
         case false:
-            print("Tried to sign in")
             loginUser()
         }
     }
@@ -230,9 +228,18 @@ class AuthenticationViewController: UIViewController {
             }
             
             guard let user = user else { return }
-
-            DispatchQueue.main.async {
-                self.didAuthenticate(user)
+            
+            AuthService.shared.loginUser(withUsername: user.username, andPassword: password) { (success, error, user) in
+                if let error = error {
+                    NSLog("Error with logging in user: \(error)")
+                    return
+                }
+                
+                guard let user = user else { return }
+                
+                DispatchQueue.main.async {
+                    self.didAuthenticate(user)
+                }
             }
         }
     }
@@ -253,7 +260,6 @@ class AuthenticationViewController: UIViewController {
                 self.didAuthenticate(user)
             }
         }
-        print("sign in called with username: \(username) \(password)")
     }
 
     private func didAuthenticate(_ user: User) {
@@ -292,12 +298,13 @@ extension AuthenticationViewController: UITextFieldDelegate {
 extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
-            print("\(error.localizedDescription)")
+            NSLog("\(error.localizedDescription)")
         } else {
             // Operations for signed in user
-            let email = user.profile.email
-            print("Email: \(String(describing: email))")
-
+            guard let username = user.profile.givenName,
+                let token = user.authentication.accessToken else { return }
+            let user = User(username: username, email: nil, password1: nil, password2: nil, key: Key(key: token))
+            User.current = user
             // Present controller
             showMainCollectionView()
         }

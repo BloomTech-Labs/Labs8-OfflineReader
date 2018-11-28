@@ -115,16 +115,6 @@ class AuthService {
 }
 
 // TODO: Temporary structure for request setup, create proper structure
-struct User: Codable {
-    static var current: User!
-    let username: String
-    let email: String?
-    let password1: String?
-    let password2: String?
-    var key: Key?
-}
-
-
 struct Key: Codable {
     let key: String
     

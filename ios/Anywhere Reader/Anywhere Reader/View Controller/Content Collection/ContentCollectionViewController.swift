@@ -14,10 +14,15 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionView.register(DocumentCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//        collectionView.register(UINib(nibName: "", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-
-        articleController.fetchLocalArticles()
+        articleController.fetchArticles(for: User.current) { (success, error) in
+            if let error = error {
+                NSLog("Error fetching articles: \(error)")
+                return
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     
@@ -39,7 +44,6 @@ class ContentCollectionViewController: UICollectionViewController {
     
     let articleController = ArticleController()
 
-    
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

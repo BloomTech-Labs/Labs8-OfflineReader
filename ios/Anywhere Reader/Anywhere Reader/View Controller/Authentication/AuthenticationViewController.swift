@@ -42,6 +42,7 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet var selectedSegmentBar: UIView!
     
     @IBOutlet weak var usernameStackView: UIStackView!
+    @IBOutlet weak var emailStackView: UIStackView!
     
     @IBOutlet var usernameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -68,7 +69,17 @@ class AuthenticationViewController: UIViewController {
         }
     }
     
-    
+    // Sign Up or Sign In tapped
+    @IBAction func authenticateTapped(_ sender: Any) {
+        switch isSignUp {
+        case true:
+            print("Tried to sign up")
+            signUpUser()
+        case false:
+            print("Tried to sign in")
+            signInUser()
+        }
+    }
     
     
     // MARK: - Private functions
@@ -160,13 +171,13 @@ class AuthenticationViewController: UIViewController {
             selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
             selectedSegmentBarLeftAnchor.isActive = true
             
-            // Hides usernameStackView
-            self.usernameStackView.isHidden = false
+            // Unhides emailStackView
+            emailStackView.isHidden = false
             
             // Animates above changes
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
-                self.usernameStackView.alpha = 1.0
+                self.emailStackView.alpha = 1.0
             })
             
             // Changes authenticateButton title
@@ -180,15 +191,15 @@ class AuthenticationViewController: UIViewController {
             let anchorConstant: CGFloat = segmentedControl.frame.width / 2.0
             selectedSegmentBarLeftAnchor = selectedSegmentBar.leftAnchor.constraint(equalTo: segmentedControl.leftAnchor, constant: anchorConstant)
             selectedSegmentBarLeftAnchor.isActive = true
-            usernameStackView.alpha = 1.0
+            emailStackView.alpha = 1.0
             
-            // Unhides usernameStackView
-            usernameStackView.isHidden = true
+            // Hides emailStackView
+            emailStackView.isHidden = true
             
             // Animates above changes
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
-                self.usernameStackView.alpha = 0.0
+                self.emailStackView.alpha = 0.0
             })
             
             // Changes authenticateButton title
@@ -202,8 +213,17 @@ class AuthenticationViewController: UIViewController {
         passwordTextField.reloadInputViews()
     }
     
-    private func authenticate() {
-        
+    private func signUpUser() {
+        guard let username = usernameTextField.text,
+            let password = passwordTextField.text,
+            let email = emailTextField.text else { return }
+        print("sign up called with username: \(username)")
+    }
+    
+    private func signInUser() {
+        guard let username = usernameTextField.text,
+            let password = passwordTextField.text else { return }
+        print("sign in called with username: \(username)")
     }
 }
 
@@ -219,7 +239,6 @@ extension AuthenticationViewController: UITextFieldDelegate {
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
             passwordTextField.resignFirstResponder()
-            authenticate()
         default:
             fatalError("No other textFields implemented")
         }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { sendURL } from '../../store/actions';
-import SmurfForm from './components/SmurfForm';
+import TestScraperForm from './TestScraperForm';
 
 class App extends Component {
 	state = {

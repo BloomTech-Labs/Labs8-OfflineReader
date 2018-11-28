@@ -26,7 +26,7 @@
                                         <real key="value" value="0.20000000000000001"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="leftHeight">
-                                        <real key="value" value="0.29999999999999999"/>
+                                        <real key="value" value="0.29099999999999998"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="primaryColor">
                                         <color key="value" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -223,6 +223,9 @@
                                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
                                                 <rect key="frame" x="0.0" y="180" width="314" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="authenticateTapped:" destination="Rcg-2l-HNe" eventType="touchUpInside" id="8W2-sS-xSw"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -267,6 +270,7 @@
                     <connections>
                         <outlet property="authenticateButton" destination="V2l-1D-De8" id="aKs-Us-yWB"/>
                         <outlet property="credentialsView" destination="HCa-DY-0V3" id="71R-JH-E6r"/>
+                        <outlet property="emailStackView" destination="Xb3-Nu-Qec" id="Ocb-Jk-MXr"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
                         <outlet property="googleSignInButton" destination="F9b-bF-vhj" id="f1N-83-Iuq"/>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 // import styled from 'styled-components';
 
+import { GoogleAuthContainer } from '../../containers';
+
 class Navi extends Component {
 	render() {
 		return (
@@ -11,6 +13,7 @@ class Navi extends Component {
 				<NavLink to="/signIn">Sign In</NavLink>
 				<NavLink to="/signUp">Sign Up</NavLink>
 				<NavLink to="/payment">Payment</NavLink>
+				<GoogleAuthContainer />
 			</div>
 		);
 	}

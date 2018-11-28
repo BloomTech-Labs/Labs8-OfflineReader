@@ -8,6 +8,7 @@ import { Navi } from '../components/Navi';
 // https://reacttraining.com/react-router/web/guides/testing
 
 describe('<Navi />', () => {
+	// TODO: Update to work with redux store https://redux.js.org/recipes/writingtests
 	it('renders without crashing', () => {
 		const div = document.createElement('div');
 		ReactDOM.render(

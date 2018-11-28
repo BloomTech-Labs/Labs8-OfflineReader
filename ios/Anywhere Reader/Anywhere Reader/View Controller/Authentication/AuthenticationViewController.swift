@@ -69,6 +69,8 @@ class AuthenticationViewController: UIViewController {
     }
     
     
+    
+    
     // MARK: - Private functions
     
     private func updateViews() {
@@ -81,7 +83,6 @@ class AuthenticationViewController: UIViewController {
     
     /// Makes sure the background is a solid color even if it happens to get layed out on top of the trapezoid gradient
     private func setUpCredentialsView() {
-        
         credentialsView.layer.cornerRadius = 5.0
         credentialsView.layer.shadowColor = UIColor.white.cgColor
         credentialsView.layer.shadowRadius = 10.0

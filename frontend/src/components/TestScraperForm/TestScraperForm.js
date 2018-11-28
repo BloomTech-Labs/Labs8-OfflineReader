@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import thunk from 'redux-thunk';
+import PropTypes from 'prop-types';
 
 class TestScraperForm extends React.Component {
 	constructor(props) {
@@ -34,5 +36,10 @@ class TestScraperForm extends React.Component {
 		);
 	}
 }
+
+TestScraperForm.propTypes = {
+	value: PropTypes.string.isRequired,
+	onChange: PropTypes.func.isRequired
+};
 
 export default TestScraperForm;

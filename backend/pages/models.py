@@ -1,16 +1,18 @@
 from django.db import models
+from django import forms
 import datetime
 
 
 class Article(models.Model):
     # django adds an auto incrementing id field by default - id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=128, blank=True, null=True)
-    author = models.CharField(max_length=128, blank=True, null=True)
-    normal_url = models.TextField(blank=True, null=True)
-    resolved_url = models.TextField(blank=True, null=True)
-    date_saved = models.DateField(default=datetime.date.today)
-    date_published = models.DateTimeField(blank=True, null=True)
-    excerpt = models.TextField(blank=True, null=True)
-    cover_image = models.TextField(blank=True, null=True)
-    tags = models.CharField(max_length=128, blank=True, null=True)
+    title = models.CharField(max_length=500)
+    author = models.CharField(max_length=500, default='')
+    normal_url = models.URLField(max_length=500, blank=True, null=True, default='')
+    resolved_url = models.URLField(blank=True, null=True, default='')
+    date_saved = models.TextField(blank=True, null=True, default='')
+    # date_saved = models.DateField(auto_now_add=True, default=datetime.now)
+    date_published = models.TextField(blank=True, null=True, default='')
+    excerpt = models.TextField(blank=True, null=True, default='')
+    cover_image = models.TextField(blank=True, null=True, default='')
+    tags = models.CharField(max_length=128, blank=True, null=True, default='')
     text = models.TextField(blank=True, null=True)

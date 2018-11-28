@@ -72,6 +72,13 @@ export default (state = initialState, action) => {
 		case LOGOUT_USER:
 			return {
 				...state,
+				user: {
+					username: '',
+					email: '',
+					firstName: '',
+					lastName: '',
+					premium: false
+				},
 				auth: { ...state.auth, googleServerToken: '' },
 				userStatus: { ...state.userStatus, success: false }
 			};

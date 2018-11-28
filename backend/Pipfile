@@ -17,6 +17,8 @@ whitenoise = "*"
 gunicorn = "*"
 requests = "*"
 "beautifulsoup4" = "*"
+"urllib3" = "*"
+"newspaper3k" = "*"
 
 [dev-packages]
 

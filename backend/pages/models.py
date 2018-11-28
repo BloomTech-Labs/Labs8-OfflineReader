@@ -1,11 +1,13 @@
 from django.db import models
 from django import forms
-import datetime
+# import datetime - in case DateField is needed later
+# from django.contrib.auth.models import User - to add user as FK later
 
 
 class Article(models.Model):
     # django adds an auto incrementing id field by default - id = models.AutoField(primary_key=True)
     #title is the only required field
+    # TODO: user = models.ForeignKey(User)
     title = models.CharField(max_length=500)
     author = models.CharField(max_length=500, default='')
     normal_url = models.URLField(max_length=500, blank=True, null=True, default='')

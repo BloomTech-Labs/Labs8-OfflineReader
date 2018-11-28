@@ -22,3 +22,4 @@ class ArticleViewSet(viewsets.ModelViewSet):
     #         return Article.objects.none()
     #     else:
     #         return Article.objects.filter(user=user)
+    # TODO: switch back once authentication is up and running

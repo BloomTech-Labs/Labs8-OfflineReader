@@ -17,11 +17,21 @@ class UserDefaultsThemeHelper {
         case defaultTitle = "Helvetica-Bold"
     }
     
+    enum ProvidedColors: String {
+        case gray
+        case tan
+        case blue
+        case green
+        case custom
+    }
+    
     
     // MARK: - User Defaults Keys
     
-    static let labelTextColorKey = "labelTextColor"
+    static let textColorKey = "textColor"
+    static let customTextColorKey = "customTextColor"
     static let backgroundColorKey = "backgroundColor"
+    static let customBackgroundColorKey = "cumstomBackgroundColor"
     static let fontSizeKey = "fontSize"
     static let bodyFontKey = "bodyFont"
     static let titleFontKey = "titleFont"
@@ -45,10 +55,10 @@ class UserDefaultsThemeHelper {
     // MARK: - Public functions
     
     public func getLabelTextColor() -> UIColor {
-        return defaults.object(forKey: UserDefaultsThemeHelper.labelTextColorKey) as? UIColor ?? .black
+        return defaults.object(forKey: UserDefaultsThemeHelper.textColorKey) as? UIColor ?? .black
     }
     public func setLabelTextColor(_ color: UIColor) {
-        defaults.set(color, forKey: UserDefaultsThemeHelper.labelTextColorKey)
+        defaults.set(color, forKey: UserDefaultsThemeHelper.textColorKey)
     }
     
     public func getBackgroundColor() -> UIColor {
@@ -76,5 +86,29 @@ class UserDefaultsThemeHelper {
     public func setBodyFont(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(size, forKey: UserDefaultsThemeHelper.fontSizeKey)
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
+    }
+    
+    public func getTextColor() -> UIColor {
+        guard let colorString = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey), let color = UserDefaultsThemeHelper.ProvidedColors(rawValue: colorString) else {
+            return .black
+        }
+        switch color {
+        case .gray:
+            return .lightGray
+        case .tan:
+            return .lightGray
+        case .blue:
+            return .lightGray
+        case .green:
+            return .lightGray
+        case .custom:
+            return .lightGray
+        }
+    }
+    public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor?) {
+        defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.textColorKey)
+        if providedColor == .custom {
+            defaults.set(customColor, forKey: UserDefaultsThemeHelper.customTextColorKey)
+        }
     }
 }

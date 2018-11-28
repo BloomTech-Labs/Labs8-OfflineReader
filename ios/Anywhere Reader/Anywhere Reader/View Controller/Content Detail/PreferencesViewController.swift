@@ -41,6 +41,7 @@ class PreferencesViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
+    @IBOutlet weak var colorSelectionTableView: UITableView!
     
     
     // MARK: - Actions

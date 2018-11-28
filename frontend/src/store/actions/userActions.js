@@ -5,8 +5,10 @@ import { apiBaseUrl } from './';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const PREMIUM_USER = 'PREMIUM_USER';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
+export const USER_MESSAGE = 'USER_MESSAGE';
 export const USER_ERROR = 'USER_ERROR';
 
 export const registerUser = newUser => {
@@ -57,5 +59,18 @@ export const logoutUser = user => {
 				})
 			)
 			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
+};
+
+export const premiumUser = (user, chargeToken) => {
+	return dispatch => {
+		dispatch({ type: PREMIUM_USER });
+		// axios
+		// 	.post(apiBaseUrl + '/something/', chargeToken)
+		// 	.then(response =>
+		// 		//the payload you're giving the API to populate the new user
+		// 		console.log(response)
+		// 	)
+		// 	.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };

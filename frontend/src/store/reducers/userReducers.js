@@ -8,10 +8,19 @@ import {
 } from '../actions';
 
 const initialState = {
-	users: [],
+	user: {
+		username: '',
+		email: '',
+		firstName: '',
+		lastName: '',
+		premium: false
+	},
+	googleClientId:
+		'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
 	userStatus: {
 		fetching: false,
 		success: false,
+		message: '',
 		error: ''
 	}
 };

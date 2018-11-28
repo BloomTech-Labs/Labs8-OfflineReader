@@ -8,7 +8,7 @@ import {
 } from '../actions/testScraperFormActions';
 
 const initialState = {
-	smurfs: [],
+	scraperResponse: [],
 	sendingURL: false,
 	error: ''
 };
@@ -24,7 +24,7 @@ export const testScraperFormReducers = (state = initialState, action) => {
 			return {
 				...state,
 				sendingURL: false,
-				smurfs: action.payload
+				scraperResponse: action.payload
 			};
 		case SUBMIT_URL_ERROR:
 			return {

@@ -1,5 +1,5 @@
 import axios from 'axios';
-export const FETCHING_DATA = 'FETCHING_DATA';
+export const FETCHING_PAGES = 'FETCHING_PAGES';
 export const PAGES_FETCHED = 'PAGES_FETCHED';
 export const PAGES_FETCH_ERROR = 'PAGES_FETCH_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
@@ -9,7 +9,7 @@ export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 export const fetchPages = () => {
 	return dispatch => {
 		//Action that indicates data is being fetched
-		dispatch({ type: FETCHING_DATA });
+		dispatch({ type: FETCHING_PAGES });
 		axios
 			.get('http://127.0.0.1:8000/api/users/pages/')
 			.then(response => {

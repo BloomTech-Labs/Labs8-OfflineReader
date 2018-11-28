@@ -4,19 +4,15 @@ import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
 class GoogleAuth extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { googClientResp: '' };
-	}
-
 	responseGoogle = response => {
+		// TODO: Remove this console.log() once we figure out the correct portion(s) of the returned response to work with
 		console.log(response);
-		// this.setState({ ...this.state, googClientResp: response });
-		this.props.loginUser();
+		// TODO: update this to the actual prop for the appropriate token when we figure out which the backend needs
+		const token = response;
+		this.props.loginUser(token);
 	};
 
 	logoutGoogle = () => {
-		// this.setState({ ...this.state, googClientResp: '' });
 		this.props.logoutUser();
 	};
 
@@ -26,10 +22,10 @@ class GoogleAuth extends Component {
     the auth window being closed by the user.*/
 	render() {
 		let authBtn;
-		if (this.state.googClientResp === '' || this.state.googClientResp.error) {
+		if (this.props.userStatus.success === false) {
 			authBtn = (
 				<GoogleLogin
-					clientId={this.props.googleClientId}
+					clientId={this.props.auth.googleClientId}
 					buttonText="Login"
 					responseType="id_token permission"
 					onSuccess={this.responseGoogle}
@@ -53,10 +49,14 @@ GoogleAuth.propTypes = {
 		lastName: PropTypes.string,
 		premium: PropTypes.bool
 	}).isRequired,
-	googleClientId: PropTypes.string.isRequired,
+	auth: PropTypes.shape({
+		googleClientId: PropTypes.string,
+		googleServerToken: PropTypes.string
+	}).isRequired,
 	userStatus: PropTypes.shape({
 		fetching: PropTypes.bool,
 		success: PropTypes.bool,
+		newUser: PropTypes.bool,
 		message: PropTypes.string,
 		error: PropTypes.string
 	}).isRequired,

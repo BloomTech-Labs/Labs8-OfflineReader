@@ -3,7 +3,8 @@ import axios from 'axios';
 import { apiBaseUrl } from './';
 
 export const REGISTER_USER = 'REGISTER_USER';
-export const LOGIN_USER = 'LOGIN_USER';
+export const LOGGING_IN_USER = 'LOGGING_IN_USER';
+export const LOGGED_IN_USER = 'LOGGED_IN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const PREMIUM_USER = 'PREMIUM_USER';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
@@ -30,15 +31,13 @@ export const registerUser = newUser => {
 
 export const loginUser = user => {
 	return dispatch => {
-		dispatch({ type: LOGIN_USER });
+		dispatch({ type: LOGGING_IN_USER });
 		axios
-			.post(apiBaseUrl + '/rest-auth/register/', user)
+			.post(apiBaseUrl + '/rest-auth/login/', user)
 			.then(response =>
 				dispatch({
-					type: LOGIN_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
+					type: LOGGED_IN_USER,
+					payload: response
 				})
 			)
 			.catch(err => dispatch({ type: USER_ERROR, err }));
@@ -56,6 +55,24 @@ export const logoutUser = user => {
 					payload: {
 						//the payload you're giving the API to populate the new user
 					}
+				})
+			)
+			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
+};
+
+export const fetchUser = token => {
+	return dispatch => {
+		dispatch({ type: FETCH_USER_DATA });
+		axios({
+			method: 'get',
+			url: apiBaseUrl + '/rest-auth/user/',
+			headers: { Authorization: 'Token ' + token }
+		})
+			.then(response =>
+				dispatch({
+					type: USER_DATA_FETCHED,
+					payload: response
 				})
 			)
 			.catch(err => dispatch({ type: USER_ERROR, err }));

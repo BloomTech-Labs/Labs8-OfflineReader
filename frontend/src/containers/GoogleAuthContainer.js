@@ -19,10 +19,14 @@ GoogleAuthContainer.propTypes = {
 		lastName: PropTypes.string,
 		premium: PropTypes.bool
 	}).isRequired,
-	googleClientId: PropTypes.string.isRequired,
+	auth: PropTypes.shape({
+		googleClientId: PropTypes.string,
+		googleServerToken: PropTypes.string
+	}).isRequired,
 	userStatus: PropTypes.shape({
 		fetching: PropTypes.bool,
 		success: PropTypes.bool,
+		newUser: PropTypes.bool,
 		message: PropTypes.string,
 		error: PropTypes.string
 	}).isRequired,
@@ -34,7 +38,7 @@ GoogleAuthContainer.propTypes = {
 const mapStateToProps = state => {
 	return {
 		user: state.userReducers.user,
-		googleClientId: state.userReducers.googleClientId,
+		auth: state.userReducers.auth,
 		userStatus: state.userReducers.userStatus
 	};
 };

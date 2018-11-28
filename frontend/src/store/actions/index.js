@@ -9,7 +9,8 @@ export {
 } from './articleActions';
 export {
 	REGISTER_USER,
-	LOGIN_USER,
+	LOGGING_IN_USER,
+	LOGGED_IN_USER,
 	LOGOUT_USER,
 	PREMIUM_USER,
 	FETCH_USER_DATA,
@@ -17,7 +18,12 @@ export {
 	USER_ERROR,
 	registerUser,
 	loginUser,
-	logoutUser
+	logoutUser,
+	fetchUser,
+	premiumUser
 } from './userActions';
 
-export const apiBaseUrl = 'https://anywhere-reader-test.herokuapp.com/api';
+export const apiBaseUrl =
+	process.env.NODE_ENV === 'production'
+		? 'https://anywhere-reader-test.herokuapp.com/api'
+		: 'http://localhost:8000/api';

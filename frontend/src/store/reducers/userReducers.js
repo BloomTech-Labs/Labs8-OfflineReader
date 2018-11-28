@@ -1,7 +1,9 @@
 import {
 	REGISTER_USER,
-	LOGIN_USER,
+	LOGGING_IN_USER,
+	LOGGED_IN_USER,
 	LOGOUT_USER,
+	PREMIUM_USER,
 	FETCH_USER_DATA,
 	USER_DATA_FETCHED,
 	USER_ERROR
@@ -15,11 +17,15 @@ const initialState = {
 		lastName: '',
 		premium: false
 	},
-	googleClientId:
-		'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
+	auth: {
+		googleClientId:
+			'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
+		googleServerToken: ''
+	},
 	userStatus: {
 		fetching: false,
 		success: false,
+		newUser: true,
 		message: '',
 		error: ''
 	}
@@ -30,53 +36,48 @@ export default (state = initialState, action) => {
 		case USER_ERROR:
 			return {
 				...state,
-				userStatus: { ...state.userStatus, error: action.err }
+				userStatus: {
+					...state.userStatus,
+					error: action.err
+				}
 			};
 
 		case FETCH_USER_DATA:
 			return { ...state, userStatus: { ...state.userStatus, fetching: true } };
 
 		case USER_DATA_FETCHED:
-			return { ...state, userStatus: { ...state.userStatus, fetching: false } };
-
-		case REGISTER_USER:
-			const newUser = { ...action.payload };
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...newUser
-					}
-				],
+				...state,
+				user: action.payload,
 				userStatus: { ...state.userStatus, fetching: false }
 			};
 
-		case LOGIN_USER:
-			const userLoggingIn = { ...action.payload };
+		case REGISTER_USER:
+			return { ...state, userStatus: { ...state.userStatus, newUser: true } };
+
+		case LOGGING_IN_USER:
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...userLoggingIn
-					}
-				],
-				userStatus: { ...state.userStatus, fetching: false }
+				...state,
+				auth: { ...state.auth, googleServerToken: '' },
+				userStatus: { ...state.userStatus, success: false }
+			};
+
+		case LOGGED_IN_USER:
+			return {
+				...state,
+				auth: { ...state.auth, googleServerToken: action.payload },
+				userStatus: { ...state.userStatus, success: true }
 			};
 
 		case LOGOUT_USER:
-			const userLoggingOut = { ...action.payload };
 			return {
-				// not sure if this should be returned
-				users: [
-					...state.users,
-					{
-						...userLoggingOut
-					}
-				],
-				userStatus: { ...state.userStatus, fetching: false }
+				...state,
+				auth: { ...state.auth, googleServerToken: '' },
+				userStatus: { ...state.userStatus, success: false }
 			};
+
+		case PREMIUM_USER:
+			return { ...state, userStatus: { ...state.userStatus, premium: true } };
 
 		default:
 			return state;

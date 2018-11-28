@@ -22,7 +22,7 @@ const initialState = {
 export const testScraperFormReducers = (state = initialState, action) => {
 	switch (action.type) {
 		case FETCHING_PAGES:
-			return { ...state, fetchingData: true };
+			return { ...state, fetchingPages: true };
 		case PAGES_FETCHED:
 			return {
 				...state,

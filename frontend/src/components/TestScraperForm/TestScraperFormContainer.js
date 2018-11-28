@@ -46,18 +46,20 @@ class TestScraperFormContainer extends Component {
 	render() {
 		return (
 			<div className="App">
-				{!this.props.dataFetched ? (
+				{/* {!this.props.pagesFetched ? (
 					<h1>Loading Articles Please Wait...</h1>
 				) : (
-					<React.Fragment>
-						<TestScraperForm
-							inputData={this.state.inputData}
-							handleInput={this.handleInput}
-							handleURL={this.handleURL}
-						/>
-						<PageList pages={this.props.pages} />
-					</React.Fragment>
-				)}
+					<React.Fragment> */}
+				<br />
+				<br />
+				<TestScraperForm
+					inputData={this.state.inputData}
+					handleInput={this.handleInput}
+					handleURL={this.handleURL}
+				/>
+				{/* <PageList pages={this.props.pages} /> */}
+				{/* </React.Fragment>
+				)} */}
 			</div>
 		);
 	}

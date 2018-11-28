@@ -5,12 +5,19 @@
 //  Created by Conner on 11/6/18.
 //  Copyright © 2018 Samantha Gatt. All rights reserved.
 //
-import UIKit
 
-class AuthenticationViewController: UIViewController, UITextFieldDelegate {
+import UIKit
+import GoogleSignIn
+
+class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().uiDelegate = self
+        
+        googleSignInButton.style = .wide
         
         updateViews()
     }
@@ -45,6 +52,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordView: GradientMaskView!
     
     @IBOutlet weak var authenticateButton: UIButton!
+    @IBOutlet var googleSignInButton: GIDSignInButton!
     
     
     // MARK: - IBActions
@@ -79,6 +87,7 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         credentialsView.layer.shadowRadius = 10.0
         credentialsView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         credentialsView.layer.shadowOpacity = 1.0
+        credentialsView.layer.opacity = 0.75
     }
     
     /// Adds gradient to authenticateButton
@@ -195,10 +204,12 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
     private func authenticate() {
         
     }
-    
-    
-    // MARK: - UITextFieldDelegate
-    
+}
+
+
+// MARK: - UITextFieldDelegate
+
+extension AuthenticationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case usernameTextField:
@@ -206,11 +217,32 @@ class AuthenticationViewController: UIViewController, UITextFieldDelegate {
         case emailTextField:
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
-            authenticate()
             passwordTextField.resignFirstResponder()
+            authenticate()
         default:
             fatalError("No other textFields implemented")
         }
         return true
+    }
+}
+
+
+// MARK: - GIDSignInDelegate
+
+extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Operations for signed in user
+            let email = user.profile.email
+            print("Email: \(String(describing: email))")
+            
+            // Present controller
+            let contentSb = UIStoryboard(name: "Main", bundle: nil)
+            let contentCollectionView = contentSb.instantiateInitialViewController() as! UINavigationController
+            
+            self.present(contentCollectionView, animated: true, completion: nil)
+        }
     }
 }

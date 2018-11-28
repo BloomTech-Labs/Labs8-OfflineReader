@@ -7,4 +7,5 @@ target 'Anywhere Reader' do
 
   # Pods for Anywhere Reader
   pod 'GoogleSignIn'
+  pod 'Stripe'
 end

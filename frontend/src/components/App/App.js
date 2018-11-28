@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import TestScraperFormContainer from '../TestScraperForm/TestScraperFormContainer';
 import {
 	SignInPage,
 	SignUpPage,
@@ -16,6 +16,7 @@ class App extends Component {
 			<Router>
 				<div>
 					<Navi />
+					<TestScraperFormContainer />
 					{/* <Route exact to="/" component={} /> */}
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />

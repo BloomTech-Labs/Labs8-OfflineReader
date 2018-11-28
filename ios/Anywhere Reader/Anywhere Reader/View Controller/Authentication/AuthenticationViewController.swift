@@ -218,6 +218,14 @@ class AuthenticationViewController: UIViewController {
             let password = passwordTextField.text,
             let email = emailTextField.text else { return }
         print("sign up called with username: \(username)")
+        AuthService.shared.registerUser(withEmail: email, andPassword: password, andUsername: username) { (success, error, key)  in
+            if let error = error {
+                NSLog("Error with registering user: \(error)")
+                return
+            }
+            
+            print(success, key?.key)
+        }
     }
     
     private func signInUser() {

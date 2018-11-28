@@ -9,17 +9,26 @@
 import Foundation
 
 class AuthService {
-    static let instance = AuthService()
-    static let baseURL = URL(string: "")!
+    static let shared = AuthService()
+    static let baseURL = URL(string: "http://localhost:8000/")!
     
     // MARK: - Registration
     func registerUser(withEmail email: String,
                       andPassword password: String,
-                      userRegistrationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+                      andUsername username: String,
+                      userRegistrationComplete: @escaping (_ status: Bool, _ error: Error?, _ key: Key?) -> ()) {
+        
         // 1. Send email and password to server and await response
         // 2. Call userRegistrationComplete completion closure with true if user registration is a success
+        
+        var key: Key?
+        
+        // http://localhost:8000/api/rest-auth/registration/
         let url = AuthService.baseURL
-        let user = User(email: email, password: password)
+            .appendingPathComponent("api")
+            .appendingPathComponent("rest-auth")
+            .appendingPathComponent("registration/")
+        let user = User(username: username, email: email, password1: password, password2: password)
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -29,56 +38,77 @@ class AuthService {
             request.httpBody = try JSONEncoder().encode(user)
         } catch {
             NSLog("Unable to encode \(user): \(error)")
-            userRegistrationComplete(false, error)
+            userRegistrationComplete(false, error, nil)
             return
         }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 NSLog("Error with registering new user: \(error)")
-                userRegistrationComplete(false, error)
+                userRegistrationComplete(false, error, nil)
                 return
             }
             
-            userRegistrationComplete(true, nil)
+            guard let data = data else { return }
+            
+            do {
+                key = try JSONDecoder().decode(Key.self, from: data)
+            } catch {
+                NSLog("Error decoding key")
+            }
+            
+            userRegistrationComplete(true, nil, key)
         }.resume()
     }
     
     // MARK: - Login User
-    func loginUser(withEmail email: String,
-                   andPassword password: String,
-                   userLoginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
-        // 1. Send email and password to server and await response
-        // 2. Call userLoginComplete completion closure if login is a success
-        let url = AuthService.baseURL
-        let user = User(email: email, password: password)
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        //  encode the user and set the httpBody to the newly encoded user
-        do {
-            request.httpBody = try JSONEncoder().encode(user)
-        } catch {
-            NSLog("Unable to encode \(user): \(error)")
-            userLoginComplete(false, error)
-            return
-        }
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            if let error = error {
-                NSLog("Error with logging in with user \(user) - \(error)")
-                userLoginComplete(false, error)
-                return
-            }
-            
-            userLoginComplete(true, nil)
-        }.resume()
-    }
+//    func loginUser(withEmail email: String,
+//                   andPassword password: String,
+//                   userLoginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+//        // 1. Send email and password to server and await response
+//        // 2. Call userLoginComplete completion closure if login is a success
+//        let url = AuthService.baseURL
+//        let user = User(email: email, password: password)
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//
+//        //  encode the user and set the httpBody to the newly encoded user
+//        do {
+//            request.httpBody = try JSONEncoder().encode(user)
+//        } catch {
+//            NSLog("Unable to encode \(user): \(error)")
+//            userLoginComplete(false, error)
+//            return
+//        }
+//
+//        URLSession.shared.dataTask(with: request) { (data, _, error) in
+//            if let error = error {
+//                NSLog("Error with logging in with user \(user) - \(error)")
+//                userLoginComplete(false, error)
+//                return
+//            }
+//
+//            userLoginComplete(true, nil)
+//        }.resume()
+//    }
 }
 
 // TODO: Temporary structure for request setup, create proper structure
 struct User: Codable {
+    let username: String
     let email: String
-    let password: String
+    let password1: String
+    let password2: String
+}
+
+
+struct Key: Codable {
+    let key: String
+    
+    enum CodingKeys: String, CodingKey {
+        case key = "key"
+    }
 }

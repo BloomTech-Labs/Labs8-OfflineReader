@@ -12,8 +12,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		//When mounted, run the sendURL action which calls the API
-		this.props.sendURL();
+		this.props.fetchData();
 	}
 
 	handleInput = event => {

@@ -132,9 +132,8 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="colorSelectionTableView" destination="wW2-yQ-ItT" id="sfq-NE-qcl"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
-                        <outlet property="tapGestureRecognizer" destination="zzO-SM-ceo" id="PdZ-xe-M5e"/>
+                        <outlet property="textColorTableView" destination="wW2-yQ-ItT" id="TEM-Lf-8A9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7p-MN-y5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,9 +19,12 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
-        colorSelectionTableView.dataSource = self
-        colorSelectionTableView.delegate = self
-        colorSelectionTableView.allowsSelection = true
+        textColorTableView.dataSource = self
+        textColorTableView.delegate = self
+        
+        let textProvidedColor = themeHelper.getTextProvidedColor()
+        let row = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
+        textColorTableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .middle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,8 +49,7 @@ class PreferencesViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
-    @IBOutlet weak var colorSelectionTableView: UITableView!
-    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
+    @IBOutlet weak var textColorTableView: UITableView!
     
     
     // MARK: - Actions
@@ -124,11 +126,12 @@ extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch tableView {
-        case colorSelectionTableView:
+        case textColorTableView:
             let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
             themeHelper.setTextColor(providedColor: providedColor)
         default:
             fatalError()
         }
+        tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
     }
 }

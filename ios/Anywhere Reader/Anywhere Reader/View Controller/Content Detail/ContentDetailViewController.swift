@@ -80,6 +80,7 @@ class ContentDetailViewController: UIViewController {
 //        view.backgroundColor = themeHelper.getBackgroundColor()
         contentBodyLabel.textColor = themeHelper.getTextColor()
         titleLabel.textColor = themeHelper.getTextColor()
+        sourceAndDateLabel.textColor = themeHelper.getTextColor()
         
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont

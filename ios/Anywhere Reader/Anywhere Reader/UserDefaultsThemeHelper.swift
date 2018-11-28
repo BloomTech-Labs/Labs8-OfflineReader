@@ -136,4 +136,9 @@ class UserDefaultsThemeHelper {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customTextColorKey)
         }
     }
+    public func getTextProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
+        let string = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) ?? "Black"
+        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+        return textProvidedColor
+    }
 }

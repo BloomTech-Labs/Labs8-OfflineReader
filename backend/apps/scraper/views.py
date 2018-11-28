@@ -11,6 +11,13 @@ class Scrape(APIView):
     def post(self, request, *args, **kwargs):
         # Pulls url off request
         url = request.data.get('url')
+        val = URLValidator(verify_exists=True)
+        # Validate URL
+        try:
+            val(url)
+        except ValidationError:
+            # Still needs to be updated
+            print("error")
         # Gets token and sets header
         auth = "Token " + str(request.auth)
 

@@ -77,9 +77,9 @@ class ContentDetailViewController: UIViewController {
     }
     
     @objc private func updateTheme() {
-        view.backgroundColor = themeHelper.getBackgroundColor()
-        contentBodyLabel.textColor = themeHelper.getLabelTextColor()
-        titleLabel.textColor = themeHelper.getLabelTextColor()
+//        view.backgroundColor = themeHelper.getBackgroundColor()
+        contentBodyLabel.textColor = themeHelper.getTextColor()
+        titleLabel.textColor = themeHelper.getTextColor()
         
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont

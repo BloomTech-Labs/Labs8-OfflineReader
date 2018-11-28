@@ -18,11 +18,13 @@ class UserDefaultsThemeHelper {
     }
     
     enum ProvidedColors: String {
-        case gray
-        case tan
-        case blue
-        case green
-        case custom
+        case black = "Black"
+        case white = "White"
+        case gray = "Gray"
+        case tan = "Tan"
+        case blue = "Blue"
+        case green = "Green"
+        case custom = "Custom"
     }
     
     
@@ -37,9 +39,16 @@ class UserDefaultsThemeHelper {
     static let titleFontKey = "titleFont"
     
     
-    // MARK: - Shared instance
+    // MARK: - Static properties
     
     static let shared = UserDefaultsThemeHelper()
+    static let providedColors: [UserDefaultsThemeHelper.ProvidedColors] = [.black,
+                                                                         .white,
+                                                                         .gray,
+                                                                         .tan,
+                                                                         .blue,
+                                                                         .green,
+                                                                         .custom]
     
     
     // MARK: - Public properties
@@ -52,32 +61,56 @@ class UserDefaultsThemeHelper {
     private let defaults = UserDefaults.standard
     
     
+    // MARK: - Private functions
+    
+    /// Returns a UIColor from a providedColor (enum) or its rawValue (string)
+    ///
+    /// Only one of the parameters should be used.
+    /// If both are entered into the function, only the string will be used.
+    private func color(fromString string: String? = nil, fromProvidedColor providedColor: UserDefaultsThemeHelper.ProvidedColors? = nil) -> UIColor {
+        
+        let color: UserDefaultsThemeHelper.ProvidedColors
+        if let string = string {
+            color = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+        } else {
+            color = providedColor ?? .black
+        }
+        
+        switch color {
+        case .black:
+            return .black
+        case .white:
+            return .white
+        case .gray:
+            return .lightGray
+        case .tan:
+            return UIColor(red:0.82, green:0.71, blue:0.55, alpha:1.0)
+        case .blue:
+            return UIColor(red:0.68, green:0.85, blue:0.90, alpha:1.0)
+        case .green:
+            return UIColor(red:0.60, green:0.98, blue:0.60, alpha:1.0)
+        case .custom:
+            // TODO: fetch from user defaults or handle somehow
+            return .black
+        }
+    }
+    
+    
     // MARK: - Public functions
     
-    public func getLabelTextColor() -> UIColor {
-        return defaults.object(forKey: UserDefaultsThemeHelper.textColorKey) as? UIColor ?? .black
-    }
-    public func setLabelTextColor(_ color: UIColor) {
-        defaults.set(color, forKey: UserDefaultsThemeHelper.textColorKey)
-    }
-    
-    public func getBackgroundColor() -> UIColor {
-        return defaults.object(forKey: UserDefaultsThemeHelper.backgroundColorKey) as? UIColor ?? .white
-    }
-    public func setBackgroundColor(_ color: UIColor) {
-        defaults.set(color, forKey: UserDefaultsThemeHelper.backgroundColorKey)
-    }
-    
+    // Title font
     public func getTitleFont() -> UIFont {
         let bodySize = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let size = bodySize + diffBetweenBodyAndTitle
         let name = defaults.string(forKey: UserDefaultsThemeHelper.titleFontKey) ?? UserDefaultsThemeHelper.FontName.defaultTitle.rawValue
         return UIFont(name: name, size: size)!
     }
+    
     public func setTitleFontName(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
     
+    // Body font
     public func getBodyFont() -> UIFont {
         let size = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let name = defaults.string(forKey: UserDefaultsThemeHelper.bodyFontKey) ?? UIFont.preferredFont(forTextStyle: .body).fontName
@@ -88,24 +121,16 @@ class UserDefaultsThemeHelper {
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
     
+    // Text color
     public func getTextColor() -> UIColor {
-        guard let colorString = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey), let color = UserDefaultsThemeHelper.ProvidedColors(rawValue: colorString) else {
+        if let colorString = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) {
+            return color(fromString: colorString)
+        } else {
             return .black
         }
-        switch color {
-        case .gray:
-            return .lightGray
-        case .tan:
-            return .lightGray
-        case .blue:
-            return .lightGray
-        case .green:
-            return .lightGray
-        case .custom:
-            return .lightGray
-        }
     }
-    public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor?) {
+    /// Only enter customColor if provededColor == .custom
+    public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
         defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.textColorKey)
         if providedColor == .custom {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customTextColorKey)

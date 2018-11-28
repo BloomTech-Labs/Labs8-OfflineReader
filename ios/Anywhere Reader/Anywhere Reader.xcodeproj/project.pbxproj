@@ -172,13 +172,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		222F5B8521AE09DF002B6436 /* Color Wheel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Color Wheel";
-			sourceTree = "<group>";
-		};
 		2233F7B921920A06001A82FF = {
 			isa = PBXGroup;
 			children = (
@@ -237,7 +230,6 @@
 			children = (
 				13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */,
 				22661E112194E5430072A4B8 /* PreferencesViewController.swift */,
-				222F5B8521AE09DF002B6436 /* Color Wheel */,
 			);
 			path = "Content Detail";
 			sourceTree = "<group>";

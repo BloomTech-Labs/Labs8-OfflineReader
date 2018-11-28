@@ -19,6 +19,9 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
+        colorSelectionTableView.dataSource = self
+        colorSelectionTableView.delegate = self
+        colorSelectionTableView.allowsSelection = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +29,10 @@ class PreferencesViewController: UIViewController {
         animateView()
     }
     
+    // TODO: Probably not needed anymore
     override func viewWillDisappear(_ animated: Bool) {
         deanimateView()
+        // NOT USING TAB BAR ANYMORE...
         // If you click on another tab without the line below, the view doesn't get dismissed
         dismiss(animated: true, completion: nil)
     }
@@ -42,6 +47,7 @@ class PreferencesViewController: UIViewController {
     
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var colorSelectionTableView: UITableView!
+    @IBOutlet var tapGestureRecognizer: UITapGestureRecognizer!
     
     
     // MARK: - Actions
@@ -99,5 +105,30 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.alpha = 0
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
+    }
+}
+
+
+// MARK: - UITableViewDelegate and DataSource
+
+extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return UserDefaultsThemeHelper.providedColors.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
+        cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch tableView {
+        case colorSelectionTableView:
+            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
+            themeHelper.setTextColor(providedColor: providedColor)
+        default:
+            fatalError()
+        }
     }
 }

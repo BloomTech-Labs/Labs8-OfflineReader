@@ -134,10 +134,11 @@
                     <connections>
                         <outlet property="colorSelectionTableView" destination="wW2-yQ-ItT" id="sfq-NE-qcl"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
+                        <outlet property="tapGestureRecognizer" destination="zzO-SM-ceo" id="PdZ-xe-M5e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7p-MN-y5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="zzO-SM-ceo">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="zzO-SM-ceo">
                     <connections>
                         <action selector="dismissFromTap:" destination="CAE-50-fah" id="Zc3-nh-YGG"/>
                     </connections>

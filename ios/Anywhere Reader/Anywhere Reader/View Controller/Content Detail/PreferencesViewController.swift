@@ -51,8 +51,7 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var textColorTableView: UITableView!
     
-    @IBOutlet weak var textColorTableViewFullHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textColorTableViewZeroHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -79,12 +78,11 @@ class PreferencesViewController: UIViewController {
     
     @IBAction func toggleFontColorTableView(_ sender: Any) {
         // Unhides font color table view
-        if textColorTableViewFullHeightConstraint.isActive {
-            textColorTableViewFullHeightConstraint.isActive = false
-            textColorTableViewZeroHeightConstraint.isActive = true
+        let heightConstant = textColorTableViewHeightConstraint.constant
+        if heightConstant == 0 {
+            textColorTableViewHeightConstraint.constant = 180
         } else {
-            textColorTableViewZeroHeightConstraint.isActive = false
-            textColorTableViewFullHeightConstraint.isActive = true
+            textColorTableViewHeightConstraint.constant = 0
         }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()

@@ -88,7 +88,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="UjQ-z5-4Zm"/>
-                                                    <constraint firstAttribute="height" constant="180" id="cA0-1h-Eik"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorCell" textLabel="Wb6-YV-X33" style="IBUITableViewCellStyleDefault" id="i1A-hE-0d3">
@@ -109,11 +108,6 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
-                                                <variation key="default">
-                                                    <mask key="constraints">
-                                                        <exclude reference="cA0-1h-Eik"/>
-                                                    </mask>
-                                                </variation>
                                             </tableView>
                                         </subviews>
                                     </stackView>
@@ -140,8 +134,7 @@
                     <connections>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="textColorTableView" destination="wW2-yQ-ItT" id="TEM-Lf-8A9"/>
-                        <outlet property="textColorTableViewFullHeightConstraint" destination="cA0-1h-Eik" id="8S1-iL-mlT"/>
-                        <outlet property="textColorTableViewZeroHeightConstraint" destination="UjQ-z5-4Zm" id="bZQ-bh-qB1"/>
+                        <outlet property="textColorTableViewHeightConstraint" destination="UjQ-z5-4Zm" id="bZQ-bh-qB1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m7p-MN-y5Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -44,6 +44,7 @@ export const loginUser = user => {
 	};
 };
 
+// TODO: Update logoutUser function once there's a better understanding of how the backend will respond
 export const logoutUser = user => {
 	return dispatch => {
 		dispatch({ type: LOGOUT_USER });

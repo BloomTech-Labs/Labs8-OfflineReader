@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from 'react-redux';
 import { sendURL } from '../../store/actions/testScraperFormActions';
 import TestScraperForm from './TestScraperForm';
@@ -13,7 +12,7 @@ class App extends Component {
 
 	componentDidMount() {
 		//When mounted, run the sendURL action which calls the API
-		this.props.fetchPages();
+		// this.props.fetchPages();
 	}
 
 	handleInput = event => {

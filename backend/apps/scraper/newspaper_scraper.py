@@ -9,11 +9,10 @@ def scrape_article(url="https://www.youtube.com/watch?v=SPAmbUZ9UKk", auth="Toke
     a.download()
     a.parse()
 
-    print(a.title)
     r = requests.post('http://127.0.0.1:8000/api/users/pages/',
                       data={'title': a.title}, headers=headers)
 
     return
 
 
-scrape_article()
+# scrape_article()

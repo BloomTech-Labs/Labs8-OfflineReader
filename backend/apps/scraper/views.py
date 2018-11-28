@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from .newspaper_scraper import scrape_article
 

@@ -1,7 +1,26 @@
 import axios from 'axios';
+export const FETCHING_DATA = 'FETCHING_DATA';
+export const PAGES_FETCHED = 'PAGES_FETCHED';
+export const PAGES_FETCH_ERROR = 'PAGES_FETCH_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
+
+export const fetchPages = () => {
+	return dispatch => {
+		//Action that indicates data is being fetched
+		dispatch({ type: FETCHING_DATA });
+		axios
+			.get('http://127.0.0.1:8000/api/users/pages/')
+			.then(response => {
+				dispatch({ type: PAGES_FETCHED, payload: response.data });
+			})
+			.catch(err => {
+				console.log(err);
+				dispatch({ type: PAGES_FETCH_ERROR });
+			});
+	};
+};
 
 export const sendURL = newURL => {
 	return dispatch => {

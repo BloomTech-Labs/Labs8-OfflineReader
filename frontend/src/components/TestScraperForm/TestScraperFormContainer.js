@@ -68,6 +68,7 @@ const mapStateToProps = state => {
 		pagesFetched: state.pagesFetched,
 		sendingURL: state.sendingURL,
 		urlSent: state.urlSent,
+		pages: state.pages,
 		error: state.error
 	};
 };

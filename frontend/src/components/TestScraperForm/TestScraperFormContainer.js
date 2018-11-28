@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from 'react-redux';
-import { sendURL, fetchPages } from '../../store/actions';
+import {
+	sendURL,
+	fetchPages
+} from '../../store/actions/testScraperFormActions';
 import PageList from './PageList';
 import TestScraperForm from './TestScraperForm';
 

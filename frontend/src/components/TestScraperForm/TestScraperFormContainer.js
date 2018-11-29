@@ -58,7 +58,7 @@ class TestScraperFormContainer extends Component {
 					handleInput={this.handleInput}
 					handleURL={this.handleURL}
 				/>
-				{/* <PageList pages={this.props.pages} /> */}
+				<PageList pages={this.props.pages} />
 				{/* </React.Fragment>
 				)} */}
 			</div>

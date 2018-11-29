@@ -10,8 +10,14 @@ export const fetchPages = () => {
 	return dispatch => {
 		//Action that indicates data is being fetched
 		dispatch({ type: FETCHING_PAGES });
+		let headers = {
+			'Content-Type': 'application/json',
+			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
+		};
 		axios
-			.get('https://anywhere-reader-test.herokuapp.com/pages/')
+			.get('https://anywhere-reader-test.herokuapp.com/pages/', {
+				headers: headers
+			})
 			.then(response => {
 				dispatch({ type: PAGES_FETCHED, payload: response.data });
 			})
@@ -27,8 +33,14 @@ export const sendURL = newURL => {
 		//Again, action to indicate an API call is about to be made, this time for a POST
 		dispatch({ type: INITIALIZE_URL_SUBMIT });
 		//Below, you're making the POST call to the API, with newURL as the object youre sending.
+		let headers = {
+			'Content-Type': 'application/json',
+			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
+		};
 		axios
-			.post('https://anywhere-reader-test.herokuapp.com/api/scrape/', newURL)
+			.post('https://anywhere-reader-test.herokuapp.com/api/scrape/', newURL, {
+				headers: headers
+			})
 			.then(response => {
 				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });

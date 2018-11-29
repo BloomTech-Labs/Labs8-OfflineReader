@@ -19,6 +19,13 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
+        let textProvidedColor = themeHelper.getTextProvidedColor()
+        let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
+        textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: false, scrollPosition: .middle)
+        
+        let backgroundProvidedColor = themeHelper.getBackgroundProvidedColor()
+        let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 1
+        backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: false, scrollPosition: .middle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,8 +33,10 @@ class PreferencesViewController: UIViewController {
         animateView()
     }
     
+    // TODO: Probably not needed anymore
     override func viewWillDisappear(_ animated: Bool) {
         deanimateView()
+        // NOT USING TAB BAR ANYMORE...
         // If you click on another tab without the line below, the view doesn't get dismissed
         dismiss(animated: true, completion: nil)
     }
@@ -41,6 +50,11 @@ class PreferencesViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
+    @IBOutlet weak var textColorTableView: UITableView!
+    @IBOutlet weak var backgroundColorTableView: UITableView!
+    
+    @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -65,12 +79,49 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
-    @IBAction func changeFontColor(_ sender: Any) {
-        // Unhides a not yet made font color view
+    @IBAction func toggleFontColorTableView(_ sender: Any) {
+        // Unhides font color table view
+        let heightConstant = textColorTableViewHeightConstraint.constant
+        if heightConstant == 0 {
+            textColorTableViewHeightConstraint.constant = 180
+            textColorTableView.isHidden = false
+        } else {
+            textColorTableViewHeightConstraint.constant = 0
+        }
+        if backgroundColorTableViewHeightConstraint.constant != 0 {
+            backgroundColorTableViewHeightConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.textColorTableViewHeightConstraint.constant == 0 {
+                self.textColorTableView.isHidden = true
+            }
+            self.backgroundColorTableView.isHidden = true
+        }
     }
     
-    @IBAction func changeBackgroundColor(_ sender: Any) {
-        // Unhides a not yet made background color view
+    @IBAction func toggleBackgroundColorTableView(_ sender: Any) {
+        // Unhides background color table view
+        let heightConstant = backgroundColorTableViewHeightConstraint.constant
+        if heightConstant == 0 {
+            backgroundColorTableViewHeightConstraint.constant = 180
+            backgroundColorTableView.isHidden = false
+        } else {
+            backgroundColorTableViewHeightConstraint.constant = 0
+        }
+        
+        if textColorTableViewHeightConstraint.constant != 0 {
+            textColorTableViewHeightConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
+                self.backgroundColorTableView.isHidden = true
+            }
+            self.textColorTableView.isHidden = true
+        }
     }
     
     @IBAction func changeFont(_ sender: Any) {
@@ -98,5 +149,36 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.alpha = 0
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
+    }
+}
+
+
+// MARK: - UITableViewDelegate and DataSource
+
+extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return UserDefaultsThemeHelper.providedColors.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
+        cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch tableView {
+        case textColorTableView:
+            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
+            themeHelper.setTextColor(providedColor: providedColor)
+            textColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        case backgroundColorTableView:
+            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
+            themeHelper.setBackgroundColor(providedColor: providedColor)
+            backgroundColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        default:
+            fatalError()
+        }
+        
     }
 }

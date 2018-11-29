@@ -33,34 +33,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Nw-f6-g8R" customClass="ShadowView" customModule="Anywhere_Reader" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </view>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="human-spider-696x522" translatesAutoresizingMaskIntoConstraints="NO" id="8un-6F-gtg">
                                             <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
                                         </imageView>
-                                        <visualEffectView clipsSubviews="YES" alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6b-x8-VEx">
-                                            <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
-                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="GmQ-F1-2LR">
-                                                <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                <subviews>
-                                                    <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RTj-zL-BhS">
-                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
-                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="fR2-47-ChB">
-                                                            <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </view>
-                                                        <vibrancyEffect>
-                                                            <blurEffect style="dark"/>
-                                                        </vibrancyEffect>
-                                                    </visualEffectView>
-                                                </subviews>
-                                            </view>
-                                            <blurEffect style="dark"/>
-                                        </visualEffectView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="qfk-b2-k0p">
                                             <rect key="frame" x="16" y="16" width="297" height="355"/>
                                             <subviews>
@@ -112,30 +87,20 @@
                                 </view>
                                 <constraints>
                                     <constraint firstItem="qfk-b2-k0p" firstAttribute="top" secondItem="Cmv-51-zLa" secondAttribute="top" constant="16" id="0g6-Jj-XZd"/>
-                                    <constraint firstItem="6Nw-f6-g8R" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="3L5-DG-Udw"/>
-                                    <constraint firstItem="n6b-x8-VEx" firstAttribute="height" secondItem="8un-6F-gtg" secondAttribute="height" id="63q-re-icw"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="width" secondItem="Cmv-51-zLa" secondAttribute="width" id="7mZ-0a-RR4"/>
                                     <constraint firstItem="qfk-b2-k0p" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="E7c-gg-Fgd"/>
                                     <constraint firstItem="qfk-b2-k0p" firstAttribute="leading" secondItem="Cmv-51-zLa" secondAttribute="leading" constant="16" id="I1m-uQ-8nl"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="KT7-eJ-GQ9"/>
-                                    <constraint firstItem="n6b-x8-VEx" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="MWy-ac-cIG"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="height" secondItem="Cmv-51-zLa" secondAttribute="height" id="OkF-2v-y6d"/>
                                     <constraint firstAttribute="trailing" secondItem="qfk-b2-k0p" secondAttribute="trailing" constant="16" id="XEc-bf-lzi"/>
                                     <constraint firstItem="8un-6F-gtg" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="dqQ-vI-Ovz"/>
-                                    <constraint firstItem="n6b-x8-VEx" firstAttribute="width" secondItem="8un-6F-gtg" secondAttribute="width" id="du6-Fc-YFc"/>
                                     <constraint firstItem="qfk-b2-k0p" firstAttribute="centerX" secondItem="Cmv-51-zLa" secondAttribute="centerX" id="eur-7z-eAl"/>
-                                    <constraint firstItem="n6b-x8-VEx" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="kzh-pL-X4O"/>
-                                    <constraint firstItem="6Nw-f6-g8R" firstAttribute="width" secondItem="8un-6F-gtg" secondAttribute="width" id="ofA-rc-zCe"/>
-                                    <constraint firstItem="6Nw-f6-g8R" firstAttribute="centerY" secondItem="Cmv-51-zLa" secondAttribute="centerY" id="olf-Sd-eaH"/>
                                     <constraint firstAttribute="bottom" secondItem="qfk-b2-k0p" secondAttribute="bottom" constant="16" id="pX8-Vb-LRz"/>
-                                    <constraint firstItem="6Nw-f6-g8R" firstAttribute="height" secondItem="8un-6F-gtg" secondAttribute="height" id="sOg-gn-qwf"/>
                                 </constraints>
                                 <size key="customSize" width="329" height="387"/>
                                 <connections>
-                                    <outlet property="blurLayer" destination="n6b-x8-VEx" id="4Bu-f7-YtY"/>
                                     <outlet property="documentTypeLabel" destination="BTA-H2-lOa" id="Fiu-aV-7HH"/>
                                     <outlet property="imageView" destination="8un-6F-gtg" id="1Xq-BQ-daY"/>
-                                    <outlet property="shadowView" destination="6Nw-f6-g8R" id="JR3-Cp-Yz3"/>
                                     <outlet property="sourceLabel" destination="Rzc-EV-HaU" id="9yc-Yl-LDT"/>
                                     <outlet property="titleLabel" destination="CDq-of-HfL" id="WJ4-tJ-odp"/>
                                     <segue destination="cgX-9W-mbb" kind="show" id="0Nx-97-0GR"/>
@@ -262,6 +227,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentBodyLabel" destination="xKE-gG-JZu" id="uhj-Ab-41R"/>
+                        <outlet property="contentView" destination="nNv-Zb-Sje" id="cuJ-7d-zmV"/>
                         <outlet property="imageView" destination="FC6-NS-OLp" id="jVc-2H-SBJ"/>
                         <outlet property="sourceAndDateLabel" destination="OV9-WJ-k0X" id="qa0-4T-0Kc"/>
                         <outlet property="titleLabel" destination="R1T-vA-bVY" id="hy3-ki-H9i"/>

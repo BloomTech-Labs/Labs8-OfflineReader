@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ContentDetailViewController: UIViewController {
     
@@ -39,6 +40,7 @@ class ContentDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
@@ -65,21 +67,19 @@ class ContentDetailViewController: UIViewController {
         guard let article = article else { return }
         
         titleLabel.text = article.title
-        contentBodyLabel.text = article.articleContent
-        do {
-            let url = URL(string: article.coverImage)!
-            let data = try Data(contentsOf: url)
-            imageView.image = UIImage(data: data)
-        }
-        catch {
-            NSLog("Error setting image in detail view")
-        }
+        contentBodyLabel.text = article.text
+        
+        let url = URL(string: article.coverImage)
+        imageView.kf.setImage(with: url)
     }
     
     @objc private func updateTheme() {
-        view.backgroundColor = themeHelper.getBackgroundColor()
-        contentBodyLabel.textColor = themeHelper.getLabelTextColor()
-        titleLabel.textColor = themeHelper.getLabelTextColor()
+        let backgroundColor = themeHelper.getBackgroundColor()
+        view.backgroundColor = backgroundColor
+        contentView.backgroundColor = backgroundColor
+        contentBodyLabel.textColor = themeHelper.getTextColor()
+        titleLabel.textColor = themeHelper.getTextColor()
+        sourceAndDateLabel.textColor = themeHelper.getTextColor()
         
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont

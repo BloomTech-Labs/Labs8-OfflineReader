@@ -15,3 +15,4 @@ def scrape_article(url, auth):
 
     new_art = r.json()
     return JsonResponse(new_art, status=201)
+

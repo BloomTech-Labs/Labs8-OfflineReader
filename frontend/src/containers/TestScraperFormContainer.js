@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-	sendURL,
-	fetchPages
-} from '../../store/actions/testScraperFormActions';
-import PageList from './PageList';
-import TestScraperForm from './TestScraperForm';
+import { sendURL, fetchPages } from '../store/actions/testScraperFormActions';
+import PageList from '../components/TestScraperForm/PageList';
+import TestScraperForm from '../components/TestScraperForm/TestScraperForm';
 
 class TestScraperFormContainer extends Component {
 	state = {

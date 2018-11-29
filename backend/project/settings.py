@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'users',
     'pages',
     'payments',
-    
+
 ]
 
 # whitenoise needs to be above everything but SecurityMiddleware. Plan accordingly.
@@ -191,6 +191,10 @@ CORS_ALLOW_HEADERS = [
     'x-requested-with',
 ]
 
-STRIPE_SECRET_KEY=config("STRIPE_SECRET_KEY")
+STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY")
 
-
+# Configure api base url Set as boolean True or False.
+if config('IS_HEROKU', cast=bool):
+    API_BASE_URL = 'https://anywhere-reader-test.herokuapp.com/'
+else:
+    API_BASE_URL = 'http://127.0.0.1:8000/'

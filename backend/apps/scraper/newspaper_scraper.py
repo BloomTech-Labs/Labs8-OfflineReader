@@ -1,5 +1,7 @@
 from newspaper import Article
 import requests
+from django.http import JsonResponse
+from project.settings import API_BASE_URL
 
 
 def scrape_article(url, auth):
@@ -7,8 +9,10 @@ def scrape_article(url, auth):
     a = Article(url)
     a.download()
     a.parse()
-# Endpoint needs to be change for dev server
-    r = requests.post('https://anywhere-reader-test.herokuapp.com/pages/',
-                      data={'title': a.title, 'cover_image': a.top_image, 'text': a.text}, headers=headers)
 
-    return
+    r = requests.post(API_BASE_URL + 'pages/',
+                      json={'title': a.title, 'cover_image': a.top_image, 'text': a.text, 'normal_url': url, 'date_published': a.publish_date}, headers=headers)
+
+    new_art = r.json()
+    return JsonResponse(new_art, status=201)
+

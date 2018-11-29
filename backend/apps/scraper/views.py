@@ -1,5 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import JsonResponse
+from django.core.validators import URLValidator
+from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from .newspaper_scraper import scrape_article
 
@@ -9,9 +11,19 @@ class Scrape(APIView):
     def post(self, request, *args, **kwargs):
         # Pulls url off request
         url = request.data.get('url')
-        # Gets token and sets header
-        auth = "Token " + "e5f6efffdaf49d83381c94a7a322266e77013428"
-        # auth = "Token " + str(request.auth)
+        val = URLValidator()
+        # Validate URL
+        try:
+            val(url)
+        except ValidationError as e:
 
-        scrape_article(url, auth)
-        return HttpResponse()
+            # Turns error into string that can be put into JSON
+            error = ''.join(e)
+            # Return JSON response back to client with message
+            return JsonResponse({"message": error}, status=422)
+        # Gets token and sets header
+        auth = "Token " + str(request.auth)
+        # Switch auth to this for JWT
+        # auth = "Bearer " + str(request.auth)
+
+        return scrape_article(url, auth)

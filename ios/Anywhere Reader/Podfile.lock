@@ -19,10 +19,12 @@ PODS:
   - GTMSessionFetcher/Core (1.2.1)
   - GTMSessionFetcher/Full (1.2.1):
     - GTMSessionFetcher/Core (= 1.2.1)
+  - Kingfisher (4.10.1)
   - Stripe (14.0.0)
 
 DEPENDENCIES:
   - GoogleSignIn
+  - Kingfisher (~> 4.0)
   - Stripe
 
 SPEC REPOS:
@@ -31,6 +33,7 @@ SPEC REPOS:
     - GoogleToolboxForMac
     - GTMOAuth2
     - GTMSessionFetcher
+    - Kingfisher
     - Stripe
 
 SPEC CHECKSUMS:
@@ -38,8 +41,9 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
 
-PODFILE CHECKSUM: 8d40fe476b07265897ba25391e6f75853065e0a7
+PODFILE CHECKSUM: 5becb9fa556b33dc340989db408cb896ba3df4dc
 
 COCOAPODS: 1.5.3

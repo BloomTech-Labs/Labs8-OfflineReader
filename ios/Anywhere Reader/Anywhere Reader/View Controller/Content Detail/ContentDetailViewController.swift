@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ContentDetailViewController: UIViewController {
     
@@ -67,14 +68,9 @@ class ContentDetailViewController: UIViewController {
         
         titleLabel.text = article.title
         contentBodyLabel.text = article.text
-        do {
-            let url = URL(string: article.coverImage)!
-            let data = try Data(contentsOf: url)
-            imageView.image = UIImage(data: data)
-        }
-        catch {
-            NSLog("Error setting image in detail view")
-        }
+        
+        let url = URL(string: article.coverImage)
+        imageView.kf.setImage(with: url)
     }
     
     @objc private func updateTheme() {

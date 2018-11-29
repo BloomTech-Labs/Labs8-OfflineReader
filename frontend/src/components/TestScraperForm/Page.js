@@ -12,7 +12,7 @@ const PageCardContainer = styled.div`
 const Page = props => {
 	return (
 		<PageCardContainer>
-			<img src={props.page.cover_image} width="100%" />
+			<img src={props.page.cover_image} width="100%" alt="" />
 			<h2>{props.page.title}</h2>
 		</PageCardContainer>
 	);

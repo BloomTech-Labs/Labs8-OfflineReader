@@ -10,7 +10,8 @@ class Scrape(APIView):
         # Pulls url off request
         url = request.data.get('url')
         # Gets token and sets header
-        auth = "Token " + str(request.auth)
+        auth = "Token " + "e5f6efffdaf49d83381c94a7a322266e77013428"
+        # auth = "Token " + str(request.auth)
 
         scrape_article(url, auth)
         return HttpResponse()

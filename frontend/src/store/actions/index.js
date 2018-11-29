@@ -22,6 +22,14 @@ export {
 	fetchUser,
 	premiumUser
 } from './userActions';
+export {
+	FETCHING_PAGES,
+	PAGES_FETCHED,
+	PAGES_FETCH_ERROR,
+	INITIALIZE_URL_SUBMIT,
+	COMPLETE_URL_SUBMIT,
+	SUBMIT_URL_ERROR
+} from './testScraperFormActions';
 
 export const apiBaseUrl =
 	process.env.NODE_ENV === 'production'

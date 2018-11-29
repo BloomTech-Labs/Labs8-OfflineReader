@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendURL } from '../../store/actions/testScraperFormActions';
-import TestScraperForm from './TestScraperForm';
+import { sendURL, fetchPages } from '../store/actions/testScraperFormActions';
+import PageList from '../components/TestScraperForm/PageList';
+import TestScraperForm from '../components/TestScraperForm/TestScraperForm';
 
-class App extends Component {
+class TestScraperFormContainer extends Component {
 	state = {
 		inputData: {
 			url: ''
@@ -11,8 +12,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		//When mounted, run the sendURL action which calls the API
-		// this.props.fetchPages();
+		this.props.fetchPages();
 	}
 
 	handleInput = event => {
@@ -29,6 +29,7 @@ class App extends Component {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
 		this.props.sendURL(this.state.inputData);
+		console.log('inputData:' + this.state.inputData);
 		this.resetForm();
 	};
 
@@ -42,12 +43,21 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div>
+				{/* {!this.props.pagesFetched ? (
+					<h1>Loading Articles Please Wait...</h1>
+				) : (
+					<React.Fragment> */}
+				<br />
+				<br />
 				<TestScraperForm
 					inputData={this.state.inputData}
 					handleInput={this.handleInput}
 					handleURL={this.handleURL}
 				/>
+				<PageList pages={this.props.pages} />
+				{/* </React.Fragment>
+				)} */}
 			</div>
 		);
 	}
@@ -56,15 +66,19 @@ class App extends Component {
 const mapStateToProps = state => {
 	return {
 		//Mps actions and reducers to the state
-		sendingURL: state.sendingURL,
-		urlSent: state.urlSent,
-		error: state.error
+		fetchingPages: state.testScraperFormReducers.fetchingPages,
+		pagesFetched: state.testScraperFormReducers.pagesFetched,
+		sendingURL: state.testScraperFormReducers.sendingURL,
+		urlSent: state.testScraperFormReducers.urlSent,
+		pages: state.testScraperFormReducers.pages,
+		error: state.testScraperFormReducers.error
 	};
 };
 
 export default connect(
 	mapStateToProps,
 	{
+		fetchPages,
 		sendURL
 	}
-)(App);
+)(TestScraperFormContainer);

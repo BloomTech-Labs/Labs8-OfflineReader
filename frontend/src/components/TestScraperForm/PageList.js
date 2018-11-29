@@ -2,6 +2,7 @@ import React from 'react';
 import Page from './Page';
 
 const PageList = props => {
+	console.log('props are:', props);
 	return (
 		<div>
 			<h1>Your Pages:</h1>
@@ -11,4 +12,5 @@ const PageList = props => {
 		</div>
 	);
 };
+
 export default PageList;

@@ -46,7 +46,7 @@ class TestScraperFormContainer extends Component {
 
 	render() {
 		return (
-			<div className="App">
+			<div>
 				{/* {!this.props.pagesFetched ? (
 					<h1>Loading Articles Please Wait...</h1>
 				) : (
@@ -69,12 +69,12 @@ class TestScraperFormContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		//Mps actions and reducers to the state
-		fetchingPages: state.fetchingPages,
-		pagesFetched: state.pagesFetched,
-		sendingURL: state.sendingURL,
-		urlSent: state.urlSent,
-		pages: state.pages,
-		error: state.error
+		fetchingPages: state.testScraperFormReducers.fetchingPages,
+		pagesFetched: state.testScraperFormReducers.pagesFetched,
+		sendingURL: state.testScraperFormReducers.sendingURL,
+		urlSent: state.testScraperFormReducers.urlSent,
+		pages: state.testScraperFormReducers.pages,
+		error: state.testScraperFormReducers.error
 	};
 };
 

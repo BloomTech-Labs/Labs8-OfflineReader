@@ -14,6 +14,7 @@ export const fetchPages = () => {
 			'Content-Type': 'application/json',
 			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
 		};
+		//TODO: remove hard coded auth header
 		axios
 			.get('https://anywhere-reader-test.herokuapp.com/pages/', {
 				headers: headers
@@ -23,7 +24,7 @@ export const fetchPages = () => {
 
 				dispatch({
 					type: PAGES_FETCHED,
-					payload: JSON.stringify(response.data)
+					payload: response.data
 				});
 			})
 			.catch(err => {

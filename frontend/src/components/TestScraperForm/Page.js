@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const PageCardContainer = styled.div`
 	border-radius: 5px;
 	margin: 3rem;
-	padding: 1rem;
+	padding: 0.2rem;
 	width: 300px;
 	box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
 `;

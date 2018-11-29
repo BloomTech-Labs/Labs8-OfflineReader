@@ -18,10 +18,10 @@ class App extends Component {
 					<Navi />
 					<TestScraperFormContainer />
 					{/* <Route exact to="/" component={} /> */}
-					<Route
+					{/* <Route
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
-					/>
+					/> */}
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />
 					<Route path="/signedIn" component={SignedIn} />

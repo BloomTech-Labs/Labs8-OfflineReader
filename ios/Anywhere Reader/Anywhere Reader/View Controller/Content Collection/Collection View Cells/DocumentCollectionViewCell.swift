@@ -24,7 +24,6 @@ class DocumentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var documentTypeLabel: UILabel!
     @IBOutlet weak var blurLayer: UIVisualEffectView!
-    @IBOutlet weak var shadowView: ShadowView!
     
     // MARK: - Functions
     func updateViews() {

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
@@ -16,9 +16,14 @@ class Scrape(APIView):
         try:
             val(url)
         except ValidationError as e:
+
+            # Turns error into string that can be put into JSON
+            error = ''.join(e)
             # Return JSON response back to client with message
-            return JsonResponse({"message": "Invalid URL"}, status=422)
+            return JsonResponse({"message": error}, status=422)
         # Gets token and sets header
         auth = "Token " + str(request.auth)
+        # Switch auth to this for JWT
+        # auth = "Bearer " + str(request.auth)
 
         return scrape_article(url, auth)

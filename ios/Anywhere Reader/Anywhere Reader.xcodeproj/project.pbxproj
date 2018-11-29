@@ -35,7 +35,6 @@
 		2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */; };
 		22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */; };
 		22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */; };
-		22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E0C219380900072A4B8 /* ContentImageView.swift */; };
 		22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */; };
 		22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E112194E5430072A4B8 /* PreferencesViewController.swift */; };
 		D3B4E9C9EFA70C8B02FC3CCF /* Pods_Anywhere_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */; };
@@ -74,7 +73,6 @@
 		2233F7D121920A09001A82FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentCollectionViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
-		22661E0C219380900072A4B8 /* ContentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImageView.swift; sourceTree = "<group>"; };
 		22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualPreferencesPanel.storyboard; sourceTree = "<group>"; };
 		22661E112194E5430072A4B8 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anywhere_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,7 +212,6 @@
 			children = (
 				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
 				22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */,
-				22661E0C219380900072A4B8 /* ContentImageView.swift */,
 				22661E0B2193780B0072A4B8 /* Collection View Cells */,
 			);
 			path = "Content Collection";
@@ -422,7 +419,6 @@
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
 				13F945E421AF4CC80019A3D2 /* User.swift in Sources */,
-				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
 				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
 				22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */,

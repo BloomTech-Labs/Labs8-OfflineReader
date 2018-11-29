@@ -19,7 +19,12 @@ export const fetchPages = () => {
 				headers: headers
 			})
 			.then(response => {
-				dispatch({ type: PAGES_FETCHED, payload: response.data });
+				console.log('response:' + JSON.stringify(response.data));
+
+				dispatch({
+					type: PAGES_FETCHED,
+					payload: JSON.stringify(response.data)
+				});
 			})
 			.catch(err => {
 				console.log(err);

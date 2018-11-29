@@ -39,6 +39,7 @@ class ContentDetailViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
@@ -77,7 +78,9 @@ class ContentDetailViewController: UIViewController {
     }
     
     @objc private func updateTheme() {
-//        view.backgroundColor = themeHelper.getBackgroundColor()
+        let backgroundColor = themeHelper.getBackgroundColor()
+        view.backgroundColor = backgroundColor
+        contentView.backgroundColor = backgroundColor
         contentBodyLabel.textColor = themeHelper.getTextColor()
         titleLabel.textColor = themeHelper.getTextColor()
         sourceAndDateLabel.textColor = themeHelper.getTextColor()

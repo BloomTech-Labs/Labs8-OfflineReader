@@ -141,4 +141,23 @@ class UserDefaultsThemeHelper {
         let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
         return textProvidedColor
     }
+    
+    public func getBackgroundColor() -> UIColor {
+        if let colorString = defaults.string(forKey: UserDefaultsThemeHelper.backgroundColorKey) {
+            return color(fromString: colorString)
+        } else {
+            return .white
+        }
+    }
+    public func setBackgroundColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
+        defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.backgroundColorKey)
+        if providedColor == .custom {
+            defaults.set(customColor, forKey: UserDefaultsThemeHelper.customBackgroundColorKey)
+        }
+    }
+    public func getBackgroundProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
+        let string = defaults.string(forKey: UserDefaultsThemeHelper.backgroundColorKey) ?? "Black"
+        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+        return textProvidedColor
+    }
 }

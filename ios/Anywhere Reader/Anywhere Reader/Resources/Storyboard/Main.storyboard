@@ -262,6 +262,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentBodyLabel" destination="xKE-gG-JZu" id="uhj-Ab-41R"/>
+                        <outlet property="contentView" destination="nNv-Zb-Sje" id="cuJ-7d-zmV"/>
                         <outlet property="imageView" destination="FC6-NS-OLp" id="jVc-2H-SBJ"/>
                         <outlet property="sourceAndDateLabel" destination="OV9-WJ-k0X" id="qa0-4T-0Kc"/>
                         <outlet property="titleLabel" destination="R1T-vA-bVY" id="hy3-ki-H9i"/>

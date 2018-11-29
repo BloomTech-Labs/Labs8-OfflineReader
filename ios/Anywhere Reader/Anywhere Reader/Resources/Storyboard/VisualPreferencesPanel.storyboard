@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO9-Zr-eZZ">
-                                <rect key="frame" x="418" y="64" width="350" height="107"/>
+                                <rect key="frame" x="418" y="64" width="350" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="CAt-kV-XyY">
-                                        <rect key="frame" x="20" y="20" width="310" height="67"/>
+                                        <rect key="frame" x="20" y="20" width="310" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W1j-1a-NJB">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="60"/>
@@ -65,7 +65,7 @@
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="changeBackgroundColor:" destination="CAE-50-fah" eventType="touchUpInside" id="eI8-w3-Lr4"/>
+                                                            <action selector="toggleBackgroundColorTableView:" destination="CAE-50-fah" eventType="touchUpInside" id="eI8-w3-Lr4"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-kl-jNC">
@@ -83,8 +83,8 @@
                                                     <constraint firstAttribute="height" constant="60" id="aFT-uA-B7b"/>
                                                 </constraints>
                                             </stackView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wW2-yQ-ItT">
-                                                <rect key="frame" x="0.0" y="67" width="310" height="0.0"/>
+                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wW2-yQ-ItT">
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="0.0"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="UjQ-z5-4Zm"/>
@@ -108,6 +108,40 @@
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="CAE-50-fah" id="LW6-dg-Z4w"/>
+                                                    <outlet property="delegate" destination="CAE-50-fah" id="ELE-gP-M6O"/>
+                                                </connections>
+                                            </tableView>
+                                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JrM-RH-QFU">
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="0.0"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="yCn-bn-3T6"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorCell" textLabel="IOl-7p-qDI" style="IBUITableViewCellStyleDefault" id="ZPU-tC-30F">
+                                                        <rect key="frame" x="0.0" y="28" width="310" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZPU-tC-30F" id="Pqy-hB-sOJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Color Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IOl-7p-qDI">
+                                                                    <rect key="frame" x="15" y="0.0" width="280" height="43.5"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="CAE-50-fah" id="G9A-SR-Kvo"/>
+                                                    <outlet property="delegate" destination="CAE-50-fah" id="OVX-Du-U5f"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                     </stackView>
@@ -132,6 +166,8 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="backgroundColorTableView" destination="JrM-RH-QFU" id="Uqe-r9-W50"/>
+                        <outlet property="backgroundColorTableViewHeightConstraint" destination="yCn-bn-3T6" id="cNj-a6-ki7"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="textColorTableView" destination="wW2-yQ-ItT" id="TEM-Lf-8A9"/>
                         <outlet property="textColorTableViewHeightConstraint" destination="UjQ-z5-4Zm" id="bZQ-bh-qB1"/>

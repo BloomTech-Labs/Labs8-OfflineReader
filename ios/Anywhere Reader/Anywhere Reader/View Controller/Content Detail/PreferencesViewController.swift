@@ -19,12 +19,13 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
-        textColorTableView.dataSource = self
-        textColorTableView.delegate = self
-        
         let textProvidedColor = themeHelper.getTextProvidedColor()
-        let row = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
-        textColorTableView.selectRow(at: IndexPath(row: row, section: 0), animated: true, scrollPosition: .middle)
+        let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
+        textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: false, scrollPosition: .middle)
+        
+        let backgroundProvidedColor = themeHelper.getBackgroundProvidedColor()
+        let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 1
+        backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: false, scrollPosition: .middle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,8 +51,10 @@ class PreferencesViewController: UIViewController {
     
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var textColorTableView: UITableView!
+    @IBOutlet weak var backgroundColorTableView: UITableView!
     
     @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -81,16 +84,44 @@ class PreferencesViewController: UIViewController {
         let heightConstant = textColorTableViewHeightConstraint.constant
         if heightConstant == 0 {
             textColorTableViewHeightConstraint.constant = 180
+            textColorTableView.isHidden = false
         } else {
+            textColorTableViewHeightConstraint.constant = 0
+        }
+        if backgroundColorTableViewHeightConstraint.constant != 0 {
+            backgroundColorTableViewHeightConstraint.constant = 0
+        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            if self.textColorTableViewHeightConstraint.constant == 0 {
+                self.textColorTableView.isHidden = true
+            }
+            self.backgroundColorTableView.isHidden = true
+        }
+    }
+    
+    @IBAction func toggleBackgroundColorTableView(_ sender: Any) {
+        // Unhides background color table view
+        let heightConstant = backgroundColorTableViewHeightConstraint.constant
+        if heightConstant == 0 {
+            backgroundColorTableViewHeightConstraint.constant = 180
+            backgroundColorTableView.isHidden = false
+        } else {
+            backgroundColorTableViewHeightConstraint.constant = 0
+        }
+        
+        if textColorTableViewHeightConstraint.constant != 0 {
             textColorTableViewHeightConstraint.constant = 0
         }
         UIView.animate(withDuration: 0.3, animations: {
             self.view.layoutIfNeeded()
-        })
-    }
-    
-    @IBAction func changeBackgroundColor(_ sender: Any) {
-        // Unhides a not yet made background color view
+        }) { _ in
+            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
+                self.backgroundColorTableView.isHidden = true
+            }
+            self.textColorTableView.isHidden = true
+        }
     }
     
     @IBAction func changeFont(_ sender: Any) {
@@ -140,9 +171,14 @@ extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource 
         case textColorTableView:
             let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
             themeHelper.setTextColor(providedColor: providedColor)
+            textColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        case backgroundColorTableView:
+            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
+            themeHelper.setBackgroundColor(providedColor: providedColor)
+            backgroundColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
         default:
             fatalError()
         }
-        tableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        
     }
 }

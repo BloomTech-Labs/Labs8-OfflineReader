@@ -4,6 +4,7 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from .newspaper_scraper import scrape_article
+from .youtube_scraper import scrape_youtube
 
 
 class Scrape(APIView):
@@ -26,4 +27,11 @@ class Scrape(APIView):
         # Switch auth to this for JWT
         # auth = "Bearer " + str(request.auth)
 
+        return select_scraper(url, auth)
+
+
+def select_scraper(url, auth):
+    if "www.youtube.com" in url:
+        return scrape_youtube(url, auth)
+    else:
         return scrape_article(url, auth)

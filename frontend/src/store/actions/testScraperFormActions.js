@@ -50,6 +50,19 @@ export const sendURL = newURL => {
 			.then(response => {
 				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
+
+				axios
+					.get('https://anywhere-reader-test.herokuapp.com/pages/', {
+						headers: headers
+					})
+					.then(response => {
+						// console.log('response:' + JSON.stringify(response.data));
+
+						dispatch({
+							type: PAGES_FETCHED,
+							payload: response.data
+						});
+					});
 			})
 			.catch(err => {
 				console.log(err);

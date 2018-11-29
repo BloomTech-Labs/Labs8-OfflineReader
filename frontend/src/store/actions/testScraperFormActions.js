@@ -11,7 +11,7 @@ export const fetchPages = () => {
 		//Action that indicates data is being fetched
 		dispatch({ type: FETCHING_PAGES });
 		axios
-			.get('https://anywhere-reader-test.herokuapp.com/api/users/pages/')
+			.get('https://anywhere-reader-test.herokuapp.com/pages/')
 			.then(response => {
 				dispatch({ type: PAGES_FETCHED, payload: response.data });
 			})

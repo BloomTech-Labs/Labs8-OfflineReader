@@ -32,6 +32,7 @@ class TestScraperFormContainer extends Component {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
 		this.props.sendURL(this.state.inputData);
+		console.log('inputData:' + this.state.inputData);
 		this.resetForm();
 	};
 

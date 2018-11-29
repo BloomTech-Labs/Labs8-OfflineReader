@@ -20,7 +20,7 @@ export const fetchPages = () => {
 				headers: headers
 			})
 			.then(response => {
-				console.log('response:' + JSON.stringify(response.data));
+				// console.log('response:' + JSON.stringify(response.data));
 
 				dispatch({
 					type: PAGES_FETCHED,

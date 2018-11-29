@@ -26,7 +26,7 @@ export const testScraperFormReducers = (state = initialState, action) => {
 		case PAGES_FETCHED:
 			return {
 				...state,
-				pages: action.payload,
+				pages: action.payload.reverse(),
 				fetchingPages: false,
 				pagesFetched: true
 			};

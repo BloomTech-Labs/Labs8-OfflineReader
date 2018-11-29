@@ -29,16 +29,24 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Actions
 
     @IBAction func addNewContent(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "AddNewContent", bundle: nil)
-        guard let addNewContentVC = storyboard.instantiateInitialViewController() else { return }
-        addNewContentVC.providesPresentationContextTransitionStyle = true
-        addNewContentVC.definesPresentationContext = true
-        addNewContentVC.modalPresentationStyle = .overCurrentContext
-        addNewContentVC.modalTransitionStyle = .crossDissolve
-        
-        self.present(addNewContentVC, animated: true, completion: nil)
+        let addLinkDialog = UIAlertController(title: "Add", message: "Insert article link", preferredStyle: .alert)
+        let save = UIAlertAction(title: "Save", style: .default, handler: { (action) -> Void in
+            if let userInput = addLinkDialog.textFields?[0].text {
+                // Kick off scraper
+                print("User entered \(userInput)")
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        addLinkDialog.addAction(save)
+        addLinkDialog.addAction(cancel)
+        addLinkDialog.addTextField { (textField) -> Void in
+            textField.placeholder = "http://cnn.com"
+            textField.layer.borderColor = UIColor.darkGray.cgColor
+        }
+        self.present(addLinkDialog, animated: true, completion: nil)
     }
-
 
     // MARK: - Properties
     

@@ -66,7 +66,7 @@ class ContentDetailViewController: UIViewController {
         guard let article = article else { return }
         
         titleLabel.text = article.title
-        contentBodyLabel.text = article.articleContent
+        contentBodyLabel.text = article.text
         do {
             let url = URL(string: article.coverImage)!
             let data = try Data(contentsOf: url)

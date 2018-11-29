@@ -41,8 +41,6 @@ final class APIService {
                 completion(Result.failure(error))
                 return
             }
-            
-            print(data as Any)
             completion(Result.success)
         }).resume()
     }

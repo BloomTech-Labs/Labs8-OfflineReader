@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppearanceHelper.setUpTheme()
         
         if let isSignedIn = GIDSignIn.sharedInstance()?.hasAuthInKeychain() {
-            if isSignedIn {
+            GIDSignIn.sharedInstance()?.signInSilently()
+            if isSignedIn && GIDSignIn.sharedInstance()?.currentUser != nil {
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let vc = sb.instantiateInitialViewController()
                 self.window?.rootViewController = vc

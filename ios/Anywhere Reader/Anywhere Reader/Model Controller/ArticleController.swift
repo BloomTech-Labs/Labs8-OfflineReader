@@ -49,7 +49,7 @@ class ArticleController {
     func fetchArticles(for user: User, fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         do {
             let mockData = try Data(contentsOf: mockDataURL)
-            self.articles = Array(try JSONDecoder().decode(Articles.self, from: mockData).articles)
+            self.articles = try JSONDecoder().decode(Articles.self, from: mockData)
         } catch {
             NSLog("Error decoding example data: \(error)")
         }

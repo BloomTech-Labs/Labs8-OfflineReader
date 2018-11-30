@@ -7,7 +7,8 @@ import {
 	SignedIn,
 	SignedUp,
 	Navi,
-	StripeProviderStub
+	StripeProviderStub,
+	Settings
 } from '../';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
 					<Route path="/signedIn" component={SignedIn} />
 					<Route path="/signedUp" component={SignedUp} />
 					<Route path="/payment" component={StripeProviderStub} />
+					<Route path="/settings" component={Settings} />
 				</div>
 			</Router>
 		);

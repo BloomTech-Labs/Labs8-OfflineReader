@@ -9,7 +9,7 @@ class Navi extends Component {
 		return (
 			<div>
 				<h3>Anywhere Reader</h3>
-				<NavLink exact to="/landingpage">
+				<NavLink exact to="/">
 					Home
 				</NavLink>
 				<NavLink to="/testScraperFormContainer"> My Pages </NavLink>

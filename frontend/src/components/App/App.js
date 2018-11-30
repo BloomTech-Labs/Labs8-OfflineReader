@@ -23,7 +23,7 @@ class App extends Component {
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
 					/>
-					<Route path="/landingpage" component={LandingPage} />
+					<Route path="/" component={LandingPage} />
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />
 					<Route path="/signedIn" component={SignedIn} />

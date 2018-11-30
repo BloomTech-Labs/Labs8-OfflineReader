@@ -46,15 +46,41 @@ class PreferencesViewController: UIViewController {
     
     private let themeHelper = UserDefaultsThemeHelper.shared
     
+    private var textColorIsHidden = true {
+        didSet {
+            if oldValue != textColorIsHidden {
+                animateDetailViews()
+            }
+        }
+    }
+    private var backgroundColorIsHidden = true {
+        didSet {
+            if oldValue != backgroundColorIsHidden {
+                animateDetailViews()
+            }
+        }
+    }
+    private var fontIsHidden = true {
+        didSet {
+            if oldValue != fontIsHidden {
+                animateDetailViews()
+            }
+        }
+    }
+    
     
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
+    @IBOutlet weak var detailStackView: UIStackView!
     @IBOutlet weak var textColorTableView: UITableView!
     @IBOutlet weak var backgroundColorTableView: UITableView!
+    @IBOutlet weak var fontTableView: UITableView!
     
-    @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var detailStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var textColorWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundColorWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var fontWidthConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -79,53 +105,78 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
-    @IBAction func toggleFontColorTableView(_ sender: Any) {
-        // Unhides font color table view
-        let heightConstant = textColorTableViewHeightConstraint.constant
-        if heightConstant == 0 {
-            textColorTableViewHeightConstraint.constant = 180
-            textColorTableView.isHidden = false
+    @IBAction func toggleTextColorTableView(_ sender: Any) {
+        
+        if textColorIsHidden {
+            textColorIsHidden = false
+            backgroundColorIsHidden = true
+            fontIsHidden = true
         } else {
-            textColorTableViewHeightConstraint.constant = 0
+            textColorIsHidden = true
         }
-        if backgroundColorTableViewHeightConstraint.constant != 0 {
-            backgroundColorTableViewHeightConstraint.constant = 0
-        }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            if self.textColorTableViewHeightConstraint.constant == 0 {
-                self.textColorTableView.isHidden = true
-            }
-            self.backgroundColorTableView.isHidden = true
-        }
+        
+        // Unhides font color table view
+//        let heightConstant = textColorTableViewHeightConstraint.constant
+//        if heightConstant == 0 {
+//            textColorTableViewHeightConstraint.constant = 180
+//            textColorTableView.isHidden = false
+//        } else {
+//            textColorTableViewHeightConstraint.constant = 0
+//        }
+//        if backgroundColorTableViewHeightConstraint.constant != 0 {
+//            backgroundColorTableViewHeightConstraint.constant = 0
+//        }
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.view.layoutIfNeeded()
+//        }) { _ in
+//            if self.textColorTableViewHeightConstraint.constant == 0 {
+//                self.textColorTableView.isHidden = true
+//            }
+//            self.backgroundColorTableView.isHidden = true
+//        }
     }
     
     @IBAction func toggleBackgroundColorTableView(_ sender: Any) {
-        // Unhides background color table view
-        let heightConstant = backgroundColorTableViewHeightConstraint.constant
-        if heightConstant == 0 {
-            backgroundColorTableViewHeightConstraint.constant = 180
-            backgroundColorTableView.isHidden = false
+        
+        if backgroundColorIsHidden {
+            backgroundColorIsHidden = false
+            textColorIsHidden = true
+            fontIsHidden = true
         } else {
-            backgroundColorTableViewHeightConstraint.constant = 0
+            backgroundColorIsHidden = true
         }
         
-        if textColorTableViewHeightConstraint.constant != 0 {
-            textColorTableViewHeightConstraint.constant = 0
-        }
-        UIView.animate(withDuration: 0.3, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
-                self.backgroundColorTableView.isHidden = true
-            }
-            self.textColorTableView.isHidden = true
-        }
+        // Unhides background color table view
+//        let heightConstant = backgroundColorTableViewHeightConstraint.constant
+//        if heightConstant == 0 {
+//            backgroundColorTableViewHeightConstraint.constant = 180
+//            backgroundColorTableView.isHidden = false
+//        } else {
+//            backgroundColorTableViewHeightConstraint.constant = 0
+//        }
+//        
+//        if textColorTableViewHeightConstraint.constant != 0 {
+//            textColorTableViewHeightConstraint.constant = 0
+//        }
+//        UIView.animate(withDuration: 0.3, animations: {
+//            self.view.layoutIfNeeded()
+//        }) { _ in
+//            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
+//                self.backgroundColorTableView.isHidden = true
+//            }
+//            self.textColorTableView.isHidden = true
+//        }
     }
     
-    @IBAction func changeFont(_ sender: Any) {
-        // Unhides a not yet made font choice view
+    @IBAction func toggleFontTableView(_ sender: Any) {
+        // Unhides font choice textField
+        if fontIsHidden {
+            fontIsHidden = false
+            backgroundColorIsHidden = true
+            textColorIsHidden = true
+        } else {
+            fontIsHidden = true
+        }
     }
     
     
@@ -150,6 +201,62 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
     }
+    
+    
+    
+    private func animateDetailViews() {
+        
+        var shouldHideStackView: Bool
+        
+        // If any of the detail views has been unhidden
+        if !textColorIsHidden || !backgroundColorIsHidden || !fontIsHidden {
+            // Unhide the detailStackView
+            shouldHideStackView = false
+        // If none of them are unhidden
+        } else {
+            // Hide the stack view
+            shouldHideStackView = true
+        }
+        
+        // If the stack view should be hidden
+        if shouldHideStackView {
+            detailStackViewHeightConstraint.constant = 0
+            textColorWidthConstraint.constant = 0
+            backgroundColorWidthConstraint.constant = 0
+            fontWidthConstraint.constant = 0
+        // If the stack view should be visible
+        } else {
+            detailStackViewHeightConstraint.constant = 180
+            
+            if !textColorIsHidden {
+                backgroundColorWidthConstraint.constant = 0
+                fontWidthConstraint.constant = 0
+                textColorWidthConstraint.constant = 310
+            } else if !backgroundColorIsHidden {
+                textColorWidthConstraint.constant = 0
+                fontWidthConstraint.constant = 0
+                backgroundColorWidthConstraint.constant = 310
+            } else if !fontIsHidden {
+                textColorWidthConstraint.constant = 0
+                backgroundColorWidthConstraint.constant = 0
+                fontWidthConstraint.constant = 310
+            }
+        }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutSubviews()
+        }) { _ in
+            self.detailStackView.isHidden = shouldHideStackView
+            self.textColorTableView.isHidden = self.textColorIsHidden
+            self.backgroundColorTableView.isHidden = self.backgroundColorIsHidden
+            self.fontTableView.isHidden = self.fontIsHidden
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 
@@ -157,13 +264,22 @@ class PreferencesViewController: UIViewController {
 
 extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsThemeHelper.providedColors.count
+        if tableView == fontTableView {
+            return UserDefaultsThemeHelper.fontNames.count
+        } else {
+            return UserDefaultsThemeHelper.providedColors.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
-        cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
-        return cell
+        if tableView == fontTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FontCell", for: indexPath)
+            cell.textLabel?.text = UserDefaultsThemeHelper.fontNames[indexPath.row].rawValue
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
+            cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
+            return cell}
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -176,6 +292,8 @@ extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource 
             let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
             themeHelper.setBackgroundColor(providedColor: providedColor)
             backgroundColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
+        case fontTableView:
+            return
         default:
             fatalError()
         }

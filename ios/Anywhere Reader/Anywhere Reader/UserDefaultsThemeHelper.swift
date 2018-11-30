@@ -13,11 +13,35 @@ class UserDefaultsThemeHelper {
     // MARK: - Font name enum
     
     enum FontName: String {
-        case defaultBody = "Helvetica"
-        case defaultTitle = "Helvetica-Bold"
+        case helvetica = "Helvetica"
+        case helveticaBold = "Helvetica-Bold"
+        
+        case georgia = "Georgia"
+        case georgiaBold = "Georgia-Bold"
+        
+        case verdana = "Verdana"
+        case verdanaBold = "Verdana-Bold"
+        
+        case americanTypewriter = "AmericanTypewriter"
+        case americanTypewriterBold = "AmericanTypewriter-Bold"
+//
+//        case ptSerif
+//        case ptSerifBold
+//
+//        case quicksand
+//        case quicksandBold
+//
+//        case rooney
+//        case rooneyBold
+//
+//        case ubuntu
+//        case ubuntuBold
+//
+        case futura = "Futura-Medium"
+        case futuraBold = "Futura-Bold"
     }
     
-    enum ProvidedColors: String {
+    enum ProvidedColor: String {
         case black = "Black"
         case white = "White"
         case gray = "Gray"
@@ -42,13 +66,18 @@ class UserDefaultsThemeHelper {
     // MARK: - Static properties
     
     static let shared = UserDefaultsThemeHelper()
-    static let providedColors: [UserDefaultsThemeHelper.ProvidedColors] = [.black,
+    static let providedColors: [UserDefaultsThemeHelper.ProvidedColor] = [.black,
                                                                          .white,
                                                                          .gray,
                                                                          .tan,
                                                                          .blue,
                                                                          .green,
                                                                          .custom]
+    static let fontNames: [UserDefaultsThemeHelper.FontName] = [.helvetica,
+                                                                .georgia,
+                                                                .verdana,
+                                                                .americanTypewriter,
+                                                                .futura]
     
     
     // MARK: - Public properties
@@ -67,11 +96,11 @@ class UserDefaultsThemeHelper {
     ///
     /// Only one of the parameters should be used.
     /// If both are entered into the function, only the string will be used.
-    private func color(fromString string: String? = nil, fromProvidedColor providedColor: UserDefaultsThemeHelper.ProvidedColors? = nil) -> UIColor {
+    private func color(fromString string: String? = nil, fromProvidedColor providedColor: UserDefaultsThemeHelper.ProvidedColor? = nil) -> UIColor {
         
-        let color: UserDefaultsThemeHelper.ProvidedColors
+        let color: UserDefaultsThemeHelper.ProvidedColor
         if let string = string {
-            color = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+            color = UserDefaultsThemeHelper.ProvidedColor(rawValue: string) ?? .black
         } else {
             color = providedColor ?? .black
         }
@@ -102,7 +131,7 @@ class UserDefaultsThemeHelper {
     public func getTitleFont() -> UIFont {
         let bodySize = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let size = bodySize + diffBetweenBodyAndTitle
-        let name = defaults.string(forKey: UserDefaultsThemeHelper.titleFontKey) ?? UserDefaultsThemeHelper.FontName.defaultTitle.rawValue
+        let name = defaults.string(forKey: UserDefaultsThemeHelper.titleFontKey) ?? UserDefaultsThemeHelper.FontName.helveticaBold.rawValue
         return UIFont(name: name, size: size)!
     }
     
@@ -130,15 +159,15 @@ class UserDefaultsThemeHelper {
         }
     }
     /// Only enter customColor if provededColor == .custom
-    public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
+    public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColor, customColor: UIColor? = nil) {
         defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.textColorKey)
         if providedColor == .custom {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customTextColorKey)
         }
     }
-    public func getTextProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
+    public func getTextProvidedColor() -> UserDefaultsThemeHelper.ProvidedColor {
         let string = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) ?? "Black"
-        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColor(rawValue: string) ?? .black
         return textProvidedColor
     }
     
@@ -149,15 +178,15 @@ class UserDefaultsThemeHelper {
             return .white
         }
     }
-    public func setBackgroundColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
+    public func setBackgroundColor(providedColor: UserDefaultsThemeHelper.ProvidedColor, customColor: UIColor? = nil) {
         defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.backgroundColorKey)
         if providedColor == .custom {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customBackgroundColorKey)
         }
     }
-    public func getBackgroundProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
+    public func getBackgroundProvidedColor() -> UserDefaultsThemeHelper.ProvidedColor {
         let string = defaults.string(forKey: UserDefaultsThemeHelper.backgroundColorKey) ?? "Black"
-        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
+        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColor(rawValue: string) ?? .black
         return textProvidedColor
     }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
+import styled from 'styled-components';
 
 class CheckoutForm extends Component {
 	constructor(props) {
@@ -73,7 +74,7 @@ class CheckoutForm extends Component {
 
 	render() {
 		return (
-			<div>
+			<CardStyle>
 				{this.state.resp_message && <h1>{this.state.resp_message}</h1>}
 				<form onSubmit={this.handleSubmit}>
 					<label>
@@ -103,9 +104,16 @@ class CheckoutForm extends Component {
 					</label>
 					<button className="form-btn">Confirm order</button>
 				</form>
-			</div>
+			</CardStyle>
 		);
 	}
 }
+
+const CardStyle = styled.div`
+	max-width: 500px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+`;
 
 export default injectStripe(CheckoutForm);

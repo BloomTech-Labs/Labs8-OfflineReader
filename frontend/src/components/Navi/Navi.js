@@ -12,10 +12,10 @@ class Navi extends Component {
 				<NavLink exact to="/landingpage">
 					Home
 				</NavLink>
-				<NavLink to="/testScraperFormContainer">Add a new article</NavLink>
-				<NavLink to="/signIn">Sign In</NavLink>
-				<NavLink to="/signUp">Sign Up</NavLink>
-				<NavLink to="/payment">Payment</NavLink>
+				<NavLink to="/testScraperFormContainer"> My Pages </NavLink>
+				<NavLink to="/signIn">Sign In </NavLink>
+				<NavLink to="/signUp">Sign Up </NavLink>
+				<NavLink to="/payment">Payment </NavLink>
 				<GoogleAuthContainer />
 			</div>
 		);

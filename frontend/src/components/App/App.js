@@ -10,6 +10,7 @@ import {
 	SignedUp,
 	Navi,
 	StripeProviderStub,
+	Settings,
 	LandingPage
 } from '../';
 
@@ -35,6 +36,7 @@ class App extends Component {
 					<Route path="/signedIn" component={SignedIn} />
 					<Route path="/signedUp" component={SignedUp} />
 					<Route path="/payment" component={StripeProviderStub} />
+					<Route path="/settings" component={Settings} />
 				</AppContainer>
 			</Router>
 		);

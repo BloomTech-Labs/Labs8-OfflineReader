@@ -6,7 +6,9 @@ import {
 	PREMIUM_USER,
 	FETCH_USER_DATA,
 	USER_DATA_FETCHED,
-	USER_ERROR
+	USER_ERROR,
+	UPDATING_USER,
+	UPDATED_USER
 } from '../actions';
 
 const initialState = {
@@ -85,6 +87,20 @@ export default (state = initialState, action) => {
 
 		case PREMIUM_USER:
 			return { ...state, userStatus: { ...state.userStatus, premium: true } };
+
+		case UPDATING_USER:
+			return {
+				...state
+			};
+
+		case UPDATED_USER:
+			return {
+				...state,
+				username: action.payload.username,
+				email: action.payload.email,
+				firstName: action.payload.firstName,
+				lastName: action.payload.lastName
+			};
 
 		default:
 			return state;

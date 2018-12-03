@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchPages, sendUrl } from '../store/actions';
-
+import styled from 'styled-components';
 import { TestScraper } from '../components';
+
+const Container = styled.div`
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
 
 class TestScraperFormContainer extends Component {
 	componentDidMount() {
@@ -12,11 +19,11 @@ class TestScraperFormContainer extends Component {
 
 	render() {
 		return (
-			<div>
+			<Container>
 				<br />
 				<br />
 				<TestScraper {...this.props} />
-			</div>
+			</Container>
 		);
 	}
 }

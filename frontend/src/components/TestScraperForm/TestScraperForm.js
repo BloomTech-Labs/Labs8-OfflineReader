@@ -7,8 +7,12 @@ const Container = styled.div`
 	font-family: 'Roboto', sans-serif;
 `;
 
-const Form = styled.form`
-	border-radius: 40px;
+const Input = styled.input`
+	padding: 1em;
+	margin: 0.5em;
+	border: 1px solid #efefef;
+	border-radius: 30px;
+	box-shadow: 0px 5px 17px -3px rgba(0, 0, 0, 0.75);
 `;
 
 class TestScraperForm extends Component {
@@ -50,17 +54,16 @@ class TestScraperForm extends Component {
 	render() {
 		return (
 			<Container>
-				<Form>
-					Input Article URL here:
-					<input
+				<form>
+					<Input
 						type="text"
 						name="url"
-						placeholder="www.cnn.com"
+						placeholder="input article url here"
 						value={this.state.inputData.url}
 						onChange={this.handleInput}
 					/>
 					<button onClick={this.handleURL}>Save Article</button>
-				</Form>
+				</form>
 			</Container>
 		);
 	}

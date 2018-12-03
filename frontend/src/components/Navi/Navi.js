@@ -10,6 +10,7 @@ const NaviContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	@media (max-width: 800px) {
+		flex-direction: column;
 		justify-content: flex-start;
 	}
 `;
@@ -23,7 +24,11 @@ const NaviSubContainer = styled.div`
 	}
 `;
 
-const HamburgerButton = styled.div`
+const HamburgerContainer = styled.div`
+	display: flex;
+`;
+
+const HamburgerButton = styled.a`
 	width: 2rem;
 	padding: 0.75rem;
 	@media (min-width: 800px) {
@@ -32,15 +37,37 @@ const HamburgerButton = styled.div`
 	}
 `;
 
-const HamburgerMenu = styled.div``;
+const HamburgerMenu = styled.div`
+	display: none;
+	width: 20%;
+	height: 500px;
+	flex-direction: column;
+	justify-content: space-between;
+	background: white;
+	${HamburgerContainer}:active & {
+		display: flex;
+	}
+`;
 
 class Navi extends Component {
 	render() {
 		return (
 			<NaviContainer>
-				<HamburgerButton>
-					<img src="https://i.imgur.com/L0Olnc0.png" alt="" width="100%" />
-				</HamburgerButton>
+				<HamburgerContainer>
+					<HamburgerButton href="#">
+						<img src="https://i.imgur.com/L0Olnc0.png" alt="" width="100%" />
+					</HamburgerButton>
+					<HamburgerMenu>
+						<NavLink exact to="/">
+							Home
+						</NavLink>
+						<NavLink to="/testScraperFormContainer"> My Pages </NavLink>
+						<NavLink to="/signIn">Sign In </NavLink>
+						<NavLink to="/signUp">Sign Up </NavLink>
+						<NavLink to="/payment">Payment </NavLink>
+						<GoogleAuthContainer />
+					</HamburgerMenu>
+				</HamburgerContainer>
 				<NaviSubContainer>
 					<h3>Anywhere Reader</h3>
 					<NavLink exact to="/">

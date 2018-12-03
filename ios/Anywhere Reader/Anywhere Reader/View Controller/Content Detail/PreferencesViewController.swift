@@ -19,26 +19,11 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
-        let textProvidedColor = themeHelper.getTextProvidedColor()
-        let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
-        textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: false, scrollPosition: .middle)
-        
-        let backgroundProvidedColor = themeHelper.getBackgroundProvidedColor()
-        let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 1
-        backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: false, scrollPosition: .middle)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         animateView()
-    }
-    
-    // TODO: Probably not needed anymore
-    override func viewWillDisappear(_ animated: Bool) {
-        deanimateView()
-        // NOT USING TAB BAR ANYMORE...
-        // If you click on another tab without the line below, the view doesn't get dismissed
-        dismiss(animated: true, completion: nil)
     }
     
     

@@ -64,7 +64,7 @@ class CheckoutForm extends Component {
 						},
 						body: formData
 					})
-						.then(resp => resp.json())
+						.then(resp => resp.json(), this._element.clear())
 						.then(json =>
 							this.setState({ ...this.state, resp_message: json.message })
 						);
@@ -75,31 +75,15 @@ class CheckoutForm extends Component {
 	render() {
 		return (
 			<CardStyle>
-				{this.state.resp_message && <h1>{this.state.resp_message}</h1>}
+				<h2>Premium Subscription</h2>
+				<p>$9.99/year</p>
+				{this.state.resp_message && <h2>{this.state.resp_message}</h2>}
 				<form onSubmit={this.handleSubmit}>
 					<label>
-						<h2>Card Details</h2>
-						<CardElement
-							style={{
-								base: {
-									color: '#32325d',
-
-									fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-									fontSmoothing: 'antialiased',
-									fontSize: '16px',
-									'::placeholder': {
-										color: '#aab7c4'
-									}
-								},
-								invalid: {
-									color: '#fa755a',
-									iconColor: '#fa755a'
-								}
-							}}
-							onChange={this.handleCardErrors}
-						/>
+						<h3>Card Details</h3>
+						<CardElement onReady={element => (this._element = element)} />
 						<div role="alert">
-							<h2>{this.state.card_errors}</h2>
+							<h3>{this.state.card_errors}</h3>
 						</div>
 					</label>
 					<button className="form-btn">Confirm order</button>
@@ -114,6 +98,19 @@ const CardStyle = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	base: {
+		color: '#32325d',
+
+		fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+		fontSmoothing: 'antialiased',
+		fontSize: '16px',
+		'::placeholder': {
+			color: '#aab7c4'
+		};
+	invalid: {
+		color: '#fa755a',
+		iconColor: '#fa755a'
+	}
 `;
 
 export default injectStripe(CheckoutForm);

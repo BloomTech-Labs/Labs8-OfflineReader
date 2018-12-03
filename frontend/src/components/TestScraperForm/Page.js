@@ -2,8 +2,6 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-// import { ArticleModal } from './';
-
 const PageCardContainer = styled.div`
 	border-radius: 5px;
 	margin: 3rem;
@@ -20,5 +18,7 @@ const Page = props => {
 		</PageCardContainer>
 	);
 };
+
+// Page.propTypes = {};
 
 export default Page;

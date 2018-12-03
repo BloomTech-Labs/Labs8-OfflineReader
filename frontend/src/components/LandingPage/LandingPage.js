@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import FBLogin from '../Facebook/FBLogin';
 // import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 // import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
 const LoginBox = styled.div`
@@ -75,6 +76,7 @@ const LandingPage = props => {
 					<input type="text" name="firstname" />
 					<input type="submit" value="Sign in" />
 				</form>
+				<FBLogin />
 				<br />
 				<div>
 					Don't have an account yet? <a href="/SignUpPage">Sign Up</a>

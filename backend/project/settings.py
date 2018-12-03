@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount.providers.facebook'
     'rest_auth.registration',
     'api',
     'apps.scraper',

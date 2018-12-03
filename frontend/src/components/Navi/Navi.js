@@ -9,11 +9,13 @@ class Navi extends Component {
 		return (
 			<div>
 				<h3>Anywhere Reader</h3>
-				{/* <NavLink exact to="/">Home</NavLink> */}
-				<NavLink to="/testScraperFormContainer">Add a new article</NavLink>
-				<NavLink to="/signIn">Sign In</NavLink>
-				<NavLink to="/signUp">Sign Up</NavLink>
-				<NavLink to="/payment">Payment</NavLink>
+				<NavLink exact to="/">
+					Home
+				</NavLink>
+				<NavLink to="/testScraperFormContainer"> My Pages </NavLink>
+				<NavLink to="/signIn">Sign In </NavLink>
+				<NavLink to="/signUp">Sign Up </NavLink>
+				<NavLink to="/payment">Payment </NavLink>
 				<NavLink to="/settings">Settings</NavLink>
 				<GoogleAuthContainer />
 			</div>

@@ -19,6 +19,8 @@ requests = "*"
 "beautifulsoup4" = "*"
 "urllib3" = "*"
 "newspaper3k" = "*"
+djangorestframework-jwt = "*"
+cryptography = "*"
 
 [dev-packages]
 

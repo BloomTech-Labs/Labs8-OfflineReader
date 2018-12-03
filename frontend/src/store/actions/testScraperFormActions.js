@@ -14,9 +14,8 @@ export const fetchPages = serverToken => {
 		dispatch({ type: FETCHING_PAGES });
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: `Token ${serverToken}`
+			Authorization: `Bearer ${serverToken.access_token}`
 		};
-		//TODO: remove hard coded auth header
 		axios
 			.get(`${apiBaseUrl}/pages/`, {
 				headers: headers
@@ -43,7 +42,7 @@ export const sendUrl = (newURL, serverToken) => {
 		//Below, you're making the POST call to the API, with newURL as the object youre sending.
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: `Token ${serverToken}`
+			Authorization: `Bearer ${serverToken.access_token}`
 		};
 		axios
 			.post(`${apiBaseUrl}/api/scrape/`, newURL, {

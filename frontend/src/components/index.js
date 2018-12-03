@@ -4,6 +4,7 @@ export {
 	MyStoreCheckout,
 	StripeProviderStub
 } from './CheckoutForm';
+export { FBAuth } from './FBAuth';
 export { GoogleAuth } from './GoogleAuth';
 export { LandingPage } from './LandingPage';
 export { Navi } from './Navi';

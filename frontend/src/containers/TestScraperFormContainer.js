@@ -12,7 +12,7 @@ class TestScraperFormContainer extends Component {
 	};
 
 	componentDidMount() {
-		this.props.fetchPages();
+		this.props.fetchPages(this.props.serverToken);
 	}
 
 	handleInput = event => {
@@ -28,7 +28,7 @@ class TestScraperFormContainer extends Component {
 	handleURL = event => {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
-		this.props.sendURL(this.state.inputData);
+		this.props.sendURL(this.state.inputData, this.props.serverToken);
 		console.log('inputData:', this.state.inputData);
 		this.resetForm();
 	};
@@ -75,7 +75,8 @@ const mapStateToProps = state => {
 		// urlSent: state.testScraperFormReducers.urlSent,
 		pages: state.testScraperFormReducers.pages,
 		// error: state.testScraperFormReducers.error,
-		showingModal: state.testScraperFormReducers.showingModal
+		showingModal: state.testScraperFormReducers.showingModal,
+		serverToken: state.userReducers.auth.serverToken
 	};
 };
 

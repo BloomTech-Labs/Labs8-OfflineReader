@@ -9,13 +9,13 @@ export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
-export const fetchPages = () => {
+export const fetchPages = serverToken => {
 	return dispatch => {
 		//Action that indicates data is being fetched
 		dispatch({ type: FETCHING_PAGES });
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
+			Authorization: `Token ${serverToken}`
 		};
 		//TODO: remove hard coded auth header
 		axios
@@ -39,14 +39,14 @@ export const fetchPages = () => {
 
 export const toggleModal = () => {};
 
-export const sendURL = newURL => {
+export const sendURL = (newURL, serverToken) => {
 	return dispatch => {
 		//Again, action to indicate an API call is about to be made, this time for a POST
 		dispatch({ type: INITIALIZE_URL_SUBMIT });
 		//Below, you're making the POST call to the API, with newURL as the object youre sending.
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
+			Authorization: `Token ${serverToken}`
 		};
 		axios
 			.post(`${apiBaseUrl}/api/scrape/`, newURL, {

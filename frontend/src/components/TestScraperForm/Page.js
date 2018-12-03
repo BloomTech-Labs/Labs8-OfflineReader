@@ -2,7 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { ArticleModal } from './';
+// import { ArticleModal } from './';
 
 const PageCardContainer = styled.div`
 	border-radius: 5px;

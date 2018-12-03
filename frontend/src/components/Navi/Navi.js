@@ -26,6 +26,7 @@ const NaviSubContainer = styled.div`
 
 const HamburgerContainer = styled.div`
 	display: flex;
+	flex-direction: column;
 `;
 
 const HamburgerButton = styled.a`
@@ -44,7 +45,7 @@ const HamburgerMenu = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	background: white;
-	${HamburgerContainer}:active & {
+	${HamburgerContainer}:hover & {
 		display: flex;
 	}
 `;

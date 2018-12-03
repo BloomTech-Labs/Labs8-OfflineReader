@@ -31,7 +31,7 @@ class ContentDetailViewController: UIViewController {
     
     // MARK: - Public properties
     
-    public var article: Article? {
+    public var article: ArticleRep? {
         didSet {
             updateViews()
         }

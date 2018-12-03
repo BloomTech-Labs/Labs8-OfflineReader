@@ -12,7 +12,7 @@ import Kingfisher
 class DocumentCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    var article: Article? {
+    var article: ArticleRep? {
         didSet {
             updateViews()
         }

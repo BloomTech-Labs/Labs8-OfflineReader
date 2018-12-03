@@ -8,9 +8,9 @@
 
 import Foundation
 
-typealias Articles = [Article]
+typealias Articles = [ArticleRep]
 
-struct Article: Codable {
+struct ArticleRep: Codable {
     let id: Int
     let title: String
     let author: String

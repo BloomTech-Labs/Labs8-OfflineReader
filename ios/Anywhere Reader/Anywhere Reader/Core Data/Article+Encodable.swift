@@ -6,7 +6,7 @@
 //  Copyright © 2018 Samantha Gatt. All rights reserved.
 //
 
-import CoreData
+import Foundation
 
 extension Article: Encodable {
     

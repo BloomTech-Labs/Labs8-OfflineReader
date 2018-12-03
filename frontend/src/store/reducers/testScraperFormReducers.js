@@ -7,8 +7,7 @@ import {
 	PAGES_FETCH_ERROR,
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
-	SUBMIT_URL_ERROR,
-	TOGGLE_MODAL
+	SUBMIT_URL_ERROR
 } from '../actions';
 
 const initialState = {
@@ -17,8 +16,7 @@ const initialState = {
 	pagesFetched: false,
 	scraperResponse: [],
 	sendingURL: false,
-	error: '',
-	showingModal: false
+	error: ''
 };
 
 export const testScraperFormReducers = (state = initialState, action) => {
@@ -59,9 +57,6 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				error: 'Error sending URL',
 				sendingURL: false
 			};
-
-		case TOGGLE_MODAL:
-			return { ...state, showingModal: !state.showingModal };
 
 		default:
 			return state;

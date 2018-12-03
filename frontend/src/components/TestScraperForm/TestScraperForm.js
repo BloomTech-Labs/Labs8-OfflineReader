@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
 	text-align: center;
@@ -32,7 +32,7 @@ class TestScraperForm extends Component {
 	handleURL = event => {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
-		this.props.sendURL(this.state.inputData, this.props.serverToken);
+		this.props.sendUrl(this.state.inputData, this.props.serverToken);
 		console.log('inputData:', this.state.inputData);
 		this.resetForm();
 	};
@@ -66,6 +66,9 @@ class TestScraperForm extends Component {
 	}
 }
 
-// TestScraperForm.propTypes = {};
+TestScraperForm.propTypes = {
+	serverToken: PropTypes.string.isRequired,
+	sendUrl: PropTypes.func.isRequired
+};
 
 export default TestScraperForm;

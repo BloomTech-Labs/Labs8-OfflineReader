@@ -20,10 +20,8 @@ export {
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR,
-	TOGGLE_MODAL,
 	fetchPages,
-	toggleModal,
-	sendURL
+	sendUrl
 } from './testScraperFormActions';
 
 export {

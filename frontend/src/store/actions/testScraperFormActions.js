@@ -7,7 +7,6 @@ export const PAGES_FETCH_ERROR = 'PAGES_FETCH_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
-export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 export const fetchPages = serverToken => {
 	return dispatch => {
@@ -37,9 +36,7 @@ export const fetchPages = serverToken => {
 	};
 };
 
-export const toggleModal = () => {};
-
-export const sendURL = (newURL, serverToken) => {
+export const sendUrl = (newURL, serverToken) => {
 	return dispatch => {
 		//Again, action to indicate an API call is about to be made, this time for a POST
 		dispatch({ type: INITIALIZE_URL_SUBMIT });

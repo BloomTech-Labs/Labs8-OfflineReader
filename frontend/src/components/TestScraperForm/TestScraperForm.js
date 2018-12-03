@@ -55,11 +55,10 @@ class TestScraperForm extends Component {
 		return (
 			<Container>
 				<form>
-					Input Article URL here:
 					<Input
 						type="text"
 						name="url"
-						placeholder="www.cnn.com"
+						placeholder="input article url here"
 						value={this.state.inputData.url}
 						onChange={this.handleInput}
 					/>

@@ -22,7 +22,7 @@ struct Article: Codable {
     let coverImage: String
     let tags: String
     let text: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case title = "title"

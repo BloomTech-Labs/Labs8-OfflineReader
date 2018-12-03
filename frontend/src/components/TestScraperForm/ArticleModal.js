@@ -15,7 +15,12 @@ class ArticleModal extends Component {
 				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
 				<h4>{this.props.page.title}</h4>
 				<h5>{`Authors: ${this.props.page.author}`}</h5>
-				<p>{`Source: ${this.props.page.resolved_url}`}</p>
+				<p>
+					{'Source: '}
+					<a href={`${this.props.page.normal_url}`}>
+						{this.props.page.normal_url}
+					</a>
+				</p>
 				<p>{`Saved: ${this.props.page.date_saved}`}</p>
 				<br />
 				{this.props.page.text}

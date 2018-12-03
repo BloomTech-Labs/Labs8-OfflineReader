@@ -11,7 +11,7 @@ import Foundation
 typealias Articles = [ArticleRep]
 
 struct ArticleRep: Codable, Equatable {
-    let id: Int
+    let id: Int32
     let title: String
     let author: String
     let normalURL: String

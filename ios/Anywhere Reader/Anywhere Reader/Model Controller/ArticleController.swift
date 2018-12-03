@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import CoreData
 
 class ArticleController {
+    
     // MARK: - Properties
+    
     let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
     var mockDataURL: URL {
         return Bundle.main.url(forResource: "example", withExtension: "json")!
@@ -49,10 +52,82 @@ class ArticleController {
         do {
             let mockData = try Data(contentsOf: mockDataURL)
             self.articles = try JSONDecoder().decode(Articles.self, from: mockData)
+            fetchArticlesComplete(true, nil)
         } catch {
             NSLog("Error decoding example data: \(error)")
+            fetchArticlesComplete(false, error)
         }
     }
+    
+    
+    // MARK: - Core Data
+    
+    private func save(context: NSManagedObjectContext) {
+        context.performAndWait {
+            do {
+                try context.save()
+            }
+            catch {
+                NSLog("Error saving entry: \(error)")
+            }
+        }
+    }
+    
+    private func loadSingleArticle(id: Int32, context: NSManagedObjectContext) -> Article? {
+        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        do {
+            return try context.fetch(fetchRequest).first
+        } catch {
+            NSLog("Error fetching group: \(error)")
+            return nil
+        }
+    }
+    
+    private func deleteArticles(with ids: [Int32], context: NSManagedObjectContext) {
+        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "NOT (id IN %@)", ids)
+        
+        var articlesToDelete: [Article] = []
+        do {
+            articlesToDelete = try context.fetch(fetchRequest)
+        } catch {
+            NSLog("Error fetching group: \(error)")
+            return
+        }
+        
+        for articleToDelete in articlesToDelete {
+            context.delete(articleToDelete)
+        }
+        
+        save(context: context)
+    }
+    
+    private func update(article: Article, from articleRep: ArticleRep) {
+        
+        // TODO: Add other property updates if changing them will be supported from the api
+        article.tags = articleRep.tags
+    }
+    
+    private func updateCards(from articleReps: [ArticleRep], context: NSManagedObjectContext) throws {
+        context.performAndWait {
+            var articleIDs: [Int32] = []
+            for articleRep in articleReps {
+                if let article = loadSingleArticle(id: articleRep.id, context: context) {
+                    if article != articleRep {
+                        self.update(article: article, from: articleRep)
+                    }
+                } else {
+                    _ = Article(fromRep: articleRep, context: context)
+                }
+                articleIDs.append(articleRep.id)
+            }
+            save(context: context)
+            deleteArticles(with: articleIDs, context: context)
+        }
+    }
+    
     
     // MARK: - Scraper Query
     

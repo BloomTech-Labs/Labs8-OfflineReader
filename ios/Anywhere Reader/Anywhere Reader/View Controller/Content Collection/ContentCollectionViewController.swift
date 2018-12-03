@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 private let reuseIdentifier = "DocumentCell"
 

@@ -24,7 +24,7 @@ class App extends Component {
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
 					/>
-					<Route path="/" component={LandingPage} />
+					<Route exact path="/" component={LandingPage} />
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />
 					<Route path="/signedIn" component={SignedIn} />

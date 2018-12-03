@@ -22,8 +22,8 @@ class Scrape(APIView):
             # Return JSON response back to client with message
             return JsonResponse({"message": error}, status=422)
         # Gets token and sets header
-        auth = "Token " + str(request.auth)
+        # auth = "Token " + str(request.auth)
         # Switch auth to this for JWT
-        # auth = "Bearer " + str(request.auth)
+        auth = "Bearer " + str(request.auth)
 
         return scrape_article(url, auth)

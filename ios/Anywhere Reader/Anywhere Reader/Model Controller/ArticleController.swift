@@ -9,13 +9,12 @@
 import Foundation
 
 class ArticleController {
-    
     // MARK: - Properties
-    static let baseURL = URL(string: "http://localhost:8000")!
+    let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
     var mockDataURL: URL {
         return Bundle.main.url(forResource: "example", withExtension: "json")!
     }
-    var articles: [Article] = []
+    var articles: [ArticleRep] = []
     
 //    func fetchArticles(for user: User, fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
 //
@@ -53,5 +52,41 @@ class ArticleController {
         } catch {
             NSLog("Error decoding example data: \(error)")
         }
+    }
+    
+    // MARK: - Scraper Query
+    
+    func scrape(with userInputURL: String, completion: @escaping (Result) -> Void) {
+        // Endpoint : anywhere-reader-test.herokuapp.com/api/scrape/
+        let url = baseURL.appendingPathComponent("api").appendingPathComponent("scrape/")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let body: [String: Any] = ["url": userInputURL]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
+        
+        // TODO: Use user token rather than placeholder
+        request.allHTTPHeaderFields = ["Authorization": "Token e5f6efffdaf49d83381c94a7a322266e77013428", "Content-Type": "application/json"]
+        
+        URLSession.shared.dataTask(with: request) { (data, responseCode, error) in
+            if let error = error {
+                NSLog("Error with scraping: \(error)")
+                completion(Result.failure(error))
+                return
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let article = try JSONDecoder().decode(ArticleRep.self, from: data)
+                self.articles.append(article)
+            } catch let decodeError {
+                NSLog("Error with decoding article")
+                completion(Result.failure(decodeError))
+            }
+            
+            completion(Result.success)
+        }.resume()
     }
 }

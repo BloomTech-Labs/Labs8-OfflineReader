@@ -20,11 +20,13 @@ final class APIService {
     private init() {}
     
     private lazy var baseURL: URL = {
-        guard let url = URL(string: "http://localhost:8000") else {
+        guard let url = URL(string: "https://anywhere-reader-test.herokuapp.com/") else {
             fatalError("Invalid URL")
         }
         return url
     }()
+    
+    // MARK: - Stripe Payments
     
     func completeCharge(with token: STPToken, amount: Int, completion: @escaping (Result) -> Void) {
         let url = baseURL.appendingPathComponent("api").appendingPathComponent("create-charge/")
@@ -32,7 +34,7 @@ final class APIService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
-        let bodyData = "source=\(token.tokenId)&amount=\(amount)&currency=usd&description=test)"
+        let bodyData = "source=\(token.tokenId)&amount=\(amount)&currency=usd&description=test"
         request.httpBody = bodyData.data(using: String.Encoding.utf8)
         
         URLSession.shared.dataTask(with: request, completionHandler: { (data, _, error) in

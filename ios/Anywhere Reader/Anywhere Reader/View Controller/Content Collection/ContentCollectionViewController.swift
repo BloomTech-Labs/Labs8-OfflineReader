@@ -25,15 +25,17 @@ class ContentCollectionViewController: UICollectionViewController {
         }
     }
     
-    
     // MARK: - Actions
 
     @IBAction func addNewContent(_ sender: Any) {
         let addLinkDialog = UIAlertController(title: "Add", message: "Insert article link", preferredStyle: .alert)
         let save = UIAlertAction(title: "Save", style: .default, handler: { (action) -> Void in
-            if let userInput = addLinkDialog.textFields?[0].text {
-                // Kick off scraper
-                print("User entered \(userInput)")
+            if let url = addLinkDialog.textFields?[0].text {
+                self.articleController.scrape(with: url, completion: { (result) in
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                })
             }
         })
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in

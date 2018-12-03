@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import TestScraperFormContainer from '../../containers/TestScraperFormContainer';
-import LandingPage from '../LandingPage/LandingPage';
+import styled from 'styled-components';
+
+import { TestScraperFormContainer } from '../../containers';
 import {
 	SignInPage,
 	SignUpPage,
@@ -9,17 +10,22 @@ import {
 	SignedUp,
 	Navi,
 	StripeProviderStub,
-	Settings
+	Settings,
+	LandingPage
 } from '../';
+
+const AppContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
 
 class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>
+				<AppContainer>
 					<Navi />
-					{/* <TestScraperFormContainer /> */}
-					{/* <Route exact to="/" component={} /> */}
 					<Route
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
@@ -31,7 +37,7 @@ class App extends Component {
 					<Route path="/signedUp" component={SignedUp} />
 					<Route path="/payment" component={StripeProviderStub} />
 					<Route path="/settings" component={Settings} />
-				</div>
+				</AppContainer>
 			</Router>
 		);
 	}

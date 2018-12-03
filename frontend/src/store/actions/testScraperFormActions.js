@@ -1,10 +1,13 @@
 import axios from 'axios';
+import { apiBaseUrl } from './';
+
 export const FETCHING_PAGES = 'FETCHING_PAGES';
 export const PAGES_FETCHED = 'PAGES_FETCHED';
 export const PAGES_FETCH_ERROR = 'PAGES_FETCH_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 
 export const fetchPages = () => {
 	return dispatch => {
@@ -16,11 +19,11 @@ export const fetchPages = () => {
 		};
 		//TODO: remove hard coded auth header
 		axios
-			.get('https://anywhere-reader-test.herokuapp.com/pages/', {
+			.get(`${apiBaseUrl}/pages/`, {
 				headers: headers
 			})
 			.then(response => {
-				// console.log('response:' + JSON.stringify(response.data));
+				// console.log('response:', JSON.stringify(response.data));
 
 				dispatch({
 					type: PAGES_FETCHED,
@@ -28,11 +31,13 @@ export const fetchPages = () => {
 				});
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 				dispatch({ type: PAGES_FETCH_ERROR });
 			});
 	};
 };
+
+export const toggleModal = () => {};
 
 export const sendURL = newURL => {
 	return dispatch => {
@@ -44,7 +49,7 @@ export const sendURL = newURL => {
 			Authorization: 'Token e5f6efffdaf49d83381c94a7a322266e77013428'
 		};
 		axios
-			.post('https://anywhere-reader-test.herokuapp.com/api/scrape/', newURL, {
+			.post(`${apiBaseUrl}/api/scrape/`, newURL, {
 				headers: headers
 			})
 			.then(response => {
@@ -52,11 +57,11 @@ export const sendURL = newURL => {
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
 
 				axios
-					.get('https://anywhere-reader-test.herokuapp.com/pages/', {
+					.get(`${apiBaseUrl}/pages/`, {
 						headers: headers
 					})
 					.then(response => {
-						// console.log('response:' + JSON.stringify(response.data));
+						// console.log('response:', JSON.stringify(response.data));
 
 						dispatch({
 							type: PAGES_FETCHED,
@@ -65,7 +70,7 @@ export const sendURL = newURL => {
 					});
 			})
 			.catch(err => {
-				console.log(err);
+				console.error(err);
 				dispatch({ type: SUBMIT_URL_ERROR });
 			});
 	};

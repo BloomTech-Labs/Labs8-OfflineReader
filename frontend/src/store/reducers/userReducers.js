@@ -20,7 +20,7 @@ const initialState = {
 	auth: {
 		googleClientId:
 			'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
-		googleServerToken: ''
+		serverToken: ''
 	},
 	userStatus: {
 		fetching: false,
@@ -58,14 +58,14 @@ export default (state = initialState, action) => {
 		case LOGGING_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, googleServerToken: '' },
+				auth: { ...state.auth, serverToken: '' },
 				userStatus: { ...state.userStatus, success: false }
 			};
 
 		case LOGGED_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, googleServerToken: action.payload },
+				auth: { ...state.auth, serverToken: action.payload },
 				userStatus: { ...state.userStatus, success: true }
 			};
 
@@ -79,7 +79,7 @@ export default (state = initialState, action) => {
 					lastName: '',
 					premium: false
 				},
-				auth: { ...state.auth, googleServerToken: '' },
+				auth: { ...state.auth, serverToken: '' },
 				userStatus: { ...state.userStatus, success: false }
 			};
 

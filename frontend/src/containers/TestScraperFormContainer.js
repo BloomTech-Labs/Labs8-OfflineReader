@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { sendURL, fetchPages } from '../store/actions/testScraperFormActions';
-import PageList from '../components/TestScraperForm/PageList';
-import TestScraperForm from '../components/TestScraperForm/TestScraperForm';
+import { sendURL, fetchPages } from '../store/actions';
+
+import { PageList, TestScraperForm } from '../components';
 
 class TestScraperFormContainer extends Component {
 	state = {
@@ -29,7 +29,7 @@ class TestScraperFormContainer extends Component {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
 		this.props.sendURL(this.state.inputData);
-		console.log('inputData:' + this.state.inputData);
+		console.log('inputData:', this.state.inputData);
 		this.resetForm();
 	};
 
@@ -55,7 +55,10 @@ class TestScraperFormContainer extends Component {
 					handleInput={this.handleInput}
 					handleURL={this.handleURL}
 				/>
-				<PageList pages={this.props.pages} />
+				<PageList
+					pages={this.props.pages}
+					showingModal={this.props.showingModal}
+				/>
 				{/* </React.Fragment>
 				)} */}
 			</div>
@@ -66,12 +69,13 @@ class TestScraperFormContainer extends Component {
 const mapStateToProps = state => {
 	return {
 		//Mps actions and reducers to the state
-		fetchingPages: state.testScraperFormReducers.fetchingPages,
-		pagesFetched: state.testScraperFormReducers.pagesFetched,
-		sendingURL: state.testScraperFormReducers.sendingURL,
-		urlSent: state.testScraperFormReducers.urlSent,
+		// fetchingPages: state.testScraperFormReducers.fetchingPages,
+		// pagesFetched: state.testScraperFormReducers.pagesFetched,
+		// sendingURL: state.testScraperFormReducers.sendingURL,
+		// urlSent: state.testScraperFormReducers.urlSent,
 		pages: state.testScraperFormReducers.pages,
-		error: state.testScraperFormReducers.error
+		// error: state.testScraperFormReducers.error,
+		showingModal: state.testScraperFormReducers.showingModal
 	};
 };
 

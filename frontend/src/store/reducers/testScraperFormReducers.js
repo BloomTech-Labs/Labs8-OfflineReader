@@ -16,7 +16,8 @@ const initialState = {
 	pagesFetched: false,
 	scraperResponse: [],
 	sendingURL: false,
-	error: ''
+	error: '',
+	showingModal: false
 };
 
 export const testScraperFormReducers = (state = initialState, action) => {

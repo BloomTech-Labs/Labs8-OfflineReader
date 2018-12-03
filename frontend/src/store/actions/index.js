@@ -1,3 +1,8 @@
+export const apiBaseUrl =
+	process.env.NODE_ENV === 'production'
+		? 'https://anywhere-reader-test.herokuapp.com'
+		: 'http://localhost:8000';
+
 export {
 	ADD_ARTICLE,
 	DELETE_ARTICLE,
@@ -7,6 +12,20 @@ export {
 	addArticle,
 	deleteArticle
 } from './articleActions';
+
+export {
+	FETCHING_PAGES,
+	PAGES_FETCHED,
+	PAGES_FETCH_ERROR,
+	INITIALIZE_URL_SUBMIT,
+	COMPLETE_URL_SUBMIT,
+	SUBMIT_URL_ERROR,
+	TOGGLE_MODAL,
+	fetchPages,
+	toggleModal,
+	sendURL
+} from './testScraperFormActions';
+
 export {
 	REGISTER_USER,
 	LOGGING_IN_USER,
@@ -22,16 +41,3 @@ export {
 	fetchUser,
 	premiumUser
 } from './userActions';
-export {
-	FETCHING_PAGES,
-	PAGES_FETCHED,
-	PAGES_FETCH_ERROR,
-	INITIALIZE_URL_SUBMIT,
-	COMPLETE_URL_SUBMIT,
-	SUBMIT_URL_ERROR
-} from './testScraperFormActions';
-
-export const apiBaseUrl =
-	process.env.NODE_ENV === 'production'
-		? 'https://anywhere-reader-test.herokuapp.com/api'
-		: 'http://localhost:8000/api';

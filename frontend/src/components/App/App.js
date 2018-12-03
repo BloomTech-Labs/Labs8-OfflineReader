@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import TestScraperFormContainer from '../../containers/TestScraperFormContainer';
-import LandingPage from '../LandingPage/LandingPage';
+// import styled from 'styled-components';
+
+import { TestScraperFormContainer } from '../../containers';
 import {
 	SignInPage,
 	SignUpPage,
 	SignedIn,
 	SignedUp,
 	Navi,
-	StripeProviderStub
+	StripeProviderStub,
+	LandingPage
 } from '../';
 
 class App extends Component {
@@ -17,13 +19,11 @@ class App extends Component {
 			<Router>
 				<div>
 					<Navi />
-					{/* <TestScraperFormContainer /> */}
-					{/* <Route exact to="/" component={} /> */}
 					<Route
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
 					/>
-					<Route path="/" component={LandingPage} />
+					<Route exact path="/" component={LandingPage} />
 					<Route path="/signIn" component={SignInPage} />
 					<Route path="/signUp" component={SignUpPage} />
 					<Route path="/signedIn" component={SignedIn} />

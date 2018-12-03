@@ -9,7 +9,6 @@ const CloseBtn = styled.h5`
 
 class ArticleModal extends Component {
 	render() {
-		console.log('pages:', this.props.pages);
 		return (
 			<div>
 				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>

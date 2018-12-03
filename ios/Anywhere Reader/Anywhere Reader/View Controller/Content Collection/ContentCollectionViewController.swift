@@ -58,13 +58,13 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return articleController.articles.count
+        return articleController.articleReps.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DocumentCollectionViewCell
         
-        let article = articleController.articles[indexPath.row]
+        let article = articleController.articleReps[indexPath.row]
         cell.article = article
     
         return cell
@@ -82,7 +82,7 @@ class ContentCollectionViewController: UICollectionViewController {
         if let detailViewController = segue.destination as? ContentDetailViewController {
             let cell = sender as! DocumentCollectionViewCell
             guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
-            let article = articleController.articles[indexPath.row]
+            let article = articleController.articleReps[indexPath.row]
             let _ = detailViewController.view
             detailViewController.article = article
         }

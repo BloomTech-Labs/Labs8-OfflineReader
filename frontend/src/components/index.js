@@ -4,4 +4,4 @@ export { App } from './App';
 export { Navi } from './Navi';
 export { GoogleAuth } from './GoogleAuth';
 export { StripeProviderStub } from './CheckoutForm';
-export Settings from './Settings';
+export { Settings } from './Settings';

@@ -81,7 +81,10 @@ class CheckoutForm extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<label>
 						<h3>Card Details</h3>
-						<CardElement onReady={element => (this._element = element)} />
+						<CardElement
+							onChange={this.handleCardErrors}
+							onReady={element => (this._element = element)}
+						/>
 						<div role="alert">
 							<h3>{this.state.card_errors}</h3>
 						</div>

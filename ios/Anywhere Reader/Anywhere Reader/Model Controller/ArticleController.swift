@@ -14,7 +14,7 @@ class ArticleController {
     var mockDataURL: URL {
         return Bundle.main.url(forResource: "example", withExtension: "json")!
     }
-    var articles: [Article] = []
+    var articles: [ArticleRep] = []
     
 //    func fetchArticles(for user: User, fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
 //
@@ -79,7 +79,7 @@ class ArticleController {
             guard let data = data else { return }
             
             do {
-                let article = try JSONDecoder().decode(Article.self, from: data)
+                let article = try JSONDecoder().decode(ArticleRep.self, from: data)
                 self.articles.append(article)
             } catch let decodeError {
                 NSLog("Error with decoding article")

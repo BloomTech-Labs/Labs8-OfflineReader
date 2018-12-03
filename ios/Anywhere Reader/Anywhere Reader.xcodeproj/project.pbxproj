@@ -33,6 +33,7 @@
 		2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */; };
 		223E6F3821B5C0750024E993 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3721B5C0750024E993 /* CoreDataStack.swift */; };
 		223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3921B5C08A0024E993 /* Anywhere Reader.xcdatamodeld */; };
+		223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */; };
 		22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */; };
 		22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */; };
 		22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */; };
@@ -71,6 +72,7 @@
 		2233F7D121920A09001A82FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		223E6F3721B5C0750024E993 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		223E6F3A21B5C08A0024E993 /* Anywhere Reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Anywhere Reader.xcdatamodel"; sourceTree = "<group>"; };
+		223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+Encodable.swift"; sourceTree = "<group>"; };
 		22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentCollectionViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
 		22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualPreferencesPanel.storyboard; sourceTree = "<group>"; };
@@ -209,8 +211,9 @@
 		223E6F3621B5C04F0024E993 /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
-				223E6F3721B5C0750024E993 /* CoreDataStack.swift */,
 				223E6F3921B5C08A0024E993 /* Anywhere Reader.xcdatamodeld */,
+				223E6F3721B5C0750024E993 /* CoreDataStack.swift */,
+				223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
+				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */,
 				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,

@@ -10,7 +10,7 @@ import Foundation
 
 typealias Articles = [ArticleRep]
 
-struct ArticleRep: Codable {
+struct ArticleRep: Codable, Equatable {
     let id: Int
     let title: String
     let author: String
@@ -36,4 +36,31 @@ struct ArticleRep: Codable {
         case tags = "tags"
         case text = "text"
     }
+}
+
+func == (lhs: ArticleRep, rhs: Article) -> Bool {
+    return
+        lhs.id == rhs.id &&
+            lhs.title == rhs.title &&
+            lhs.author == rhs.author &&
+            lhs.normalURL == rhs.normalURL &&
+            lhs.resolvedURL == rhs.resolvedURL &&
+            lhs.dateSaved == rhs.dateSaved &&
+            lhs.datePublished == rhs.datePublished &&
+            lhs.excerpt == rhs.excerpt &&
+            lhs.coverImage == rhs.coverImage &&
+            lhs.tags == rhs.tags &&
+            lhs.text == rhs.text
+}
+
+func == (lhs: Article, rhs: ArticleRep) -> Bool {
+    return rhs == lhs
+}
+
+func != (lhs: ArticleRep, rhs: Article) -> Bool {
+    return !(rhs == lhs)
+}
+
+func != (lhs: Article, rhs: ArticleRep) -> Bool {
+    return rhs != lhs
 }

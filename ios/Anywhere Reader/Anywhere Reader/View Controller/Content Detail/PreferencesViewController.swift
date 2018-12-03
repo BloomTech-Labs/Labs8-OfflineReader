@@ -19,13 +19,9 @@ class PreferencesViewController: UIViewController {
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
         
-        let textProvidedColor = self.themeHelper.getTextProvidedColor()
-        let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
-        self.textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: false, scrollPosition: .none)
         
-        let backgroundProvidedColor = self.themeHelper.getBackgroundProvidedColor()
-        let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 0
-        self.backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: false, scrollPosition: .none)
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,6 +84,10 @@ class PreferencesViewController: UIViewController {
         }) { _ in
             if self.textColorTableViewHeightConstraint.constant == 0 {
                 self.textColorTableView.isHidden = true
+            } else {
+                let textProvidedColor = self.themeHelper.getTextProvidedColor()
+                let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
+                self.textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: true, scrollPosition: .middle)
             }
             self.backgroundColorTableView.isHidden = true
         }
@@ -111,6 +111,10 @@ class PreferencesViewController: UIViewController {
         }) { _ in
             if self.backgroundColorTableViewHeightConstraint.constant == 0 {
                 self.backgroundColorTableView.isHidden = true
+            } else {
+                let backgroundProvidedColor = self.themeHelper.getBackgroundProvidedColor()
+                let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 0
+                self.backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: true, scrollPosition: .middle)
             }
             self.textColorTableView.isHidden = true
         }

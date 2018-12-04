@@ -6,9 +6,9 @@ export {
 } from './CheckoutForm';
 export { FBAuth } from './FBAuth';
 export { GoogleAuth } from './GoogleAuth';
-export { Settings } from './Settings';
 export { LandingPage } from './LandingPage';
 export { Navi } from './Navi';
+export { Settings } from './Settings';
 export { SignedIn, SignInPage } from './SignInPage';
 export { SignedUp, SignUpPage } from './SignUpPage';
 export {

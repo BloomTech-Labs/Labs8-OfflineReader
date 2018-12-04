@@ -33,9 +33,12 @@ export {
 	FETCH_USER_DATA,
 	USER_DATA_FETCHED,
 	USER_ERROR,
+	UPDATING_USER,
+	UPDATED_USER,
 	registerUser,
 	loginUser,
 	logoutUser,
 	fetchUser,
-	premiumUser
+	premiumUser,
+	updateUser
 } from './userActions';

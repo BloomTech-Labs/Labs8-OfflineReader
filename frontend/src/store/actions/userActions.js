@@ -11,6 +11,8 @@ export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
 export const USER_MESSAGE = 'USER_MESSAGE';
 export const USER_ERROR = 'USER_ERROR';
+export const UPDATING_USER = 'UPDATING_USER';
+export const UPDATED_USER = 'UPDATED_USER';
 
 export const registerUser = newUser => {
 	return dispatch => {
@@ -91,4 +93,12 @@ export const premiumUser = (user, chargeToken) => {
 		// 	)
 		// 	.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
+};
+
+export const updateUser = user => dispatch => {
+	dispatch({ type: UPDATING_USER });
+	axios
+		.put(apiBaseUrl + '/user/')
+		.then(response => dispatch({ UPDATED_USER, payload: response.data }))
+		.catch(err => dispatch({ type: USER_ERROR, err }));
 };

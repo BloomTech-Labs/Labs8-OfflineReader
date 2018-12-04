@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 // import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 // import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
-import { FBAuth } from '../';
+import { FBAuthContainer } from '../../containers';
 
 const LoginBox = styled.div`
 	margin: 3rem;
@@ -79,7 +79,7 @@ const LandingPage = props => {
 					<input type="submit" value="Sign in" />
 				</form>
 				<br />
-				<FBAuth />
+				<FBAuthContainer />
 				<br />
 				<div>
 					Don't have an account yet? <a href="/SignUpPage">Sign Up</a>

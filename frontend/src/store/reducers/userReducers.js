@@ -21,7 +21,7 @@ const initialState = {
 		googleClientId:
 			'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
 		// serverToken: 'e4d06c221480448a274af99806a6176e9bfd32a3'
-		serverToken: ''
+		serverToken: {}
 	},
 	userStatus: {
 		fetching: false,

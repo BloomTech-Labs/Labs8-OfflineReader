@@ -22,7 +22,7 @@ class FBAuth extends Component {
 
 	render() {
 		return (
-			<FacebookProvider appId="719662021765780">
+			<FacebookProvider appId="196409721290076">
 				<Login
 					scope="email"
 					onResponse={this.handleResponse}

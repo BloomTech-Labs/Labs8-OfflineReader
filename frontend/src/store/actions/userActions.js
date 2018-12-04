@@ -33,7 +33,7 @@ export const loginUser = token => {
 	return dispatch => {
 		dispatch({ type: LOGGING_IN_USER });
 		axios
-			.post(apiBaseUrl + '/convert_token/', { token })
+			.post(`${apiBaseUrl}/convert_token/`, { token })
 			.then(response =>
 				dispatch({
 					type: LOGGED_IN_USER,

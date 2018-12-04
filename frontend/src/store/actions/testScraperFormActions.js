@@ -14,7 +14,7 @@ export const fetchPages = serverToken => {
 		dispatch({ type: FETCHING_PAGES });
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${serverToken.access_token}`
+			Authorization: `Bearer ${serverToken.data.access_token}`
 		};
 		axios
 			.get(`${apiBaseUrl}/pages/`, {
@@ -42,7 +42,7 @@ export const sendUrl = (newURL, serverToken) => {
 		//Below, you're making the POST call to the API, with newURL as the object youre sending.
 		let headers = {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${serverToken.access_token}`
+			Authorization: `Bearer ${serverToken.data.access_token}`
 		};
 		axios
 			.post(`${apiBaseUrl}/api/scrape/`, newURL, {

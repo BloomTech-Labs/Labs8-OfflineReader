@@ -62,6 +62,18 @@ class ContentCollectionViewController: UICollectionViewController {
     
     let articleController = ArticleController()
     let themeHelper = UserDefaultsThemeHelper.shared
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 

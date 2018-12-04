@@ -11,6 +11,7 @@
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
 		1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1332E69B21AC7957003413F6 /* GoogleService-Info.plist */; };
 		1373243121ADCCED006DDF1E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373243021ADCCED006DDF1E /* APIService.swift */; };
+		13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
 		13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DF219394E300DA56B9 /* BillingViewController.swift */; };
 		13F945E421AF4CC80019A3D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F945E321AF4CC80019A3D2 /* User.swift */; };
@@ -49,6 +50,7 @@
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		1332E69B21AC7957003413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1373243021ADCCED006DDF1E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
 		13B013DF219394E300DA56B9 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
 		13F945E321AF4CC80019A3D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 				1373243021ADCCED006DDF1E /* APIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		13847C1F21B73C59005B533D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		13B013DC2193942800DA56B9 /* Segmented */ = {
@@ -196,6 +206,7 @@
 		2233F7C421920A06001A82FF /* Anywhere Reader */ = {
 			isa = PBXGroup;
 			children = (
+				13847C1F21B73C59005B533D /* Extensions */,
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
 				1332E69B21AC7957003413F6 /* GoogleService-Info.plist */,
 				2200578A219DB8FB00808E4B /* AppearanceHelper.swift */,
@@ -439,6 +450,7 @@
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
+				13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,

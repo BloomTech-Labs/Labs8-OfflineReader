@@ -104,4 +104,17 @@ class ContentDetailViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
         imageView.layer.mask = gradientLayer
     }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
 }
+

@@ -45,6 +45,7 @@ class ContentDetailViewController: UIViewController {
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet weak var sourceAndDateLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     
     // MARK: - Actions
@@ -68,6 +69,7 @@ class ContentDetailViewController: UIViewController {
         
         titleLabel.text = article.title
         contentBodyLabel.text = article.text
+        authorLabel.text = article.author
         
         let url = URL(string: article.coverImage)
         imageView.kf.setImage(with: url)
@@ -86,5 +88,19 @@ class ContentDetailViewController: UIViewController {
         let bodyFont = themeHelper.getBodyFont()
         contentBodyLabel.font = bodyFont
         sourceAndDateLabel.font = bodyFont
+        
+        // Gradient Layer for top image
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = imageView.bounds
+        
+        // Colors for gradient
+        gradientLayer.colors = [
+            UIColor.white.withAlphaComponent(1).cgColor,
+            UIColor.white.withAlphaComponent(0).cgColor]
+        
+        // Direction of gradient
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.70)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        imageView.layer.mask = gradientLayer
     }
 }

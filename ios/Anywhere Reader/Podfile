@@ -8,4 +8,6 @@ target 'Anywhere Reader' do
   # Pods for Anywhere Reader
   pod 'Stripe'
   pod 'Kingfisher', '~> 4.0'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
 end

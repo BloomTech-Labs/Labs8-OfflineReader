@@ -11,6 +11,7 @@
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
 		1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1332E69B21AC7957003413F6 /* GoogleService-Info.plist */; };
 		1373243121ADCCED006DDF1E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373243021ADCCED006DDF1E /* APIService.swift */; };
+		13847C1E21B72A45005B533D /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C1D21B72A45005B533D /* Theme.swift */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
 		13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DF219394E300DA56B9 /* BillingViewController.swift */; };
 		13F945E421AF4CC80019A3D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F945E321AF4CC80019A3D2 /* User.swift */; };
@@ -49,6 +50,7 @@
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		1332E69B21AC7957003413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1373243021ADCCED006DDF1E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		13847C1D21B72A45005B533D /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
 		13B013DF219394E300DA56B9 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
 		13F945E321AF4CC80019A3D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				13FB2E2521921AAE00A8888B /* View Controller */,
 				13126F512192559900A1ED13 /* Services */,
 				13FB2E2821921AD400A8888B /* Resources */,
+				13847C1D21B72A45005B533D /* Theme.swift */,
 			);
 			path = "Anywhere Reader";
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
+				13847C1E21B72A45005B533D /* Theme.swift in Sources */,
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
 				13F945E421AF4CC80019A3D2 /* User.swift in Sources */,
 				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,

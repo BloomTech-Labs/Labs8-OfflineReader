@@ -27,13 +27,12 @@ class UserDefaultsThemeHelper {
         case custom = "Custom"
     }
     
-    
     // MARK: - User Defaults Keys
     
     static let textColorKey = "textColor"
     static let customTextColorKey = "customTextColor"
     static let backgroundColorKey = "backgroundColor"
-    static let customBackgroundColorKey = "cumstomBackgroundColor"
+    static let customBackgroundColorKey = "customBackgroundColor"
     static let fontSizeKey = "fontSize"
     static let bodyFontKey = "bodyFont"
     static let titleFontKey = "titleFont"
@@ -84,7 +83,7 @@ class UserDefaultsThemeHelper {
         case .gray:
             return .lightGray
         case .tan:
-            return UIColor(red:0.82, green:0.71, blue:0.55, alpha:1.0)
+            return UIColor(red:0.79, green:0.73, blue:0.58, alpha:1.0)
         case .blue:
             return UIColor(red:0.68, green:0.85, blue:0.90, alpha:1.0)
         case .green:

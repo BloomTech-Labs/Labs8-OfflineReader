@@ -80,22 +80,22 @@ class ContentDetailViewController: UIViewController {
         contentBodyLabel.textColor = themeHelper.getTextColor()
         titleLabel.textColor = themeHelper.getTextColor()
         sourceAndDateLabel.textColor = themeHelper.getTextColor()
-        
+
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont
         let bodyFont = themeHelper.getBodyFont()
         contentBodyLabel.font = bodyFont
         sourceAndDateLabel.font = bodyFont
-        
+
         // Gradient Layer for top image
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = imageView.bounds
-        
+
         // Colors for gradient
         gradientLayer.colors = [
             UIColor.white.withAlphaComponent(1).cgColor,
             UIColor.white.withAlphaComponent(0).cgColor]
-        
+
         // Direction of gradient
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.70)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)

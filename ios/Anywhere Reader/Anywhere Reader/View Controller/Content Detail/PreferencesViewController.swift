@@ -68,15 +68,40 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func whiteThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .white)
+        }
+        
     }
     
     @IBAction func tanThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .tan)
+        }
     }
     
     @IBAction func grayThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .gray)
+        }
     }
     
     @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .tan)
+        }
     }
     
     //    @IBAction func toggleFontColorTableView(_ sender: Any) {

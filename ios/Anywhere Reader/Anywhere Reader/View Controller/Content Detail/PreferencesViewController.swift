@@ -81,6 +81,10 @@ class PreferencesViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         }) { _ in
+            guard let statusBarView = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBarText") as? UIView else {
+                return
+            }
+            statusBarView.backgroundColor = .red
             self.themeHelper.setTextColor(providedColor: .black)
             self.themeHelper.setBackgroundColor(providedColor: .tan)
         }

@@ -79,6 +79,7 @@ class ContentDetailViewController: UIViewController {
         view.backgroundColor = backgroundColor
         contentView.backgroundColor = backgroundColor
         navigationController?.navigationBar.barTintColor = backgroundColor
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
 
         [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
             .forEach { $0.textColor = themeHelper.getTextColor() }
@@ -103,4 +104,24 @@ class ContentDetailViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
         imageView.layer.mask = gradientLayer
     }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
 }
+
+extension UINavigationController {
+    override open var preferredStatusBarStyle : UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
+    }
+}
+
+

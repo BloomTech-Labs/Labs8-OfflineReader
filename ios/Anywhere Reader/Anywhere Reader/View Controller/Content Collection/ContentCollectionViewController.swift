@@ -26,6 +26,13 @@ class ContentCollectionViewController: UICollectionViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+        collectionView.backgroundColor = themeHelper.getBackgroundColor()
+    }
+    
     // MARK: - Actions
 
     @IBAction func addNewContent(_ sender: Any) {
@@ -54,7 +61,7 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     let articleController = ArticleController()
-    let themeHelper = theme
+    let themeHelper = UserDefaultsThemeHelper.shared
 
     // MARK: UICollectionViewDataSource
 

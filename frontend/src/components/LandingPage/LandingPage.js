@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+
 // import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 // import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
+import { FBAuthContainer } from '../../containers';
+
 const LoginBox = styled.div`
 	margin: 3rem;
 	text-align: center;
@@ -75,6 +78,8 @@ const LandingPage = props => {
 					<input type="text" name="firstname" />
 					<input type="submit" value="Sign in" />
 				</form>
+				<br />
+				<FBAuthContainer />
 				<br />
 				<div>
 					Don't have an account yet? <a href="/SignUpPage">Sign Up</a>

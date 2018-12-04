@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { GoogleAuthContainer } from '../../containers';
+
+// import { GoogleAuthContainer } from '../../containers';
 
 const NaviContainer = styled.div`
 	width: 100%;
@@ -66,7 +67,7 @@ class Navi extends Component {
 						<NavLink to="/signIn">Sign In </NavLink>
 						<NavLink to="/signUp">Sign Up </NavLink>
 						<NavLink to="/payment">Payment </NavLink>
-						<GoogleAuthContainer />
+						{/* <GoogleAuthContainer /> */}
 					</HamburgerMenu>
 				</HamburgerContainer>
 				<NaviSubContainer>
@@ -78,7 +79,7 @@ class Navi extends Component {
 					<NavLink to="/signIn">Sign In </NavLink>
 					<NavLink to="/signUp">Sign Up </NavLink>
 					<NavLink to="/payment">Payment </NavLink>
-					<GoogleAuthContainer />
+					{/* <GoogleAuthContainer /> */}
 				</NaviSubContainer>
 			</NaviContainer>
 		);

@@ -12,16 +12,12 @@ class PreferencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateButtonsView()
         preferencesView.layer.cornerRadius = 12.0
         preferencesView.layer.shadowColor = UIColor.darkGray.cgColor
         preferencesView.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +36,10 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var textColorTableView: UITableView!
     @IBOutlet weak var backgroundColorTableView: UITableView!
+    @IBOutlet weak var whiteThemeButton: UIButton!
+    @IBOutlet weak var tanThemeButton: UIButton!
+    @IBOutlet weak var grayThemeButton: UIButton!
+    @IBOutlet weak var darkGrayThemeButton: UIButton!
     
     @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
@@ -67,56 +67,40 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
-    @IBAction func toggleFontColorTableView(_ sender: Any) {
-        // Unhides font color table view
-        let heightConstant = textColorTableViewHeightConstraint.constant
-        if heightConstant == 0 {
-            textColorTableViewHeightConstraint.constant = 180
-            textColorTableView.isHidden = false
-        } else {
-            textColorTableViewHeightConstraint.constant = 0
-        }
-        if backgroundColorTableViewHeightConstraint.constant != 0 {
-            backgroundColorTableViewHeightConstraint.constant = 0
-        }
-        UIView.animate(withDuration: 0.3, animations: {
+    @IBAction func whiteThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         }) { _ in
-            if self.textColorTableViewHeightConstraint.constant == 0 {
-                self.textColorTableView.isHidden = true
-            } else {
-                let textProvidedColor = self.themeHelper.getTextProvidedColor()
-                let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
-                self.textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: true, scrollPosition: .middle)
-            }
-            self.backgroundColorTableView.isHidden = true
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .white)
+        }
+        
+    }
+    
+    @IBAction func tanThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .tan)
         }
     }
     
-    @IBAction func toggleBackgroundColorTableView(_ sender: Any) {
-        // Unhides background color table view
-        let heightConstant = backgroundColorTableViewHeightConstraint.constant
-        if heightConstant == 0 {
-            backgroundColorTableViewHeightConstraint.constant = 180
-            backgroundColorTableView.isHidden = false
-        } else {
-            backgroundColorTableViewHeightConstraint.constant = 0
-        }
-        
-        if textColorTableViewHeightConstraint.constant != 0 {
-            textColorTableViewHeightConstraint.constant = 0
-        }
-        UIView.animate(withDuration: 0.3, animations: {
+    @IBAction func grayThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
         }) { _ in
-            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
-                self.backgroundColorTableView.isHidden = true
-            } else {
-                let backgroundProvidedColor = self.themeHelper.getBackgroundProvidedColor()
-                let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 0
-                self.backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: true, scrollPosition: .middle)
-            }
-            self.textColorTableView.isHidden = true
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .gray)
+        }
+    }
+    
+    @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
         }
     }
     
@@ -146,35 +130,19 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
     }
-}
-
-
-// MARK: - UITableViewDelegate and DataSource
-
-extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UserDefaultsThemeHelper.providedColors.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
-        cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch tableView {
-        case textColorTableView:
-            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
-            themeHelper.setTextColor(providedColor: providedColor)
-            textColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
-        case backgroundColorTableView:
-            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
-            themeHelper.setBackgroundColor(providedColor: providedColor)
-            backgroundColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
-        default:
-            fatalError()
-        }
+    private func updateButtonsView() {
+        let buttons = [whiteThemeButton,
+                       tanThemeButton,
+                       grayThemeButton,
+                       darkGrayThemeButton]
         
+        buttons.forEach { button in
+            if let button = button {
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
     }
 }

@@ -81,14 +81,12 @@ class ContentDetailViewController: UIViewController {
 
         [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
             .forEach { $0.textColor = themeHelper.getTextColor() }
+        
+        [contentBodyLabel, sourceLabel, authorLabel, dateLabel]
+            .forEach { $0.font = themeHelper.getBodyFont() }
 
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont
-        let bodyFont = themeHelper.getBodyFont()
-        contentBodyLabel.font = bodyFont
-        sourceLabel.font = bodyFont
-        authorLabel.font = bodyFont
-        dateLabel.font = bodyFont
 
         // Gradient Layer for top image
         let gradientLayer = CAGradientLayer()

@@ -12,16 +12,12 @@ class PreferencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateButtonsView()
         preferencesView.layer.cornerRadius = 12.0
         preferencesView.layer.shadowColor = UIColor.darkGray.cgColor
         preferencesView.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +36,10 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var preferencesView: UIView!
     @IBOutlet weak var textColorTableView: UITableView!
     @IBOutlet weak var backgroundColorTableView: UITableView!
+    @IBOutlet weak var whiteThemeButton: UIButton!
+    @IBOutlet weak var tanThemeButton: UIButton!
+    @IBOutlet weak var grayThemeButton: UIButton!
+    @IBOutlet weak var darkGrayThemeButton: UIButton!
     
     @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
@@ -145,6 +145,21 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.alpha = 0
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
+    }
+    
+    private func updateButtonsView() {
+        let buttons = [whiteThemeButton,
+                       tanThemeButton,
+                       grayThemeButton,
+                       darkGrayThemeButton]
+        
+        buttons.forEach { button in
+            if let button = button {
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
     }
 }
 

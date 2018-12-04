@@ -51,7 +51,7 @@ class ArticleController {
 //        }.resume()
 //    }
     
-    func fetchArticles(for user: User, fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+    func fetchArticles(fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         do {
             let mockData = try Data(contentsOf: mockDataURL)
             self.articleReps = try JSONDecoder().decode(Articles.self, from: mockData)

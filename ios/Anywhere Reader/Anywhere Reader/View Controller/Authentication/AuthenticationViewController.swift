@@ -66,9 +66,9 @@ class AuthenticationViewController: UIViewController {
         switch isSignUp {
         case true:
             
-//            let sb = UIStoryboard(name: "Main", bundle: nil)
-//            guard let nc = sb.instantiateInitialViewController() else { return }
-//            present(nc, animated: true, completion: nil)
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let nc = sb.instantiateInitialViewController() else { return }
+            present(nc, animated: true, completion: nil)
             
             signUpUser()
         case false:
@@ -215,59 +215,14 @@ class AuthenticationViewController: UIViewController {
     }
 
     private func signUpUser() {
-        guard let username = usernameTextField.text,
-            let password = passwordTextField.text,
-            let email = emailTextField.text else { return }
-        
-        AuthService.shared.registerUser(withEmail: email, andPassword: password, andUsername: username) { (success, error, user) in
-            if let error = error {
-                NSLog("Error with registering user: \(error)")
-                return
-            }
-            
-            guard let user = user else { return }
-            
-            AuthService.shared.loginUser(withUsername: user.username, andPassword: password) { (success, error, user) in
-                if let error = error {
-                    NSLog("Error with logging in user: \(error)")
-                    return
-                }
-                
-                guard let user = user else { return }
-                
-                DispatchQueue.main.async {
-                    self.didAuthenticate(user)
-                }
-            }
-        }
+        guard let _ = usernameTextField.text,
+            let _ = passwordTextField.text,
+            let _ = emailTextField.text else { return }
     }
 
     private func loginUser() {
-        guard let username = usernameTextField.text,
-            let password = passwordTextField.text else { return }
-        
-        AuthService.shared.loginUser(withUsername: username, andPassword: password) { (success, error, user) in
-            if let error = error {
-                NSLog("Error with logging in user: \(error)")
-                return
-            }
-            
-            guard let user = user else { return }
-            
-            DispatchQueue.main.async {
-                self.didAuthenticate(user)
-            }
-        }
-    }
-
-    private func didAuthenticate(_ user: User) {
-        // Set current user
-        User.current = user
-        // Reset text fields to be empty
-        usernameTextField.text = ""
-        passwordTextField.text = ""
-        // Show main collection view
-        showMainCollectionView()
+        guard let _ = usernameTextField.text,
+            let _ = passwordTextField.text else { return }
     }
 }
 

@@ -104,59 +104,6 @@ class PreferencesViewController: UIViewController {
         }
     }
     
-    //    @IBAction func toggleFontColorTableView(_ sender: Any) {
-//        // Unhides font color table view
-//        let heightConstant = textColorTableViewHeightConstraint.constant
-//        if heightConstant == 0 {
-//            textColorTableViewHeightConstraint.constant = 180
-//            textColorTableView.isHidden = false
-//        } else {
-//            textColorTableViewHeightConstraint.constant = 0
-//        }
-//        if backgroundColorTableViewHeightConstraint.constant != 0 {
-//            backgroundColorTableViewHeightConstraint.constant = 0
-//        }
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.view.layoutIfNeeded()
-//        }) { _ in
-//            if self.textColorTableViewHeightConstraint.constant == 0 {
-//                self.textColorTableView.isHidden = true
-//            } else {
-//                let textProvidedColor = self.themeHelper.getTextProvidedColor()
-//                let textColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: textProvidedColor) ?? 0
-//                self.textColorTableView.selectRow(at: IndexPath(row: textColorRow, section: 0), animated: true, scrollPosition: .middle)
-//            }
-//            self.backgroundColorTableView.isHidden = true
-//        }
-//    }
-    
-//    @IBAction func toggleBackgroundColorTableView(_ sender: Any) {
-//        // Unhides background color table view
-//        let heightConstant = backgroundColorTableViewHeightConstraint.constant
-//        if heightConstant == 0 {
-//            backgroundColorTableViewHeightConstraint.constant = 180
-//            backgroundColorTableView.isHidden = false
-//        } else {
-//            backgroundColorTableViewHeightConstraint.constant = 0
-//        }
-//
-//        if textColorTableViewHeightConstraint.constant != 0 {
-//            textColorTableViewHeightConstraint.constant = 0
-//        }
-//        UIView.animate(withDuration: 0.3, animations: {
-//            self.view.layoutIfNeeded()
-//        }) { _ in
-//            if self.backgroundColorTableViewHeightConstraint.constant == 0 {
-//                self.backgroundColorTableView.isHidden = true
-//            } else {
-//                let backgroundProvidedColor = self.themeHelper.getBackgroundProvidedColor()
-//                let backgroundColorRow = UserDefaultsThemeHelper.providedColors.firstIndex(of: backgroundProvidedColor) ?? 0
-//                self.backgroundColorTableView.selectRow(at: IndexPath(row: backgroundColorRow, section: 0), animated: true, scrollPosition: .middle)
-//            }
-//            self.textColorTableView.isHidden = true
-//        }
-//    }
-    
     @IBAction func changeFont(_ sender: Any) {
         // Unhides a not yet made font choice view
     }
@@ -199,34 +146,3 @@ class PreferencesViewController: UIViewController {
         }
     }
 }
-
-
-// MARK: - UITableViewDelegate and DataSource
-//
-//extension PreferencesViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return UserDefaultsThemeHelper.providedColors.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "ColorCell", for: indexPath)
-//        cell.textLabel?.text = UserDefaultsThemeHelper.providedColors[indexPath.row].rawValue
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        switch tableView {
-//        case textColorTableView:
-//            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
-//            themeHelper.setTextColor(providedColor: providedColor)
-//            textColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
-//        case backgroundColorTableView:
-//            let providedColor = UserDefaultsThemeHelper.providedColors[indexPath.row]
-//            themeHelper.setBackgroundColor(providedColor: providedColor)
-//            backgroundColorTableView.scrollToNearestSelectedRow(at: .middle, animated: true)
-//        default:
-//            fatalError()
-//        }
-//
-//    }
-//}

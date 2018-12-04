@@ -24,6 +24,7 @@ class UserDefaultsThemeHelper {
         case tan = "Tan"
         case blue = "Blue"
         case green = "Green"
+        case darkGray = "darkGray"
         case custom = "Custom"
     }
 
@@ -81,13 +82,15 @@ class UserDefaultsThemeHelper {
         case .white:
             return .white
         case .gray:
-            return .lightGray
+            return UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1.0)
         case .tan:
             return UIColor(red: 0.79, green: 0.73, blue: 0.58, alpha: 1.0)
         case .blue:
             return UIColor(red: 0.68, green: 0.85, blue: 0.90, alpha: 1.0)
         case .green:
             return UIColor(red: 0.60, green: 0.98, blue: 0.60, alpha: 1.0)
+        case .darkGray:
+            return UIColor(red: 0.17, green: 0.17, blue: 0.17, alpha: 1.0)
         case .custom:
             // TODO: fetch from user defaults or handle somehow
             return .black

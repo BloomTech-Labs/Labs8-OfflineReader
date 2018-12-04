@@ -100,7 +100,7 @@ class PreferencesViewController: UIViewController {
             self.view.layoutIfNeeded()
         }) { _ in
             self.themeHelper.setTextColor(providedColor: .white)
-            self.themeHelper.setBackgroundColor(providedColor: .tan)
+            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
         }
     }
     

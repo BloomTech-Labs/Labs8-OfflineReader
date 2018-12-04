@@ -21,10 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AppearanceHelper.setUpTheme()
         
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = sb.instantiateInitialViewController()
-//        self.window?.rootViewController = vc
-//        self.window?.makeKeyAndVisible()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAuth), name: NSNotification.Name.FBSDKAccessTokenDidChange, object: nil)
 
         return true
     }
@@ -36,6 +33,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Calls the 'activate' method to log an app event for use in analytics and advertising reporting.
         AppEventsLogger.activate(application)
+    }
+    
+    
+    // MARK: - Facebook authentication
+    
+    @objc func handleAuth() {
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let authStoryboard = UIStoryboard(name: "Authentication", bundle: nil)
+        
+        var controller: UIViewController?
+        if let _ = AccessToken.current  {
+            controller = mainStoryboard.instantiateInitialViewController()
+        } else {
+            controller = authStoryboard.instantiateInitialViewController()
+        }
+        self.window?.rootViewController = controller
+        self.window?.makeKeyAndVisible()
     }
 }
 

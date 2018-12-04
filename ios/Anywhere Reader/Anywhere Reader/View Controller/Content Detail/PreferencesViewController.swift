@@ -67,9 +67,19 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
+    @IBAction func whiteThemeButtonTapped(_ sender: Any) {
+    }
     
+    @IBAction func tanThemeButtonTapped(_ sender: Any) {
+    }
     
-//    @IBAction func toggleFontColorTableView(_ sender: Any) {
+    @IBAction func grayThemeButtonTapped(_ sender: Any) {
+    }
+    
+    @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
+    }
+    
+    //    @IBAction func toggleFontColorTableView(_ sender: Any) {
 //        // Unhides font color table view
 //        let heightConstant = textColorTableViewHeightConstraint.constant
 //        if heightConstant == 0 {

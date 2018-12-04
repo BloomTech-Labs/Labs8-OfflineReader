@@ -81,6 +81,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="whiteThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="4Mn-7s-5nt"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h63-oU-8dH">
                                                         <rect key="frame" x="71.5" y="0.0" width="45.5" height="45"/>
@@ -89,6 +92,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="tanThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="mxo-s7-pcV"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGM-OE-kyR">
                                                         <rect key="frame" x="143" y="0.0" width="45.5" height="45"/>
@@ -97,6 +103,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="grayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="K0c-w9-Qrz"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-eH-QcQ">
                                                         <rect key="frame" x="214.5" y="0.0" width="45.5" height="45"/>
@@ -105,6 +114,9 @@
                                                         <state key="normal">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="darkGrayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="30q-U2-w2E"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>

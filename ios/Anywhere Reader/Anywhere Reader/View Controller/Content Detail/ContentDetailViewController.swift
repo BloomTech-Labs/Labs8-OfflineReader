@@ -23,11 +23,9 @@ class ContentDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    
     // MARK: - Private properties
     
     let themeHelper = UserDefaultsThemeHelper.shared
-    
     
     // MARK: - Public properties
     

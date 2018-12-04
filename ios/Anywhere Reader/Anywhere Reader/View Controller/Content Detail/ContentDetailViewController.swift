@@ -78,6 +78,7 @@ class ContentDetailViewController: UIViewController {
         let backgroundColor = themeHelper.getBackgroundColor()
         view.backgroundColor = backgroundColor
         contentView.backgroundColor = backgroundColor
+        navigationController?.navigationBar.barTintColor = backgroundColor
 
         [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
             .forEach { $0.textColor = themeHelper.getTextColor() }

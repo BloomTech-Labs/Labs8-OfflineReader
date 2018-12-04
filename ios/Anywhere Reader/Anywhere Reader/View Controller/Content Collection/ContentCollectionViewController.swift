@@ -54,6 +54,7 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     let articleController = ArticleController()
+    let themeHelper = theme
 
     // MARK: UICollectionViewDataSource
 

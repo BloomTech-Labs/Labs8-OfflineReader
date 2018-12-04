@@ -43,11 +43,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCa-DY-0V3">
-                                <rect key="frame" x="30" y="255" width="354" height="386"/>
+                                <rect key="frame" x="30" y="294" width="354" height="308"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="flh-FK-sRZ">
-                                <rect key="frame" x="50" y="275" width="314" height="346"/>
+                                <rect key="frame" x="50" y="314" width="314" height="268"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="28u-EP-yQu">
                                         <rect key="frame" x="94.5" y="0.0" width="125" height="29"/>
@@ -237,14 +237,6 @@
                                             <constraint firstItem="VT2-z7-9c9" firstAttribute="height" secondItem="I4L-eQ-Jc4" secondAttribute="height" id="pjJ-NM-ifU"/>
                                         </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-bF-vhj" customClass="GIDSignInButton">
-                                        <rect key="frame" x="1" y="298" width="312" height="48"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="312" id="6cF-Y4-KRT"/>
-                                            <constraint firstAttribute="height" constant="48" id="A6P-2q-4Nt"/>
-                                        </constraints>
-                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="k3W-IO-gfk" firstAttribute="width" secondItem="flh-FK-sRZ" secondAttribute="width" id="PSE-41-4hF"/>
@@ -273,7 +265,6 @@
                         <outlet property="emailStackView" destination="Xb3-Nu-Qec" id="Ocb-Jk-MXr"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
-                        <outlet property="googleSignInButton" destination="F9b-bF-vhj" id="f1N-83-Iuq"/>
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>
                         <outlet property="passwordView" destination="zIo-zh-xvH" id="08o-6h-hwG"/>
                         <outlet property="segmentedControl" destination="28u-EP-yQu" id="Hw2-BB-gpA"/>

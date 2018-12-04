@@ -15,7 +15,7 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleController.fetchArticles(for: User.current) { (success, error) in
+        articleController.fetchArticles() { (success, error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
                 return

@@ -18,6 +18,7 @@ from django.urls import path, include
 
 from django.conf.urls import url, include
 from django.contrib.auth.models import User
+from . import views
 # from rest_framework import routers, serializers, viewsets
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -33,5 +34,6 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api/', include('payments.urls')),
     path('pages/', include('pages.urls')),
-    
+    url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    path('convert_token/', views.convert.as_view())
 ]

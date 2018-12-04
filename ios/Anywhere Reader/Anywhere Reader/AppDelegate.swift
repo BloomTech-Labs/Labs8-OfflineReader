@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleSignIn
 import Stripe
 
 @UIApplicationMain
@@ -17,26 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         STPPaymentConfiguration.shared().publishableKey = "pk_test_2rPuyENL1sfpQAu8wCPX6Fx5"
-        GIDSignIn.sharedInstance().clientID = "308606958601-9u35afi45dgjqdljqu43ldqa8012nj0d.apps.googleusercontent.com"
         
         AppearanceHelper.setUpTheme()
         
-        if let isSignedIn = GIDSignIn.sharedInstance()?.hasAuthInKeychain() {
-            GIDSignIn.sharedInstance()?.signInSilently()
-            if isSignedIn && GIDSignIn.sharedInstance()?.currentUser != nil {
-                let sb = UIStoryboard(name: "Main", bundle: nil)
-                let vc = sb.instantiateInitialViewController()
-                self.window?.rootViewController = vc
-                self.window?.makeKeyAndVisible()
-            }
-        }
+//        let sb = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = sb.instantiateInitialViewController()
+//        self.window?.rootViewController = vc
+//        self.window?.makeKeyAndVisible()
+
         return true
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                  sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                  annotation: options[UIApplication.OpenURLOptionsKey.annotation])
-    }
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        return 
+//    }
 }
 

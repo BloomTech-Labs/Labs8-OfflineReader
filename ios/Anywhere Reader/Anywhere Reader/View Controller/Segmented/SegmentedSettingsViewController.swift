@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GoogleSignIn
 
 class SegmentedSettingsViewController: UIViewController {
     
@@ -54,15 +53,7 @@ class SegmentedSettingsViewController: UIViewController {
         
         let alertController = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
-            GIDSignIn.sharedInstance().signOut()
-            let isSignedIn = GIDSignIn.sharedInstance()?.hasAuthInKeychain()
-            if isSignedIn == nil || isSignedIn == false {
-                    let sb = UIStoryboard(name: "Authentication", bundle: nil)
-                    let vc = sb.instantiateInitialViewController()!
-                    self.present(vc, animated: false)
-            }
-        }
+        let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive)
         alertController.addAction(cancelAction)
         alertController.addAction(signOutAction)
         

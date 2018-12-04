@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
-		1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1332E69B21AC7957003413F6 /* GoogleService-Info.plist */; };
 		1373243121ADCCED006DDF1E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373243021ADCCED006DDF1E /* APIService.swift */; };
 		13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
@@ -45,7 +44,6 @@
 		036ACFCF38AB072CCCA0C8F4 /* Pods-Anywhere Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		10DBC3271CE88F53FD615C48 /* Pods-Anywhere Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.release.xcconfig"; sourceTree = "<group>"; };
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
-		1332E69B21AC7957003413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1373243021ADCCED006DDF1E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			children = (
 				13847C1F21B73C59005B533D /* Extensions */,
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				1332E69B21AC7957003413F6 /* GoogleService-Info.plist */,
 				2200578A219DB8FB00808E4B /* AppearanceHelper.swift */,
 				2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */,
 				223E6F3621B5C04F0024E993 /* Core Data */,
@@ -336,7 +333,6 @@
 				2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */,
 				13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */,
 				13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */,
-				1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */,
 				22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

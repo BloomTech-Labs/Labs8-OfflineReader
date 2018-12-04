@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class AuthenticationViewController: UIViewController {
 
@@ -31,7 +32,8 @@ class AuthenticationViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet weak var credentialsView: UIView!
-
+    @IBOutlet weak var outermostStackView: UIStackView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet var selectedSegmentBar: UIView!
 
@@ -84,6 +86,7 @@ class AuthenticationViewController: UIViewController {
         setUpSegmentedControl()
         setUpSelectedSegmentBar()
         setUpTextFields()
+        setUpFacebookAuthButton()
     }
 
     /// Makes sure the background is a solid color even if it happens to get layed out on top of the trapezoid gradient
@@ -147,6 +150,11 @@ class AuthenticationViewController: UIViewController {
         usernameTextField.inputAccessoryView = toolBar
         emailTextField.inputAccessoryView = toolBar
         passwordTextField.inputAccessoryView = toolBar
+    }
+    
+    func setUpFacebookAuthButton() {
+        let loginButton = LoginButton(readPermissions: [.publicProfile])
+        outermostStackView.addArrangedSubview(loginButton)
     }
 
     /// Dismisses all three textFields

@@ -7,17 +7,12 @@
 //
 
 import UIKit
-import GoogleSignIn
+import FacebookLogin
 
 class AuthenticationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate = self
-
-        googleSignInButton.style = .wide
 
         updateViews()
     }
@@ -37,7 +32,8 @@ class AuthenticationViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet weak var credentialsView: UIView!
-
+    @IBOutlet weak var outermostStackView: UIStackView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet var selectedSegmentBar: UIView!
 
@@ -53,7 +49,6 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var passwordView: GradientMaskView!
 
     @IBOutlet weak var authenticateButton: UIButton!
-    @IBOutlet var googleSignInButton: GIDSignInButton!
 
     // MARK: - IBActions
 
@@ -72,6 +67,11 @@ class AuthenticationViewController: UIViewController {
     @IBAction func authenticateTapped(_ sender: Any) {
         switch isSignUp {
         case true:
+            
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            guard let nc = sb.instantiateInitialViewController() else { return }
+            present(nc, animated: true, completion: nil)
+            
             signUpUser()
         case false:
             loginUser()
@@ -86,6 +86,7 @@ class AuthenticationViewController: UIViewController {
         setUpSegmentedControl()
         setUpSelectedSegmentBar()
         setUpTextFields()
+        setUpFacebookAuthButton()
     }
 
     /// Makes sure the background is a solid color even if it happens to get layed out on top of the trapezoid gradient
@@ -149,6 +150,11 @@ class AuthenticationViewController: UIViewController {
         usernameTextField.inputAccessoryView = toolBar
         emailTextField.inputAccessoryView = toolBar
         passwordTextField.inputAccessoryView = toolBar
+    }
+    
+    func setUpFacebookAuthButton() {
+        let loginButton = LoginButton(readPermissions: [.publicProfile])
+        outermostStackView.addArrangedSubview(loginButton)
     }
 
     /// Dismisses all three textFields
@@ -217,59 +223,14 @@ class AuthenticationViewController: UIViewController {
     }
 
     private func signUpUser() {
-        guard let username = usernameTextField.text,
-            let password = passwordTextField.text,
-            let email = emailTextField.text else { return }
-        
-        AuthService.shared.registerUser(withEmail: email, andPassword: password, andUsername: username) { (success, error, user) in
-            if let error = error {
-                NSLog("Error with registering user: \(error)")
-                return
-            }
-            
-            guard let user = user else { return }
-            
-            AuthService.shared.loginUser(withUsername: user.username, andPassword: password) { (success, error, user) in
-                if let error = error {
-                    NSLog("Error with logging in user: \(error)")
-                    return
-                }
-                
-                guard let user = user else { return }
-                
-                DispatchQueue.main.async {
-                    self.didAuthenticate(user)
-                }
-            }
-        }
+        guard let _ = usernameTextField.text,
+            let _ = passwordTextField.text,
+            let _ = emailTextField.text else { return }
     }
 
     private func loginUser() {
-        guard let username = usernameTextField.text,
-            let password = passwordTextField.text else { return }
-        
-        AuthService.shared.loginUser(withUsername: username, andPassword: password) { (success, error, user) in
-            if let error = error {
-                NSLog("Error with logging in user: \(error)")
-                return
-            }
-            
-            guard let user = user else { return }
-            
-            DispatchQueue.main.async {
-                self.didAuthenticate(user)
-            }
-        }
-    }
-
-    private func didAuthenticate(_ user: User) {
-        // Set current user
-        User.current = user
-        // Reset text fields to be empty
-        usernameTextField.text = ""
-        passwordTextField.text = ""
-        // Show main collection view
-        showMainCollectionView()
+        guard let _ = usernameTextField.text,
+            let _ = passwordTextField.text else { return }
     }
 }
 
@@ -289,24 +250,5 @@ extension AuthenticationViewController: UITextFieldDelegate {
             fatalError("No other textFields implemented")
         }
         return true
-    }
-}
-
-
-// MARK: - GIDSignInDelegate
-
-extension AuthenticationViewController: GIDSignInDelegate, GIDSignInUIDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            NSLog("\(error.localizedDescription)")
-        } else {
-            // Operations for signed in user
-            guard let username = user.profile.givenName,
-                let token = user.authentication.accessToken else { return }
-            let user = User(username: username, email: nil, password1: nil, password2: nil, key: Key(key: token))
-            User.current = user
-            // Present controller
-            showMainCollectionView()
-        }
     }
 }

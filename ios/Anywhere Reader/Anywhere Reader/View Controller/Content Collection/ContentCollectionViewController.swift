@@ -15,7 +15,7 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleController.fetchArticles(for: User.current) { (success, error) in
+        articleController.fetchArticles() { (success, error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
                 return
@@ -24,6 +24,13 @@ class ContentCollectionViewController: UICollectionViewController {
                 self.collectionView.reloadData()
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+        collectionView.backgroundColor = themeHelper.getBackgroundColor()
     }
     
     // MARK: - Actions
@@ -54,6 +61,19 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     let articleController = ArticleController()
+    let themeHelper = UserDefaultsThemeHelper.shared
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 

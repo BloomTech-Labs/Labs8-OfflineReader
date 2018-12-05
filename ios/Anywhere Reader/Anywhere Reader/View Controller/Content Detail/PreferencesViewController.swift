@@ -25,6 +25,7 @@ class PreferencesViewController: UIViewController {
         if themeHelper.isNightMode() {
             nightThemeSwitch.isOn = true
         }
+        brightnessSlider.value = Float(UIScreen.main.brightness)
         animateView()
     }
     
@@ -74,13 +75,8 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func whiteThemeButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .black)
-            self.themeHelper.setBackgroundColor(providedColor: .white)
-        }
-        
+        setWhiteTheme()
+        nightThemeSwitch.isOn = false
     }
     
     @IBAction func tanThemeButtonTapped(_ sender: Any) {
@@ -90,6 +86,7 @@ class PreferencesViewController: UIViewController {
             self.themeHelper.setTextColor(providedColor: .black)
             self.themeHelper.setBackgroundColor(providedColor: .tan)
         }
+        nightThemeSwitch.isOn = false
     }
     
     @IBAction func grayThemeButtonTapped(_ sender: Any) {
@@ -99,21 +96,18 @@ class PreferencesViewController: UIViewController {
             self.themeHelper.setTextColor(providedColor: .white)
             self.themeHelper.setBackgroundColor(providedColor: .gray)
         }
+        nightThemeSwitch.isOn = false
     }
     
     @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .white)
-            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
-        }
+        setDarkGrayTheme()
+        nightThemeSwitch.isOn = false
     }
     
     @IBAction func nightModeSwitch(_ sender: Any) {
         if nightThemeSwitch.isOn {
             themeHelper.setNightMode()
-            darkGrayThemeButtonTapped(sender)
+            setDarkGrayTheme()
         } else {
             themeHelper.setNightMode()
             whiteThemeButtonTapped(sender)
@@ -148,6 +142,24 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.alpha = 0
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
+    }
+    
+    private func setDarkGrayTheme() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
+        }
+    }
+    
+    private func setWhiteTheme() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .white)
+        }
     }
     
     private func updateButtonsView() {

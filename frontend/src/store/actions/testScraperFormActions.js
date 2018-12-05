@@ -8,10 +8,10 @@ export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 
-const knex = require('knex');
-const knexConfig = require('../../../knexfile');
+// const knex = require('knex');
+// const knexConfig = require('../../../knexfile');
 
-const db = knex(knexConfig.development);
+// const db = knex(knexConfig.development);
 
 export const fetchPages = serverToken => {
 	return dispatch => {
@@ -63,15 +63,15 @@ export const sendUrl = (newURL, serverToken) => {
 					})
 					.then(response => {
 						// Sqlite page object creation here
-						const newOfflinePage = response.data[0];
-						db.insert(newOfflinePage)
-							.into('pages')
-							.then(ids => {
-								//respond with the new Page object saved to sqlite
-							})
-							.catch(err => {
-								//respond with an error
-							});
+						// const newOfflinePage = response.data[0];
+						// db.insert(newOfflinePage)
+						// 	.into('pages')
+						// 	.then(ids => {
+						// 		//respond with the new Page object saved to sqlite
+						// 	})
+						// 	.catch(err => {
+						// 		//respond with an error
+						// 	});
 						////////
 
 						dispatch({

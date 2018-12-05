@@ -33,7 +33,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('api/', include('payments.urls')),
-    path('pages/', include('pages.urls')),
+    # path('pages/', include('pages.urls')),
     url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     path('convert_token/', views.convert.as_view())
 ]

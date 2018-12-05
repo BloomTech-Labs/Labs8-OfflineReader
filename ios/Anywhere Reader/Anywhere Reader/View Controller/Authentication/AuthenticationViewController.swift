@@ -63,20 +63,6 @@ class AuthenticationViewController: UIViewController {
         }
     }
 
-    // Sign Up or Sign In tapped
-    @IBAction func authenticateTapped(_ sender: Any) {
-        switch isSignUp {
-        case true:
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            guard let nc = sb.instantiateInitialViewController() else { return }
-            present(nc, animated: true, completion: nil)
-            
-            signUpUser()
-        case false:
-            loginUser()
-        }
-    }
 
     // MARK: - Private functions
 
@@ -154,6 +140,7 @@ class AuthenticationViewController: UIViewController {
     
     func setUpFacebookAuthButton() {
         let loginButton = LoginButton(readPermissions: [.publicProfile])
+        loginButton.loginBehavior = .web
         outermostStackView.addArrangedSubview(loginButton)
     }
 
@@ -213,24 +200,6 @@ class AuthenticationViewController: UIViewController {
 
         // Reloads keyboard return key
         passwordTextField.reloadInputViews()
-    }
-    
-    private func showMainCollectionView() {
-        let contentSb = UIStoryboard(name: "Main", bundle: nil)
-        let contentCollectionView = contentSb.instantiateInitialViewController() as! UINavigationController
-        
-        self.present(contentCollectionView, animated: true, completion: nil)
-    }
-
-    private func signUpUser() {
-        guard let _ = usernameTextField.text,
-            let _ = passwordTextField.text,
-            let _ = emailTextField.text else { return }
-    }
-
-    private func loginUser() {
-        guard let _ = usernameTextField.text,
-            let _ = passwordTextField.text else { return }
     }
 }
 

@@ -70,7 +70,7 @@ class TestScraperForm extends Component {
 }
 
 TestScraperForm.propTypes = {
-	serverToken: PropTypes.string.isRequired,
+	serverToken: PropTypes.object.isRequired,
 	sendUrl: PropTypes.func.isRequired
 };
 

@@ -44,7 +44,7 @@ TestScraperFormContainer.propTypes = {
 			text: PropTypes.string
 		})
 	).isRequired,
-	serverToken: PropTypes.string.isRequired,
+	serverToken: PropTypes.object.isRequired,
 	fetchPages: PropTypes.func.isRequired,
 	sendUrl: PropTypes.func.isRequired
 };

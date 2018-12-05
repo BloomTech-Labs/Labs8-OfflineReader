@@ -3,20 +3,19 @@
 exports.up = function(knex, Promise) {
 	return knex.schema.createTable('pages', function(tbl) {
 		// primary key
-		tbl.increments('Id');
-		tbl.string('title', 256).notNullable();
+		tbl.increments();
+		tbl.string('title', 512).notNullable();
 		tbl.string('author', 256);
-		tbl.string('normal_url', 256).notNullable();
-		tbl.string('resolved_url', 256).notNullable();
-		tbl.string('date_saved', 256);
-		tbl.string('date_published', 256);
-		tbl.string('excerpt', 256);
-		// // Need to circle back for this one
-		// tbl.bindBlob('cover_image', 256).notNullable();
-		// //
-		tbl.string('tags', 256);
-		tbl.string('text', 256).notNullable();
-		tbl.timestamp('createdAt').defaultTo(knex.fn.now());
+		tbl.string('normal_url').notNullable();
+		tbl.string('resolved_url');
+		tbl.timestamp('date_saved').defaultTo(knex.fn.now());
+		tbl.string('date_published');
+		tbl.string('excerpt', 512);
+		tbl.binary('cover_image');
+		tbl.binary('video');
+		tbl.binary('audio');
+		tbl.string('tags', 512);
+		tbl.text('text');
 	});
 };
 

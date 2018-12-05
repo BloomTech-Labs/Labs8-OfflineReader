@@ -40,6 +40,9 @@
                                                     </imageView>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="TfJ-GP-1Oc">
                                                         <rect key="frame" x="43" y="0.0" width="181" height="38"/>
+                                                        <connections>
+                                                            <action selector="brightnessSliderChanged:" destination="CAE-50-fah" eventType="valueChanged" id="h38-mh-boB"/>
+                                                        </connections>
                                                     </slider>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brightness smaller" translatesAutoresizingMaskIntoConstraints="NO" id="WnZ-5C-WZS">
                                                         <rect key="frame" x="230" y="0.0" width="30" height="37"/>
@@ -131,6 +134,9 @@
                                                     </label>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bnP-mb-vVa">
                                                         <rect key="frame" x="211" y="0.0" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="nightModeSwitch:" destination="CAE-50-fah" eventType="valueChanged" id="q2k-lu-7RP"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                             </stackView>
@@ -161,8 +167,10 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="brightnessSlider" destination="TfJ-GP-1Oc" id="1zB-o8-U2c"/>
                         <outlet property="darkGrayThemeButton" destination="QZD-eH-QcQ" id="sNb-EP-LsE"/>
                         <outlet property="grayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
+                        <outlet property="nightThemeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="tanThemeButton" destination="h63-oU-8dH" id="MJh-qe-gEj"/>
                         <outlet property="whiteThemeButton" destination="trp-JI-hXt" id="Ez3-eU-a12"/>

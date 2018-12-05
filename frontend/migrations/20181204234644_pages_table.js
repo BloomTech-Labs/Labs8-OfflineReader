@@ -1,3 +1,5 @@
+//This table structures the Pages schema for the sqlite db used for offline storage/syncing of a users pages
+
 exports.up = function(knex, Promise) {
 	return knex.schema.createTable('pages', function(tbl) {
 		// primary key

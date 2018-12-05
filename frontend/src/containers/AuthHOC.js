@@ -13,7 +13,7 @@ const AuthHOC = Protected => {
 		}
 	}
 	const mapStateToProps = state => ({
-		authStatus: state.userReducers.auth.serverToken.status
+		authStatus: state.userReducers.auth.serverToken.status || ''
 	});
 
 	return connect(mapStateToProps)(ProtectedChild);

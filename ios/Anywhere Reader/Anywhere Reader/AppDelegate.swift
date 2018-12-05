@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Stripe
 import FacebookCore
 
 @UIApplicationMain
@@ -17,10 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
                 
-        STPPaymentConfiguration.shared().publishableKey = "pk_test_2rPuyENL1sfpQAu8wCPX6Fx5"
-        
-        AppearanceHelper.setUpTheme()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(handleAuth), name: NSNotification.Name.FBSDKAccessTokenDidChange, object: nil)
 
         return true

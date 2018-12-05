@@ -20,7 +20,7 @@ FBAuthContainer.propTypes = {
 		premium: PropTypes.bool
 	}).isRequired,
 	auth: PropTypes.shape({
-		googleClientId: PropTypes.string
+		// googleClientId: PropTypes.string
 		// serverToken: PropTypes.object //TODO: flesh out this prop type
 	}).isRequired,
 	userStatus: PropTypes.shape({

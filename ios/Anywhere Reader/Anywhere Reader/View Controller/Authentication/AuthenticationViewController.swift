@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FacebookLogin
 
 class AuthenticationViewController: UIViewController {
 
@@ -31,7 +32,8 @@ class AuthenticationViewController: UIViewController {
     // MARK: - IBOutlets
 
     @IBOutlet weak var credentialsView: UIView!
-
+    @IBOutlet weak var outermostStackView: UIStackView!
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet var selectedSegmentBar: UIView!
 
@@ -61,20 +63,6 @@ class AuthenticationViewController: UIViewController {
         }
     }
 
-    // Sign Up or Sign In tapped
-    @IBAction func authenticateTapped(_ sender: Any) {
-        switch isSignUp {
-        case true:
-            
-            let sb = UIStoryboard(name: "Main", bundle: nil)
-            guard let nc = sb.instantiateInitialViewController() else { return }
-            present(nc, animated: true, completion: nil)
-            
-            signUpUser()
-        case false:
-            loginUser()
-        }
-    }
 
     // MARK: - Private functions
 
@@ -84,6 +72,7 @@ class AuthenticationViewController: UIViewController {
         setUpSegmentedControl()
         setUpSelectedSegmentBar()
         setUpTextFields()
+        setUpFacebookAuthButton()
     }
 
     /// Makes sure the background is a solid color even if it happens to get layed out on top of the trapezoid gradient
@@ -148,6 +137,12 @@ class AuthenticationViewController: UIViewController {
         emailTextField.inputAccessoryView = toolBar
         passwordTextField.inputAccessoryView = toolBar
     }
+    
+    func setUpFacebookAuthButton() {
+        let loginButton = LoginButton(readPermissions: [.publicProfile])
+        loginButton.loginBehavior = .web
+        outermostStackView.addArrangedSubview(loginButton)
+    }
 
     /// Dismisses all three textFields
     @objc private func dismissKeyboardForAllTextFields() {
@@ -205,24 +200,6 @@ class AuthenticationViewController: UIViewController {
 
         // Reloads keyboard return key
         passwordTextField.reloadInputViews()
-    }
-    
-    private func showMainCollectionView() {
-        let contentSb = UIStoryboard(name: "Main", bundle: nil)
-        let contentCollectionView = contentSb.instantiateInitialViewController() as! UINavigationController
-        
-        self.present(contentCollectionView, animated: true, completion: nil)
-    }
-
-    private func signUpUser() {
-        guard let _ = usernameTextField.text,
-            let _ = passwordTextField.text,
-            let _ = emailTextField.text else { return }
-    }
-
-    private func loginUser() {
-        guard let _ = usernameTextField.text,
-            let _ = passwordTextField.text else { return }
     }
 }
 

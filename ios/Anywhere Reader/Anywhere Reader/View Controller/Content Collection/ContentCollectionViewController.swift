@@ -26,6 +26,13 @@ class ContentCollectionViewController: UICollectionViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+        collectionView.backgroundColor = themeHelper.getBackgroundColor()
+    }
+    
     // MARK: - Actions
 
     @IBAction func addNewContent(_ sender: Any) {
@@ -54,6 +61,19 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     let articleController = ArticleController()
+    let themeHelper = UserDefaultsThemeHelper.shared
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 

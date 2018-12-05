@@ -223,9 +223,6 @@
                                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
                                                 <rect key="frame" x="0.0" y="180" width="314" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
-                                                <connections>
-                                                    <action selector="authenticateTapped:" destination="Rcg-2l-HNe" eventType="touchUpInside" id="8W2-sS-xSw"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -265,6 +262,7 @@
                         <outlet property="emailStackView" destination="Xb3-Nu-Qec" id="Ocb-Jk-MXr"/>
                         <outlet property="emailTextField" destination="Eh5-0C-oqQ" id="v4F-0Q-P5Q"/>
                         <outlet property="emailView" destination="PS2-yC-2mH" id="FW6-h1-IoQ"/>
+                        <outlet property="outermostStackView" destination="flh-FK-sRZ" id="t8M-g6-ZIH"/>
                         <outlet property="passwordTextField" destination="uvl-rf-oL4" id="dhh-aa-gaj"/>
                         <outlet property="passwordView" destination="zIo-zh-xvH" id="08o-6h-hwG"/>
                         <outlet property="segmentedControl" destination="28u-EP-yQu" id="Hw2-BB-gpA"/>

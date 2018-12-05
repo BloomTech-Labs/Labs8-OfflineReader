@@ -1,0 +1,1 @@
+export { LandingPageDiv } from './splash';

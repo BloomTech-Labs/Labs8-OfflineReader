@@ -12,14 +12,13 @@ class ArticleSerializer(serializers.ModelSerializer):
 class ArticleViewSet(viewsets.ModelViewSet):
     serializers_class = ArticleSerializer
     #open access
-    queryset = Article.objects.all()
+    #queryset = Article.objects.all()
 
     #access granted when logged in
-    # def get_queryset(self):
-    #     user = self.request.user
+    def get_queryset(self):
+        user = self.request.user
 
-    #     if user.is_anonymous:
-    #         return Article.objects.none()
-    #     else:
-    #         return Article.objects.filter(user=user)
-    # TODO: switch back once authentication is up and running
+        if user.is_anonymous:
+            return Article.objects.none()
+        else:
+            return Article.objects.filter(user=user)

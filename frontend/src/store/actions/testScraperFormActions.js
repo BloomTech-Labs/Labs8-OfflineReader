@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { apiBaseUrl } from './';
-
+import localforage from 'localforage';
 export const FETCHING_PAGES = 'FETCHING_PAGES';
 export const PAGES_FETCHED = 'PAGES_FETCHED';
 export const PAGES_FETCH_ERROR = 'PAGES_FETCH_ERROR';
@@ -57,7 +57,20 @@ export const sendUrl = (newURL, serverToken) => {
 						headers: headers
 					})
 					.then(response => {
-						// console.log('response:', JSON.stringify(response.data));
+						//// offline storage logic
+						console.log(response.data[0]);
+						let offlinePage = response.data[0];
+						localforage
+							.setItem(offlinePage.id, offlinePage)
+							.then(function(value) {
+								// Do other things once the value has been saved.
+								console.log('offlinePage just created:', value);
+							})
+							.catch(function(err) {
+								// This code runs if there were any errors
+								console.log(err);
+							});
+						/////////
 
 						dispatch({
 							type: PAGES_FETCHED,

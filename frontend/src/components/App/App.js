@@ -4,14 +4,14 @@ import styled from 'styled-components';
 
 import { TestScraperFormContainer } from '../../containers';
 import {
-	SignInPage,
-	SignUpPage,
-	SignedIn,
-	SignedUp,
+	LandingPage,
 	Navi,
-	StripeProviderStub,
 	Settings,
-	LandingPage
+	// SignedIn,
+	SignInPage,
+	// SignedUp,
+	SignUpPage,
+	StripeProviderStub
 } from '../';
 
 const AppContainer = styled.div`
@@ -26,17 +26,18 @@ class App extends Component {
 			<Router>
 				<AppContainer>
 					<Navi />
+
+					<Route exact path="/" component={LandingPage} />
+					<Route path="/payment" component={StripeProviderStub} />
+					<Route path="/signin" component={SignInPage} />
+					<Route path="/signup" component={SignUpPage} />
+					{/* <Route path="/signedin" component={SignedIn} /> */}
+					{/* <Route path="/signedup" component={SignedUp} /> */}
+					<Route path="/settings" component={Settings} />
 					<Route
 						path="/testScraperFormContainer"
 						component={TestScraperFormContainer}
 					/>
-					<Route exact path="/" component={LandingPage} />
-					<Route path="/signIn" component={SignInPage} />
-					<Route path="/signUp" component={SignUpPage} />
-					<Route path="/signedIn" component={SignedIn} />
-					<Route path="/signedUp" component={SignedUp} />
-					<Route path="/payment" component={StripeProviderStub} />
-					<Route path="/settings" component={Settings} />
 				</AppContainer>
 			</Router>
 		);

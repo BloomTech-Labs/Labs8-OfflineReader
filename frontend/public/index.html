@@ -35,6 +35,29 @@
 			runtime—you can’t install it from npm or bundle it into your application like a conventional
 			dependency.
 		-->
+		<script>
+			// Check for browser support of service worker
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker
+					.register('service-worker.js', {
+						scope: '/src/'
+					})
+					.then(function(registration) {
+						// Successful registration
+						console.log(
+							'Hooray. Registration successful, scope is:',
+							registration.scope
+						);
+					})
+					.catch(function(err) {
+						// Failed registration, service worker won’t be installed
+						console.log(
+							'Whoops. Service worker registration failed, error:',
+							error
+						);
+					});
+			}
+		</script>
 		<title>React App</title>
 	</head>
 	<body>
@@ -49,6 +72,5 @@
 
 			To begin the development, run `npm start` or `yarn start`.
 			To create a production bundle, use `npm run build` or `yarn build`.
-		-->
-	</body>
+		--></body>
 </html>

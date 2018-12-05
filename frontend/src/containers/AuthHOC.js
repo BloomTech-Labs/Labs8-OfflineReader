@@ -6,7 +6,7 @@ const AuthHOC = Protected => {
 	class ProtectedChild extends Component {
 		render() {
 			// Check if the user token from the backend has a status http 200, then return the passed component with props if so
-			return this.props.authStatus === '200' ? (
+			return this.props.authStatus === 200 ? (
 				<Protected {...this.props} />
 			) : (
 				// Otherwise, redirect to the signin page

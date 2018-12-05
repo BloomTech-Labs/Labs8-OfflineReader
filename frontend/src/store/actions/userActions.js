@@ -14,6 +14,7 @@ export const USER_ERROR = 'USER_ERROR';
 export const UPDATING_USER = 'UPDATING_USER';
 export const UPDATED_USER = 'UPDATED_USER';
 
+// TODO: If the backend is set up to act as an OAuth2 provider, configure this to register a user.
 export const registerUser = newUser => {
 	return dispatch => {
 		dispatch({ type: REGISTER_USER });

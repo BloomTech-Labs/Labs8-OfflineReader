@@ -58,7 +58,7 @@ TestScraper.propTypes = {
 			text: PropTypes.string
 		})
 	).isRequired,
-	serverToken: PropTypes.string.isRequired,
+	serverToken: PropTypes.object.isRequired,
 	sendUrl: PropTypes.func.isRequired
 };
 

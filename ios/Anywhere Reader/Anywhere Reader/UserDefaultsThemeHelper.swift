@@ -162,4 +162,15 @@ class UserDefaultsThemeHelper {
         let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
         return textProvidedColor
     }
+    public func setNightMode() {
+        let status = defaults.bool(forKey: "nightMode")
+        if status {
+            defaults.set(false, forKey: "nightMode")
+        } else {
+            defaults.set(true, forKey: "nightMode")
+        }
+    }
+    public func isNightMode() -> Bool {
+        return defaults.bool(forKey: "nightMode")
+    }
 }

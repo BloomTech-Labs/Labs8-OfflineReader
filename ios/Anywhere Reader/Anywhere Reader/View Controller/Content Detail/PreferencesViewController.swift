@@ -22,6 +22,9 @@ class PreferencesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if themeHelper.isNightMode() {
+            nightThemeSwitch.isOn = true
+        }
         animateView()
     }
     
@@ -40,6 +43,9 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var tanThemeButton: UIButton!
     @IBOutlet weak var grayThemeButton: UIButton!
     @IBOutlet weak var darkGrayThemeButton: UIButton!
+    @IBOutlet weak var nightThemeSwitch: UISwitch!
+    @IBOutlet weak var brightnessSlider: UISlider!
+    
     
     @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
@@ -104,10 +110,23 @@ class PreferencesViewController: UIViewController {
         }
     }
     
+    @IBAction func nightModeSwitch(_ sender: Any) {
+        if nightThemeSwitch.isOn {
+            themeHelper.setNightMode()
+            darkGrayThemeButtonTapped(sender)
+        } else {
+            themeHelper.setNightMode()
+            whiteThemeButtonTapped(sender)
+        }
+    }
+    
     @IBAction func changeFont(_ sender: Any) {
         // Unhides a not yet made font choice view
     }
     
+    @IBAction func brightnessSliderChanged(_ sender: Any) {
+        UIScreen.main.brightness = CGFloat(brightnessSlider.value)
+    }
     
     // MARK: - Private functions
     

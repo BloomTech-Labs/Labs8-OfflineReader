@@ -12,7 +12,11 @@ class ArticleModal extends Component {
 		return (
 			<div>
 				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
-				<h4>{this.props.page.title}</h4>
+				<img
+					src={this.props.page.cover_image}
+					alt={`${this.props.page.title} cover`}
+				/>
+				<h3>{this.props.page.title}</h3>
 				<h5>{`Authors: ${this.props.page.author}`}</h5>
 				<p>
 					{'Source: '}

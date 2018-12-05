@@ -64,6 +64,7 @@ class Navi extends Component {
 		let count = -1;
 		return linkList.map(link => {
 			count++;
+			// TODO: Reduce this down to a single return that just sets exact to true or false
 			if (link.exact) {
 				return (
 					<NavLink exact to={link.to} key={count}>

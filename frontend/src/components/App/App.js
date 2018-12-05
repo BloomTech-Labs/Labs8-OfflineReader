@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import {
 	AuthHOC,
@@ -17,6 +17,12 @@ import {
 	// SignUpPage,
 	StripeProviderStub
 } from '../';
+import { GlobalResets, SiteResets } from '../../styling';
+
+const CssReset = createGlobalStyle`
+    ${GlobalResets}
+    ${SiteResets}
+`;
 
 const AppDiv = styled.div`
 	display: flex;
@@ -29,6 +35,7 @@ class App extends Component {
 		return (
 			<Router>
 				<AppDiv>
+					<CssReset />
 					<Navi />
 
 					<Route exact path="/" component={LandingPage} />

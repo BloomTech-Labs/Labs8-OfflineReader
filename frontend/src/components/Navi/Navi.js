@@ -64,8 +64,8 @@ class Navi extends Component {
 							Home
 						</NavLink>
 						<NavLink to="/testScraperFormContainer"> My Pages </NavLink>
-						<NavLink to="/signIn">Sign In </NavLink>
-						<NavLink to="/signUp">Sign Up </NavLink>
+						<NavLink to="/signIn">Sign In/Sign Up </NavLink>
+						{/* <NavLink to="/signUp">Sign Up </NavLink> */}
 						<NavLink to="/payment">Payment </NavLink>
 						{/* <GoogleAuthContainer /> */}
 					</HamburgerMenu>
@@ -77,7 +77,7 @@ class Navi extends Component {
 					</NavLink>
 					<NavLink to="/testScraperFormContainer"> My Pages </NavLink>
 					<NavLink to="/signIn">Sign In </NavLink>
-					<NavLink to="/signUp">Sign Up </NavLink>
+					{/* <NavLink to="/signUp">Sign Up </NavLink> */}
 					<NavLink to="/payment">Payment </NavLink>
 					{/* <GoogleAuthContainer /> */}
 				</NaviSubContainer>

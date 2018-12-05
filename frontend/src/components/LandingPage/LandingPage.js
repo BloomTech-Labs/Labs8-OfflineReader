@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 
 // import GoogleLoginButton from '../containers/GoogleAuth/GoogleLoginButtonContainer.js';
 // import GoogleLogoutButton from '../containers/GoogleAuth/GoogleLogoutButtonContainer.js';
@@ -22,12 +22,12 @@ const LandingPageContainer = styled.div`
 	background: url(https://images.pexels.com/photos/904616/pexels-photo-904616.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260)
 		no-repeat center center fixed;
 `;
-const LoginButtonContainer = styled.div`
-	padding: 0.2rem;
-`;
-const LogoContainer = styled.div`
-	width: 200px;
-`;
+// const LoginButtonContainer = styled.div`
+// 	padding: 0.2rem;
+// `;
+// const LogoContainer = styled.div`
+// 	width: 200px;
+// `;
 const MarketingBlurb = styled.div`
 	display: flex;
 	flex-direction: row;
@@ -81,9 +81,9 @@ const LandingPage = props => {
 				<br />
 				<FBAuthContainer />
 				<br />
-				<div>
+				{/* <div>
 					Don't have an account yet? <a href="/SignUpPage">Sign Up</a>
-				</div>
+				</div> */}
 				<br />
 				<hr />
 				{/* {userIsAuthenticatedGoogle()}

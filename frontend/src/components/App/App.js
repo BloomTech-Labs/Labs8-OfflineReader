@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { TestScraperFormContainer } from '../../containers';
+import { AuthHOC, TestScraperFormContainer } from '../../containers';
 import {
 	LandingPage,
 	Navi,
@@ -10,7 +10,7 @@ import {
 	// SignedIn,
 	SignInPage,
 	// SignedUp,
-	SignUpPage,
+	// SignUpPage,
 	StripeProviderStub
 } from '../';
 
@@ -28,15 +28,15 @@ class App extends Component {
 					<Navi />
 
 					<Route exact path="/" component={LandingPage} />
-					<Route path="/payment" component={StripeProviderStub} />
+					<Route path="/payment" component={AuthHOC(StripeProviderStub)} />
 					<Route path="/signin" component={SignInPage} />
-					<Route path="/signup" component={SignUpPage} />
+					{/* <Route path="/signup" component={SignUpPage} /> */}
 					{/* <Route path="/signedin" component={SignedIn} /> */}
 					{/* <Route path="/signedup" component={SignedUp} /> */}
-					<Route path="/settings" component={Settings} />
+					<Route path="/settings" component={AuthHOC(Settings)} />
 					<Route
 						path="/testScraperFormContainer"
-						component={TestScraperFormContainer}
+						component={AuthHOC(TestScraperFormContainer)}
 					/>
 				</AppContainer>
 			</Router>

@@ -41,7 +41,7 @@ Adding an article.
 
 - `id` is auto generated.
 - `title` is required.
-- `date_saved` is default to today's date. No input necessary.
+- `date_saved` is default to today's date. No input necessary. Format is YYYY-MM-DD.
 
 ### /api/users/pages/<int:id>/
 

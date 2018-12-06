@@ -220,9 +220,9 @@ class UserDefaultsThemeHelper {
     /**
         It stores the chosen text color in UserDefaults as a String
 
-        Sets the chosen text color in UserDefaults with UserDefaultsThemeHelper.textColorKey as the key. The color is stored as a String.
+        Sets the chosen background color in UserDefaults with UserDefaultsThemeHelper.backgroundColorKey as the key. The color is stored as a String.
 
-        - Parameter providedColor: The color of the font based on the UserDefaultsThemeHelper.ProvidedColors enum
+        - Parameter providedColor: The color of the background based on the UserDefaultsThemeHelper.ProvidedColors enum
         - Parameter customColor: A custom UIColor
         - Author: Samantha Gatt
      */
@@ -232,11 +232,14 @@ class UserDefaultsThemeHelper {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customBackgroundColorKey)
         }
     }
-    public func getBackgroundProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
-        let string = defaults.string(forKey: UserDefaultsThemeHelper.backgroundColorKey) ?? "Black"
-        let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
-        return textProvidedColor
-    }
+    
+    /**
+     It stores a bool in UserDefaults for keeping track of Night Mode
+     
+     Stores a bool in UserDefaults to keep track of Night Mode. Night Mode is a UISwitch in the detail view that sets a dark grey theme.
+     
+     - Author: Conner Alegre
+     */
     public func setNightMode() {
         let status = defaults.bool(forKey: "nightMode")
         if status {
@@ -245,6 +248,14 @@ class UserDefaultsThemeHelper {
             defaults.set(true, forKey: "nightMode")
         }
     }
+    /**
+     It checks and returns the status of Night Mode in UserDefaults.
+     
+     Night Mode is a UISwitch in the detail view that sets a dark grey theme.
+     
+     - Returns: Bool (true, false) which is the status Night Mode as stored in UserDefaults
+     - Author: Conner Alegre
+     */
     public func isNightMode() -> Bool {
         return defaults.bool(forKey: "nightMode")
     }

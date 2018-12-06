@@ -23,18 +23,17 @@ class Scrape(APIView):
             error = ''.join(e)
             # Return JSON response back to client with message
             return JsonResponse({"message": error}, status=422)
-        # Gets token and sets header
-        # auth = "Token " + str(request.auth)
-        # Switch auth to this for JWT
-        auth = "Bearer " + str(request.auth)
 
-        return select_scraper(url, auth)
+        # Gets token and sets header
+        auth = request.META.get('HTTP_AUTHORIZATION')
+        user_id = request.user.id
+        return select_scraper(url, auth, user_id)
 
 
 def select_scraper(url, auth):
     if "www.youtube.com" in url:
-        return scrape_youtube(url, auth)
+        return scrape_youtube(url, auth, user_id)
     elif "vimeo.com" in url:
-        return scrape_vimeo(url, auth)
+        return scrape_vimeo(url, auth, user_id)
     else:
-        return scrape_article(url, auth)
+        return scrape_article(url, auth, user_id)

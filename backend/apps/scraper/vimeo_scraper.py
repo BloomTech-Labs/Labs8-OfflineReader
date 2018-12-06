@@ -6,7 +6,7 @@ from project.settings import API_BASE_URL
 
 
 # TODO Update how to grab HTML. Need to look into retrieving HTML loaded with JavaScript.
-def scrape_vimeo(url, auth):
+def scrape_vimeo(url, auth, user_id):
     headers = {"authorization": auth}
     # creates embed link based off vimeo URL. To be more robust see comment above.
     embed_link = url.replace("vimeo.com", "player.vimeo.com/video")

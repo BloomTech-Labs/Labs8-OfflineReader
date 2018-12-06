@@ -17,15 +17,29 @@ class ContentDetailViewController: UIViewController {
         updateTheme()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        coordinator.animate(alongsideTransition: { [unowned self] _ in
+            self.gradientLayer.frame = self.imageView.bounds
+        })
+    }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        gradientLayer.frame = imageView.bounds
+    }
 
     // MARK: - Private properties
 
     let themeHelper = UserDefaultsThemeHelper.shared
+    let gradientLayer = CAGradientLayer()
 
     // MARK: - Public properties
 
@@ -91,7 +105,6 @@ class ContentDetailViewController: UIViewController {
         titleLabel.font = titleFont
 
         // Gradient Layer for top image
-        let gradientLayer = CAGradientLayer()
         gradientLayer.frame = imageView.bounds
 
         // Colors for gradient

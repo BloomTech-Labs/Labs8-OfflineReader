@@ -223,9 +223,6 @@
                                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V2l-1D-De8">
                                                 <rect key="frame" x="0.0" y="180" width="314" height="30"/>
                                                 <state key="normal" title="Sign Up"/>
-                                                <connections>
-                                                    <action selector="authenticateTapped:" destination="Rcg-2l-HNe" eventType="touchUpInside" id="8W2-sS-xSw"/>
-                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ArticleDiv = styled.div`
-	white-space: pre-wrap;
-	line-height: 2.2rem;
 	padding: 2rem;
 	margin: 0 0 4rem 0;
 	border-radius: 7px;
@@ -14,15 +12,9 @@ const ArticleDiv = styled.div`
 		border-radius: 7px;
 		width: 100%;
 	}
-	embed,
 	img,
-	p,
-	h1,
-	h2,
 	h3,
-	h4,
-	h5,
-	h6 {
+	h4 {
 		padding: 0 0 1rem 0;
 	}
 `;
@@ -38,6 +30,19 @@ const TitleHead = styled.h3`
 
 const BodyDiv = styled.div`
 	font-family: 'Roboto', sans-serif;
+	white-space: pre-wrap;
+	line-height: 2.4rem;
+	embed,
+	img,
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding: 0 0 1rem 0;
+	}
 `;
 
 class ArticleModal extends Component {
@@ -50,12 +55,12 @@ class ArticleModal extends Component {
 					alt={`${this.props.page.title} cover`}
 				/>
 				<TitleHead>{this.props.page.title}</TitleHead>
-				<h5>{`Authors: ${this.props.page.author}`}</h5>
-				<p>
+				<h4>{`Authors: ${this.props.page.author}`}</h4>
+				<h4>
 					{'Source: '}
 					<a href={this.props.page.normal_url}>{this.props.page.normal_url}</a>
-				</p>
-				<p>{`Saved: ${this.props.page.date_saved}`}</p>
+				</h4>
+				<h4>{`Saved: ${this.props.page.date_saved}`}</h4>
 				<br />
 				<BodyDiv>{this.props.page.text}</BodyDiv>
 			</ArticleDiv>

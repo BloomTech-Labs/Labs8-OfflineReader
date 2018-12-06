@@ -21,4 +21,4 @@ class ArticleViewSet(viewsets.ModelViewSet):
         if user.is_anonymous:
             return Article.objects.none()
         else:
-            return Article.objects.filter(user=user)
+            return Article.objects.filter(user_id=user)

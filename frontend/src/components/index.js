@@ -11,7 +11,7 @@ export { GoogleAuth } from './GoogleAuth';
 export { LandingPage } from './LandingPage';
 export { Navi } from './Navi';
 export { Settings } from './Settings';
-export { SignedIn, SignIn } from './SignIn'; // TODO: De-integrate SignedIn
+export { SignIn } from './SignIn';
 // export { SignOut } from './SignOut';
 export { SignedUp, SignUp } from './SignUp'; // TODO: De-integrate SignedUp
 export { TestScraper } from './TestScraperForm';

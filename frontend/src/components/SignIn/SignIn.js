@@ -18,69 +18,47 @@ const LoginDiv = styled.div`
 `;
 
 class SignIn extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: '',
-			password: ''
-		};
-	}
-
-	handleInput = e => {
-		this.setState({ ...this.state, [e.target.name]: e.target.value });
-	};
-
-	handleSubmit = e => {
-		e.preventDefault();
-		// TODO: Trigger a related action if we ever implement the backend as an OAuth2 provider
-	};
+	// Uncomment when implementing the backend as an OAuth2 provider
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		username: '',
+	// 		password: ''
+	// 	};
+	// }
+	// Uncomment when implementing the backend as an OAuth2 provider
+	// handleInput = e => {
+	// 	this.setState({ ...this.state, [e.target.name]: e.target.value });
+	// };
+	// Uncomment when implementing the backend as an OAuth2 provider
+	// handleSubmit = e => {
+	// 	e.preventDefault();
+	// 	// TODO: Trigger a related action if we ever implement the backend as an OAuth2 provider
+	// };
 
 	render() {
 		return (
-			// <div>
-			// 	<h2>Sign In</h2>
-			// 	<form className="signin" onSubmit={this.handleSubmit}>
-			// 		<label className="label">Username: </label>
-			// 		<input
-			// 			type="text"
-			// 			className="input"
-			// 			name="username"
-			// 			placeholder="username"
-			// 			value={this.state.username}
-			// 			onChange={this.handleInput}
-			// 		/>
-			// 		<label className="label">Password: </label>
-			// 		<input
-			// 			type="password"
-			// 			className="input"
-			// 			name="password"
-			// 			placeholder="password"
-			// 			value={this.state.password}
-			// 			onChange={this.handleInput}
-			// 		/>
-			// 		<button>Enter</button>
-			// 	</form>
-			// </div>
-
 			<LandingPageDiv>
 				<LoginDiv>
 					<img src="https://i.imgur.com/b0dD4XV.png" alt="" width="200px" />
-					<h1>Anywhere Reader</h1>
-					<form>
+					{/* <h1>Anywhere Reader</h1> */}
+					{/* Uncomment when implementing the backend as an OAuth2 provider */}
+					{/* <form onSubmit={this.handleSubmit}>
 						Email
-						<input type="text" name="username" />
+						<input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleInput} />
 						Password
-						<input type="password" name="password" />
+						<input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleInput} />
 						<input type="submit" value="Sign in" />
-					</form>
+					</form> */}
 					<br />
 					<FBAuthContainer />
 					<br />
+					{/* Uncomment when implementing signup as part of implementing the backend as an OAuth2 provider */}
 					{/* <div>
                         Don't have an account yet? <a href="/SignUpPage">Sign Up</a>
-                    </div> */}
+                    </div>
+                    <br /> */}
 					<br />
-					{/* <hr /> */}
 				</LoginDiv>
 			</LandingPageDiv>
 		);

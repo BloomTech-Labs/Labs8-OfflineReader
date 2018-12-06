@@ -17,7 +17,10 @@ const initialState = {
 		email: '',
 		firstName: '',
 		lastName: '',
-		premium: false
+		premium: '',
+		// TODO: When the user logs in, set loginTime to the login time, that way we can do
+		// the math between this and auth.serverToken.data.expires_in to get refresh tokens, etc
+		loginTime: ''
 	},
 	auth: {
 		// googleClientId:
@@ -51,7 +54,13 @@ export default (state = initialState, action) => {
 		case USER_DATA_FETCHED:
 			return {
 				...state,
-				user: action.payload,
+				user: {
+					...state.user,
+					username: action.payload.username,
+					email: action.payload.email,
+					firstName: action.payload.first_name,
+					lastName: action.payload.last_name
+				},
 				userStatus: { ...state.userStatus, fetching: false }
 			};
 
@@ -97,10 +106,13 @@ export default (state = initialState, action) => {
 		case UPDATED_USER:
 			return {
 				...state,
-				username: action.payload.username,
-				email: action.payload.email,
-				firstName: action.payload.firstName,
-				lastName: action.payload.lastName
+				user: {
+					...state.user,
+					username: action.payload.username,
+					email: action.payload.email,
+					firstName: action.payload.firstName,
+					lastName: action.payload.lastName
+				}
 			};
 
 		default:

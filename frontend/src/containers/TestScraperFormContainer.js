@@ -1,30 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchPages, sendUrl } from '../store/actions';
-import styled from 'styled-components';
-import { TestScraper } from '../components';
+import { fetchPages, fetchUser, sendUrl } from '../store/actions';
 
-const Container = styled.div`
-	width: 80%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
+import { TestScraper } from '../components';
 
 class TestScraperFormContainer extends Component {
 	componentDidMount() {
 		this.props.fetchPages(this.props.serverToken);
+		this.props.fetchUser(this.props.serverToken);
 	}
 
 	render() {
-		return (
-			<Container>
-				<br />
-				<br />
-				<TestScraper {...this.props} />
-			</Container>
-		);
+		return <TestScraper {...this.props} />;
 	}
 }
 
@@ -66,6 +54,7 @@ export default connect(
 	mapStateToProps,
 	{
 		fetchPages,
+		fetchUser,
 		sendUrl
 	}
 )(TestScraperFormContainer);

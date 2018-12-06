@@ -27,17 +27,17 @@ const ArticleDiv = styled.div`
 	}
 `;
 
+const CloseBtn = styled.h5`
+	font-weight: bold;
+	cursor: pointer;
+`;
+
 const TitleHead = styled.h3`
 	font-size: 2.4rem;
 `;
 
 const BodyDiv = styled.div`
 	font-family: 'Roboto', sans-serif;
-`;
-
-const CloseBtn = styled.h5`
-	font-weight: bold;
-	cursor: pointer;
 `;
 
 class ArticleModal extends Component {
@@ -53,9 +53,7 @@ class ArticleModal extends Component {
 				<h5>{`Authors: ${this.props.page.author}`}</h5>
 				<p>
 					{'Source: '}
-					<a href={`${this.props.page.normal_url}`}>
-						{this.props.page.normal_url}
-					</a>
+					<a href={this.props.page.normal_url}>{this.props.page.normal_url}</a>
 				</p>
 				<p>{`Saved: ${this.props.page.date_saved}`}</p>
 				<br />

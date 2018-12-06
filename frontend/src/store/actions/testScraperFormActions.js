@@ -131,8 +131,7 @@ export const sendUrl = (newURL, serverToken) => {
 export const fetchSpecificOfflinePage = (serverToken, pageId) => {
 	return dispatch => {
 		dispatch({
-			type: FETCHING_SPECIFIC_OFFLINE_PAGE,
-			payload: response.data
+			type: FETCHING_SPECIFIC_OFFLINE_PAGE
 		});
 
 		localforage
@@ -148,8 +147,7 @@ export const fetchSpecificOfflinePage = (serverToken, pageId) => {
 			})
 			.catch(function(err) {
 				dispatch({
-					type: ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE,
-					payload: value
+					type: ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE
 				});
 				// This code runs if there were any errors
 				console.log(err);

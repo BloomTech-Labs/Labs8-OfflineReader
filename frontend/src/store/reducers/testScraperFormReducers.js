@@ -5,8 +5,15 @@ import {
 	FETCHING_PAGES,
 	PAGES_FETCHED,
 	PAGES_FETCH_ERROR,
+	//
+	SAVING_OFFLINE_PAGE,
 	OFFLINE_PAGE_SAVED,
+	OFFLINE_PAGE_SAVE_ERROR,
+	//
+	FETCHING_OFFLINE_PAGES,
 	OFFLINE_PAGES_FETCHED,
+	OFFLINE_PAGES_FETCH_ERROR,
+	//
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR
@@ -20,7 +27,7 @@ const initialState = {
 	scraperResponse: [],
 	sendingURL: false,
 	savingOfflinePage: false,
-	fetchingOfflinePages,
+	fetchingOfflinePages: false,
 	error: ''
 };
 
@@ -43,11 +50,8 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				error: 'Error fetching pages'
 			};
 
-		case OFFLINE_PAGE_SAVED:
-			return {
-				...state,
-				savingOfflinePage: false
-			};
+		case FETCHING_OFFLINE_PAGES:
+			return { ...state, fetchingOfflinePages: true };
 
 		case OFFLINE_PAGES_FETCHED:
 			return {
@@ -56,6 +60,31 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				fetchingOfflinePages: false,
 				offlinePagesFetched: true
 			};
+
+		case OFFLINE_PAGES_FETCH_ERROR:
+			return {
+				...state,
+				error: 'Error fetching offline pages'
+			};
+
+		///
+
+		case SAVING_OFFLINE_PAGE:
+			return { ...state, savingOfflinePage: true };
+
+		case OFFLINE_PAGE_SAVED:
+			return {
+				...state,
+				savingOfflinePage: false
+			};
+
+		case OFFLINE_PAGE_SAVE_ERROR:
+			return {
+				...state,
+				error: 'Error saving offline pages'
+			};
+
+		//
 
 		case INITIALIZE_URL_SUBMIT:
 			return {

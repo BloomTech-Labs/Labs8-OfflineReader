@@ -2,6 +2,29 @@ import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import styled from 'styled-components';
 
+const CardStyle = styled.div`
+	max-width: 500px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+`;
+
+const cardElementStyles = {
+	base: {
+		color: '#32325d',
+		fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+		fontSmoothing: 'antialiased',
+		fontSize: '1.6rem',
+		'::placeholder': {
+			color: '#aab7c4'
+		}
+	},
+	invalid: {
+		color: '#fa755a',
+		iconColor: '#fa755a'
+	}
+};
+
 class CheckoutForm extends Component {
 	constructor(props) {
 		super(props);
@@ -34,9 +57,9 @@ class CheckoutForm extends Component {
 		e.preventDefault();
 		this.setState({ ...this.state, card_errors: '', resp_message: '' });
 		/*
-    Within the context of Elements, this call to createToken knows which
-    Element to tokenize, since there's only one in this group.
-    */
+        Within the context of Elements, this call to createToken knows which
+        Element to tokenize, since there's only one in this group.
+        */
 		return this.props.stripe
 			.createToken({ type: 'card', name: 'Borislav Hadzhiev' })
 			.then(result => {
@@ -84,6 +107,7 @@ class CheckoutForm extends Component {
 						<CardElement
 							onChange={this.handleCardErrors}
 							onReady={element => (this._element = element)}
+							style={cardElementStyles}
 						/>
 						<div role="alert">
 							<h3>{this.state.card_errors}</h3>
@@ -95,25 +119,5 @@ class CheckoutForm extends Component {
 		);
 	}
 }
-
-const CardStyle = styled.div`
-	max-width: 500px;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	base: {
-		color: '#32325d',
-
-		fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-		fontSmoothing: 'antialiased',
-		fontSize: '16px',
-		'::placeholder': {
-			color: '#aab7c4'
-		};
-	invalid: {
-		color: '#fa755a',
-		iconColor: '#fa755a'
-	}
-`;
 
 export default injectStripe(CheckoutForm);

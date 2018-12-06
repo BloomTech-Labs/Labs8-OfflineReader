@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const PageCardContainer = styled.div`
+// TODO: Padding
+const PageCardDiv = styled.div`
 	border-radius: 5px;
+	padding: 0.5rem;
 	margin: 0.5rem;
 	width: 20%;
 	box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
+	img {
+		border-radius: 5px 5px 0 0;
+		padding: 0 0 5px 0;
+	}
 	@media (max-width: 900px) {
 		width: 25%;
 	}
@@ -22,10 +28,14 @@ class Page extends Component {
 
 	render() {
 		return (
-			<PageCardContainer onClick={this.clickPreview}>
-				<img src={this.props.page.cover_image} width="100%" alt="" />
+			<PageCardDiv onClick={this.clickPreview}>
+				<img
+					src={this.props.page.cover_image}
+					width="100%"
+					alt={this.props.page.title}
+				/>
 				<h2>{this.props.page.title}</h2>
-			</PageCardContainer>
+			</PageCardDiv>
 		);
 	}
 }

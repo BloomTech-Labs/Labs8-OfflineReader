@@ -33,15 +33,10 @@ class Migration(migrations.Migration):
                 ('cover_image', models.TextField(blank=True, default='', null=True)),
                 ('video', models.TextField(blank=True, default='', null=True)),
                 ('audio', models.TextField(blank=True, default='', null=True)),
-<<<<<<< HEAD
-                ('tags', models.CharField(blank=True, default='', max_length=128, null=True)),
-                ('text', models.TextField(blank=True, default='', null=True)),
                 ('html', models.TextField(blank=True, default='', null=True)),
                 ('images', models.TextField(blank=True, default='', null=True)),
-=======
                 ('text', models.TextField(blank=True, null=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
->>>>>>> 87e273d566a8e7fe66f57dc4b53c427ba03fb097
             ],
         ),
     ]

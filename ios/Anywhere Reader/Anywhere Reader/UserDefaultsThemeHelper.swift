@@ -105,7 +105,14 @@ class UserDefaultsThemeHelper {
 
     // MARK: - Public functions
 
-    // Title font
+    /**
+         It determines the current title font stored in UserDefaults
+         
+         Gets the current font set in UserDefaults and determines the size the title font which is based on the difference between the body font size and title font size.
+         
+         - Returns: The current title font stored in UserDefaults
+         - Author: Samantha Gatt
+    */
     public func getTitleFont() -> UIFont {
         let bodySize = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let size = bodySize + diffBetweenBodyAndTitle
@@ -113,22 +120,48 @@ class UserDefaultsThemeHelper {
         return UIFont(name: name, size: size)!
     }
 
+    /**
+         It stores the title font in UserDefaults
+         - Parameter name: The name of the font chosen
+         - Parameter size: The size of the font
+         - Author: Samantha Gatt
+     */
     public func setTitleFontName(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
 
-    // Body font
+    /**
+         It determines the current body font stored in UserDefaults
+     
+         Gets the current font set in UserDefaults and determines the size the body font which is based on the difference between the title font size and body font size.
+     
+         - Returns: The current body font stored in UserDefaults
+         - Author: Samantha Gatt
+     */
     public func getBodyFont() -> UIFont {
         let size = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let name = defaults.string(forKey: UserDefaultsThemeHelper.bodyFontKey) ?? UIFont.preferredFont(forTextStyle: .body).fontName
         return UIFont(name: name, size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
+    /**
+         It stores the body font in UserDefaults
+         - Parameter name: The name of the font chosen
+         - Parameter size: The size of the font
+         - Author: Samantha Gatt
+     */
     public func setBodyFont(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(size, forKey: UserDefaultsThemeHelper.fontSizeKey)
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
 
-    // Text color
+     /**
+         It determines and returns the current font color stored in UserDefaults
+     
+         Gets the current font color in UserDefaults
+     
+         - Returns: The current font color stored in UserDefaults
+         - Author: Samantha Gatt
+     */
     public func getTextColor() -> UIColor {
         if let colorString = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) {
             return color(fromString: colorString)

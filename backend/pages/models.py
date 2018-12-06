@@ -22,5 +22,6 @@ class Article(models.Model):
     video = models.TextField(blank=True, null=True, default='')
     audio = models.TextField(blank=True, null=True, default='')
     tags = models.CharField(max_length=128, blank=True, null=True, default='')
-    text = models.TextField(blank=True, null=True)
-    html = models.TextField(blank=True, null=True)
+    text = models.TextField(blank=True, null=True, default='')
+    html = models.TextField(blank=True, null=True, default='')
+    images = models.TextField(blank=True, null=True, default='')

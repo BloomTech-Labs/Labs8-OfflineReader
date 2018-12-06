@@ -10,6 +10,11 @@ export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 
+// const knex = require('knex');
+// const knexConfig = require('../../../knexfile');
+
+// const db = knex(knexConfig.development);
+
 export const fetchPages = serverToken => {
 	return dispatch => {
 		//Action that indicates data is being fetched

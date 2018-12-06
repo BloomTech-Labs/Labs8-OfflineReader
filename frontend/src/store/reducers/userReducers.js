@@ -6,7 +6,9 @@ import {
 	PREMIUM_USER,
 	FETCH_USER_DATA,
 	USER_DATA_FETCHED,
-	USER_ERROR
+	USER_ERROR,
+	UPDATING_USER,
+	UPDATED_USER
 } from '../actions';
 
 const initialState = {
@@ -18,9 +20,10 @@ const initialState = {
 		premium: false
 	},
 	auth: {
-		googleClientId:
-			'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
-		googleServerToken: ''
+		// googleClientId:
+		// 	'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
+		// serverToken: 'e4d06c221480448a274af99806a6176e9bfd32a3'
+		serverToken: {}
 	},
 	userStatus: {
 		fetching: false,
@@ -58,14 +61,14 @@ export default (state = initialState, action) => {
 		case LOGGING_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, googleServerToken: '' },
+				auth: { ...state.auth, serverToken: '' },
 				userStatus: { ...state.userStatus, success: false }
 			};
 
 		case LOGGED_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, googleServerToken: action.payload },
+				auth: { ...state.auth, serverToken: action.payload },
 				userStatus: { ...state.userStatus, success: true }
 			};
 
@@ -79,12 +82,26 @@ export default (state = initialState, action) => {
 					lastName: '',
 					premium: false
 				},
-				auth: { ...state.auth, googleServerToken: '' },
+				auth: { ...state.auth, serverToken: '' },
 				userStatus: { ...state.userStatus, success: false }
 			};
 
 		case PREMIUM_USER:
 			return { ...state, userStatus: { ...state.userStatus, premium: true } };
+
+		case UPDATING_USER:
+			return {
+				...state
+			};
+
+		case UPDATED_USER:
+			return {
+				...state,
+				username: action.payload.username,
+				email: action.payload.email,
+				firstName: action.payload.firstName,
+				lastName: action.payload.lastName
+			};
 
 		default:
 			return state;

@@ -12,24 +12,21 @@ class PreferencesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateButtonsView()
         preferencesView.layer.cornerRadius = 12.0
         preferencesView.layer.shadowColor = UIColor.darkGray.cgColor
         preferencesView.layer.shadowOffset = CGSize(width: 0, height: 2.5)
         preferencesView.layer.shadowOpacity = 0.25
         preferencesView.layer.shadowRadius = 5
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if themeHelper.isNightMode() {
+            nightThemeSwitch.isOn = true
+        }
+        brightnessSlider.value = Float(UIScreen.main.brightness)
         animateView()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        deanimateView()
-        // If you click on another tab without the line below, the view doesn't get dismissed
-        dismiss(animated: true, completion: nil)
     }
     
     
@@ -41,6 +38,18 @@ class PreferencesViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
+    @IBOutlet weak var textColorTableView: UITableView!
+    @IBOutlet weak var backgroundColorTableView: UITableView!
+    @IBOutlet weak var whiteThemeButton: UIButton!
+    @IBOutlet weak var tanThemeButton: UIButton!
+    @IBOutlet weak var grayThemeButton: UIButton!
+    @IBOutlet weak var darkGrayThemeButton: UIButton!
+    @IBOutlet weak var nightThemeSwitch: UISwitch!
+    @IBOutlet weak var brightnessSlider: UISlider!
+    
+    
+    @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -65,18 +74,53 @@ class PreferencesViewController: UIViewController {
         themeHelper.setBodyFont(name: nil, size: oldSize - 1)
     }
     
-    @IBAction func changeFontColor(_ sender: Any) {
-        // Unhides a not yet made font color view
+    @IBAction func whiteThemeButtonTapped(_ sender: Any) {
+        setWhiteTheme()
+        nightThemeSwitch.isOn = false
     }
     
-    @IBAction func changeBackgroundColor(_ sender: Any) {
-        // Unhides a not yet made background color view
+    @IBAction func tanThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .tan)
+        }
+        nightThemeSwitch.isOn = false
+    }
+    
+    @IBAction func grayThemeButtonTapped(_ sender: Any) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .gray)
+        }
+        nightThemeSwitch.isOn = false
+    }
+    
+    @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
+        setDarkGrayTheme()
+        nightThemeSwitch.isOn = false
+    }
+    
+    @IBAction func nightModeSwitch(_ sender: Any) {
+        if nightThemeSwitch.isOn {
+            themeHelper.setNightMode()
+            setDarkGrayTheme()
+        } else {
+            themeHelper.setNightMode()
+            whiteThemeButtonTapped(sender)
+        }
     }
     
     @IBAction func changeFont(_ sender: Any) {
         // Unhides a not yet made font choice view
     }
     
+    @IBAction func brightnessSliderChanged(_ sender: Any) {
+        UIScreen.main.brightness = CGFloat(brightnessSlider.value)
+    }
     
     // MARK: - Private functions
     
@@ -98,5 +142,38 @@ class PreferencesViewController: UIViewController {
             self.preferencesView.alpha = 0
             self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
         })
+    }
+    
+    private func setDarkGrayTheme() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .white)
+            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
+        }
+    }
+    
+    private func setWhiteTheme() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            self.themeHelper.setTextColor(providedColor: .black)
+            self.themeHelper.setBackgroundColor(providedColor: .white)
+        }
+    }
+    
+    private func updateButtonsView() {
+        let buttons = [whiteThemeButton,
+                       tanThemeButton,
+                       grayThemeButton,
+                       darkGrayThemeButton]
+        
+        buttons.forEach { button in
+            if let button = button {
+                button.layer.cornerRadius = 0.5 * button.bounds.size.width
+                button.layer.borderWidth = 1
+                button.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
     }
 }

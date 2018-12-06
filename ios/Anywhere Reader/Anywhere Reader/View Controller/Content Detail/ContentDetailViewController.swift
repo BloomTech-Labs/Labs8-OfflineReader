@@ -7,46 +7,48 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ContentDetailViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
         updateTheme()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
     }
-    
-    
+
     // MARK: - Private properties
-    
+
     let themeHelper = UserDefaultsThemeHelper.shared
-    
-    
+
     // MARK: - Public properties
-    
-    public var article: Article? {
+
+    public var article: ArticleRep? {
         didSet {
             updateViews()
         }
     }
-    
-    
+
+
     // MARK: - IBOutlets
-    
+
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var sourceAndDateLabel: UILabel!
-    
-    
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+
+
     // MARK: - Actions
-    
+
     @IBAction func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
@@ -54,37 +56,65 @@ class ContentDetailViewController: UIViewController {
         preferencesVC.definesPresentationContext = true
         preferencesVC.modalPresentationStyle = .overCurrentContext
         preferencesVC.modalTransitionStyle = .crossDissolve
-        
+
         self.present(preferencesVC, animated: true, completion: nil)
     }
-    
-    
+
+
     // MARK: - Private
-    
+
     private func updateViews() {
         guard let article = article else { return }
-        
+
         titleLabel.text = article.title
-        contentBodyLabel.text = article.articleContent
-        do {
-            let url = URL(string: article.coverImage)!
-            let data = try Data(contentsOf: url)
-            imageView.image = UIImage(data: data)
-        }
-        catch {
-            NSLog("Error setting image in detail view")
-        }
+        contentBodyLabel.text = article.text
+        authorLabel.text = article.author
+
+        let url = URL(string: article.coverImage)
+        imageView.kf.setImage(with: url)
     }
-    
+
     @objc private func updateTheme() {
-        view.backgroundColor = themeHelper.getBackgroundColor()
-        contentBodyLabel.textColor = themeHelper.getLabelTextColor()
-        titleLabel.textColor = themeHelper.getLabelTextColor()
+        let backgroundColor = themeHelper.getBackgroundColor()
+        view.backgroundColor = backgroundColor
+        contentView.backgroundColor = backgroundColor
+        navigationController?.navigationBar.barTintColor = backgroundColor
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+
+        [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
+            .forEach { $0.textColor = themeHelper.getTextColor() }
         
+        [contentBodyLabel, sourceLabel, authorLabel, dateLabel]
+            .forEach { $0.font = themeHelper.getBodyFont() }
+
         let titleFont = themeHelper.getTitleFont()
         titleLabel.font = titleFont
-        let bodyFont = themeHelper.getBodyFont()
-        contentBodyLabel.font = bodyFont
-        sourceAndDateLabel.font = bodyFont
+
+        // Gradient Layer for top image
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = imageView.bounds
+
+        // Colors for gradient
+        gradientLayer.colors = [
+            UIColor.white.withAlphaComponent(1).cgColor,
+            UIColor.white.withAlphaComponent(0).cgColor]
+
+        // Direction of gradient
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.70)
+        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
+        imageView.layer.mask = gradientLayer
+    }
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
     }
 }
+

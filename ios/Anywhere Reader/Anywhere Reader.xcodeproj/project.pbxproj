@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13126F53219255A700A1ED13 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13126F52219255A700A1ED13 /* AuthService.swift */; };
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
-		1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1332E69B21AC7957003413F6 /* GoogleService-Info.plist */; };
 		1373243121ADCCED006DDF1E /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1373243021ADCCED006DDF1E /* APIService.swift */; };
+		13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
 		13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DF219394E300DA56B9 /* BillingViewController.swift */; };
-		13F945E421AF4CC80019A3D2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F945E321AF4CC80019A3D2 /* User.swift */; };
-		13FB2E2A21921B7D00A8888B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* Article.swift */; };
+		13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* ArticleRep.swift */; };
 		13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ArticleController.swift */; };
 		13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* Main.storyboard */; };
 		13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3021922C9F00A8888B /* Settings.storyboard */; };
@@ -23,9 +21,6 @@
 		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
-		22005786219C998100808E4B /* AddNewContent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22005785219C998100808E4B /* AddNewContent.storyboard */; };
-		22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22005788219C9DC500808E4B /* AddNewContentViewController.swift */; };
-		2200578B219DB8FB00808E4B /* AppearanceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578A219DB8FB00808E4B /* AppearanceHelper.swift */; };
 		2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */; };
 		222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */; };
 		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
@@ -33,9 +28,12 @@
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
 		2233F7D021920A09001A82FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CE21920A09001A82FF /* LaunchScreen.storyboard */; };
+		223E6F3821B5C0750024E993 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3721B5C0750024E993 /* CoreDataStack.swift */; };
+		223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3921B5C08A0024E993 /* Anywhere Reader.xcdatamodeld */; };
+		223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */; };
+		223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223E6F3E21B5C8370024E993 /* Article+ConvenienceInit.swift */; };
 		22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */; };
 		22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */; };
-		22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E0C219380900072A4B8 /* ContentImageView.swift */; };
 		22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */; };
 		22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E112194E5430072A4B8 /* PreferencesViewController.swift */; };
 		D3B4E9C9EFA70C8B02FC3CCF /* Pods_Anywhere_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */; };
@@ -44,14 +42,12 @@
 /* Begin PBXFileReference section */
 		036ACFCF38AB072CCCA0C8F4 /* Pods-Anywhere Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		10DBC3271CE88F53FD615C48 /* Pods-Anywhere Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.release.xcconfig"; sourceTree = "<group>"; };
-		13126F52219255A700A1ED13 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
-		1332E69B21AC7957003413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1373243021ADCCED006DDF1E /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
 		13B013DF219394E300DA56B9 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
-		13F945E321AF4CC80019A3D2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		13FB2E2921921B7D00A8888B /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		13FB2E2921921B7D00A8888B /* ArticleRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRep.swift; sourceTree = "<group>"; };
 		13FB2E2B21921B8C00A8888B /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
 		13FB2E2E21921CD200A8888B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		13FB2E3021922C9F00A8888B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
@@ -60,9 +56,6 @@
 		13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		22005785219C998100808E4B /* AddNewContent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddNewContent.storyboard; sourceTree = "<group>"; };
-		22005788219C9DC500808E4B /* AddNewContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewContentViewController.swift; sourceTree = "<group>"; };
-		2200578A219DB8FB00808E4B /* AppearanceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceHelper.swift; sourceTree = "<group>"; };
 		2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeHelper.swift; sourceTree = "<group>"; };
 		222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMaskView.swift; sourceTree = "<group>"; };
 		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
@@ -72,9 +65,12 @@
 		2233F7CC21920A09001A82FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2233F7CF21920A09001A82FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2233F7D121920A09001A82FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		223E6F3721B5C0750024E993 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		223E6F3A21B5C08A0024E993 /* Anywhere Reader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Anywhere Reader.xcdatamodel"; sourceTree = "<group>"; };
+		223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+Encodable.swift"; sourceTree = "<group>"; };
+		223E6F3E21B5C8370024E993 /* Article+ConvenienceInit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article+ConvenienceInit.swift"; sourceTree = "<group>"; };
 		22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentCollectionViewController+FlowLayoutDelegate.swift"; sourceTree = "<group>"; };
 		22661E082192688D0072A4B8 /* DocumentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCollectionViewCell.swift; sourceTree = "<group>"; };
-		22661E0C219380900072A4B8 /* ContentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImageView.swift; sourceTree = "<group>"; };
 		22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VisualPreferencesPanel.storyboard; sourceTree = "<group>"; };
 		22661E112194E5430072A4B8 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anywhere_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,10 +91,17 @@
 		13126F512192559900A1ED13 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				13126F52219255A700A1ED13 /* AuthService.swift */,
 				1373243021ADCCED006DDF1E /* APIService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		13847C1F21B73C59005B533D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		13B013DC2193942800DA56B9 /* Segmented */ = {
@@ -114,8 +117,7 @@
 		13FB2E2321921AA600A8888B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				13FB2E2921921B7D00A8888B /* Article.swift */,
-				13F945E321AF4CC80019A3D2 /* User.swift */,
+				13FB2E2921921B7D00A8888B /* ArticleRep.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,7 +127,6 @@
 			children = (
 				13B013DC2193942800DA56B9 /* Segmented */,
 				22661E0A219268940072A4B8 /* Content Collection */,
-				22005788219C9DC500808E4B /* AddNewContentViewController.swift */,
 				22661E132194EA3E0072A4B8 /* Content Detail */,
 				222F5B7D21A4D153002B6436 /* Authentication */,
 			);
@@ -156,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				13FB2E2E21921CD200A8888B /* Main.storyboard */,
-				22005785219C998100808E4B /* AddNewContent.storyboard */,
 				22661E0F2194E3A30072A4B8 /* VisualPreferencesPanel.storyboard */,
 				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
@@ -196,10 +196,10 @@
 		2233F7C421920A06001A82FF /* Anywhere Reader */ = {
 			isa = PBXGroup;
 			children = (
+				13847C1F21B73C59005B533D /* Extensions */,
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				1332E69B21AC7957003413F6 /* GoogleService-Info.plist */,
-				2200578A219DB8FB00808E4B /* AppearanceHelper.swift */,
 				2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */,
+				223E6F3621B5C04F0024E993 /* Core Data */,
 				13FB2E2321921AA600A8888B /* Model */,
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
@@ -209,12 +209,22 @@
 			path = "Anywhere Reader";
 			sourceTree = "<group>";
 		};
+		223E6F3621B5C04F0024E993 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				223E6F3921B5C08A0024E993 /* Anywhere Reader.xcdatamodeld */,
+				223E6F3721B5C0750024E993 /* CoreDataStack.swift */,
+				223E6F3C21B5C5B50024E993 /* Article+Encodable.swift */,
+				223E6F3E21B5C8370024E993 /* Article+ConvenienceInit.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		22661E0A219268940072A4B8 /* Content Collection */ = {
 			isa = PBXGroup;
 			children = (
 				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
 				22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */,
-				22661E0C219380900072A4B8 /* ContentImageView.swift */,
 				22661E0B2193780B0072A4B8 /* Collection View Cells */,
 			);
 			path = "Content Collection";
@@ -266,7 +276,6 @@
 				2233F7BF21920A06001A82FF /* Frameworks */,
 				2233F7C021920A06001A82FF /* Resources */,
 				58AAC6AF0D8443E427B8F36B /* [CP] Embed Pods Frameworks */,
-				B6AF5399E4A42051F731B65F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -321,8 +330,6 @@
 				2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */,
 				13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */,
 				13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */,
-				22005786219C998100808E4B /* AddNewContent.storyboard in Resources */,
-				1332E69C21AC7957003413F6 /* GoogleService-Info.plist in Resources */,
 				22661E102194E3A30072A4B8 /* VisualPreferencesPanel.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,19 +346,23 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -380,28 +391,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B6AF5399E4A42051F731B65F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -409,25 +398,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				223E6F3821B5C0750024E993 /* CoreDataStack.swift in Sources */,
 				2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */,
+				223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */,
 				1373243121ADCCED006DDF1E /* APIService.swift in Sources */,
 				222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */,
-				2200578B219DB8FB00808E4B /* AppearanceHelper.swift in Sources */,
 				13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */,
 				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
+				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
 				13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */,
-				13F945E421AF4CC80019A3D2 /* User.swift in Sources */,
-				22661E0D219380900072A4B8 /* ContentImageView.swift in Sources */,
 				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,
 				22661E07219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift in Sources */,
-				22005789219C9DC500808E4B /* AddNewContentViewController.swift in Sources */,
-				13FB2E2A21921B7D00A8888B /* Article.swift in Sources */,
+				13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
+				13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */,
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
-				13126F53219255A700A1ED13 /* AuthService.swift in Sources */,
+				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */,
 				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
@@ -624,6 +613,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		223E6F3921B5C08A0024E993 /* Anywhere Reader.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				223E6F3A21B5C08A0024E993 /* Anywhere Reader.xcdatamodel */,
+			);
+			currentVersion = 223E6F3A21B5C08A0024E993 /* Anywhere Reader.xcdatamodel */;
+			path = "Anywhere Reader.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2233F7BA21920A06001A82FF /* Project object */;
 }

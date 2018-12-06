@@ -11,7 +11,10 @@ export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
 export const USER_MESSAGE = 'USER_MESSAGE';
 export const USER_ERROR = 'USER_ERROR';
+export const UPDATING_USER = 'UPDATING_USER';
+export const UPDATED_USER = 'UPDATED_USER';
 
+// TODO: If the backend is set up to act as an OAuth2 provider, configure this to register a user.
 export const registerUser = newUser => {
 	return dispatch => {
 		dispatch({ type: REGISTER_USER });
@@ -29,11 +32,11 @@ export const registerUser = newUser => {
 	};
 };
 
-export const loginUser = user => {
+export const loginUser = token => {
 	return dispatch => {
 		dispatch({ type: LOGGING_IN_USER });
 		axios
-			.post(apiBaseUrl + '/rest-auth/login/', user)
+			.post(`${apiBaseUrl}/convert_token/`, { token })
 			.then(response =>
 				dispatch({
 					type: LOGGED_IN_USER,
@@ -91,4 +94,12 @@ export const premiumUser = (user, chargeToken) => {
 		// 	)
 		// 	.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
+};
+
+export const updateUser = user => dispatch => {
+	dispatch({ type: UPDATING_USER });
+	axios
+		.put(apiBaseUrl + '/user/')
+		.then(response => dispatch({ UPDATED_USER, payload: response.data }))
+		.catch(err => dispatch({ type: USER_ERROR, err }));
 };

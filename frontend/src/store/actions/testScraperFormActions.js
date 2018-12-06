@@ -46,7 +46,7 @@ export const fetchPages = serverToken => {
 				//placeholder "if statement"
 				let isOffline = false;
 				//// If determined that user is offline:
-				if (isOffline) {
+				if ((err = 404)) {
 					dispatch({ type: FETCHING_OFFLINE_PAGES });
 
 					localforage
@@ -81,9 +81,8 @@ export const fetchPages = serverToken => {
 
 export const sendUrl = (newURL, serverToken) => {
 	return dispatch => {
-		//Again, action to indicate an API call is about to be made, this time for a POST
 		dispatch({ type: INITIALIZE_URL_SUBMIT });
-		//Below, you're making the POST call to the API, with newURL as the object youre sending.
+		//Below, you're making the POST call to the API, with newURL as the object you're sending.
 		let headers = {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${serverToken.data.access_token}`
@@ -107,12 +106,11 @@ export const sendUrl = (newURL, serverToken) => {
 						localforage
 							.setItem(offlinePage.id, offlinePage)
 							.then(function(value) {
-								dispatch({ type: OFFLINE_PAGE_SAVED, payload: response.data });
+								dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
 								// Do other things once the value has been saved.
 								console.log('offlinePage just created:', value);
 							})
 							.catch(function(err) {
-								// This code runs if there were any errors
 								console.log(err);
 							});
 						/////////

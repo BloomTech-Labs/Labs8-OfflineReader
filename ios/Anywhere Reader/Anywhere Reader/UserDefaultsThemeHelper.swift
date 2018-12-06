@@ -67,6 +67,11 @@ class UserDefaultsThemeHelper {
     ///
     /// Only one of the parameters should be used.
     /// If both are entered into the function, only the string will be used.
+    /// - Parameters:
+    ///     - string: The string version of the color, i.e. "black"
+    ///     - providedColor: UserDefaultsThemeHelper.ProvidedColors enum value
+    /// - Returns: UIColor
+    /// - Author: Samantha Gatt
     private func color(fromString string: String? = nil, fromProvidedColor providedColor: UserDefaultsThemeHelper.ProvidedColors? = nil) -> UIColor {
 
         let color: UserDefaultsThemeHelper.ProvidedColors

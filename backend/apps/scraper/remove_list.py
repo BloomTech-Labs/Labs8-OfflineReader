@@ -16,8 +16,8 @@ def remove_content(content):
 # Remove unwanted tags by class
 def remove_tags(content):
     for clss in remove_classes:
-        for remove in content(attrs={"class": clss}):
-            remove.decompose()
+        for tag in content(attrs={"class": clss}):
+            tag.decompose()
 
     return content
 

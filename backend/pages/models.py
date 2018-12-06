@@ -24,4 +24,3 @@ class Article(models.Model):
     video = models.TextField(blank=True, null=True, default='')
     audio = models.TextField(blank=True, null=True, default='')
     text = models.TextField(blank=True, null=True)
-

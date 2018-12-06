@@ -9,6 +9,11 @@ export const FETCHING_OFFLINE_PAGES = 'FETCHING_OFFLINE_PAGES';
 export const OFFLINE_PAGES_FETCHED = 'OFFLINE_PAGES_FETCHED';
 export const OFFLINE_PAGES_FETCH_ERROR = 'OFFLINE_PAGES_FETCH_ERROR';
 
+export const FETCHING_SPECIFIC_OFFLINE_PAGE = 'FETCHING_SPECIFIC_OFFLINE_PAGE';
+export const SPECIFIC_OFFLINE_PAGE_FETCHED = 'SPECIFIC_OFFLINE_PAGE_FETCHED';
+export const ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE =
+	'ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE';
+
 export const SAVING_OFFLINE_PAGE = 'SAVING_OFFLINE_PAGE';
 export const OFFLINE_PAGE_SAVED = 'OFFLINE_PAGE_SAVED';
 export const OFFLINE_PAGE_SAVE_ERROR = 'OFFLINE_PAGE_SAVE_ERROR';
@@ -16,11 +21,6 @@ export const OFFLINE_PAGE_SAVE_ERROR = 'OFFLINE_PAGE_SAVE_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
-
-// const knex = require('knex');
-// const knexConfig = require('../../../knexfile');
-
-// const db = knex(knexConfig.development);
 
 export const fetchPages = serverToken => {
 	return dispatch => {
@@ -94,14 +94,13 @@ export const sendUrl = (newURL, serverToken) => {
 			.then(response => {
 				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
-
 				axios
 					.get(`${apiBaseUrl}/pages/`, {
 						headers: headers
 					})
 					.then(response => {
 						//// offline storage logic
-						console.log(response.data[0]);
+						console.log('response.data[0] is:', response.data[0]);
 						let offlinePage = response.data[0];
 						localforage
 							.setItem(offlinePage.id, offlinePage)
@@ -125,6 +124,35 @@ export const sendUrl = (newURL, serverToken) => {
 				////
 				console.error(err);
 				dispatch({ type: SUBMIT_URL_ERROR });
+			});
+	};
+};
+
+export const fetchSpecificOfflinePage = (serverToken, pageId) => {
+	return dispatch => {
+		dispatch({
+			type: FETCHING_SPECIFIC_OFFLINE_PAGE,
+			payload: response.data
+		});
+
+		localforage
+			.getItem(pageId)
+			.then(function(value) {
+				// This code runs once the value has been loaded
+				// from the offline store.
+				dispatch({
+					type: SPECIFIC_OFFLINE_PAGE_FETCHED,
+					payload: value
+				});
+				console.log(value);
+			})
+			.catch(function(err) {
+				dispatch({
+					type: ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE,
+					payload: value
+				});
+				// This code runs if there were any errors
+				console.log(err);
 			});
 	};
 };

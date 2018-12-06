@@ -1,6 +1,6 @@
 from django.db import models
 from django import forms
-from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from users.models import CustomUser
 
@@ -10,7 +10,7 @@ class Article(models.Model):
     # #title and user are required fields
 
     # user became user_id in postgres.
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(CustomUser, db_column='user_id', on_delete=models.CASCADE)
     title = models.CharField(max_length=512)
     author = models.CharField(max_length=512, default='')
     normal_url = models.URLField(max_length=512, blank=True, null=True, default='')

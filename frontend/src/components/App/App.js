@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 import {
 	AuthHOC,
@@ -10,13 +10,20 @@ import {
 import {
 	LandingPage,
 	Navi,
-	Settings,
-	// SignedIn,
-	// SignIn,
+	Settings, // TODO: Create SettingsContainer for Settings component
 	// SignedUp,
 	// SignUpPage,
-	StripeProviderStub
+	StripeProviderStub // TODO: Create StripeProviderStubContainer for StripeProviderStub component
 } from '../';
+import { GlobalResets, SiteResets } from '../../styling';
+
+// Only *one* createGlobalStyle per project.
+// Having multiple can cause potential inheritance issues,
+// and no one wants to deal with that.
+const CssResets = createGlobalStyle`
+    ${GlobalResets}
+    ${SiteResets}
+`;
 
 const AppDiv = styled.div`
 	display: flex;
@@ -29,8 +36,8 @@ class App extends Component {
 		return (
 			<Router>
 				<AppDiv>
+					<CssResets />
 					<Navi />
-
 					<Route exact path="/" component={LandingPage} />
 					<Route
 						path="/articles"
@@ -40,7 +47,6 @@ class App extends Component {
 					<Route path="/settings" component={AuthHOC(Settings)} />
 					<Route path="/signin" component={SignInContainer} />
 					{/* <Route path="/signup" component={SignUpPage} /> */}
-					{/* <Route path="/signedin" component={SignedIn} /> */}
 					{/* <Route path="/signedup" component={SignedUp} /> */}
 				</AppDiv>
 			</Router>

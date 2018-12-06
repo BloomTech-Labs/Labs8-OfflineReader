@@ -125,7 +125,7 @@ class UserDefaultsThemeHelper {
         - Parameter name: The name of the font chosen
         - Parameter size: The size of the font
         - Author: Samantha Gatt
-     */
+    */
     public func setTitleFontName(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
@@ -137,32 +137,32 @@ class UserDefaultsThemeHelper {
      
         - Returns: The current body font stored in UserDefaults
         - Author: Samantha Gatt
-     */
+    */
     public func getBodyFont() -> UIFont {
         let size = defaults.object(forKey: UserDefaultsThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
         let name = defaults.string(forKey: UserDefaultsThemeHelper.bodyFontKey) ?? UIFont.preferredFont(forTextStyle: .body).fontName
         return UIFont(name: name, size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
-    
+
     /**
          It stores the body font in UserDefaults
          - Parameter name: The name of the font chosen
          - Parameter size: The size of the font
          - Author: Samantha Gatt
-     */
+    */
     public func setBodyFont(name: UserDefaultsThemeHelper.FontName?, size: CGFloat?) {
         defaults.set(size, forKey: UserDefaultsThemeHelper.fontSizeKey)
         defaults.set(name?.rawValue, forKey: UserDefaultsThemeHelper.bodyFontKey)
     }
 
-     /**
+    /**
          It determines and returns the current text color stored in UserDefaults
      
          Gets the current font color in UserDefaults
      
          - Returns: The current font color stored in UserDefaults
          - Author: Samantha Gatt
-     */
+    */
     public func getTextColor() -> UIColor {
         if let colorString = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) {
             return color(fromString: colorString)
@@ -170,7 +170,7 @@ class UserDefaultsThemeHelper {
             return .black
         }
     }
-    
+
     /**
         It stores the chosen text color in UserDefaults as a String
 
@@ -179,14 +179,14 @@ class UserDefaultsThemeHelper {
         - Parameter providedColor: The color of the font based on the UserDefaultsThemeHelper.ProvidedColors enum
         - Parameter customColor: A custom UIColor
         - Author: Samantha Gatt
-     */
+    */
     public func setTextColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
         defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.textColorKey)
         if providedColor == .custom {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customTextColorKey)
         }
     }
-    
+
     /**
          It determines the current text color stored in UserDefaults
      
@@ -194,7 +194,7 @@ class UserDefaultsThemeHelper {
      
          - Returns: The current text color stored in UserDefaults
          - Author: Samantha Gatt
-     */
+    */
     public func getTextProvidedColor() -> UserDefaultsThemeHelper.ProvidedColors {
         let string = defaults.string(forKey: UserDefaultsThemeHelper.textColorKey) ?? "Black"
         let textProvidedColor = UserDefaultsThemeHelper.ProvidedColors(rawValue: string) ?? .black
@@ -208,7 +208,7 @@ class UserDefaultsThemeHelper {
      
          - Returns: The current background color stored in UserDefaults
          - Author: Samantha Gatt
-     */
+    */
     public func getBackgroundColor() -> UIColor {
         if let colorString = defaults.string(forKey: UserDefaultsThemeHelper.backgroundColorKey) {
             return color(fromString: colorString)
@@ -216,7 +216,7 @@ class UserDefaultsThemeHelper {
             return .white
         }
     }
-    
+
     /**
         It stores the chosen text color in UserDefaults as a String
 
@@ -225,21 +225,21 @@ class UserDefaultsThemeHelper {
         - Parameter providedColor: The color of the background based on the UserDefaultsThemeHelper.ProvidedColors enum
         - Parameter customColor: A custom UIColor
         - Author: Samantha Gatt
-     */
+    */
     public func setBackgroundColor(providedColor: UserDefaultsThemeHelper.ProvidedColors, customColor: UIColor? = nil) {
         defaults.set(providedColor.rawValue, forKey: UserDefaultsThemeHelper.backgroundColorKey)
         if providedColor == .custom {
             defaults.set(customColor, forKey: UserDefaultsThemeHelper.customBackgroundColorKey)
         }
     }
-    
+
     /**
      It stores a bool in UserDefaults for keeping track of Night Mode
      
      Stores a bool in UserDefaults to keep track of Night Mode. Night Mode is a UISwitch in the detail view that sets a dark grey theme.
      
      - Author: Conner Alegre
-     */
+    */
     public func setNightMode() {
         let status = defaults.bool(forKey: "nightMode")
         if status {
@@ -255,7 +255,7 @@ class UserDefaultsThemeHelper {
      
      - Returns: Bool (true, false) which is the status Night Mode as stored in UserDefaults
      - Author: Conner Alegre
-     */
+    */
     public func isNightMode() -> Bool {
         return defaults.bool(forKey: "nightMode")
     }

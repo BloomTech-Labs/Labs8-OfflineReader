@@ -170,6 +170,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+DATETIME_INPUT_FORMATS = ['%Y-%m-%d %H:%M:%S']
+
 USE_I18N = True
 
 USE_L10N = True

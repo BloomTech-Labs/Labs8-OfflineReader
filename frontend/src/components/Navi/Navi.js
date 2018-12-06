@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const NaviDiv = styled.div`
 	width: 100%;
+	height: 40px;
 	margin-bottom: 2rem;
 	box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
 	display: flex;
@@ -31,6 +32,9 @@ const HamburgerDiv = styled.div`
 const HamburgerButton = styled.a`
 	width: 2rem;
 	padding: 0.75rem;
+	img {
+		width: 24px;
+	}
 	@media (min-width: 800px) {
 		display: none;
 		width: 100%;
@@ -38,6 +42,9 @@ const HamburgerButton = styled.a`
 `;
 
 const HamburgerMenu = styled.div`
+	margin: 41px 0 0 0;
+	z-index: 98;
+	position: absolute;
 	display: none;
 	width: 20%;
 	height: 500px;
@@ -64,19 +71,11 @@ class Navi extends Component {
 		let count = -1;
 		return linkList.map(link => {
 			count++;
-			if (link.exact) {
-				return (
-					<NavLink exact to={link.to} key={count}>
-						{link.text}
-					</NavLink>
-				);
-			} else {
-				return (
-					<NavLink to={link.to} key={count}>
-						{link.text}
-					</NavLink>
-				);
-			}
+			return (
+				<NavLink exact={link.exact} to={link.to} key={count}>
+					{link.text}
+				</NavLink>
+			);
 		});
 	};
 
@@ -85,32 +84,18 @@ class Navi extends Component {
 			<NaviDiv>
 				<HamburgerDiv>
 					<HamburgerButton href="#">
-						<img src="https://i.imgur.com/L0Olnc0.png" alt="" width="100%" />
+						<img
+							src="https://i.imgur.com/L0Olnc0.png"
+							alt="Menu button"
+							width="100%"
+						/>
 					</HamburgerButton>
 					<HamburgerMenu>
-						{/* <NavLink exact to="/">
-							Home
-						</NavLink>
-						<NavLink to="/articles">My Pages</NavLink>
-						<NavLink to="/settings">Settings</NavLink>
-						<NavLink to="/signin">Sign In</NavLink> */}
-						{/* <NavLink to="/signout">Sign Out</NavLink> */}
-						{/* <NavLink to="/signup">Sign Up</NavLink> */}
-						{/* <NavLink to="/payment">Payment</NavLink> */}
 						{this.linkGen(navLinks).map(link => link)}
 					</HamburgerMenu>
 				</HamburgerDiv>
 				<NaviSubDiv>
 					<h3>Anywhere Reader</h3>
-					{/* <NavLink exact to="/">
-						Home
-					</NavLink>
-					<NavLink to="/articles">My Pages</NavLink>
-					<NavLink to="/settings">Settings</NavLink>
-					<NavLink to="/signin">Sign In</NavLink> */}
-					{/* <NavLink to="/signout">Sign Out</NavLink> */}
-					{/* <NavLink to="/signup">Sign Up</NavLink> */}
-					{/* <NavLink to="/payment">Payment</NavLink> */}
 					{this.linkGen(navLinks).map(link => link)}
 				</NaviSubDiv>
 			</NaviDiv>

@@ -28,6 +28,7 @@ class TestScraper extends Component {
 	render() {
 		return this.state.showingModal ? (
 			<div>
+				{/* TODO: Make the wrapping div close the modal when clicked */}
 				<ArticleModal page={this.state.page} closeModal={this.closeModal} />
 			</div>
 		) : (

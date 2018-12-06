@@ -10,16 +10,17 @@ import {
 import {
 	LandingPage,
 	Navi,
-	Settings,
-	// SignedIn,
-	// SignIn,
+	Settings, // TODO: Create SettingsContainer for Settings component
 	// SignedUp,
 	// SignUpPage,
-	StripeProviderStub
+	StripeProviderStub // TODO: Create StripeProviderStubContainer for StripeProviderStub component
 } from '../';
 import { GlobalResets, SiteResets } from '../../styling';
 
-const CssReset = createGlobalStyle`
+// Only *one* createGlobalStyle per project.
+// Having multiple can cause potential inheritance issues,
+// and no one wants to deal with that.
+const CssResets = createGlobalStyle`
     ${GlobalResets}
     ${SiteResets}
 `;
@@ -35,9 +36,8 @@ class App extends Component {
 		return (
 			<Router>
 				<AppDiv>
-					<CssReset />
+					<CssResets />
 					<Navi />
-
 					<Route exact path="/" component={LandingPage} />
 					<Route
 						path="/articles"
@@ -47,7 +47,6 @@ class App extends Component {
 					<Route path="/settings" component={AuthHOC(Settings)} />
 					<Route path="/signin" component={SignInContainer} />
 					{/* <Route path="/signup" component={SignUpPage} /> */}
-					{/* <Route path="/signedin" component={SignedIn} /> */}
 					{/* <Route path="/signedup" component={SignedUp} /> */}
 				</AppDiv>
 			</Router>

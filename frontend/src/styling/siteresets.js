@@ -1,5 +1,7 @@
+// Put CSS reset data here
 export default `
-    /* Lambda inspired resets */
+    /* Lambda School inspired resets */
+
     * {
         box-sizing: border-box;
     }
@@ -9,10 +11,19 @@ export default `
     }
 
     html, body {
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
         font-family: 'Roboto', sans-serif;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @import url('https://fonts.googleapis.com/css?family=Merriweather');
+        font-family: 'Merriweather', serif;
     }
 
     body {
         background-color: #ffffff;
+        font-size: 1.4rem;
     }
+
+    /* End Lambda School inspired resets */
 `;

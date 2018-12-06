@@ -1,3 +1,4 @@
+// Don't edit me! Go edit siteresets.js instead if you need to apply a reset across the whole site.
 export default `
     /* http://meyerweb.com/eric/tools/css/reset/ 
     v2.0 | 20110126

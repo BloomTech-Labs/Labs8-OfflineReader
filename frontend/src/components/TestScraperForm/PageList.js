@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { Page } from './';
 
-const PageListContainer = styled.div`
+const PageListDiv = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -22,16 +22,17 @@ class PageList extends Component {
 	render() {
 		console.log('props are:', this.props);
 		return (
-			<PageListContainer>
+			<PageListDiv>
 				<PageListTitle>
 					<h1>Your Pages:</h1>
+					<br />
 				</PageListTitle>
 				{this.props.pages.map(page => {
 					return (
 						<Page page={page} modalPage={this.props.modalPage} key={page.id} />
 					);
 				})}
-			</PageListContainer>
+			</PageListDiv>
 		);
 	}
 }

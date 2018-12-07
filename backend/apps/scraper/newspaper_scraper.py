@@ -33,7 +33,7 @@ def scrape_article(url, auth, user_id):
     html = str(page_content)
 
     # Makes request to endpoint
-    r = requests.post(API_BASE_URL + 'api/users/pages/',
+    r = requests.post(API_BASE_URL + 'api/pages/',
                       json={'title': a.title, 'cover_image': a.top_image, 'normal_url': url, 'html': html, 'text': text, 'images': images, 'user_id': user_id}, headers=headers)
 
     new_art = r.json()

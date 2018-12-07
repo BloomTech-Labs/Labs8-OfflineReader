@@ -49,7 +49,7 @@ export const deleteArticle = article => {
 			.then(
 				// Re-GET all the articles of that user to confirm the deleted article isnt there
 				axios
-					.get(`${apiBaseUrl}/api/pages/${id}`)
+					.get(`${apiBaseUrl}/api/pages/`)
 					.then(response =>
 						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)

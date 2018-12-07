@@ -18,10 +18,10 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.none()
 
     #access granted when logged in
-    def get_queryset(self):
-        user = self.request.user
-
-        if user.is_anonymous:
-            return Article.objects.none()
-        else:
-            return Article.objects.filter(user_id=user)
+    # def get_queryset(self):
+    #     user = self.request.user
+    #     print('here')
+    #     if user.is_anonymous:
+    #         return Article.objects.none()
+    #     else:
+    #         return Article.objects.filter(user_id=user)

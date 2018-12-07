@@ -1,7 +1,7 @@
 export const apiBaseUrl =
 	process.env.NODE_ENV === 'production'
-		? 'https://anywhere-reader-test.herokuapp.com'
-		: 'http://localhost:8000';
+		? 'https://anywhere-reader-test.herokuapp.com/api'
+		: 'http://localhost:8000/api';
 
 export {
 	ADD_ARTICLE,

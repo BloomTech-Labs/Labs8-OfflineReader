@@ -101,21 +101,28 @@ export const sendUrl = (newURL, serverToken) => {
 						headers: headers
 					})
 					.then(response => {
-						//// offline storage logic
-						console.log(response.data[0]);
-						let offlinePage = response.data[0];
-						localforage
-							.setItem(offlinePage.id, offlinePage)
-							.then(function(value) {
-								dispatch({ type: OFFLINE_PAGE_SAVED, payload: response.data });
-								// Do other things once the value has been saved.
-								console.log('offlinePage just created:', value);
-							})
-							.catch(function(err) {
-								// This code runs if there were any errors
-								console.log(err);
-							});
-						/////////
+						let isOffline = false;
+
+						if (isOffline) {
+							//// offline storage logic
+							console.log(response.data[0]);
+							let offlinePage = response.data[0];
+							localforage
+								.setItem(offlinePage.id, offlinePage)
+								.then(function(value) {
+									dispatch({
+										type: OFFLINE_PAGE_SAVED,
+										payload: response.data
+									});
+									// Do other things once the value has been saved.
+									console.log('offlinePage just created:', value);
+								})
+								.catch(function(err) {
+									// This code runs if there were any errors
+									console.log(err);
+								});
+							/////////
+						}
 
 						dispatch({
 							type: PAGES_FETCHED,

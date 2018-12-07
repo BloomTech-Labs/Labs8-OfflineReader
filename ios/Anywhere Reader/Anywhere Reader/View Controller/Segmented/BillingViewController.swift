@@ -18,9 +18,27 @@ class BillingViewController: UIViewController {
         fiveYearButton.titleEdgeInsets = insets
         oneYearButton.titleLabel?.textAlignment = .center
         fiveYearButton.titleLabel?.textAlignment = .center
+        
+        updateViews()
     }
     
     @IBOutlet weak var oneYearButton: UIButton!
     @IBOutlet weak var fiveYearButton: UIButton!
 
+    @IBAction func buyOneYear(_ sender: Any) {
+        
+    }
+    @IBAction func buyFiveYear(_ sender: Any) {
+    }
+    
+    
+    func updateViews() {
+        AnywhereReaderProducts.store.requestProducts{ [weak self] success, products in
+            guard let self = self else { return }
+            if success {
+                print("hello got products: \(products)")
+            }
+            
+        }
+    }
 }

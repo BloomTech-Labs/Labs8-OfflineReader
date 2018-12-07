@@ -284,6 +284,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Buy One Year Subscription - $9.99"/>
+                                        <connections>
+                                            <action selector="buyOneYear:" destination="FPG-Pb-7oD" eventType="touchUpInside" id="IAh-4P-iOU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="o3J-VI-how">
                                         <rect key="frame" x="0.0" y="110" width="320" height="90"/>
@@ -291,6 +294,9 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Buy 5 Year Premium Subscription - $49.99"/>
+                                        <connections>
+                                            <action selector="buyFiveYear:" destination="FPG-Pb-7oD" eventType="touchUpInside" id="MKY-2k-aeU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

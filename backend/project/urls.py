@@ -27,6 +27,7 @@ from django.contrib.auth.models import User
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('auth.urls')),
     path('api/', include('api.urls'))

@@ -24,7 +24,7 @@ export const addArticle = article => {
 			.then(
 				// Re-GET all the articles, with the newly added one included
 				axios
-					.get(`${apiBaseUrl}/pages/`)
+					.get(`${apiBaseUrl}/api/pages/`)
 					.then(response =>
 						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)
@@ -37,7 +37,7 @@ export const deleteArticle = article => {
 	return dispatch => {
 		dispatch({ type: FETCH_ARTICLE_DATA });
 		axios
-			.delete(`${apiBaseUrl}/pages/${id}`, article)
+			.delete(`${apiBaseUrl}/api/pages/${id}`, article)
 			.then(response =>
 				dispatch({
 					type: DELETE_ARTICLE,
@@ -49,7 +49,7 @@ export const deleteArticle = article => {
 			.then(
 				// Re-GET all the articles of that user to confirm the deleted article isnt there
 				axios
-					.get(`${apiBaseUrl}/pages/${id}`)
+					.get(`${apiBaseUrl}/api/pages/${id}`)
 					.then(response =>
 						dispatch({ type: ARTICLE_DATA_FETCHED, payload: response.data })
 					)

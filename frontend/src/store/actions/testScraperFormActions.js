@@ -22,7 +22,7 @@ export const fetchPages = serverToken => {
 			Authorization: `Bearer ${serverToken.data.access_token}`
 		};
 		axios
-			.get(`${apiBaseUrl}/pages/`, {
+			.get(`${apiBaseUrl}/api/pages/`, {
 				headers: headers
 			})
 			.then(response => {
@@ -58,7 +58,7 @@ export const sendUrl = (newURL, serverToken) => {
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
 
 				axios
-					.get(`${apiBaseUrl}/pages/`, {
+					.get(`${apiBaseUrl}/api/pages/`, {
 						headers: headers
 					})
 					.then(response => {

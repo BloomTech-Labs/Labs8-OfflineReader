@@ -1,5 +1,5 @@
 # Labs8-OfflineReader
-
+Anywhere Reader lets you save articles, including audio and videos, to access on all your devices whenever you want. Even offline!
 ## Documentation
 
 [Anywhere Reader Wiki](https://github.com/Lambda-School-Labs/Labs8-OfflineReader/wiki)

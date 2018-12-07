@@ -37,7 +37,7 @@ export const deleteArticle = article => {
 	return dispatch => {
 		dispatch({ type: FETCH_ARTICLE_DATA });
 		axios
-			.delete(`${apiBaseUrl}/api/pages/${id}`, article)
+			.delete(`${apiBaseUrl}/api/pages/`, article)
 			.then(response =>
 				dispatch({
 					type: DELETE_ARTICLE,

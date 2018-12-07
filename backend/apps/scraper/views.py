@@ -24,6 +24,6 @@ class Scrape(APIView):
         # Gets token and sets header
         # auth = "Token " + str(request.auth)
         # Switch auth to this for JWT
-        auth = "Bearer " + str(request.auth)
+        auth = request.META.get('HTTP_AUTHORIZATION')
 
         return scrape_article(url, auth)

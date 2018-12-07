@@ -6,13 +6,16 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('title', 'author', 'normal_url', 'resolved_url', 'date_saved', 'date_published', 'excerpt', 'cover_image', 'tags', 'text')
         fields = '__all__'
+
+        def create(self, validated_data):
+            user = self.context['request'].user
+            article = Article.objects.create(user_id= user, **validated_data)
+            return article
 
 class ArticleViewSet(viewsets.ModelViewSet):
     serializers_class = ArticleSerializer
-    #open access
-    #queryset = Article.objects.all()
+    queryset = Article.objects.none()
 
     #access granted when logged in
     def get_queryset(self):

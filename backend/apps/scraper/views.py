@@ -30,7 +30,7 @@ class Scrape(APIView):
         return select_scraper(url, auth, user_id)
 
 
-def select_scraper(url, auth):
+def select_scraper(url, auth, user_id):
     if "www.youtube.com" in url:
         return scrape_youtube(url, auth, user_id)
     elif "vimeo.com" in url:

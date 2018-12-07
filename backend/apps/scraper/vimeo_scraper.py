@@ -19,7 +19,7 @@ def scrape_vimeo(url, auth, user_id):
     iframe = create_iframe_tag(embed_link)
 
     r = requests.post(API_BASE_URL + 'api/users/pages/',
-                      json={'title': title, 'normal_url': url, 'video': embed_link, 'html': iframe}, headers=headers)
+                      json={'title': title, 'normal_url': url, 'video': embed_link, 'html': iframe, 'user_id': user_id}, headers=headers)
     new_art = r.json()
     return JsonResponse(new_art, status=201)
 

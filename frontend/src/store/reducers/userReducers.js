@@ -41,7 +41,7 @@ export default (state = initialState, action) => {
 				...state,
 				userStatus: {
 					...state.userStatus,
-					error: action.err
+					error: action.err.message
 				}
 			};
 

@@ -45,11 +45,12 @@ class CheckoutForm extends Component {
 		}
 	};
 
+	// TODO refactor this mess
 	backendUrl = () => {
 		if (process.env.NODE_ENV === 'production') {
-			return `https://anywhere-reader-test.herokuapp.com/api/create-charge/`;
+			return `https://anywhere-reader-test.herokuapp.com/api/payments/create-charge/`;
 		} else {
-			return `http://127.0.0.1:8000/api/create-charge/`;
+			return `http://127.0.0.1:8000/api/payments/create-charge/`;
 		}
 	};
 

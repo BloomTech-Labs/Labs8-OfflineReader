@@ -13,7 +13,7 @@ class convert(APIView):
 
 
 def convert_token(access_token):
-    r = requests.post(API_BASE_URL + 'auth/convert-token', json={"grant_type": "convert_token", "client_id": DJANGO_AUTH_FACEBOOK_CLIENT_ID,
+    r = requests.post(API_BASE_URL + 'auth/social/convert-token/', json={"grant_type": "convert_token", "client_id": DJANGO_AUTH_FACEBOOK_CLIENT_ID,
                                                                  "client_secret": DJANGO_AUTH_FACEBOOK_CLIENT_SECRET, "backend": "facebook", "token": access_token})
 
     return JsonResponse(r.json(), status=200)

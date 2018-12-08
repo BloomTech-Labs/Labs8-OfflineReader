@@ -20,9 +20,17 @@ class ThemeHelper {
     private enum ThemeColor: String {
         case black
         case white
-        case lightGray
         case tan
+        case darkBrown
+        case lightGray
         case darkGray
+    }
+    
+    private enum Theme: String {
+        case white
+        case tan
+        case lightGray
+        case night
     }
 
     // MARK: - User Defaults Keys
@@ -54,6 +62,11 @@ class ThemeHelper {
     public var isNightMode: Bool {
         return defaults.bool(forKey: "nightMode")
     }
+    /**
+     The size difference between the body and title fonts as a CGPoint.
+     
+     Default value of 12.0
+     */
     public var diffBetweenBodyAndTitle: CGFloat = 12.0
     
 
@@ -80,10 +93,12 @@ class ThemeHelper {
             return .black
         case .white:
             return .white
-        case .lightGray:
-            return UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1.0)
         case .tan:
             return UIColor(red: 0.79, green: 0.73, blue: 0.58, alpha: 1.0)
+        case .darkBrown:
+            return UIColor(red:0.25, green:0.16, blue:0.08, alpha:1.0)
+        case .lightGray:
+            return UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1.0)
         case .darkGray:
             return UIColor(red: 0.17, green: 0.17, blue: 0.17, alpha: 1.0)
         }
@@ -131,6 +146,34 @@ class ThemeHelper {
         defaults.set(themeColor.rawValue, forKey: ThemeHelper.textColorKey)
     }
     
+    
+    /**
+     Handles setting the text and background colors for each theme in UserDefaults
+     
+     - Parameters:
+     - theme: The instance of the ThemeHelper.Theme enum that is desired
+     
+     - Authors:
+     - Conner Alegre
+     - Samantha Gatt
+     */
+    private func setTheme(to theme: ThemeHelper.Theme) {
+        switch theme {
+        case .white:
+            setTextColor(themeColor: .black)
+            setBackgroundColor(themeColor: .white)
+        case .tan:
+            setTextColor(themeColor: .darkBrown)
+            setBackgroundColor(themeColor: .tan)
+        case .lightGray:
+            setTextColor(themeColor: .white)
+            setBackgroundColor(themeColor: .lightGray)
+        case .night:
+            setTextColor(themeColor: .white)
+            setBackgroundColor(themeColor: .darkGray)
+        }
+    }
+    
 
     // MARK: - Public functions
 
@@ -165,6 +208,8 @@ class ThemeHelper {
 
     /**
      Stores the body font in UserDefaults if parameters are non-nil.
+     
+     Title font does not need to be set. The font name will always be the same as the body font. If you would like to change the difference between the body and title font sizes, set diffBetweenBodyAndTitle public variable.
      
      - Parameters:
         - name: The name of the font chosen. If nil, nothing changes.
@@ -216,8 +261,7 @@ class ThemeHelper {
      - Author: Conner Alegre
      */
     public func setWhiteTheme() {
-        setTextColor(themeColor: .black)
-        setBackgroundColor(themeColor: .white)
+        setTheme(to: .white)
     }
     
     /**
@@ -226,8 +270,7 @@ class ThemeHelper {
      - Author: Conner Alegre
      */
     public func setTanTheme() {
-        setTextColor(themeColor: .black)
-        setBackgroundColor(themeColor: .tan)
+        setTheme(to: .tan)
     }
     
     /**
@@ -236,8 +279,7 @@ class ThemeHelper {
      - Author: Conner Alegre
      */
     public func setLightGrayTheme() {
-        setTextColor(themeColor: .white)
-        setBackgroundColor(themeColor: .lightGray)
+        setTheme(to: .lightGray)
     }
     
     /**
@@ -245,9 +287,8 @@ class ThemeHelper {
      
      - Author: Conner Alegre
      */
-    public func setDarkGrayTheme() {
-        setTextColor(themeColor: .white)
-        setBackgroundColor(themeColor: .darkGray)
+    public func setNightTheme() {
+        setTheme(to: .night)
     }
     
     /**
@@ -263,7 +304,7 @@ class ThemeHelper {
             setWhiteTheme()
         } else {
             defaults.set(true, forKey: ThemeHelper.isNightModeKey)
-            setDarkGrayTheme()
+            setNightTheme()
         }
     }
 }

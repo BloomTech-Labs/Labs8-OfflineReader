@@ -36,7 +36,6 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var whiteThemeButton: UIButton!
     @IBOutlet weak var tanThemeButton: UIButton!
     @IBOutlet weak var lightGrayThemeButton: UIButton!
-    @IBOutlet weak var darkGrayThemeButton: UIButton!
     @IBOutlet weak var nightThemeSwitch: UISwitch!
     @IBOutlet weak var brightnessSlider: UISlider!
     
@@ -110,15 +109,6 @@ class PreferencesViewController: UIViewController {
         nightThemeSwitch.setOn(false, animated: true)
     }
     
-    /**
-     Sets current theme to dark gray
-     
-     - Author: Conner Alegre
-     */
-    @IBAction private func darkGrayThemeButtonTapped(_ sender: Any) {
-        themeHelper.setDarkGrayTheme()
-        nightThemeSwitch.setOn(true, animated: true)
-    }
     
     /**
      Toggles night mode theme
@@ -172,8 +162,7 @@ class PreferencesViewController: UIViewController {
     private func updateButtonsView() {
         let buttons = [whiteThemeButton,
                        tanThemeButton,
-                       lightGrayThemeButton,
-                       darkGrayThemeButton]
+                       lightGrayThemeButton]
         
         buttons.forEach { button in
             if let button = button {

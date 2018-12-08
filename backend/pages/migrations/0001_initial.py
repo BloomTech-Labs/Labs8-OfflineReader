@@ -18,19 +18,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Article',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.AutoField(auto_created=True,
+                                        primary_key=True, serialize=False, verbose_name='ID')),
                 ('title', models.CharField(max_length=512)),
                 ('author', models.CharField(default='', max_length=512)),
-                ('normal_url', models.URLField(blank=True, default='', max_length=512, null=True)),
-                ('resolved_url', models.URLField(blank=True, default='', max_length=512, null=True)),
-                ('date_saved', models.DateTimeField(default=django.utils.timezone.now)),
-                ('date_published', models.TextField(blank=True, default='', null=True)),
+                ('normal_url', models.URLField(blank=True,
+                                               default='', max_length=512, null=True)),
+                ('resolved_url', models.URLField(
+                    blank=True, default='', max_length=512, null=True)),
+                ('date_saved', models.DateTimeField(
+                    default=django.utils.timezone.now)),
+                ('date_published', models.TextField(
+                    blank=True, default='', null=True)),
                 ('excerpt', models.TextField(blank=True, default='', null=True)),
-                ('cover_image', models.TextField(blank=True, default='', null=True)),
+                ('cover_image', models.TextField(
+                    blank=True, default='', null=True)),
                 ('video', models.TextField(blank=True, default='', null=True)),
                 ('audio', models.TextField(blank=True, default='', null=True)),
+                ('html', models.TextField(blank=True, default='', null=True)),
+                ('images', models.TextField(blank=True, default='', null=True)),
                 ('text', models.TextField(blank=True, null=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

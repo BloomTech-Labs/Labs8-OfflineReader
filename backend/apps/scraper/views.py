@@ -4,6 +4,8 @@ from django.core.validators import URLValidator
 from django.core.exceptions import ValidationError
 from rest_framework.views import APIView
 from .newspaper_scraper import scrape_article
+from .youtube_scraper import scrape_youtube
+from .vimeo_scraper import scrape_vimeo
 
 
 class Scrape(APIView):
@@ -38,9 +40,17 @@ class Scrape(APIView):
             error = ''.join(e)
             # Return JSON response back to client with message
             return JsonResponse({"message": error}, status=422)
-        # Gets token and sets header
-        # auth = "Token " + str(request.auth)
-        # Switch auth to this for JWT
-        auth = request.META.get('HTTP_AUTHORIZATION')
 
-        return scrape_article(url, auth)
+        # Gets token and sets header
+        auth = request.META.get('HTTP_AUTHORIZATION')
+        user_id = request.user.id
+        return select_scraper(url, auth, user_id)
+
+
+def select_scraper(url, auth, user_id):
+    if "www.youtube.com" in url:
+        return scrape_youtube(url, auth, user_id)
+    elif "vimeo.com" in url:
+        return scrape_vimeo(url, auth, user_id)
+    else:
+        return scrape_article(url, auth, user_id)

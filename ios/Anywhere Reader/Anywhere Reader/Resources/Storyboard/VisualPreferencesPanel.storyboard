@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CAE-50-fah">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -16,11 +12,11 @@
             <objects>
                 <viewController id="CAE-50-fah" customClass="PreferencesViewController" customModule="Anywhere_Reader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ku-bx-BOt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO9-Zr-eZZ">
-                                <rect key="frame" x="106" y="97" width="300" height="256"/>
+                                <rect key="frame" x="292" y="73" width="300" height="256"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-oN-iVx">
                                         <rect key="frame" x="0.0" y="65" width="300" height="1"/>
@@ -107,7 +103,7 @@
                                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="grayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="K0c-w9-Qrz"/>
+                                                            <action selector="lightGrayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="K0c-w9-Qrz"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-eH-QcQ">
@@ -169,7 +165,7 @@
                     <connections>
                         <outlet property="brightnessSlider" destination="TfJ-GP-1Oc" id="1zB-o8-U2c"/>
                         <outlet property="darkGrayThemeButton" destination="QZD-eH-QcQ" id="sNb-EP-LsE"/>
-                        <outlet property="grayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
+                        <outlet property="lightGrayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
                         <outlet property="nightThemeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="tanThemeButton" destination="h63-oU-8dH" id="MJh-qe-gEj"/>

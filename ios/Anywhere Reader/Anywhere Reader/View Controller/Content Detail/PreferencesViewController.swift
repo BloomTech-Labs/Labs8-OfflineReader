@@ -22,7 +22,7 @@ class PreferencesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if themeHelper.isNightMode() {
+        if themeHelper.isNightMode {
             nightThemeSwitch.isOn = true
         }
         brightnessSlider.value = Float(UIScreen.main.brightness)
@@ -32,24 +32,18 @@ class PreferencesViewController: UIViewController {
     
     // MARK: - Private properties
     
-    private let themeHelper = UserDefaultsThemeHelper.shared
+    private let themeHelper = ThemeHelper.shared
     
     
     // MARK: - Outlets
     
     @IBOutlet weak var preferencesView: UIView!
-    @IBOutlet weak var textColorTableView: UITableView!
-    @IBOutlet weak var backgroundColorTableView: UITableView!
     @IBOutlet weak var whiteThemeButton: UIButton!
     @IBOutlet weak var tanThemeButton: UIButton!
-    @IBOutlet weak var grayThemeButton: UIButton!
+    @IBOutlet weak var lightGrayThemeButton: UIButton!
     @IBOutlet weak var darkGrayThemeButton: UIButton!
     @IBOutlet weak var nightThemeSwitch: UISwitch!
     @IBOutlet weak var brightnessSlider: UISlider!
-    
-    
-    @IBOutlet weak var textColorTableViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var backgroundColorTableViewHeightConstraint: NSLayoutConstraint!
     
     
     // MARK: - Actions
@@ -75,41 +69,35 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func whiteThemeButtonTapped(_ sender: Any) {
-        setWhiteTheme()
+        themeHelper.setWhiteTheme()
         nightThemeSwitch.isOn = false
     }
     
     @IBAction func tanThemeButtonTapped(_ sender: Any) {
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .black)
-            self.themeHelper.setBackgroundColor(providedColor: .tan)
-        }
+        })
         nightThemeSwitch.isOn = false
     }
     
-    @IBAction func grayThemeButtonTapped(_ sender: Any) {
+    @IBAction func lightGrayThemeButtonTapped(_ sender: Any) {
+        themeHelper.setLightGrayTheme()
         UIView.animate(withDuration: 0.5, animations: {
             self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .white)
-            self.themeHelper.setBackgroundColor(providedColor: .gray)
-        }
+        })
         nightThemeSwitch.isOn = false
     }
     
     @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
-        setDarkGrayTheme()
-        nightThemeSwitch.isOn = false
+        themeHelper.setDarkGrayTheme()
     }
     
     @IBAction func nightModeSwitch(_ sender: Any) {
         if nightThemeSwitch.isOn {
-            themeHelper.setNightMode()
-            setDarkGrayTheme()
+            themeHelper.toggleNightMode()
+            themeHelper.setDarkGrayTheme()
         } else {
-            themeHelper.setNightMode()
+            themeHelper.toggleNightMode()
             whiteThemeButtonTapped(sender)
         }
     }
@@ -144,28 +132,10 @@ class PreferencesViewController: UIViewController {
         })
     }
     
-    private func setDarkGrayTheme() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .white)
-            self.themeHelper.setBackgroundColor(providedColor: .darkGray)
-        }
-    }
-    
-    private func setWhiteTheme() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        }) { _ in
-            self.themeHelper.setTextColor(providedColor: .black)
-            self.themeHelper.setBackgroundColor(providedColor: .white)
-        }
-    }
-    
     private func updateButtonsView() {
         let buttons = [whiteThemeButton,
                        tanThemeButton,
-                       grayThemeButton,
+                       lightGrayThemeButton,
                        darkGrayThemeButton]
         
         buttons.forEach { button in

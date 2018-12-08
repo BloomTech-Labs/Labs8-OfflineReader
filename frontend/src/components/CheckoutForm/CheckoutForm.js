@@ -45,6 +45,7 @@ class CheckoutForm extends Component {
 		}
 	};
 
+	// TODO refactor this mess
 	backendUrl = () => {
 		if (process.env.NODE_ENV === 'production') {
 			return `https://anywhere-reader-test.herokuapp.com/api/payments/create-charge/`;

@@ -17,7 +17,7 @@ class ThemeHelper {
         case defaultTitle = "Helvetica-Bold"
     }
 
-    enum ThemeColor: String {
+    private enum ThemeColor: String {
         case black
         case white
         case lightGray
@@ -34,6 +34,7 @@ class ThemeHelper {
     static let fontSizeKey = "fontSize"
     static let bodyFontKey = "bodyFont"
     static let titleFontKey = "titleFont"
+    static let isNightModeKey = "isNightMode"
 
 
     // MARK: - Static properties
@@ -102,6 +103,34 @@ class ThemeHelper {
         let themeColor = ThemeHelper.ThemeColor(rawValue: string) ?? .black
         return color(from: themeColor)
     }
+    
+    
+    /**
+     Stores the chosen text color in UserDefaults as a String
+     
+     Sets the chosen background color in UserDefaults with UserDefaultsThemeHelper.backgroundColorKey as the key. The color is stored as a String.
+     
+     - Parameter providedColor: The color of the background based on the UserDefaultsThemeHelper.ProvidedColors enum
+     - Parameter customColor: A custom UIColor
+     - Author: Samantha Gatt
+     */
+    private func setBackgroundColor(themeColor: ThemeHelper.ThemeColor) {
+        defaults.set(themeColor.rawValue, forKey: ThemeHelper.backgroundColorKey)
+    }
+    
+    /**
+     Stores the chosen text color in UserDefaults as a String
+     
+     Sets the chosen text color in UserDefaults with UserDefaultsThemeHelper.textColorKey as the key. The color is stored as a String.
+     
+     - Parameter providedColor: The color of the font based on the UserDefaultsThemeHelper.ProvidedColors enum
+     - Parameter customColor: A custom UIColor
+     - Author: Samantha Gatt
+     */
+    private func setTextColor(themeColor: ThemeHelper.ThemeColor) {
+        defaults.set(themeColor.rawValue, forKey: ThemeHelper.textColorKey)
+    }
+    
 
     // MARK: - Public functions
 
@@ -121,23 +150,12 @@ class ThemeHelper {
     }
 
     /**
-    Stores the title font in UserDefaults
-     - Parameters:
-        - name: The name of the font chosen as an instance the UserDefaultsThemeHelper.FontName enum
-        - size: The size of the font
-    - Author: Samantha Gatt
-    */
-    public func setTitleFontName(name: ThemeHelper.FontName?, size: CGFloat?) {
-        defaults.set(name?.rawValue, forKey: ThemeHelper.bodyFontKey)
-    }
-
-    /**
-        It determines the current body font stored in UserDefaults
-     
-        Gets the current font set in UserDefaults and determines the size the body font which is based on the difference between the title font size and body font size.
-     
-        - Returns: The current body font stored in UserDefaults
-        - Author: Samantha Gatt
+     Returns the current body font stored in UserDefaults
+ 
+     Gets the current font set in UserDefaults and determines the size the body font which is based on the difference between the title font size and body font size.
+ 
+     - Returns: The current body font stored in UserDefaults
+     - Author: Samantha Gatt
     */
     public func getBodyFont() -> UIFont {
         let size = defaults.object(forKey: ThemeHelper.fontSizeKey) as? CGFloat ?? 17.0
@@ -146,23 +164,27 @@ class ThemeHelper {
     }
 
     /**
-         It stores the body font in UserDefaults
-         - Parameter name: The name of the font chosen
-         - Parameter size: The size of the font
-         - Author: Samantha Gatt
+     Stores the body font in UserDefaults if parameters are non-nil.
+     
+     - Parameters:
+        - name: The name of the font chosen. If nil, nothing changes.
+        - size: The size of the font. If nil, nothing changes.
+     - Author: Samantha Gatt
     */
-    public func setBodyFont(name: ThemeHelper.FontName?, size: CGFloat?) {
-        defaults.set(size, forKey: ThemeHelper.fontSizeKey)
-        defaults.set(name?.rawValue, forKey: ThemeHelper.bodyFontKey)
+    public func setBodyFont(name: ThemeHelper.FontName? = nil, size: CGFloat? = nil) {
+        if let fontSize = size {
+            defaults.set(fontSize, forKey: ThemeHelper.fontSizeKey)
+        }
+        if let fontName = name {
+            defaults.set(fontName.rawValue, forKey: ThemeHelper.bodyFontKey)
+        }
     }
 
     /**
-         It determines and returns the current text color stored in UserDefaults
-     
-         Gets the current font color in UserDefaults
-     
-         - Returns: The current font color stored in UserDefaults
-         - Author: Samantha Gatt
+     Returns the current text color stored in UserDefaults
+ 
+     - Returns: The current font color stored in UserDefaults
+     - Author: Samantha Gatt
     */
     public func getTextColor() -> UIColor {
         if let colorString = defaults.string(forKey: ThemeHelper.textColorKey) {
@@ -173,63 +195,18 @@ class ThemeHelper {
     }
 
     /**
-        It stores the chosen text color in UserDefaults as a String
-
-        Sets the chosen text color in UserDefaults with UserDefaultsThemeHelper.textColorKey as the key. The color is stored as a String.
-
-        - Parameter providedColor: The color of the font based on the UserDefaultsThemeHelper.ProvidedColors enum
-        - Parameter customColor: A custom UIColor
-        - Author: Samantha Gatt
-    */
-    private func setTextColor(themeColor: ThemeHelper.ThemeColor) {
-        defaults.set(themeColor.rawValue, forKey: ThemeHelper.textColorKey)
-    }
-
-
-    /**
-         It determines the current background color stored in UserDefaults
-     
-         Gets the current background color stored and UserDefaults and returns it accordingly. If there is nothing stored in UserDefaults, it defaults to a white color.
-     
-         - Returns: The current background color stored in UserDefaults
-         - Author: Samantha Gatt
+     Returns the current background color stored in UserDefaults
+ 
+     Gets the current background color stored and UserDefaults and returns it accordingly. If there is nothing stored in UserDefaults, it defaults to a white color.
+ 
+     - Returns: The current background color stored in UserDefaults
+     - Author: Samantha Gatt
     */
     public func getBackgroundColor() -> UIColor {
         if let colorString = defaults.string(forKey: ThemeHelper.backgroundColorKey) {
             return color(from: colorString)
         } else {
             return .white
-        }
-    }
-
-    /**
-        It stores the chosen text color in UserDefaults as a String
-
-        Sets the chosen background color in UserDefaults with UserDefaultsThemeHelper.backgroundColorKey as the key. The color is stored as a String.
-
-        - Parameter providedColor: The color of the background based on the UserDefaultsThemeHelper.ProvidedColors enum
-        - Parameter customColor: A custom UIColor
-        - Author: Samantha Gatt
-    */
-    private func setBackgroundColor(themeColor: ThemeHelper.ThemeColor) {
-        defaults.set(themeColor.rawValue, forKey: ThemeHelper.backgroundColorKey)
-    }
-
-    /**
-     Stores a bool in UserDefaults for keeping track of Night Mode
-     
-     Night Mode is a UISwitch in the detail view that sets a dark grey theme.
-     
-     - Author: Conner Alegre
-    */
-    public func toggleNightMode() {
-        let status = defaults.bool(forKey: "nightMode")
-        if status {
-            defaults.set(false, forKey: "nightMode")
-            setWhiteTheme()
-        } else {
-            defaults.set(true, forKey: "nightMode")
-            setDarkGrayTheme()
         }
     }
     
@@ -271,5 +248,22 @@ class ThemeHelper {
     public func setDarkGrayTheme() {
         setTextColor(themeColor: .white)
         setBackgroundColor(themeColor: .darkGray)
+    }
+    
+    /**
+     Stores a bool in UserDefaults for keeping track of Night Mode
+     
+     Night Mode is a UISwitch in the detail view that sets a dark grey theme.
+     
+     - Author: Conner Alegre
+     */
+    public func toggleNightMode() {
+        if defaults.bool(forKey: ThemeHelper.isNightModeKey) {
+            defaults.set(false, forKey: ThemeHelper.isNightModeKey)
+            setWhiteTheme()
+        } else {
+            defaults.set(true, forKey: ThemeHelper.isNightModeKey)
+            setDarkGrayTheme()
+        }
     }
 }

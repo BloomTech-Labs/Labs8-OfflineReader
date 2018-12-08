@@ -9,8 +9,25 @@ from .vimeo_scraper import scrape_vimeo
 
 
 class Scrape(APIView):
+    # New
+    def get_userid(self):
+        user = self.request.user
+        # print(user)
+        if user.is_anonymous:
+            # return Article.objects.none()
+            return None
+        else:
+            # return Article.objects.filter(user_id=user)
+            return user
+    # End New
+
     # Invoked when POST at api/scrape endpoint
     def post(self, request, *args, **kwargs):
+        # New
+        get_user_id = get_userid()
+        print(get_user_id)
+        # End New
+
         # Pulls url off request
         url = request.data.get('url')
         val = URLValidator()

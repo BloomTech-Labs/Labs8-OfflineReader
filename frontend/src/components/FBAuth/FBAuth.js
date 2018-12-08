@@ -12,7 +12,7 @@ class FBAuth extends Component {
 	};
 
 	handleResponse = data => {
-		// console.log(data);
+		console.log(data);
 		this.props.loginUser(data.tokenDetail.accessToken);
 	};
 

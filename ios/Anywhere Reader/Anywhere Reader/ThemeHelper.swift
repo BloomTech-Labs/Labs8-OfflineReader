@@ -84,7 +84,7 @@ class ThemeHelper {
         case .tan:
             return UIColor(red: 0.79, green: 0.73, blue: 0.58, alpha: 1.0)
         case .darkGray:
-            return .darkGray
+            return UIColor(red: 0.17, green: 0.17, blue: 0.17, alpha: 1.0)
         }
     }
 
@@ -226,8 +226,10 @@ class ThemeHelper {
         let status = defaults.bool(forKey: "nightMode")
         if status {
             defaults.set(false, forKey: "nightMode")
+            setWhiteTheme()
         } else {
             defaults.set(true, forKey: "nightMode")
+            setDarkGrayTheme()
         }
     }
     

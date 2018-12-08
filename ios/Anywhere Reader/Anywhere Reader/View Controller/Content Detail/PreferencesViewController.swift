@@ -26,7 +26,6 @@ class PreferencesViewController: UIViewController {
             nightThemeSwitch.isOn = true
         }
         brightnessSlider.value = Float(UIScreen.main.brightness)
-        animateView()
     }
     
     
@@ -70,36 +69,26 @@ class PreferencesViewController: UIViewController {
     
     @IBAction func whiteThemeButtonTapped(_ sender: Any) {
         themeHelper.setWhiteTheme()
-        nightThemeSwitch.isOn = false
+        nightThemeSwitch.setOn(false, animated: true)
     }
     
     @IBAction func tanThemeButtonTapped(_ sender: Any) {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
-        nightThemeSwitch.isOn = false
+        themeHelper.setTanTheme()
+        nightThemeSwitch.setOn(false, animated: true)
     }
     
     @IBAction func lightGrayThemeButtonTapped(_ sender: Any) {
         themeHelper.setLightGrayTheme()
-        UIView.animate(withDuration: 0.5, animations: {
-            self.view.layoutIfNeeded()
-        })
-        nightThemeSwitch.isOn = false
+        nightThemeSwitch.setOn(false, animated: true)
     }
     
     @IBAction func darkGrayThemeButtonTapped(_ sender: Any) {
         themeHelper.setDarkGrayTheme()
+        nightThemeSwitch.setOn(true, animated: true)
     }
     
     @IBAction func nightModeSwitch(_ sender: Any) {
-        if nightThemeSwitch.isOn {
-            themeHelper.toggleNightMode()
-            themeHelper.setDarkGrayTheme()
-        } else {
-            themeHelper.toggleNightMode()
-            whiteThemeButtonTapped(sender)
-        }
+        themeHelper.toggleNightMode()
     }
     
     @IBAction func changeFont(_ sender: Any) {
@@ -111,26 +100,6 @@ class PreferencesViewController: UIViewController {
     }
     
     // MARK: - Private functions
-    
-    private func animateView() {
-        // Makes sure the main view starts out see through and 50 cgpoints below its normal frame
-        preferencesView.alpha = 0;
-        self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
-        // Start of animation
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
-            // Makes main view end completely visible and at its normal frame (50 cgpoints above start) by the end of the animation
-            self.preferencesView.alpha = 1.0
-            self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y - 50
-        })
-    }
-    
-    private func deanimateView() {
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
-            // Opposite of animate view: makes main view fade out and move 50 cgpoints below
-            self.preferencesView.alpha = 0
-            self.preferencesView.frame.origin.y = self.preferencesView.frame.origin.y + 50
-        })
-    }
     
     private func updateButtonsView() {
         let buttons = [whiteThemeButton,

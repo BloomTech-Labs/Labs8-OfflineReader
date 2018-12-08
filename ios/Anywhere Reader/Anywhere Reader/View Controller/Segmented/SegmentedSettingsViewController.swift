@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FacebookLogin
 
 class SegmentedSettingsViewController: UIViewController {
     
@@ -55,8 +54,7 @@ class SegmentedSettingsViewController: UIViewController {
         let alertController = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
-            // Logs user out using FacebookLogin SDK
-            LoginManager().logOut()
+            print("no authentication implemented")
         }
         alertController.addAction(cancelAction)
         alertController.addAction(signOutAction)

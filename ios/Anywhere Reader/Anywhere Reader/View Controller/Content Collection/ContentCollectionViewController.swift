@@ -61,7 +61,7 @@ class ContentCollectionViewController: UICollectionViewController {
     // MARK: - Properties
     
     private let articleController = ArticleController(dataLoader: MockDataLoader.shared)
-    let themeHelper = UserDefaultsThemeHelper.shared
+    let themeHelper = ThemeHelper.sharedr
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         let textColor = themeHelper.getTextColor()

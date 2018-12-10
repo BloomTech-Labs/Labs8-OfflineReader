@@ -20,7 +20,7 @@
 		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
-		2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */; };
+		2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* ThemeHelper.swift */; };
 		222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */; };
 		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
 		222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */; };
@@ -69,7 +69,7 @@
 		13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
-		2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsThemeHelper.swift; sourceTree = "<group>"; };
+		2200578C219DC40100808E4B /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
 		222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMaskView.swift; sourceTree = "<group>"; };
 		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
 		222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidGradientView.swift; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				2200578C219DC40100808E4B /* UserDefaultsThemeHelper.swift */,
+				2200578C219DC40100808E4B /* ThemeHelper.swift */,
 				13847C1F21B73C59005B533D /* Extensions */,
 				223E6F3621B5C04F0024E993 /* Core Data */,
 				2275257E21B9B67D009FF546 /* Networking */,
@@ -491,7 +491,7 @@
 				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
-				2200578D219DC40100808E4B /* UserDefaultsThemeHelper.swift in Sources */,
+				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
 				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

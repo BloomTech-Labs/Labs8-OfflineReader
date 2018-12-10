@@ -8,6 +8,6 @@ export const LandingPageDiv = styled.div`
 	align-items: center;
 	background: url(${coffeeBg}) no-repeat center center fixed;
 	min-width: 600px;
-	min-height: 600px;
+	min-height: 500px;
 	border-radius: 15px;
 `;

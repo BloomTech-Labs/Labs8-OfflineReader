@@ -20,9 +20,12 @@ export const fetchPages = serverToken => {
 		let headers = {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${serverToken.data.access_token}`
+			// TODO: switch back after show and tell
+			// Authorization: `Token e5f6efffdaf49d83381c94a7a322266e77013428` Production
+			// Authorization: `Token b4d264e2006c6e3b64fddd764c75eb6646b8dc8b` Localhost
 		};
 		axios
-			.get(`${apiBaseUrl}/pages/`, {
+			.get(`${apiBaseUrl}/api/pages/`, {
 				headers: headers
 			})
 			.then(response => {
@@ -48,6 +51,8 @@ export const sendUrl = (newURL, serverToken) => {
 		let headers = {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${serverToken.data.access_token}`
+			// TODO: switch back after show and tell
+			// Authorization: `Token b4d264e2006c6e3b64fddd764c75eb6646b8dc8b`
 		};
 		axios
 			.post(`${apiBaseUrl}/api/scrape/`, newURL, {
@@ -58,7 +63,7 @@ export const sendUrl = (newURL, serverToken) => {
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
 
 				axios
-					.get(`${apiBaseUrl}/pages/`, {
+					.get(`${apiBaseUrl}/api/pages/`, {
 						headers: headers
 					})
 					.then(response => {

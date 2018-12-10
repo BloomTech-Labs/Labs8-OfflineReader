@@ -38,12 +38,12 @@ Returns list of users
 ### /api/pages/
 
 GET
-`[{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "video": "", "audio": "", "text": "", "user": 1 }]`
+`[{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "video": "", "audio": "", "html":"", "images": "", "text": "", "user": 1 }]`
 Returning a list of objects for each article that are in the database.
 User is a foreign key indicating which user saves the article.
 
 POST
-`{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "video": "", "audio": "", "text": "", "user": 1 }`
+`{ "id": 1, "title": "", "author": "", "normal_url": "", "resolved_url": "", "date_saved": "", "date_published": "", "excerpt": "", "cover_image": "", "video": "", "audio": "", "html":"", "images": "", "text": "", "user": 1 }`
 Adding an article.
 
 - `id` is auto generated.

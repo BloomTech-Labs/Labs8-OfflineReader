@@ -8,6 +8,7 @@ const FBClick = styled.span`
 
 class FBAuth extends Component {
 	state = {
+		// TODO: Set this in the userReducers state, then pass it down. This will make sure values are easy to locate going forward.
 		fbAppId:
 			process.env.NODE_ENV === 'production'
 				? '719662021765780'

@@ -56,7 +56,6 @@ class ContentDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var tagLabelOne: UILabel!
@@ -102,10 +101,10 @@ class ContentDetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = backgroundColor
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
 
-        [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
+        [contentBodyLabel, titleLabel, authorLabel, dateLabel]
             .forEach { $0.textColor = themeHelper.getTextColor() }
         
-        [contentBodyLabel, sourceLabel, authorLabel, dateLabel]
+        [contentBodyLabel, authorLabel, dateLabel]
             .forEach { $0.font = themeHelper.getBodyFont() }
 
         let titleFont = themeHelper.getTitleFont()

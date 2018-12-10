@@ -38,7 +38,7 @@ class ContentDetailViewController: UIViewController {
 
     // MARK: - Private properties
 
-    let themeHelper = UserDefaultsThemeHelper.shared
+    let themeHelper = ThemeHelper.shared
     let gradientLayer = CAGradientLayer()
 
     // MARK: - Public properties

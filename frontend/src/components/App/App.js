@@ -4,13 +4,13 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import {
 	AuthHOC,
+	SettingsContainer,
 	SignInContainer,
 	TestScraperFormContainer
 } from '../../containers';
 import {
 	LandingPage,
 	Navi,
-	Settings, // TODO: Create SettingsContainer for Settings component
 	// SignedUp,
 	// SignUpPage,
 	StripeProviderStub // TODO: Create StripeProviderStubContainer for StripeProviderStub component
@@ -26,9 +26,9 @@ const CssResets = createGlobalStyle`
 `;
 
 const AppDiv = styled.div`
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: center; */
 `;
 
 class App extends Component {
@@ -44,7 +44,7 @@ class App extends Component {
 						component={AuthHOC(TestScraperFormContainer)}
 					/>
 					<Route path="/payment" component={AuthHOC(StripeProviderStub)} />
-					<Route path="/settings" component={AuthHOC(Settings)} />
+					<Route path="/settings" component={AuthHOC(SettingsContainer)} />
 					<Route path="/signin" component={SignInContainer} />
 					{/* <Route path="/signup" component={SignUpPage} /> */}
 					{/* <Route path="/signedup" component={SignedUp} /> */}

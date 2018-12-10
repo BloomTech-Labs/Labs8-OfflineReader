@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
+
+const ScraperDiv = styled.div`
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: auto;
+`;
 
 class TestScraper extends Component {
 	state = {
@@ -27,18 +36,18 @@ class TestScraper extends Component {
 
 	render() {
 		return this.state.showingModal ? (
-			<div>
+			<ScraperDiv>
 				{/* TODO: Make the wrapping div close the modal when clicked */}
 				<ArticleModal page={this.state.page} closeModal={this.closeModal} />
-			</div>
+			</ScraperDiv>
 		) : (
-			<div>
+			<ScraperDiv>
 				<TestScraperForm
 					sendUrl={this.props.sendUrl}
 					serverToken={this.props.serverToken}
 				/>
 				<PageList pages={this.props.pages} modalPage={this.modalPage} />
-			</div>
+			</ScraperDiv>
 		);
 	}
 }

@@ -6,7 +6,7 @@ from .remove_list import remove_content
 from project.settings import API_BASE_URL
 
 
-def scrape_article(url, auth):
+def scrape_article(url, auth, user_id):
     headers = {"authorization": auth}
     a = Article(url, keep_article_html=True)
     a.download()
@@ -33,8 +33,8 @@ def scrape_article(url, auth):
     html = str(page_content)
 
     # Makes request to endpoint
-    r = requests.post(API_BASE_URL + 'api/users/pages/',
-                      json={'title': a.title, 'cover_image': a.top_image, 'normal_url': url, 'html': html, 'text': text, 'images': images}, headers=headers)
+    r = requests.post(API_BASE_URL + 'api/pages/',
+                      json={'title': a.title, 'cover_image': a.top_image, 'normal_url': url, 'html': html, 'text': text, 'images': images, 'user_id': user_id}, headers=headers)
 
     new_art = r.json()
     return JsonResponse(new_art, status=201)

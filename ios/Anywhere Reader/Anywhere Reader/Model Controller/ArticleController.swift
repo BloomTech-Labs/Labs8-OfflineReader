@@ -11,56 +11,18 @@ import CoreData
 
 class ArticleController {
     
+    // MARK: - Init
+    
+    init(dataLoader: NetworkDataLoader = URLSession.shared) {
+        self.dataLoader = dataLoader
+    }
+    
+    
     // MARK: - Properties
     
-    let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
-    var mockDataURL: URL {
-        return Bundle.main.url(forResource: "example", withExtension: "json")!
-    }
+    let dataLoader: NetworkDataLoader
+    static let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
     var articleReps: [ArticleRep] = []
-    
-//    func fetchArticles(for user: User, fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
-//
-//        guard let key = user.key?.key else { return }
-//
-//        // http://localhost:8000/pages/
-//        let url = AuthService.baseURL.appendingPathComponent("pages/")
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "GET"
-//        request.addValue("Token \(key)", forHTTPHeaderField: "Authorization")
-//
-//        URLSession.shared.dataTask(with: request) { (data, _, error) in
-//            if let error = error {
-//                NSLog("Error with fetching articles: \(error)")
-//                fetchArticlesComplete(false, error)
-//                return
-//            }
-//
-//            guard let data = data else { return }
-//
-//            do {
-//                self.articles = try JSONDecoder().decode(Articles.self, from: data)
-//                // Uncomment to update core data
-//                // let backgroundContext = CoreDataStack.shared.container.newBackgroundContext()
-//                // try self.updateArticles(from: self.articles, context: backgroundContext)
-//            } catch {
-//                NSLog("Error decoding articles")
-//            }
-//            fetchArticlesComplete(true, nil)
-//        }.resume()
-//    }
-    
-    func fetchArticles(fetchArticlesComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
-        do {
-            let mockData = try Data(contentsOf: mockDataURL)
-            self.articleReps = try JSONDecoder().decode(Articles.self, from: mockData)
-            fetchArticlesComplete(true, nil)
-        } catch {
-            NSLog("Error decoding example data: \(error)")
-            fetchArticlesComplete(false, error)
-        }
-    }
     
     
     // MARK: - Core Data
@@ -132,11 +94,45 @@ class ArticleController {
     }
     
     
-    // MARK: - Scraper Query
+    // MARK: - Network requests
     
-    func scrape(with userInputURL: String, completion: @escaping (Result) -> Void) {
+    func fetchArticles(completion: @escaping (_ error: NetworkError?) -> ()) {
+        
+        let url = ArticleController.baseURL.appendingPathComponent("pages/")
+        
+        let key = "key"
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("Token \(key)", forHTTPHeaderField: "Authorization")
+        
+        dataLoader.loadData(with: request) { (data, error) in
+            if let error = error {
+                NSLog("Error with fetching articles: \(error)")
+                completion(.general)
+                return
+            }
+            
+            guard let data = data else { completion(.noData); return }
+            
+            do {
+                let articleReps = try JSONDecoder().decode(Articles.self, from: data)
+                self.articleReps = articleReps
+                // Uncomment when using core data
+                // let backgroundContext = CoreDataStack.shared.container.newBackgroundContext()
+                // try self.updateArticles(from: articleReps, context: backgroundContext)
+                completion(nil)
+            } catch {
+                NSLog("Error decoding articles")
+                completion(.badData)
+            }
+        }
+    }
+    
+    /// Scraper query
+    func scrape(with userInputURL: String, completion: @escaping (NetworkError?) -> Void) {
         // Endpoint : anywhere-reader-test.herokuapp.com/api/scrape/
-        let url = baseURL.appendingPathComponent("api").appendingPathComponent("scrape/")
+        let url = ArticleController.baseURL.appendingPathComponent("api").appendingPathComponent("scrape/")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -147,27 +143,26 @@ class ArticleController {
         // TODO: Use user token rather than placeholder
         request.allHTTPHeaderFields = ["Authorization": "Token e5f6efffdaf49d83381c94a7a322266e77013428", "Content-Type": "application/json"]
         
-        URLSession.shared.dataTask(with: request) { (data, responseCode, error) in
+        dataLoader.uploadData(with: request) { (data, error) in
             if let error = error {
                 NSLog("Error with scraping: \(error)")
-                completion(Result.failure(error))
+                completion(.general)
                 return
             }
             
-            guard let data = data else { return }
+            guard let data = data else { completion(.noData); return }
             
             do {
                 let articleRep = try JSONDecoder().decode(ArticleRep.self, from: data)
-                // Uncomment to update core data
+                self.articleReps.append(articleRep)
+                // Uncomment when using core data
                 // let _ = Article(fromRep: articleRep)
                 // self.save(context: CoreDataStack.moc)
-                self.articleReps.append(articleRep)
-            } catch let decodeError {
+                completion(nil)
+            } catch {
                 NSLog("Error with decoding article")
-                completion(Result.failure(decodeError))
+                completion(.badData)
             }
-            
-            completion(Result.success)
-        }.resume()
+        }
     }
 }

@@ -15,7 +15,7 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleController.fetchArticles() { (success, error) in
+        articleController.fetchArticles() { (error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
                 return
@@ -60,8 +60,8 @@ class ContentCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     
-    let articleController = ArticleController()
-    let themeHelper = ThemeHelper.shared
+    private let articleController = ArticleController(dataLoader: MockDataLoader.shared)
+    let themeHelper = ThemeHelper.sharedr
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         let textColor = themeHelper.getTextColor()

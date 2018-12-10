@@ -53,6 +53,7 @@ class ContentCollectionViewController: UICollectionViewController {
         addLinkDialog.addAction(cancel)
         addLinkDialog.addTextField { (textField) -> Void in
             textField.placeholder = "http://cnn.com"
+            // Autopopulate textfield if there is something in the users clipboard
             if let linkInClipboard = UIPasteboard.general.string {
                 textField.text = linkInClipboard
             }

@@ -53,6 +53,9 @@ class ContentCollectionViewController: UICollectionViewController {
         addLinkDialog.addAction(cancel)
         addLinkDialog.addTextField { (textField) -> Void in
             textField.placeholder = "http://cnn.com"
+            if let linkInClipboard = UIPasteboard.general.string {
+                textField.text = linkInClipboard
+            }
             textField.layer.borderColor = UIColor.darkGray.cgColor
         }
         self.present(addLinkDialog, animated: true, completion: nil)

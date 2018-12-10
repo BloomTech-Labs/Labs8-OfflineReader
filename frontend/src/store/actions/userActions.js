@@ -70,7 +70,7 @@ export const fetchUser = token => {
 		dispatch({ type: FETCH_USER_DATA });
 		axios({
 			method: 'get',
-			url: apiBaseUrl + '/api/rest-auth/user/',
+			url: apiBaseUrl + '/auth/rest/user/',
 			headers: { Authorization: `Bearer ${token.data.access_token}` }
 		})
 			.then(response =>

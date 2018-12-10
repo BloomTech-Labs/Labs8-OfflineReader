@@ -29,6 +29,8 @@ class Migration(migrations.Migration):
                 ('cover_image', models.TextField(blank=True, default='', null=True)),
                 ('video', models.TextField(blank=True, default='', null=True)),
                 ('audio', models.TextField(blank=True, default='', null=True)),
+                ('html', models.TextField(blank=True, default='', null=True)),
+                ('images', models.TextField(blank=True, default='', null=True)),
                 ('text', models.TextField(blank=True, null=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],

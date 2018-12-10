@@ -8,7 +8,6 @@ from users.models import CustomUser
 class Article(models.Model):
     # django adds an auto incrementing id field by default - id = models.AutoField(primary_key=True)
     # #title and user are required fields
-
     # user became user_id in postgres.
     user_id = models.ForeignKey(CustomUser, db_column='user_id', on_delete=models.CASCADE)
     title = models.CharField(max_length=512)
@@ -23,4 +22,6 @@ class Article(models.Model):
     # embedded url for videos and audios
     video = models.TextField(blank=True, null=True, default='')
     audio = models.TextField(blank=True, null=True, default='')
+    html = models.TextField(blank=True, null=True, default='')
+    images = models.TextField(blank=True, null=True, default='')
     text = models.TextField(blank=True, null=True)

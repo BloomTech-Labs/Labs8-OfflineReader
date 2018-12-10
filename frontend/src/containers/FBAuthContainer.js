@@ -17,7 +17,7 @@ FBAuthContainer.propTypes = {
 		email: PropTypes.string,
 		firstName: PropTypes.string,
 		lastName: PropTypes.string,
-		premium: PropTypes.bool
+		premium: PropTypes.string
 	}).isRequired,
 	auth: PropTypes.shape({
 		// googleClientId: PropTypes.string

@@ -17,6 +17,12 @@ class MockDataLoader: NetworkDataLoader {
         self.error = error
     }
     
+    // MARK: - Static properties
+    
+    static let mockDataUrl = Bundle.main.url(forResource: "example", withExtension: "json")!
+    static let mockData = try! Data(contentsOf: mockDataUrl)
+    static let shared = MockDataLoader(data: mockData, error: nil)
+    
     
     // MARK: - Properties
     

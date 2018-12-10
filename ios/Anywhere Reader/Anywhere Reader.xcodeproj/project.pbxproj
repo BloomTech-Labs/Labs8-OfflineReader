@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
+		1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1332D85A21BF26AB006C75C8 /* APIService.swift */; };
 		13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */; };
 		13B013DE219394AD00DA56B9 /* SegmentedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */; };
 		13B013E0219394E300DA56B9 /* BillingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DF219394E300DA56B9 /* BillingViewController.swift */; };
@@ -56,6 +57,7 @@
 		036ACFCF38AB072CCCA0C8F4 /* Pods-Anywhere Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		10DBC3271CE88F53FD615C48 /* Pods-Anywhere Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.release.xcconfig"; sourceTree = "<group>"; };
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
+		1332D85A21BF26AB006C75C8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SegmentedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedSettingsViewController.swift; sourceTree = "<group>"; };
 		13B013DF219394E300DA56B9 /* BillingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillingViewController.swift; sourceTree = "<group>"; };
@@ -113,6 +115,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1332D85921BF268C006C75C8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1332D85A21BF26AB006C75C8 /* APIService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		13847C1F21B73C59005B533D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +233,7 @@
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
 				13FB2E2821921AD400A8888B /* Resources */,
+				1332D85921BF268C006C75C8 /* Services */,
 			);
 			path = "Anywhere Reader";
 			sourceTree = "<group>";
@@ -488,6 +499,7 @@
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
+				1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */,
 				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

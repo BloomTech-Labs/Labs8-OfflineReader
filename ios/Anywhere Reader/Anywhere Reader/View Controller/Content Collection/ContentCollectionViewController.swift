@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FacebookCore
 
 private let reuseIdentifier = "DocumentCell"
 
@@ -15,7 +16,9 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        APIService.shared.verifyAccessToken(with: AccessToken.current!.authenticationToken) { (result, error) in
+            print(result)
+        }
         articleController.fetchArticles() { (error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
@@ -29,6 +32,7 @@ class ContentCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
         collectionView.backgroundColor = themeHelper.getBackgroundColor()

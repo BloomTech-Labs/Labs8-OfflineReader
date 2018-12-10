@@ -13,6 +13,7 @@ class ContentDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateViews()
         updateTheme()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
@@ -43,6 +44,7 @@ class ContentDetailViewController: UIViewController {
 
     // MARK: - Public properties
 
+    public var navigationControllerDelegate: NavigationControllerDelegate?
     public var article: ArticleRep? {
         didSet {
             updateViews()
@@ -63,7 +65,7 @@ class ContentDetailViewController: UIViewController {
 
     // MARK: - Actions
 
-    @IBAction func presentPreferences(_ sender: Any) {
+    @IBAction private func presentPreferences(_ sender: Any) {
         let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
         preferencesVC.providesPresentationContextTransitionStyle = true
@@ -72,6 +74,37 @@ class ContentDetailViewController: UIViewController {
         preferencesVC.modalTransitionStyle = .crossDissolve
 
         self.present(preferencesVC, animated: true, completion: nil)
+    }
+
+    /**
+     Handles the animation for the view controller transition when started by an edge pan gesture on the left side of the device
+     
+     - Author: Samantha Gatt
+     */
+    @IBAction private func animatePopTransition(_ sender: UIScreenEdgePanGestureRecognizer) {
+        navigationControllerDelegate?.transitionAnimator.isPanning = true
+        
+        let translate = sender.translation(in: sender.view)
+        let percent = translate.x / sender.view!.bounds.size.width
+        
+        switch sender.state {
+        case .began:
+            navigationController?.popViewController(animated: true)
+        case .changed:
+            navigationControllerDelegate?.transitionAnimator.update(percent)
+        case .ended:
+            let velocity = sender.velocity(in: sender.view)
+            
+            if percent > 0.5 || velocity.x > 250 {
+                navigationControllerDelegate?.transitionAnimator.finish()
+            }
+            else {
+                navigationControllerDelegate?.transitionAnimator.cancel()
+            }
+            navigationControllerDelegate?.transitionAnimator.isPanning = false
+        default:
+            break
+        }
     }
 
 
@@ -88,6 +121,13 @@ class ContentDetailViewController: UIViewController {
         imageView.kf.setImage(with: url)
     }
 
+    /**
+     Updates the theme UI
+     
+     - Authors:
+        - Samantha Gatt
+        - Conner Alegre
+     */
     @objc private func updateTheme() {
         let backgroundColor = themeHelper.getBackgroundColor()
         view.backgroundColor = backgroundColor

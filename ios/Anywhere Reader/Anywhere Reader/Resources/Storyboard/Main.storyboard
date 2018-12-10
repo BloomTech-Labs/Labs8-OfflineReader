@@ -266,6 +266,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="nNv-Zb-Sje" firstAttribute="top" secondItem="eqc-xR-1nr" secondAttribute="top" id="2s0-Av-maO"/>
                                     <constraint firstAttribute="trailing" secondItem="nNv-Zb-Sje" secondAttribute="trailing" id="D9N-F4-JkI"/>
@@ -273,6 +274,9 @@
                                     <constraint firstAttribute="bottom" secondItem="nNv-Zb-Sje" secondAttribute="bottom" id="iQa-CQ-FFe"/>
                                     <constraint firstItem="nNv-Zb-Sje" firstAttribute="leading" secondItem="eqc-xR-1nr" secondAttribute="leading" id="vgb-Y0-2HT"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="XZR-zc-b3p" appends="YES" id="fJI-1a-fGe"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -303,6 +307,12 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-ag-5e8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <screenEdgePanGestureRecognizer minimumNumberOfTouches="1" id="XZR-zc-b3p">
+                    <rectEdge key="edges" left="YES"/>
+                    <connections>
+                        <action selector="animatePopTransition:" destination="cgX-9W-mbb" id="bV9-66-Vcv"/>
+                    </connections>
+                </screenEdgePanGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2389.5999999999999" y="-154.27286356821591"/>
         </scene>

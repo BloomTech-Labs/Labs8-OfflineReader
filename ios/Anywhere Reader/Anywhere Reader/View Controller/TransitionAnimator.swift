@@ -8,18 +8,18 @@
 
 import UIKit
 
-class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
+class TransitionAnimator: UIPercentDrivenInteractiveTransition, UIViewControllerAnimatedTransitioning {
     
     // MARK: - Properties
     
-    var duration: TimeInterval = 0.3
-    var isPresenting = true
+    public var isPresenting = true
+    public var isPanning = false
     
     
     // MARK: - UIViewControllerAnimatedTransitioning
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return 0.3
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -39,7 +39,7 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         toView.layoutIfNeeded()
         
-        UIView.animate(withDuration: duration, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             if self.isPresenting {
                 detailView.frame = fromView.frame
             } else {
@@ -48,5 +48,21 @@ class TransitionAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         }) { _ in
             transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
         }
+    }
+}
+
+extension TransitionAnimator: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self
+    }
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return self
+    }
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        // Presenting usually doesn't have any interactivity
+        return nil
+    }
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return self
     }
 }

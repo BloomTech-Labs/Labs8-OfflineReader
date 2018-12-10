@@ -26,4 +26,9 @@ class NavigationControllerDelegate: NSObject, UINavigationControllerDelegate {
         
         return transitionAnimator
     }
+    
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        
+        return transitionAnimator.isPanning ? transitionAnimator : nil
+    }
 }

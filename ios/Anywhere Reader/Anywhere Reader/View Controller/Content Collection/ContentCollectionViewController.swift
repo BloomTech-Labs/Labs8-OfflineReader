@@ -16,8 +16,6 @@ class ContentCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.delegate = navigationControllerDelegate
-        
         articleController.fetchArticles() { (success, error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
@@ -31,6 +29,8 @@ class ContentCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        navigationController?.delegate = navigationControllerDelegate
         navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
         collectionView.backgroundColor = themeHelper.getBackgroundColor()
@@ -114,6 +114,7 @@ class ContentCollectionViewController: UICollectionViewController {
             detailViewController.article = article
             
             navigationControllerDelegate.sourceCell = cell
+            detailViewController.navigationControllerDelegate = self.navigationControllerDelegate
         }
     }
 }

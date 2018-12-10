@@ -292,6 +292,11 @@
                         <outlet property="dateLabel" destination="j0p-cn-ULk" id="RHG-yA-SeR"/>
                         <outlet property="imageView" destination="FC6-NS-OLp" id="jVc-2H-SBJ"/>
                         <outlet property="sourceLabel" destination="OV9-WJ-k0X" id="qa0-4T-0Kc"/>
+                        <outlet property="tagLabelFive" destination="HQk-GV-T0y" id="ywR-Hh-e4t"/>
+                        <outlet property="tagLabelFour" destination="m90-TC-kNX" id="unZ-IE-tTo"/>
+                        <outlet property="tagLabelOne" destination="4L4-aq-nfX" id="edH-HU-HwR"/>
+                        <outlet property="tagLabelThree" destination="ngw-tf-LTm" id="yzO-X4-lO3"/>
+                        <outlet property="tagLabelTwo" destination="1er-Ho-IBF" id="BvI-q7-P2K"/>
                         <outlet property="titleLabel" destination="R1T-vA-bVY" id="hy3-ki-H9i"/>
                     </connections>
                 </viewController>

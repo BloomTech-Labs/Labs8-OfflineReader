@@ -59,7 +59,12 @@ class ContentDetailViewController: UIViewController {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-
+    @IBOutlet weak var tagLabelOne: UILabel!
+    @IBOutlet weak var tagLabelTwo: UILabel!
+    @IBOutlet weak var tagLabelThree: UILabel!
+    @IBOutlet weak var tagLabelFour: UILabel!
+    @IBOutlet weak var tagLabelFive: UILabel!
+    
 
     // MARK: - Actions
 

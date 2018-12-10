@@ -70,13 +70,13 @@ export const fetchUser = token => {
 		dispatch({ type: FETCH_USER_DATA });
 		axios({
 			method: 'get',
-			url: apiBaseUrl + '/rest-auth/user/',
-			headers: { Authorization: 'Token ' + token }
+			url: apiBaseUrl + '/auth/rest/user/',
+			headers: { Authorization: `Bearer ${token.data.access_token}` }
 		})
 			.then(response =>
 				dispatch({
 					type: USER_DATA_FETCHED,
-					payload: response
+					payload: response.data
 				})
 			)
 			.catch(err => dispatch({ type: USER_ERROR, err }));

@@ -1,43 +1,74 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { updateUser } from '../../store/actions';
+
+const SetDiv = styled.div`
+	padding: 0 0 0 2.4rem;
+`;
+
+const SetForm = styled.form`
+	/* display: flex;
+	flex-direction: column; */
+	max-width: 170px;
+	margin-right: auto;
+`;
+
+const SetInput = styled.input`
+	margin-bottom: 20px;
+	padding-left: 10px;
+	font-size: 1rem;
+`;
+
+const SetLabel = styled.label`
+	margin-bottom: 10px;
+`;
 
 class Settings extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			email: '',
 			username: '',
+			email: '',
 			firstName: '',
 			lastName: ''
 		};
 	}
 
+	componentDidMount = () => {
+		this.setState({
+			...this.state,
+			username: this.props.user.username,
+			email: this.props.user.email,
+			firstName: this.props.user.firstName,
+			lastName: this.props.user.lastName
+		});
+	};
+
 	handleInput = e => {
 		this.setState({
+			...this.state,
 			[e.target.name]: e.target.value
 		});
 	};
 
 	handleSubmit = e => {
 		const user = {
-			email: this.state.email,
 			username: this.state.username,
+			email: this.state.email,
 			firstName: this.state.firstName,
 			lastName: this.state.lastName
 		};
-		updateUser(user);
+		this.props.updateUser(user);
 	};
 
 	render() {
-		console.log(updateUser);
 		return (
-			<div>
+			<SetDiv>
 				<h2>Profile</h2>
-				<Form>
-					<Label className="label">Username:</Label>
-					<Input
+				<br />
+				<SetForm>
+					<SetLabel className="label">Username:</SetLabel>
+					<SetInput
 						type="text"
 						className="input"
 						name="username"
@@ -45,8 +76,9 @@ class Settings extends Component {
 						value={this.state.username}
 						onChange={this.handleInput}
 					/>
-					<Label className="label">Email:</Label>
-					<Input
+					<br />
+					<SetLabel className="label">Email:</SetLabel>
+					<SetInput
 						type="text"
 						className="input"
 						name="email"
@@ -54,8 +86,9 @@ class Settings extends Component {
 						value={this.state.email}
 						onChange={this.handleInput}
 					/>
-					<Label className="label">First name:</Label>
-					<Input
+					<br />
+					<SetLabel className="label">First name:</SetLabel>
+					<SetInput
 						type="text"
 						className="input"
 						name="firstName"
@@ -63,8 +96,9 @@ class Settings extends Component {
 						value={this.state.firstName}
 						onChange={this.handleInput}
 					/>
-					<Label className="label">Last name:</Label>
-					<Input
+					<br />
+					<SetLabel className="label">Last name:</SetLabel>
+					<SetInput
 						type="text"
 						className="input"
 						name="lastName"
@@ -72,41 +106,23 @@ class Settings extends Component {
 						value={this.state.lastName}
 						onChange={this.handleInput}
 					/>
-					<button type="submit" value="Submit">
-						Save
-					</button>
-				</Form>
-			</div>
+					<br />
+					<input type="submit" value="Save" />
+				</SetForm>
+			</SetDiv>
 		);
 	}
 }
 
-const mapStateToProps = state => {
-	return {
-		email: state.userReducers.email,
-		username: state.userReducers.username,
-		firstName: state.userReducers.firstName,
-		lastName: state.userReducers.LastName
-	};
+Settings.propTypes = {
+	user: PropTypes.shape({
+		username: PropTypes.string,
+		email: PropTypes.string,
+		firstName: PropTypes.string,
+		lastName: PropTypes.string,
+		premium: PropTypes.string
+	}).isRequired,
+	updateUser: PropTypes.func.isRequired
 };
 
-export default connect(
-	mapStateToProps,
-	{ updateUser }
-)(Settings);
-
-const Form = styled.form`
-	display: flex;
-	flex-direction: column;
-	width: 15%;
-`;
-
-const Input = styled.input`
-	margin-bottom: 20px;
-	padding-left: 10px;
-	font-size: 1rem;
-`;
-
-const Label = styled.label`
-	margin-bottom: 10px;
-`;
+export default Settings;

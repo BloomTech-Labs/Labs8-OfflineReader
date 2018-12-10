@@ -15,6 +15,7 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         articleController.fetchArticles() { (error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
@@ -68,14 +69,10 @@ class ContentCollectionViewController: UICollectionViewController {
     let themeHelper = ThemeHelper.shared
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        let textColor = themeHelper.getTextColor()
-        switch textColor {
-        case .black:
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
             return .default
-        case .white:
-            return .lightContent
-        default:
-            return .lightContent
         }
     }
 

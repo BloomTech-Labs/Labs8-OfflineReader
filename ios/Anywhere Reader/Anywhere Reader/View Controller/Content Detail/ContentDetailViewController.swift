@@ -13,9 +13,15 @@ class ContentDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateViews()
-        updateTheme()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTheme()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -28,11 +34,13 @@ class ContentDetailViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         gradientLayer.frame = imageView.bounds
     }
 
@@ -68,7 +76,7 @@ class ContentDetailViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func presentPreferences(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
+        let storyboard = UIStoryboard(name: "Preferences", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
         preferencesVC.providesPresentationContextTransitionStyle = true
         preferencesVC.definesPresentationContext = true
@@ -152,14 +160,10 @@ class ContentDetailViewController: UIViewController {
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        let textColor = themeHelper.getTextColor()
-        switch textColor {
-        case .black:
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
             return .default
-        case .white:
-            return .lightContent
-        default:
-            return .lightContent
         }
     }
 }

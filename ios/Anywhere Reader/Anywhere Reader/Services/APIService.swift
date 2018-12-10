@@ -16,6 +16,7 @@ enum Result {
 class APIService {
     static let shared = APIService()
     static let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
+    static var currentUserToken = ""
     
     func verifyAccessToken(with accessToken: String, completion: @escaping (Result, Error?) -> Void) {
         let url = APIService.baseURL.appendingPathComponent("auth").appendingPathComponent("convert_token/")
@@ -37,7 +38,7 @@ class APIService {
             
             do {
                 let tokenInformation = try JSONDecoder().decode(TokenInformation.self, from: data)
-                print(tokenInformation)
+                APIService.currentUserToken = tokenInformation.accessToken
             } catch {
                 NSLog("Error with decoding Token Information")
             }

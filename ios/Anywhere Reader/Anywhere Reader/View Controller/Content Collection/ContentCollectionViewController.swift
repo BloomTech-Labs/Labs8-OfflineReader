@@ -15,6 +15,9 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.delegate = navigationControllerDelegate
+        
         articleController.fetchArticles() { (success, error) in
             if let error = error {
                 NSLog("Error fetching articles: \(error)")
@@ -32,6 +35,26 @@ class ContentCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
         collectionView.backgroundColor = themeHelper.getBackgroundColor()
     }
+    
+    
+    // MARK: - Properties
+    
+    let navigationControllerDelegate = NavigationControllerDelegate()
+    let articleController = ArticleController()
+    let themeHelper = ThemeHelper.shared
+    
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        let textColor = themeHelper.getTextColor()
+        switch textColor {
+        case .black:
+            return .default
+        case .white:
+            return .lightContent
+        default:
+            return .lightContent
+        }
+    }
+    
     
     // MARK: - Actions
 
@@ -58,22 +81,6 @@ class ContentCollectionViewController: UICollectionViewController {
         self.present(addLinkDialog, animated: true, completion: nil)
     }
 
-    // MARK: - Properties
-    
-    let articleController = ArticleController()
-    let themeHelper = ThemeHelper.shared
-    
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        let textColor = themeHelper.getTextColor()
-        switch textColor {
-        case .black:
-            return .default
-        case .white:
-            return .lightContent
-        default:
-            return .lightContent
-        }
-    }
 
     // MARK: UICollectionViewDataSource
 
@@ -100,11 +107,13 @@ class ContentCollectionViewController: UICollectionViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination as? ContentDetailViewController {
-            let cell = sender as! DocumentCollectionViewCell
-            guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+            guard let cell = sender as? DocumentCollectionViewCell,
+                let indexPath = self.collectionView!.indexPath(for: cell) else { return }
             let article = articleController.articleReps[indexPath.row]
             let _ = detailViewController.view
             detailViewController.article = article
+            
+            navigationControllerDelegate.sourceCell = cell
         }
     }
 }

@@ -8,6 +8,11 @@ const FBClick = styled.span`
 
 class FBAuth extends Component {
 	state = {
+		// TODO: Set this in the userReducers state, then pass it down. This will make sure values are easy to locate going forward.
+		fbAppId:
+			process.env.NODE_ENV === 'production'
+				? '719662021765780'
+				: '196409721290076',
 		error: ''
 	};
 
@@ -23,7 +28,7 @@ class FBAuth extends Component {
 
 	render() {
 		return (
-			<FacebookProvider appId="196409721290076">
+			<FacebookProvider appId={this.state.fbAppId}>
 				<Login
 					scope="email"
 					onResponse={this.handleResponse}

@@ -33,5 +33,6 @@ class DocumentCollectionViewCell: UICollectionViewCell {
         imageView.kf.setImage(with: url, options: [.processor(processor)])
         
         titleLabel.text = article.title
+        sourceLabel.text = article.author
     }
 }

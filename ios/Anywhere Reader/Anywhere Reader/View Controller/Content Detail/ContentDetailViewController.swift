@@ -134,13 +134,18 @@ class ContentDetailViewController: UIViewController {
         let tags = article.tags.split(separator: ",").map { $0.capitalized }
         // If there are less tags than labels, hide the other tags
         if tags.count < tagLabels.count {
+            // Tag labels up to the count of tags
             let tagLabelsToUpdate = tagLabels.prefix(tags.count)
+            // Leftover tag labels to hide
             let leftoverTagLabels = tagLabels[tags.count...tagLabels.count-1]
+            // Update text for each label
             tagLabelsToUpdate.enumerated().forEach { (index, label) in
                 label?.text = tags[index]
             }
+            // Hide the leftover labels
             leftoverTagLabels.forEach { $0?.isHidden = true }
         } else {
+            // There are more tags than tagLabels (5), update each accordingly
             tagLabels.enumerated().forEach { (index, label) in
                 label?.text = tags[index]
             }

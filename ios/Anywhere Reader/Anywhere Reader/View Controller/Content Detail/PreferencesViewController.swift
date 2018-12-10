@@ -18,9 +18,13 @@ class PreferencesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
         if themeHelper.isNightMode {
-            nightThemeSwitch.isOn = true
+            nightModeSwitch.isOn = true
+        } else {
+            nightModeSwitch.isOn = false
         }
+        
         brightnessSlider.value = Float(UIScreen.main.brightness)
     }
     
@@ -36,7 +40,7 @@ class PreferencesViewController: UIViewController {
     @IBOutlet weak var whiteThemeButton: UIButton!
     @IBOutlet weak var tanThemeButton: UIButton!
     @IBOutlet weak var lightGrayThemeButton: UIButton!
-    @IBOutlet weak var nightThemeSwitch: UISwitch!
+    @IBOutlet weak var nightModeSwitch: UISwitch!
     @IBOutlet weak var brightnessSlider: UISlider!
     
     
@@ -65,7 +69,7 @@ class PreferencesViewController: UIViewController {
     @IBAction private func increaseFontSize(_ sender: Any) {
         let oldSize = themeHelper.getBodyFont().pointSize
         // Increases font size by 1 cgpoint. Increment size can be changed later.
-        themeHelper.setBodyFont(name: nil, size: oldSize + 1)
+        themeHelper.setFont(name: nil, size: oldSize + 1)
     }
     
     /**
@@ -76,7 +80,7 @@ class PreferencesViewController: UIViewController {
     @IBAction private func decreaseFontSize(_ sender: Any) {
         let oldSize = themeHelper.getBodyFont().pointSize
         // Decreases font size by 1 cgpoint. Increment size can be changed later.
-        themeHelper.setBodyFont(name: nil, size: oldSize - 1)
+        themeHelper.setFont(name: nil, size: oldSize - 1)
     }
     
     /**
@@ -86,7 +90,7 @@ class PreferencesViewController: UIViewController {
      */
     @IBAction private func whiteThemeButtonTapped(_ sender: Any) {
         themeHelper.setWhiteTheme()
-        nightThemeSwitch.setOn(false, animated: true)
+        nightModeSwitch.setOn(false, animated: true)
     }
     
     /**
@@ -96,7 +100,7 @@ class PreferencesViewController: UIViewController {
      */
     @IBAction private func tanThemeButtonTapped(_ sender: Any) {
         themeHelper.setTanTheme()
-        nightThemeSwitch.setOn(false, animated: true)
+        nightModeSwitch.setOn(false, animated: true)
     }
     
     /**
@@ -106,7 +110,7 @@ class PreferencesViewController: UIViewController {
      */
     @IBAction private func lightGrayThemeButtonTapped(_ sender: Any) {
         themeHelper.setLightGrayTheme()
-        nightThemeSwitch.setOn(false, animated: true)
+        nightModeSwitch.setOn(false, animated: true)
     }
     
     
@@ -115,7 +119,7 @@ class PreferencesViewController: UIViewController {
      
      - Author: Conner Alegre
      */
-    @IBAction private func nightModeSwitch(_ sender: Any) {
+    @IBAction private func toggleNightModeSwitch(_ sender: Any) {
         themeHelper.toggleNightMode()
     }
     

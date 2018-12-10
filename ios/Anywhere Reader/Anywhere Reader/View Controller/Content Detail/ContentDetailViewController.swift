@@ -64,7 +64,7 @@ class ContentDetailViewController: UIViewController {
     @IBOutlet weak var tagLabelThree: UILabel!
     @IBOutlet weak var tagLabelFour: UILabel!
     @IBOutlet weak var tagLabelFive: UILabel!
-    
+
 
     // MARK: - Actions
 
@@ -91,6 +91,8 @@ class ContentDetailViewController: UIViewController {
 
         let url = URL(string: article.coverImage)
         imageView.kf.setImage(with: url)
+        
+        setupTagLabels()
     }
 
     @objc private func updateTheme() {
@@ -121,6 +123,28 @@ class ContentDetailViewController: UIViewController {
         gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.70)
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
         imageView.layer.mask = gradientLayer
+    }
+    
+    private func setupTagLabels() {
+        guard let article = article else { return }
+        
+        let tagLabels = [tagLabelOne, tagLabelTwo, tagLabelThree, tagLabelFour, tagLabelFive]
+        
+        // Get each tag, separated by a single comma, make sure each is capitalized
+        let tags = article.tags.split(separator: ",").map { $0.capitalized }
+        // If there are less tags than labels, hide the other tags
+        if tags.count < tagLabels.count {
+            let tagLabelsToUpdate = tagLabels.prefix(tags.count)
+            let leftoverTagLabels = tagLabels[tags.count...tagLabels.count-1]
+            tagLabelsToUpdate.enumerated().forEach { (index, label) in
+                label?.text = tags[index]
+            }
+            leftoverTagLabels.forEach { $0?.isHidden = true }
+        } else {
+            tagLabels.enumerated().forEach { (index, label) in
+                label?.text = tags[index]
+            }
+        }
     }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

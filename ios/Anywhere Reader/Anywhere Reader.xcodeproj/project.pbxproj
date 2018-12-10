@@ -21,7 +21,6 @@
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
 		2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* ThemeHelper.swift */; };
-		222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */; };
 		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
 		222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
@@ -70,7 +69,6 @@
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2200578C219DC40100808E4B /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
-		222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientMaskView.swift; sourceTree = "<group>"; };
 		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
 		222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidGradientView.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,7 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
-				222F5B7E21A4D16E002B6436 /* GradientMaskView.swift */,
 				222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */,
 				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
 			);
@@ -474,7 +471,6 @@
 				2275258221B9B6AA009FF546 /* MockDataLoader.swift in Sources */,
 				2275258121B9B6AA009FF546 /* NetworkDataLoader.swift in Sources */,
 				223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */,
-				222F5B7F21A4D16E002B6436 /* GradientMaskView.swift in Sources */,
 				13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */,
 				13FB2E3321922CFA00A8888B /* AccountViewController.swift in Sources */,
 				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,

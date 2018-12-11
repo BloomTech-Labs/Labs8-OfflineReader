@@ -48,6 +48,8 @@ class ContentDetailViewController: UIViewController {
 
     let themeHelper = ThemeHelper.shared
     let gradientLayer = CAGradientLayer()
+    let isoDateFormatter = ISO8601DateFormatter()
+    let dateFormatter = DateFormatter()
 
     // MARK: - Public properties
 
@@ -99,7 +101,7 @@ class ContentDetailViewController: UIViewController {
         let url = URL(string: article.coverImage)
         imageView.kf.setImage(with: url)
         
-//        setupTagLabels()
+        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved))"
     }
 
     @objc private func updateTheme() {
@@ -167,4 +169,3 @@ class ContentDetailViewController: UIViewController {
         }
     }
 }
-

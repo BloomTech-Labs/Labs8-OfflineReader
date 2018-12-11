@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131601BB21C03AF700FB56E6 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131601BA21C03AF700FB56E6 /* DateHelper.swift */; };
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
 		1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1332D85A21BF26AB006C75C8 /* APIService.swift */; };
 		1332D85D21BF30CD006C75C8 /* TokenInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1332D85C21BF30CD006C75C8 /* TokenInformation.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		036ACFCF38AB072CCCA0C8F4 /* Pods-Anywhere Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		10DBC3271CE88F53FD615C48 /* Pods-Anywhere Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.release.xcconfig"; sourceTree = "<group>"; };
+		131601BA21C03AF700FB56E6 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		1332D85A21BF26AB006C75C8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1332D85C21BF30CD006C75C8 /* TokenInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformation.swift; sourceTree = "<group>"; };
@@ -113,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131601B921C03ACE00FB56E6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2200578C219DC40100808E4B /* ThemeHelper.swift */,
+				131601BA21C03AF700FB56E6 /* DateHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		1332D85921BF268C006C75C8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,13 +233,13 @@
 			isa = PBXGroup;
 			children = (
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				2200578C219DC40100808E4B /* ThemeHelper.swift */,
 				13847C1F21B73C59005B533D /* Extensions */,
 				223E6F3621B5C04F0024E993 /* Core Data */,
 				2275257E21B9B67D009FF546 /* Networking */,
 				13FB2E2321921AA600A8888B /* Model */,
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
+				131601B921C03ACE00FB56E6 /* Helpers */,
 				13FB2E2821921AD400A8888B /* Resources */,
 				1332D85921BF268C006C75C8 /* Services */,
 			);
@@ -483,6 +494,7 @@
 				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,
 				2275259921B9D715009FF546 /* NetworkError.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SettingsViewController.swift in Sources */,
+				131601BB21C03AF700FB56E6 /* DateHelper.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
 				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,

@@ -25,9 +25,6 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
                         return
                     }
                 }
-            } else {
-                let alert = UIAlertController(title: "Uh Oh!", message: "It looks like something went wrong. Please reload the app. Sorry for the inconvenience.", preferredStyle: .alert)
-                self.present(alert, animated: true)
             }
         }
     }

@@ -61,8 +61,20 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
     @objc private func deleteArticle(sender: UIButton) {
         let indexPath = sender.layer.value(forKey: "indexPath") as! IndexPath
         let article = fetchedResultsController.object(at: indexPath)
+        
+        // Delete remotely (on Server)
+        articleController.delete(articleId: article.id) { (error) in
+            if let error = error {
+                NSLog("Error deleting article remotely: \(error)")
+                return
+            } else {
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
+        }
+        // Delete locally (in CoreData)
         articleController.delete(article: article, context: CoreDataStack.moc)
-        collectionView.reloadData()
     }
     
     // MARK: - Actions

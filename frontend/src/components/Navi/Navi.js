@@ -6,13 +6,18 @@ const NaviDiv = styled.div`
 	width: 100%;
 	height: 40px;
 	margin-bottom: 2rem;
-	box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
+	// box-shadow: 0px 0px 30px -3px rgba(0, 0, 0, 0.75);
+	border-bottom: 1px solid #404040;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	@media (max-width: 800px) {
 		flex-direction: column;
 		justify-content: flex-start;
 	}
+	z-index: 98;
+	position: fixed;
+	background-color: rgba(227, 220, 202, 0.85);
 `;
 
 const NaviSubDiv = styled.div`

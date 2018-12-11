@@ -97,14 +97,11 @@ class ArticleController {
     // MARK: - Network requests
     
     func fetchArticles(completion: @escaping (_ error: NetworkError?) -> ()) {
-        
-        let url = ArticleController.baseURL.appendingPathComponent("pages/")
-        
-        let key = "key"
+        let url = ArticleController.baseURL.appendingPathComponent("api").appendingPathComponent("pages/")
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue("Token \(key)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(APIService.currentUserToken)", forHTTPHeaderField: "Authorization")
         
         dataLoader.loadData(with: request) { (data, error) in
             if let error = error {

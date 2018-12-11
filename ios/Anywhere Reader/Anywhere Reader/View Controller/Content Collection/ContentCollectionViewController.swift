@@ -17,15 +17,16 @@ class ContentCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         APIService.shared.verifyAccessToken(with: AccessToken.current!.authenticationToken) { (result, error) in
-            print(result)
-        }
-        articleController.fetchArticles() { (error) in
-            if let error = error {
-                NSLog("Error fetching articles: \(error)")
-                return
-            }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            if result == .success {
+                self.articleController.fetchArticles() { (error) in
+                    if let error = error {
+                        NSLog("Error fetching articles: \(error)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
             }
         }
     }
@@ -69,7 +70,7 @@ class ContentCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     
-    private let articleController = ArticleController(dataLoader: MockDataLoader.shared)
+    private let articleController = ArticleController()
     let themeHelper = ThemeHelper.shared
     
     override var preferredStatusBarStyle : UIStatusBarStyle {

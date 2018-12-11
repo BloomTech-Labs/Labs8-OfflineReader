@@ -57,6 +57,13 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         }
     }
     
+    // MARK: - Private Functions
+    @objc private func deleteArticle(sender: UIButton) {
+        let indexPath = sender.layer.value(forKey: "indexPath") as! IndexPath
+        let article = fetchedResultsController.object(at: indexPath)
+        articleController.delete(article: article, context: CoreDataStack.moc)
+        collectionView.reloadData()
+    }
     
     // MARK: - Actions
 
@@ -82,7 +89,6 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         }
         self.present(addLinkDialog, animated: true, completion: nil)
     }
-
     
     // MARK: - CollectionView NSFetchedResultsControllerDelegate
     
@@ -153,6 +159,8 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         
         let article = fetchedResultsController.object(at: indexPath)
         cell.article = article
+        cell.deleteButton.layer.setValue(indexPath, forKey: "indexPath")
+        cell.deleteButton.addTarget(self, action: #selector(self.deleteArticle(sender:)), for: .touchUpInside)
     
         return cell
     }

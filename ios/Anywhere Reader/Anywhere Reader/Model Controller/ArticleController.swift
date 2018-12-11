@@ -155,6 +155,21 @@ class ArticleController {
         }
     }
     
+    /**
+     Deletes a article at a specified index
+     
+     - Author: Conner Alegre
+     
+     - Parameters:
+     - article: The the article to be deleted
+     - context: The managed object context in which to delete an article
+     */
+    func delete(article: Article, context: NSManagedObjectContext) {
+        if let article = loadSingleArticle(id: article.id, context: context) {
+            context.delete(article)
+            save(context: context)
+        }
+    }
     
     // MARK: - Network requests
     

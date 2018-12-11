@@ -29,6 +29,7 @@ const AppDiv = styled.div`
 	/* display: flex;
 	flex-direction: column;
 	align-items: center; */
+	height: 100%;
 `;
 
 class App extends Component {

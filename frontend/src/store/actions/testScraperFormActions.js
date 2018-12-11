@@ -46,28 +46,32 @@ export const fetchPages = serverToken => {
 			.catch(err => {
 				dispatch({ type: FETCHING_OFFLINE_PAGES });
 
-				localforage
-					.iterate(function(value, key, iterationNumber) {
-						let offlinePageArray = [];
-						offlinePageArray.push([key, value]);
-						// Resulting key/value pair -- this callback
-						// will be executed for every item in the
-						// database.
-						console.log([key, value]);
-					})
-					.then(offlinePageArray => {
-						dispatch({
-							type: OFFLINE_PAGES_FETCHED,
-							payload: offlinePageArray
+				//Determine user is offline, fetch stored offline pages
+				const fetchOfflinePages = function() {
+					localforage
+						.iterate(function(value, key, iterationNumber) {
+							let offlinePageArray = [];
+							offlinePageArray.push([key, value]);
+							// Resulting key/value pair -- this callback
+							// will be executed for every item in the
+							// database.
+							console.log([key, value]);
+						})
+						.then(offlinePageArray => {
+							dispatch({
+								type: OFFLINE_PAGES_FETCHED,
+								payload: offlinePageArray
+							});
+							console.log('Iteration has completed');
+						})
+						.catch(function(err) {
+							// This code runs if there were any errors
+							dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
+							console.log(err);
 						});
-						console.log('Iteration has completed');
-					})
-					.catch(function(err) {
-						// This code runs if there were any errors
-						dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
-						console.log(err);
-					});
-				/////
+				};
+				fetchOfflinePages();
+				///
 
 				console.error(err);
 				dispatch({ type: PAGES_FETCH_ERROR });

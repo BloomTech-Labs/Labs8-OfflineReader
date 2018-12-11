@@ -22,6 +22,8 @@ export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 
+// TODO: modularize offline functions in sendurl, it's getting lengthy
+
 export const fetchPages = serverToken => {
 	return dispatch => {
 		//Action that indicates data is being fetched
@@ -90,6 +92,29 @@ export const sendUrl = (newURL, serverToken) => {
 				headers: headers
 			})
 			.then(response => {
+				if (
+					newURL.indexOf('youtube.com') > 0 ||
+					newURL.indexOf('vimeo.com') > 0
+				) {
+					//submit url to saveoffline api
+					axios
+						.get(`https://www.saveoffline.com/process/?url=${newURL}&type=json`)
+						.then(response => {
+							//create an offlinePage object of the video/audio
+							let offlineMediaStream = response.data.urls[0].id;
+							localforage
+								.setItem(Math.random(), offlineMediaStream)
+								.then(function(value) {
+									dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+									// Do other things once the value has been saved.
+									console.log('offlinePage just created:', value);
+								})
+								.catch(function(err) {
+									console.log(err);
+								});
+						});
+				}
+
 				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
 				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
 				axios

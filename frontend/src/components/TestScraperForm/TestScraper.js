@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
+import tableBg from '../../assets/abstract-antique-background-172276.jpg';
 
 const ScraperDiv = styled.div`
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	margin: auto;
+	background: #fff url(${tableBg}) no-repeat top right fixed;
 `;
 
 class TestScraper extends Component {

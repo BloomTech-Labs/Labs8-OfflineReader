@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CO9-Zr-eZZ">
-                                <rect key="frame" x="106" y="97" width="300" height="256"/>
+                                <rect key="frame" x="106" y="97" width="300" height="267.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-oN-iVx">
                                         <rect key="frame" x="0.0" y="65" width="300" height="1"/>
@@ -30,7 +30,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wap-ck-rtR">
-                                        <rect key="frame" x="20" y="16" width="260" height="224"/>
+                                        <rect key="frame" x="20" y="16" width="260" height="235.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6Ds-xA-Llp">
                                                 <rect key="frame" x="0.0" y="0.0" width="260" height="37"/>
@@ -74,12 +74,15 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="mCT-Zh-hCF">
-                                                <rect key="frame" x="0.0" y="128" width="260" height="45"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="mCT-Zh-hCF">
+                                                <rect key="frame" x="0.0" y="128" width="260" height="56.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trp-JI-hXt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="45.5" height="45"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="56.5" height="56.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="trp-JI-hXt" secondAttribute="height" multiplier="1:1" id="Pub-ZK-l6V"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <state key="normal">
                                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,8 +92,11 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h63-oU-8dH">
-                                                        <rect key="frame" x="71.5" y="0.0" width="45.5" height="45"/>
+                                                        <rect key="frame" x="101.5" y="0.0" width="57" height="56.5"/>
                                                         <color key="backgroundColor" red="0.792156862745098" green="0.72941176470588232" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="h63-oU-8dH" secondAttribute="height" multiplier="1:1" id="Yca-S4-O1S"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <state key="normal">
                                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -100,33 +106,25 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGM-OE-kyR">
-                                                        <rect key="frame" x="143" y="0.0" width="45.5" height="45"/>
+                                                        <rect key="frame" x="203.5" y="0.0" width="56.5" height="56.5"/>
                                                         <color key="backgroundColor" red="0.30196078431372547" green="0.30196078431372547" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="HGM-OE-kyR" secondAttribute="height" multiplier="1:1" id="ItC-Oo-Z1e"/>
+                                                        </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                                         <state key="normal">
                                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="grayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="K0c-w9-Qrz"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZD-eH-QcQ">
-                                                        <rect key="frame" x="214.5" y="0.0" width="45.5" height="45"/>
-                                                        <color key="backgroundColor" red="0.17254901960784313" green="0.17254901960784313" blue="0.17254901960784313" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                                        <state key="normal">
-                                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="darkGrayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="30q-U2-w2E"/>
+                                                            <action selector="lightGrayThemeButtonTapped:" destination="CAE-50-fah" eventType="touchUpInside" id="K0c-w9-Qrz"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pGq-Vm-1OD">
-                                                <rect key="frame" x="0.0" y="193" width="260" height="31"/>
+                                                <rect key="frame" x="0.0" y="204.5" width="260" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqL-Dm-F2i">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqL-Dm-F2i">
                                                         <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <nil key="textColor"/>
@@ -135,7 +133,7 @@
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bnP-mb-vVa">
                                                         <rect key="frame" x="211" y="0.0" width="51" height="31"/>
                                                         <connections>
-                                                            <action selector="nightModeSwitch:" destination="CAE-50-fah" eventType="valueChanged" id="q2k-lu-7RP"/>
+                                                            <action selector="toggleNightModeSwitch:" destination="CAE-50-fah" eventType="valueChanged" id="q2k-lu-7RP"/>
                                                         </connections>
                                                     </switch>
                                                 </subviews>
@@ -168,9 +166,8 @@
                     </view>
                     <connections>
                         <outlet property="brightnessSlider" destination="TfJ-GP-1Oc" id="1zB-o8-U2c"/>
-                        <outlet property="darkGrayThemeButton" destination="QZD-eH-QcQ" id="sNb-EP-LsE"/>
-                        <outlet property="grayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
-                        <outlet property="nightThemeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
+                        <outlet property="lightGrayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
+                        <outlet property="nightModeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="tanThemeButton" destination="h63-oU-8dH" id="MJh-qe-gEj"/>
                         <outlet property="whiteThemeButton" destination="trp-JI-hXt" id="Ez3-eU-a12"/>

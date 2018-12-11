@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FacebookCore
 
 private let reuseIdentifier = "DocumentCell"
 
@@ -15,19 +16,24 @@ class ContentCollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        articleController.fetchArticles() { (error) in
-            if let error = error {
-                NSLog("Error fetching articles: \(error)")
-                return
-            }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+        APIService.shared.verifyAccessToken(with: AccessToken.current!.authenticationToken) { (result, error) in
+            if result == .success {
+                self.articleController.fetchArticles() { (error) in
+                    if let error = error {
+                        NSLog("Error fetching articles: \(error)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
         collectionView.backgroundColor = themeHelper.getBackgroundColor()
@@ -53,6 +59,10 @@ class ContentCollectionViewController: UICollectionViewController {
         addLinkDialog.addAction(cancel)
         addLinkDialog.addTextField { (textField) -> Void in
             textField.placeholder = "http://cnn.com"
+            // Autopopulate textfield if there is something in the users clipboard
+            if let linkInClipboard = UIPasteboard.general.string {
+                textField.text = linkInClipboard
+            }
             textField.layer.borderColor = UIColor.darkGray.cgColor
         }
         self.present(addLinkDialog, animated: true, completion: nil)
@@ -60,18 +70,14 @@ class ContentCollectionViewController: UICollectionViewController {
 
     // MARK: - Properties
     
-    private let articleController = ArticleController(dataLoader: MockDataLoader.shared)
-    let themeHelper = UserDefaultsThemeHelper.shared
+    private let articleController = ArticleController()
+    let themeHelper = ThemeHelper.shared
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        let textColor = themeHelper.getTextColor()
-        switch textColor {
-        case .black:
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
             return .default
-        case .white:
-            return .lightContent
-        default:
-            return .lightContent
         }
     }
 

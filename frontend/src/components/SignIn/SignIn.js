@@ -5,7 +5,7 @@ import { FBAuthContainer } from '../../containers';
 import { LandingPageDiv } from '../../styling';
 
 const LoginDiv = styled.div`
-	margin: 3rem;
+	margin: 8rem 3rem 3rem 3rem;
 	text-align: center;
 	width: 200px;
 	background-color: white;

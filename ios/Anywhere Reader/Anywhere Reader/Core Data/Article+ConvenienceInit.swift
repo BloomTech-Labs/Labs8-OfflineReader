@@ -14,14 +14,14 @@ extension Article {
         
         self.id = Int32(articleRep.id)
         self.title = articleRep.title
-        self.author = articleRep.title
+        self.author = articleRep.author
         self.normalURL = articleRep.normalURL
         self.resolvedURL = articleRep.resolvedURL
         self.dateSaved = articleRep.dateSaved
         self.datePublished = articleRep.datePublished
         self.excerpt = articleRep.excerpt
         self.coverImage = articleRep.coverImage
-        self.tags = articleRep.tags
         self.text = articleRep.text
+        self.userID = articleRep.userID
     }
 }

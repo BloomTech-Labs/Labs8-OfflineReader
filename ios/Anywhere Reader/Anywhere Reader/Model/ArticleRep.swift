@@ -20,8 +20,12 @@ struct ArticleRep: Codable, Equatable {
     let datePublished: String
     let excerpt: String
     let coverImage: String
-    let tags: String
+    let video: String
+    let audio: String
+    let html: String
+    let images: String
     let text: String
+    let userID: Int32
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -33,8 +37,12 @@ struct ArticleRep: Codable, Equatable {
         case datePublished = "date_published"
         case excerpt = "excerpt"
         case coverImage = "cover_image"
-        case tags = "tags"
+        case video = "video"
+        case audio = "audio"
+        case html = "html"
+        case images = "images"
         case text = "text"
+        case userID = "user_id"
     }
 }
 
@@ -49,8 +57,8 @@ func == (lhs: ArticleRep, rhs: Article) -> Bool {
             lhs.datePublished == rhs.datePublished &&
             lhs.excerpt == rhs.excerpt &&
             lhs.coverImage == rhs.coverImage &&
-            lhs.tags == rhs.tags &&
-            lhs.text == rhs.text
+            lhs.text == rhs.text &&
+            lhs.userID == rhs.userID
 }
 
 func == (lhs: Article, rhs: ArticleRep) -> Bool {

@@ -22,8 +22,6 @@ export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 
-// TODO: modularize offline functions in sendurl, it's getting lengthy
-
 export const fetchPages = serverToken => {
 	return dispatch => {
 		//Action that indicates data is being fetched
@@ -119,16 +117,7 @@ export const sendUrl = (newURL, serverToken) => {
 						headers: headers
 					})
 					.then(response => {
-						//if the url being saved is youtube or vimeo
-						if (
-							newURL.indexOf('youtube.com') > 0 ||
-							newURL.indexOf('vimeo.com') > 0
-						) {
-							saveOfflineMedia();
-						}
-
-						//// offline storage logic for non video websites
-						else {
+						const saveOfflinePage = function() {
 							console.log('response.data[0] is:', response.data[0]);
 							let offlinePage = response.data[0];
 							localforage
@@ -142,8 +131,19 @@ export const sendUrl = (newURL, serverToken) => {
 									console.log(err);
 								});
 							/////////
-						}
+						};
 
+						//if the url being saved is youtube or vimeo
+						if (
+							newURL.indexOf('youtube.com') > 0 ||
+							newURL.indexOf('vimeo.com') > 0
+						) {
+							saveOfflineMedia();
+						}
+						//// offline storage logic for non video websites
+						else {
+							saveOfflinePage();
+						}
 						dispatch({
 							type: PAGES_FETCHED,
 							payload: response.data

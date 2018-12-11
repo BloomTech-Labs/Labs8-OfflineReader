@@ -92,18 +92,45 @@ export const sendUrl = (newURL, serverToken) => {
 				headers: headers
 			})
 			.then(response => {
-				if (
-					newURL.indexOf('youtube.com') > 0 ||
-					newURL.indexOf('vimeo.com') > 0
-				) {
-					//submit url to saveoffline api
-					axios
-						.get(`https://www.saveoffline.com/process/?url=${newURL}&type=json`)
-						.then(response => {
-							//create an offlinePage object of the video/audio
-							let offlineMediaStream = response.data.urls[0].id;
+				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
+				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
+				axios
+					.get(`${apiBaseUrl}/api/pages/`, {
+						headers: headers
+					})
+					.then(response => {
+						//if the url being saved is youtube or vimeo
+						if (
+							newURL.indexOf('youtube.com') > 0 ||
+							newURL.indexOf('vimeo.com') > 0
+						) {
+							//submit url to saveoffline api
+							axios
+								.get(
+									`https://www.saveoffline.com/process/?url=${newURL}&type=json`
+								)
+								.then(response => {
+									//create an offlinePage object of the video/audio
+									let offlineMediaStream = response.data.urls[0].id;
+									localforage
+										.setItem(Math.random(), offlineMediaStream)
+										.then(function(value) {
+											dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+											// Do other things once the value has been saved.
+											console.log('offlinePage just created:', value);
+										})
+										.catch(function(err) {
+											console.log(err);
+										});
+								});
+						}
+
+						//// offline storage logic for non video websites
+						else {
+							console.log('response.data[0] is:', response.data[0]);
+							let offlinePage = response.data[0];
 							localforage
-								.setItem(Math.random(), offlineMediaStream)
+								.setItem(offlinePage.id, offlinePage)
 								.then(function(value) {
 									dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
 									// Do other things once the value has been saved.
@@ -112,30 +139,8 @@ export const sendUrl = (newURL, serverToken) => {
 								.catch(function(err) {
 									console.log(err);
 								});
-						});
-				}
-
-				//When POST is successful, the dispatch then sends an action (COMPLETE_URL_SUBMIT, and associated data, which in this case is the payload with response.data that includes the new url added)
-				dispatch({ type: COMPLETE_URL_SUBMIT, payload: response.data });
-				axios
-					.get(`${apiBaseUrl}/api/pages/`, {
-						headers: headers
-					})
-					.then(response => {
-						//// offline storage logic
-						console.log('response.data[0] is:', response.data[0]);
-						let offlinePage = response.data[0];
-						localforage
-							.setItem(offlinePage.id, offlinePage)
-							.then(function(value) {
-								dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
-								// Do other things once the value has been saved.
-								console.log('offlinePage just created:', value);
-							})
-							.catch(function(err) {
-								console.log(err);
-							});
-						/////////
+							/////////
+						}
 
 						dispatch({
 							type: PAGES_FETCHED,

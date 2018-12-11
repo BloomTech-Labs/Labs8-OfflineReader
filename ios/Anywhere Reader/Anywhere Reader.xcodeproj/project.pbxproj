@@ -140,13 +140,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		13B013DC2193942800DA56B9 /* Segmented */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Segmented;
-			sourceTree = "<group>";
-		};
 		13FB2E2321921AA600A8888B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				13B013DD219394AD00DA56B9 /* SettingsViewController.swift */,
-				13B013DC2193942800DA56B9 /* Segmented */,
 				22661E0A219268940072A4B8 /* Content Collection */,
 				22661E132194EA3E0072A4B8 /* Content Detail */,
 				222F5B7D21A4D153002B6436 /* Authentication */,

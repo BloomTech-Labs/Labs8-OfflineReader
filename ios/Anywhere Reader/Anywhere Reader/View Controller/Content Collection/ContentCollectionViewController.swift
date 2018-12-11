@@ -35,9 +35,11 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
-        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
-        collectionView.backgroundColor = themeHelper.getBackgroundColor()
+        if themeHelper.isNightMode {
+            navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+            navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+            collectionView.backgroundColor = themeHelper.getBackgroundColor()
+        }
     }
     
     // MARK: - Properties
@@ -53,7 +55,7 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         return frc
     }()
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+        if themeHelper.isNightMode {
             return .lightContent
         } else {
             return .default

@@ -15,6 +15,7 @@
 		"react-scripts": "2.1.1",
 		"react-stripe-elements": "^2.0.1",
 		"redux": "^4.0.1",
+		"redux-offline-status": "^0.1.2",
 		"redux-thunk": "^2.3.0",
 		"sqlite3": "^4.0.4",
 		"styled-components": "^4.0.3"

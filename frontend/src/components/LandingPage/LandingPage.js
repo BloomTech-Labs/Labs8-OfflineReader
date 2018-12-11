@@ -15,6 +15,18 @@ const MarketingBlurb = styled.div`
 	font-size: 3rem;
 	background-color: rgba(227, 220, 202, 0.4);
 	border-radius: 5px;
+	@media (max-width: 800px) {
+		width: 80%;
+		margin: 10rem 3rem 3rem 3rem;
+		padding: 4rem;
+		font-size: 3rem;
+	}
+	@media (max-width: 500px) {
+		width: 80%;
+		margin: 10rem 3rem 3rem 3rem;
+		padding: 5rem 4rem 5rem 4rem;
+		font-size: 3rem;
+	}
 `;
 
 const LandingPage = props => {

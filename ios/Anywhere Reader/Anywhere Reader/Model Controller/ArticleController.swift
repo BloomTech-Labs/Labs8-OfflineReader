@@ -72,7 +72,6 @@ class ArticleController {
     private func update(article: Article, from articleRep: ArticleRep) {
         
         // TODO: Add other property updates if changing them will be supported from the api
-        article.tags = articleRep.tags
     }
     
     private func updateArticles(from articleReps: [ArticleRep], context: NSManagedObjectContext) throws {
@@ -138,7 +137,7 @@ class ArticleController {
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         
         // TODO: Use user token rather than placeholder
-        request.allHTTPHeaderFields = ["Authorization": "Token e5f6efffdaf49d83381c94a7a322266e77013428", "Content-Type": "application/json"]
+        request.allHTTPHeaderFields = ["Authorization": "Bearer \(APIService.currentUserToken)", "Content-Type": "application/json"]
         
         dataLoader.uploadData(with: request) { (data, error) in
             if let error = error {

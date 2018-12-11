@@ -79,6 +79,26 @@ export const fetchPages = serverToken => {
 
 export const sendUrl = (newURL, serverToken) => {
 	return dispatch => {
+		const saveOfflineMedia = function() {
+			//submit url to saveoffline api
+			axios
+				.get(`https://www.saveoffline.com/process/?url=${newURL}&type=json`)
+				.then(response => {
+					//create an offlinePage object of the video/audio
+					let offlineMediaStream = response.data.urls[0].id;
+					localforage
+						.setItem(Math.random(), offlineMediaStream)
+						.then(function(value) {
+							dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+							// Do other things once the value has been saved.
+							console.log('offlinePage just created:', value);
+						})
+						.catch(function(err) {
+							console.log(err);
+						});
+				});
+		};
+
 		dispatch({ type: INITIALIZE_URL_SUBMIT });
 		//Below, you're making the POST call to the API, with newURL as the object you're sending.
 		let headers = {
@@ -104,25 +124,7 @@ export const sendUrl = (newURL, serverToken) => {
 							newURL.indexOf('youtube.com') > 0 ||
 							newURL.indexOf('vimeo.com') > 0
 						) {
-							//submit url to saveoffline api
-							axios
-								.get(
-									`https://www.saveoffline.com/process/?url=${newURL}&type=json`
-								)
-								.then(response => {
-									//create an offlinePage object of the video/audio
-									let offlineMediaStream = response.data.urls[0].id;
-									localforage
-										.setItem(Math.random(), offlineMediaStream)
-										.then(function(value) {
-											dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
-											// Do other things once the value has been saved.
-											console.log('offlinePage just created:', value);
-										})
-										.catch(function(err) {
-											console.log(err);
-										});
-								});
+							saveOfflineMedia();
 						}
 
 						//// offline storage logic for non video websites

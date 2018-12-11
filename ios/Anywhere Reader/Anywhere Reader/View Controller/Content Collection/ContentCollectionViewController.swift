@@ -18,7 +18,14 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         super.viewDidLoad()
         
         APIService.shared.verifyAccessToken(with: AccessToken.current!.authenticationToken) { (result, error) in
-            if result == .failure {
+            if result == .success {
+                self.articleController.fetchArticles() { (error) in
+                    if let error = error {
+                        NSLog("Error fetching articles: \(error)")
+                        return
+                    }
+                }
+            } else {
                 let alert = UIAlertController(title: "Uh Oh!", message: "It looks like something went wrong. Please reload the app. Sorry for the inconvenience.", preferredStyle: .alert)
                 self.present(alert, animated: true)
             }

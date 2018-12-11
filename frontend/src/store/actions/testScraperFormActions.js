@@ -44,37 +44,30 @@ export const fetchPages = serverToken => {
 				});
 			})
 			.catch(err => {
-				// If statement to determine if the error code was for offline situations
+				dispatch({ type: FETCHING_OFFLINE_PAGES });
 
-				//placeholder "if statement"
-				let isOffline = false;
-				//// If determined that user is offline:
-				if ((err = 404)) {
-					dispatch({ type: FETCHING_OFFLINE_PAGES });
-
-					localforage
-						.iterate(function(value, key, iterationNumber) {
-							let offlinePageArray = [];
-							offlinePageArray.push([key, value]);
-							// Resulting key/value pair -- this callback
-							// will be executed for every item in the
-							// database.
-							console.log([key, value]);
-						})
-						.then(response => {
-							dispatch({
-								type: OFFLINE_PAGES_FETCHED,
-								payload: response.data
-							});
-							console.log('Iteration has completed');
-						})
-						.catch(function(err) {
-							// This code runs if there were any errors
-							dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
-							console.log(err);
+				localforage
+					.iterate(function(value, key, iterationNumber) {
+						let offlinePageArray = [];
+						offlinePageArray.push([key, value]);
+						// Resulting key/value pair -- this callback
+						// will be executed for every item in the
+						// database.
+						console.log([key, value]);
+					})
+					.then(offlinePageArray => {
+						dispatch({
+							type: OFFLINE_PAGES_FETCHED,
+							payload: offlinePageArray
 						});
-					/////
-				}
+						console.log('Iteration has completed');
+					})
+					.catch(function(err) {
+						// This code runs if there were any errors
+						dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
+						console.log(err);
+					});
+				/////
 
 				console.error(err);
 				dispatch({ type: PAGES_FETCH_ERROR });

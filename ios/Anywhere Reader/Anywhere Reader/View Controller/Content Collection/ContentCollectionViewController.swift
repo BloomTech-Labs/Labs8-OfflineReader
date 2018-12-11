@@ -25,9 +25,6 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
                         return
                     }
                 }
-            } else {
-                let alert = UIAlertController(title: "Uh Oh!", message: "It looks like something went wrong. Please reload the app. Sorry for the inconvenience.", preferredStyle: .alert)
-                self.present(alert, animated: true)
             }
         }
     }
@@ -62,6 +59,31 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         }
     }
     
+    // MARK: - Private Functions
+    @objc private func deleteArticle(sender: UIButton) {
+        let indexPath = sender.layer.value(forKey: "indexPath") as! IndexPath
+        let article = self.fetchedResultsController.object(at: indexPath)
+        let deleteDialog = UIAlertController(title: "Delete", message: "Are you sure you want to delete the content titled \"\(article.title ?? "")?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Delete", style: .default, handler: { (action) -> Void in
+            // Delete remotely (on Server)
+            self.articleController.delete(articleId: article.id) { (error) in
+                if let error = error {
+                    NSLog("Error deleting article remotely: \(error)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                }
+            }
+            // Delete locally (in CoreData)
+            self.articleController.delete(article: article, context: CoreDataStack.moc)
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        deleteDialog.addAction(delete)
+        deleteDialog.addAction(cancel)
+        self.present(deleteDialog, animated: true, completion: nil)
+    }
     
     // MARK: - Actions
 
@@ -87,7 +109,6 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         }
         self.present(addLinkDialog, animated: true, completion: nil)
     }
-
     
     // MARK: - CollectionView NSFetchedResultsControllerDelegate
     
@@ -158,6 +179,8 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         
         let article = fetchedResultsController.object(at: indexPath)
         cell.article = article
+        cell.deleteButton.layer.setValue(indexPath, forKey: "indexPath")
+        cell.deleteButton.addTarget(self, action: #selector(self.deleteArticle(sender:)), for: .touchUpInside)
     
         return cell
     }

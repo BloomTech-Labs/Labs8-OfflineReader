@@ -115,6 +115,7 @@ export const sendUrl = (newURL, serverToken) => {
 				.then(response => {
 					//create an offlinePage object of the video/audio
 					let offlineMediaStream = response.data.urls[0].id;
+					console.log('offlineMediaStream is:' + offlineMediaStream);
 					localforage
 						.setItem(Math.random(), offlineMediaStream)
 						.then(function(value) {

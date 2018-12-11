@@ -12,7 +12,7 @@ import Kingfisher
 class DocumentCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
-    var article: ArticleRep? {
+    var article: Article? {
         didSet {
             updateViews()
         }
@@ -29,11 +29,11 @@ class DocumentCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let article = article else { return }
         let processor = OverlayImageProcessor(overlay: .black, fraction: 0.5) >> BlurImageProcessor(blurRadius: 6.0)
-        let url = URL(string: article.coverImage)
+        let url = URL(string: article.coverImage ?? "")
         imageView.kf.setImage(with: url, options: [.processor(processor)])
         
         titleLabel.text = article.title
         sourceLabel.text = article.author
-        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved))"
+        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }
 }

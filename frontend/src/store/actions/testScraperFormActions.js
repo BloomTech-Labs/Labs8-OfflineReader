@@ -79,6 +79,33 @@ export const fetchPages = serverToken => {
 	};
 };
 
+export const fetchSpecificOfflinePage = (serverToken, pageId) => {
+	return dispatch => {
+		dispatch({
+			type: FETCHING_SPECIFIC_OFFLINE_PAGE
+		});
+
+		localforage
+			.getItem(pageId)
+			.then(function(value) {
+				// This code runs once the value has been loaded
+				// from the offline store.
+				dispatch({
+					type: SPECIFIC_OFFLINE_PAGE_FETCHED,
+					payload: value
+				});
+				console.log(value);
+			})
+			.catch(function(err) {
+				dispatch({
+					type: ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE
+				});
+				// This code runs if there were any errors
+				console.log(err);
+			});
+	};
+};
+
 export const sendUrl = (newURL, serverToken) => {
 	return dispatch => {
 		const saveOfflineMedia = function() {
@@ -136,7 +163,6 @@ export const sendUrl = (newURL, serverToken) => {
 								});
 							/////////
 						};
-
 						//if the url being saved is youtube or vimeo
 						if (
 							newURL.indexOf('youtube.com') > 0 ||
@@ -158,33 +184,6 @@ export const sendUrl = (newURL, serverToken) => {
 				////
 				console.error(err);
 				dispatch({ type: SUBMIT_URL_ERROR });
-			});
-	};
-};
-
-export const fetchSpecificOfflinePage = (serverToken, pageId) => {
-	return dispatch => {
-		dispatch({
-			type: FETCHING_SPECIFIC_OFFLINE_PAGE
-		});
-
-		localforage
-			.getItem(pageId)
-			.then(function(value) {
-				// This code runs once the value has been loaded
-				// from the offline store.
-				dispatch({
-					type: SPECIFIC_OFFLINE_PAGE_FETCHED,
-					payload: value
-				});
-				console.log(value);
-			})
-			.catch(function(err) {
-				dispatch({
-					type: ERROR_FETCHING_SPECIFIC_OFFLINE_PAGE
-				});
-				// This code runs if there were any errors
-				console.log(err);
 			});
 	};
 };

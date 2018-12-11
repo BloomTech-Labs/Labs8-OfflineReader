@@ -60,21 +60,27 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
     // MARK: - Private Functions
     @objc private func deleteArticle(sender: UIButton) {
         let indexPath = sender.layer.value(forKey: "indexPath") as! IndexPath
-        let article = fetchedResultsController.object(at: indexPath)
-        
-        // Delete remotely (on Server)
-        articleController.delete(articleId: article.id) { (error) in
-            if let error = error {
-                NSLog("Error deleting article remotely: \(error)")
-                return
-            } else {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
+        let article = self.fetchedResultsController.object(at: indexPath)
+        let deleteDialog = UIAlertController(title: "Delete", message: "Are you sure you want to delete the content titled \"\(article.title ?? "")?", preferredStyle: .alert)
+        let delete = UIAlertAction(title: "Delete", style: .default, handler: { (action) -> Void in
+            // Delete remotely (on Server)
+            self.articleController.delete(articleId: article.id) { (error) in
+                if let error = error {
+                    NSLog("Error deleting article remotely: \(error)")
+                    return
+                } else {
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
                 }
             }
-        }
-        // Delete locally (in CoreData)
-        articleController.delete(article: article, context: CoreDataStack.moc)
+            // Delete locally (in CoreData)
+            self.articleController.delete(article: article, context: CoreDataStack.moc)
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        deleteDialog.addAction(delete)
+        deleteDialog.addAction(cancel)
+        self.present(deleteDialog, animated: true, completion: nil)
     }
     
     // MARK: - Actions

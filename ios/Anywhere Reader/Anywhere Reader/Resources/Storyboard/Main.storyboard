@@ -296,11 +296,10 @@
             </objects>
             <point key="canvasLocation" x="2389.5999999999999" y="-154.27286356821591"/>
         </scene>
-        <!--Saved-->
+        <!--Navigation Controller-->
         <scene sceneID="YKR-A7-dmX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r8L-cw-ph2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Saved" image="saved-icon" selectedImage="saved-icon" id="3I8-i2-6mq"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nns-3d-52J">
@@ -327,7 +326,6 @@
     </scenes>
     <resources>
         <image name="human-spider-696x522" width="696" height="522"/>
-        <image name="saved-icon" width="37.5" height="37.5"/>
         <image name="settings-icon" width="37.5" height="37.5"/>
     </resources>
 </document>

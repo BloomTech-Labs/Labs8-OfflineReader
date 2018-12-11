@@ -12,7 +12,7 @@ class ThemeHelper {
 
     // MARK: - Font name enum
 
-    enum FontName: String {
+    public enum FontName: String {
         case defaultBody = "Helvetica"
         case defaultTitle = "Helvetica-Bold"
     }
@@ -26,7 +26,7 @@ class ThemeHelper {
         case darkGray
     }
     
-    private enum Theme: String {
+    public enum Theme: String {
         case white
         case tan
         case lightGray
@@ -43,6 +43,7 @@ class ThemeHelper {
     static let bodyFontKey = "bodyFont"
     static let titleFontKey = "titleFont"
     static let isNightModeKey = "isNightMode"
+    static let lastStoredThemeKey = "lastStoredTheme"
 
 
     // MARK: - Static properties
@@ -60,7 +61,7 @@ class ThemeHelper {
      - Author: Conner Alegre
      */
     public var isNightMode: Bool {
-        return defaults.bool(forKey: "nightMode")
+        return defaults.bool(forKey: ThemeHelper.isNightModeKey)
     }
     /**
      The size difference between the body and title fonts as a CGPoint.
@@ -69,7 +70,6 @@ class ThemeHelper {
      */
     public var diffBetweenBodyAndTitle: CGFloat = 12.0
     
-
 
     // MARK: - Private properties
 
@@ -146,6 +146,14 @@ class ThemeHelper {
         defaults.set(themeColor.rawValue, forKey: ThemeHelper.textColorKey)
     }
     
+    /**
+     
+     */
+    private func storeTheme(_ theme: ThemeHelper.Theme) {
+        if theme != .night {
+            defaults.set(theme.rawValue, forKey: ThemeHelper.lastStoredThemeKey)
+        }
+    }
     
     /**
      Handles setting the text and background colors for each theme in UserDefaults
@@ -172,11 +180,25 @@ class ThemeHelper {
             setTextColor(themeColor: .white)
             setBackgroundColor(themeColor: .darkGray)
         }
+        
+        if theme != .night {
+            defaults.set(false, forKey: ThemeHelper.isNightModeKey)
+            storeTheme(theme)
+        } else {
+            defaults.set(true, forKey: ThemeHelper.isNightModeKey)
+        }
     }
     
 
     // MARK: - Public functions
 
+    public func getLastStoredTheme() -> ThemeHelper.Theme {
+        let storedString = defaults.string(forKey: ThemeHelper.lastStoredThemeKey) ?? "white"
+        return ThemeHelper.Theme(rawValue: storedString) ?? .white
+    }
+    
+    // MARK: Font
+    
     /**
     Returns the current title font stored in UserDefaults
      
@@ -205,7 +227,7 @@ class ThemeHelper {
         let name = defaults.string(forKey: ThemeHelper.bodyFontKey) ?? UIFont.preferredFont(forTextStyle: .body).fontName
         return UIFont(name: name, size: size) ?? UIFont.preferredFont(forTextStyle: .body)
     }
-
+    
     /**
      Stores the body font in UserDefaults if parameters are non-nil.
      
@@ -216,7 +238,7 @@ class ThemeHelper {
         - size: The size of the font. If nil, nothing changes.
      - Author: Samantha Gatt
     */
-    public func setBodyFont(name: ThemeHelper.FontName? = nil, size: CGFloat? = nil) {
+    public func setFont(name: ThemeHelper.FontName? = nil, size: CGFloat? = nil) {
         if let fontSize = size {
             defaults.set(fontSize, forKey: ThemeHelper.fontSizeKey)
         }
@@ -225,6 +247,8 @@ class ThemeHelper {
         }
     }
 
+    // MARK: Text color
+    
     /**
      Returns the current text color stored in UserDefaults
  
@@ -239,6 +263,8 @@ class ThemeHelper {
         }
     }
 
+    // MARK: Background color
+    
     /**
      Returns the current background color stored in UserDefaults
  
@@ -254,6 +280,8 @@ class ThemeHelper {
             return .white
         }
     }
+    
+    // MARK: Setting themes
     
     /**
      Sets text color and background color for white theme in UserDefaults
@@ -283,15 +311,6 @@ class ThemeHelper {
     }
     
     /**
-     Sets text color and background color for dark gray theme in UserDefaults
-     
-     - Author: Conner Alegre
-     */
-    public func setNightTheme() {
-        setTheme(to: .night)
-    }
-    
-    /**
      Stores a bool in UserDefaults for keeping track of Night Mode
      
      Night Mode is a UISwitch in the detail view that sets a dark grey theme.
@@ -300,11 +319,12 @@ class ThemeHelper {
      */
     public func toggleNightMode() {
         if defaults.bool(forKey: ThemeHelper.isNightModeKey) {
+            let lastTheme = getLastStoredTheme()
+            setTheme(to: lastTheme)
             defaults.set(false, forKey: ThemeHelper.isNightModeKey)
-            setWhiteTheme()
         } else {
+            setTheme(to: .night)
             defaults.set(true, forKey: ThemeHelper.isNightModeKey)
-            setNightTheme()
         }
     }
 }

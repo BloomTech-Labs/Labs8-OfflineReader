@@ -31,7 +31,6 @@ class ArticleController {
     
     let dataLoader: NetworkDataLoader
     static let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
-    var articleReps: [ArticleRep] = []
     
     
     // MARK: - Core Data
@@ -186,7 +185,6 @@ class ArticleController {
             
             do {
                 let articleReps = try JSONDecoder().decode(Articles.self, from: data)
-                self.articleReps = articleReps
                 let backgroundContext = CoreDataStack.shared.container.newBackgroundContext()
                 try self.updateArticles(from: articleReps, context: backgroundContext)
                 completion(nil)
@@ -231,7 +229,6 @@ class ArticleController {
             
             do {
                 let articleRep = try JSONDecoder().decode(ArticleRep.self, from: data)
-                self.articleReps.append(articleRep)
                 let _ = Article(fromRep: articleRep)
                 self.save(context: CoreDataStack.moc)
                 completion(nil)

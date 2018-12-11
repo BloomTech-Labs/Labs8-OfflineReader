@@ -46,14 +46,14 @@ class ContentDetailViewController: UIViewController {
 
     // MARK: - Private properties
 
-    let themeHelper = ThemeHelper.shared
-    let gradientLayer = CAGradientLayer()
-    let isoDateFormatter = ISO8601DateFormatter()
-    let dateFormatter = DateFormatter()
+    private let themeHelper = ThemeHelper.shared
+    private let gradientLayer = CAGradientLayer()
+    private let isoDateFormatter = ISO8601DateFormatter()
+    private let dateFormatter = DateFormatter()
 
     // MARK: - Public properties
 
-    public var article: ArticleRep? {
+    public var article: Article? {
         didSet {
             updateViews()
         }
@@ -98,10 +98,10 @@ class ContentDetailViewController: UIViewController {
         contentBodyLabel.text = article.text
         authorLabel.text = article.author
 
-        let url = URL(string: article.coverImage)
+        let url = URL(string: article.coverImage ?? "")
         imageView.kf.setImage(with: url)
         
-        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved))"
+        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }
 
     @objc private func updateTheme() {

@@ -124,7 +124,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pGq-Vm-1OD">
                                                 <rect key="frame" x="0.0" y="204.5" width="260" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqL-Dm-F2i">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Night Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqL-Dm-F2i">
                                                         <rect key="frame" x="0.0" y="0.0" width="201" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <nil key="textColor"/>
@@ -133,7 +133,7 @@
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bnP-mb-vVa">
                                                         <rect key="frame" x="211" y="0.0" width="51" height="31"/>
                                                         <connections>
-                                                            <action selector="nightModeSwitch:" destination="CAE-50-fah" eventType="valueChanged" id="q2k-lu-7RP"/>
+                                                            <action selector="toggleNightModeSwitch:" destination="CAE-50-fah" eventType="valueChanged" id="q2k-lu-7RP"/>
                                                         </connections>
                                                     </switch>
                                                 </subviews>
@@ -167,7 +167,7 @@
                     <connections>
                         <outlet property="brightnessSlider" destination="TfJ-GP-1Oc" id="1zB-o8-U2c"/>
                         <outlet property="lightGrayThemeButton" destination="HGM-OE-kyR" id="3H2-xt-kSY"/>
-                        <outlet property="nightThemeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
+                        <outlet property="nightModeSwitch" destination="bnP-mb-vVa" id="0Lw-ab-2bQ"/>
                         <outlet property="preferencesView" destination="CO9-Zr-eZZ" id="qJN-aF-zVy"/>
                         <outlet property="tanThemeButton" destination="h63-oU-8dH" id="MJh-qe-gEj"/>
                         <outlet property="whiteThemeButton" destination="trp-JI-hXt" id="Ez3-eU-a12"/>

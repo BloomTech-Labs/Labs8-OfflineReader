@@ -13,9 +13,15 @@ class ContentDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         updateViews()
-        updateTheme()
         NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTheme()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -28,11 +34,13 @@ class ContentDetailViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         NotificationCenter.default.removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         gradientLayer.frame = imageView.bounds
     }
 
@@ -56,15 +64,19 @@ class ContentDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentBodyLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var tagLabelOne: UILabel!
+    @IBOutlet weak var tagLabelTwo: UILabel!
+    @IBOutlet weak var tagLabelThree: UILabel!
+    @IBOutlet weak var tagLabelFour: UILabel!
+    @IBOutlet weak var tagLabelFive: UILabel!
 
 
     // MARK: - Actions
 
     @IBAction func presentPreferences(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "VisualPreferencesPanel", bundle: nil)
+        let storyboard = UIStoryboard(name: "Preferences", bundle: nil)
         guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
         preferencesVC.providesPresentationContextTransitionStyle = true
         preferencesVC.definesPresentationContext = true
@@ -86,6 +98,8 @@ class ContentDetailViewController: UIViewController {
 
         let url = URL(string: article.coverImage)
         imageView.kf.setImage(with: url)
+        
+//        setupTagLabels()
     }
 
     @objc private func updateTheme() {
@@ -95,10 +109,10 @@ class ContentDetailViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = backgroundColor
         navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
 
-        [contentBodyLabel, titleLabel, sourceLabel, authorLabel, dateLabel]
+        [contentBodyLabel, titleLabel, authorLabel, dateLabel]
             .forEach { $0.textColor = themeHelper.getTextColor() }
         
-        [contentBodyLabel, sourceLabel, authorLabel, dateLabel]
+        [contentBodyLabel, authorLabel, dateLabel]
             .forEach { $0.font = themeHelper.getBodyFont() }
 
         let titleFont = themeHelper.getTitleFont()
@@ -118,15 +132,38 @@ class ContentDetailViewController: UIViewController {
         imageView.layer.mask = gradientLayer
     }
     
+//    private func setupTagLabels() {
+//        guard let article = article else { return }
+//
+//        let tagLabels = [tagLabelOne, tagLabelTwo, tagLabelThree, tagLabelFour, tagLabelFive]
+//
+//        // Get each tag, separated by a single comma, make sure each is capitalized
+//        let tags = article.tags.split(separator: ",").map { $0.capitalized }
+//        // If there are less tags than labels, hide the other tags
+//        if tags.count < tagLabels.count {
+//            // Tag labels up to the count of tags
+//            let tagLabelsToUpdate = tagLabels.prefix(tags.count)
+//            // Leftover tag labels to hide
+//            let leftoverTagLabels = tagLabels[tags.count...tagLabels.count-1]
+//            // Update text for each label
+//            tagLabelsToUpdate.enumerated().forEach { (index, label) in
+//                label?.text = tags[index]
+//            }
+//            // Hide the leftover labels
+//            leftoverTagLabels.forEach { $0?.isHidden = true }
+//        } else {
+//            // There are more tags than tagLabels (5), update each accordingly
+//            tagLabels.enumerated().forEach { (index, label) in
+//                label?.text = tags[index]
+//            }
+//        }
+//    }
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        let textColor = themeHelper.getTextColor()
-        switch textColor {
-        case .black:
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
             return .default
-        case .white:
-            return .lightContent
-        default:
-            return .lightContent
         }
     }
 }

@@ -22,6 +22,7 @@ extension Article: Encodable {
         case coverImage = "cover_image"
         case tags = "tags"
         case text = "text"
+        case userID = "user_id"
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -36,7 +37,8 @@ extension Article: Encodable {
         try container.encode(datePublished, forKey: .datePublished)
         try container.encode(excerpt, forKey: .excerpt)
         try container.encode(coverImage, forKey: .coverImage)
-        try container.encode(tags, forKey: .tags)
+//        try container.encode(tags, forKey: .tags)
         try container.encode(text, forKey: .text)
+        try container.encode(userID, forKey: .userID)
     }
 }

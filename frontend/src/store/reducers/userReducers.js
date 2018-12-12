@@ -77,7 +77,15 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				auth: { ...state.auth, serverToken: {} },
-				userStatus: { ...state.userStatus, success: false }
+				userStatus: {
+					...state.userStatus,
+					fetching: false,
+					success: false,
+					// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
+					// newUser: true,
+					message: '',
+					error: ''
+				}
 			};
 
 		case LOGGED_IN_USER:

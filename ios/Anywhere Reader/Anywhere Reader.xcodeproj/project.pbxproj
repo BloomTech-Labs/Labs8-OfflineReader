@@ -186,7 +186,6 @@
 			children = (
 				13FB2E2E21921CD200A8888B /* Main.storyboard */,
 				22661E0F2194E3A30072A4B8 /* Preferences.storyboard */,
-				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
 			);
 			path = Storyboard;
@@ -207,6 +206,7 @@
 				2233F7C421920A06001A82FF /* Anywhere Reader */,
 				2275258821B9BC13009FF546 /* AnywhereReaderTests */,
 				2233F7C321920A06001A82FF /* Products */,
+				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				F35263E8225A6FED015C6DEA /* Pods */,
 				42C0FD038CDB88201F79E65C /* Frameworks */,
 			);

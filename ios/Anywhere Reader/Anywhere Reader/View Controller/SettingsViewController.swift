@@ -23,10 +23,22 @@ class SettingsViewController: UIViewController {
         updateTheme()
     }
     
+    // MARK: - Properties
+    
+    private let themeHelper = ThemeHelper.shared
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
+    
     
     // MARK: - Outlets
     
     @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var subscriptionChoiceView: UIView!
     
     
     // MARK: - Actions
@@ -59,7 +71,12 @@ class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private Functions
+    
     private func updateTheme() {
-        
+        let backgroundColor = themeHelper.getBackgroundColor()
+        view.backgroundColor = backgroundColor
+        subscriptionChoiceView.backgroundColor = backgroundColor
+        navigationController?.navigationBar.barTintColor = backgroundColor
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
     }
 }

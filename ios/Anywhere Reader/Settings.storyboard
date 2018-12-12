@@ -104,6 +104,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="logOutButton" destination="u6o-TQ-MoL" id="MtK-qP-DFP"/>
+                        <outlet property="subscriptionChoiceView" destination="MP0-VN-mDt" id="avM-r3-Xq3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRu-gD-j9s" userLabel="First Responder" sceneMemberID="firstResponder"/>

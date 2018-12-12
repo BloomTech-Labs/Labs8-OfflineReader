@@ -18,6 +18,11 @@ class SettingsViewController: UIViewController {
     }
     
     
+    // MARK: - Properties
+    
+    private let apiService = APIService.shared
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var logOutButton: UIButton!
@@ -35,6 +40,15 @@ class SettingsViewController: UIViewController {
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
             // Logs user out using FacebookLogin SDK
             LoginManager().logOut()
+            self.apiService.signOut() { (result, error) in
+                if let error = error {
+                    NSLog("Error signing out from server: \(error)")
+                    return
+                }
+                if result == .success {
+                    NSLog("The sign out was successful")
+                }
+            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(signOutAction)

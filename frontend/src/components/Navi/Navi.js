@@ -60,8 +60,6 @@ const navLinks = [
 	{ to: '/', exact: true, text: 'Home' },
 	{ to: '/articles', exact: false, text: 'My Pages' },
 	{ to: '/settings', exact: false, text: 'Settings' },
-	{ to: '/signin', exact: false, text: 'Sign In' },
-	// { to: '/signout', exact: false, text: 'Sign Out' },
 	// { to: '/signup', exact: false, text: 'Sign Up' },
 	{ to: '/payment', exact: false, text: 'Payment' }
 ];
@@ -92,11 +90,13 @@ class Navi extends Component {
 					</HamburgerButton>
 					<HamburgerMenu>
 						{this.linkGen(navLinks).map(link => link)}
+						{this.props.signedIn}
 					</HamburgerMenu>
 				</HamburgerDiv>
 				<NaviSubDiv>
 					<h3>Anywhere Reader</h3>
 					{this.linkGen(navLinks).map(link => link)}
+					{this.props.signedIn}
 				</NaviSubDiv>
 			</NaviDiv>
 		);

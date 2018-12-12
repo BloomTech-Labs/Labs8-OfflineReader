@@ -26,10 +26,12 @@ class SignIn extends Component {
 	// 		password: ''
 	// 	};
 	// }
+
 	// Uncomment when implementing the backend as an OAuth2 provider
 	// handleInput = e => {
 	// 	this.setState({ ...this.state, [e.target.name]: e.target.value });
 	// };
+
 	// Uncomment when implementing the backend as an OAuth2 provider
 	// handleSubmit = e => {
 	// 	e.preventDefault();
@@ -51,7 +53,7 @@ class SignIn extends Component {
 						<input type="submit" value="Sign in" />
 					</form> */}
 					<br />
-					<FBAuthContainer />
+					<FBAuthContainer {...this.props} />
 					<br />
 					{/* Uncomment when implementing signup as part of implementing the backend as an OAuth2 provider */}
 					{/* <div>

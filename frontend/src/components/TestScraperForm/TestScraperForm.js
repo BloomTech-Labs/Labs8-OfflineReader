@@ -3,16 +3,23 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
+	margin-top: 6rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 `;
 
 const Input = styled.input`
-	padding: 1em;
+	padding: 1rem;
 	margin: 0.5em;
 	border: 1px solid #efefef;
 	border-radius: 30px;
-	box-shadow: 0px 5px 17px -3px rgba(0, 0, 0, 0.75);
+	box-shadow: 0px 0px 7px -3px rgba(0, 0, 0, 0.66);
+	font-size: 1.5rem;
+	width: 250px;
+	&:focus {
+		box-shadow: 0 0 3pt 2pt rgba(49, 132, 242, 1);
+		outline: none;
+	}
 `;
 
 class TestScraperForm extends Component {
@@ -58,11 +65,11 @@ class TestScraperForm extends Component {
 					<Input
 						type="text"
 						name="url"
-						placeholder="input article url here"
+						placeholder="http://..."
 						value={this.state.inputData.url}
 						onChange={this.handleInput}
 					/>
-					<button onClick={this.handleURL}>Save Article</button>
+					<button onClick={this.handleURL}>Save</button>
 				</form>
 			</Container>
 		);

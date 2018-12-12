@@ -17,7 +17,7 @@ const NaviDiv = styled.div`
 	}
 	z-index: 98;
 	position: fixed;
-	background-color: rgba(227, 220, 202, 0.85);
+	background-color: rgba(245, 243, 237, 0.85);
 `;
 
 const NaviSubDiv = styled.div`

@@ -17,13 +17,13 @@ class FBAuth extends Component {
 	};
 
 	handleResponse = data => {
-		console.log(data);
+		this.setState({ error: '' });
+		console.log('FB response:', data);
 		this.props.loginUser(data.tokenDetail.accessToken);
 	};
 
 	handleError = error => {
 		this.setState({ error });
-		// TODO: use the error dispatch from the login action instead of local state
 	};
 
 	render() {
@@ -35,8 +35,10 @@ class FBAuth extends Component {
 					onError={this.handleError}
 				>
 					<FBClick>Login via Facebook</FBClick>
-					{/* {this.state.error !== '' ? <span>{this.state.error}</span> : null} */}
 				</Login>
+				{this.state.error.message ? (
+					<span>{this.state.error.message}</span>
+				) : null}
 			</FacebookProvider>
 		);
 	}

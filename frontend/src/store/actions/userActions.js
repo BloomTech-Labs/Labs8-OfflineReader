@@ -5,7 +5,9 @@ import { apiBaseUrl } from './';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const LOGGING_OUT_USER = 'LOGGING_OUT_USER';
+export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
+export const LOGOUT_FLAG = 'LOGOUT_FLAG';
 export const PREMIUM_USER = 'PREMIUM_USER';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
@@ -34,6 +36,7 @@ export const registerUser = newUser => {
 
 export const loginUser = token => {
 	return dispatch => {
+		console.log('login action token:', token);
 		dispatch({ type: LOGGING_IN_USER });
 		axios
 			.post(`${apiBaseUrl}/auth/convert_token/`, { token })
@@ -47,21 +50,24 @@ export const loginUser = token => {
 	};
 };
 
-// TODO: Update logoutUser function once there's a better understanding of how the backend will respond
-export const logoutUser = user => {
+export const logoutUser = token => {
 	return dispatch => {
-		dispatch({ type: LOGOUT_USER });
+		dispatch({ type: LOGGING_OUT_USER });
 		axios
-			.post(apiBaseUrl + '/rest-auth/logout/', user)
+			.post(`${apiBaseUrl}/auth/revoke_token/`, { token })
 			.then(response =>
 				dispatch({
-					type: LOGOUT_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
+					type: LOGGED_OUT_USER,
+					payload: response.status
 				})
 			)
 			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
+};
+
+export const logoutFlag = () => {
+	return dispatch => {
+		dispatch({ type: LOGOUT_FLAG });
 	};
 };
 

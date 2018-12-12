@@ -2,7 +2,9 @@ import {
 	REGISTER_USER,
 	LOGGING_IN_USER,
 	LOGGED_IN_USER,
-	LOGOUT_USER,
+	LOGGING_OUT_USER,
+	LOGGED_OUT_USER,
+	LOGOUT_FLAG,
 	PREMIUM_USER,
 	FETCH_USER_DATA,
 	USER_DATA_FETCHED,
@@ -17,21 +19,25 @@ const initialState = {
 		email: '',
 		firstName: '',
 		lastName: '',
-		premium: '',
+		premium: false,
 		// TODO: When the user logs in, set loginTime to the login time, that way we can do
 		// the math between this and auth.serverToken.data.expires_in to get refresh tokens, etc
 		loginTime: ''
 	},
 	auth: {
+		// TODO: Uncomment this if we implement Google OAuth2 as a provider on the backend.
+		// Other work will need to be done with the SignIn workflow, but a semi-functioning
+		// GoogleAuth component is implemented. It would just need to be updated to send the
+		// proper token to the backend for processing to get an access token in return.
 		// googleClientId:
 		// 	'213031583666-fcjp2lmnht6pq13loo7ddo4s8r9lhvbr.apps.googleusercontent.com',
-		// serverToken: 'e4d06c221480448a274af99806a6176e9bfd32a3'
 		serverToken: {}
 	},
 	userStatus: {
 		fetching: false,
 		success: false,
-		newUser: true,
+		// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
+		// newUser: true,
 		message: '',
 		error: ''
 	}
@@ -70,30 +76,59 @@ export default (state = initialState, action) => {
 		case LOGGING_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, serverToken: '' },
-				userStatus: { ...state.userStatus, success: false }
+				auth: { ...state.auth, serverToken: {} },
+				userStatus: {
+					...state.userStatus,
+					fetching: false,
+					success: false,
+					// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
+					// newUser: true,
+					message: '',
+					error: ''
+				}
 			};
 
 		case LOGGED_IN_USER:
 			return {
 				...state,
-				auth: { ...state.auth, serverToken: action.payload },
+				auth: { ...state.auth, serverToken: { ...action.payload } },
 				userStatus: { ...state.userStatus, success: true }
 			};
 
-		case LOGOUT_USER:
+		case LOGGING_OUT_USER:
 			return {
 				...state,
 				user: {
+					...state.user,
 					username: '',
 					email: '',
 					firstName: '',
 					lastName: '',
 					premium: false
 				},
-				auth: { ...state.auth, serverToken: '' },
-				userStatus: { ...state.userStatus, success: false }
+				auth: { ...state.auth, serverToken: {} },
+				userStatus: {
+					...state.userStatus,
+					fetching: false,
+					success: false,
+					// Uncomment for NewsAPI workflow mentioned above
+					// newUser: true,
+					error: '',
+					message: ''
+				}
 			};
+
+		case LOGGED_OUT_USER:
+			return {
+				...state,
+				userStatus: {
+					...state.userStatus,
+					message: action.payload
+				}
+			};
+
+		case LOGOUT_FLAG:
+			return { ...state, userStatus: { ...state.userStatus, success: false } };
 
 		case PREMIUM_USER:
 			return { ...state, userStatus: { ...state.userStatus, premium: true } };

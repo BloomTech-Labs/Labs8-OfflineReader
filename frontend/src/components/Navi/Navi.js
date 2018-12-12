@@ -32,17 +32,22 @@ const NaviSubDiv = styled.div`
 
 // Active tab styling
 // https://spectrum.chat/styled-components/help/how-to-use-sc-with-nav-activeclassname~8f753cea-75c3-4524-8207-fd0216026665
-const activeLink = 'active';
-const NavLinkStyle = styled(NavLink).attrs({
-	activeClassName: activeLink
-})`
-	text-decoration: none;
-	color: #282e40;
-	&.${activeLink} {
-		text-decoration: underline;
-		font-weight: 600;
-	}
-`;
+// const activeLink = 'active';
+// const NavLinkStyle = styled(NavLink).attrs({
+// 	activeClassName: activeLink
+// })`
+// 	text-decoration: none;
+// 	color: #282e40;
+// 	&.${activeLink} {
+// 		text-decoration: underline;
+// 		font-weight: 600;
+// 	}
+// `;
+
+// const NavLinkStyle = styled(NavLink)`
+// 	text-decoration: none;
+// 	color: #282e40;
+// `;
 
 const HamburgerDiv = styled.div`
 	display: flex;
@@ -90,14 +95,15 @@ class Navi extends Component {
 		return linkList.map(link => {
 			count++;
 			return (
-				<NavLinkStyle
+				<NavLink
 					exact={link.exact}
 					to={link.to}
-					activeClassName="active"
+					activeClassName="activeLink"
 					key={count}
+					className="baseNav"
 				>
 					{link.text}
-				</NavLinkStyle>
+				</NavLink>
 			);
 		});
 	};

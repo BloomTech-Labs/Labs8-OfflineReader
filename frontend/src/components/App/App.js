@@ -24,7 +24,15 @@ import { colors } from '../../styling';
 // and no one wants to deal with that.
 const CssResets = createGlobalStyle`
     ${GlobalResets}
-    ${SiteResets}
+		${SiteResets}
+		.baseNav {
+			text-decoration: none;
+			color: #282e40;
+		}
+		.activeLink {
+			text-decoration: underline;
+			font-weight: 600;
+		}
 `;
 
 const AppDiv = styled.div`

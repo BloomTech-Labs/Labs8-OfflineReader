@@ -3,8 +3,14 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import {} from '../store/actions';
+import styled from 'styled-components';
 
 import { Navi } from '../components';
+
+// const NavLinkStyle = styled(NavLink)`
+// 	text-decoration: none;
+// 	color: #282e40;
+// `;
 
 class NaviContainer extends Component {
 	render() {
@@ -17,9 +23,17 @@ class NaviContainer extends Component {
 				{...this.props}
 				signedIn={
 					this.props.userSuccess ? (
-						<NavLink to="/signout">Sign Out</NavLink>
+						<NavLink to="/signout" className="baseNav">
+							Sign Out
+						</NavLink>
 					) : (
-						<NavLink to="/signin">Sign In</NavLink>
+						<NavLink
+							to="/signin"
+							activeClassName="activeLink"
+							className="baseNav"
+						>
+							Sign In
+						</NavLink>
 					)
 				}
 			/>

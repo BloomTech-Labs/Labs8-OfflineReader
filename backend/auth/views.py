@@ -12,6 +12,7 @@ class convert(APIView):
         return convert_token(access_token)
 
 
+# FIXME: Calling this view generates a stacktrace with the error "ConnectionAbortedError: [WinError 10053] An established connection was aborted by the software in your host machine", but otherwise works as expected.
 class revoke(APIView):
     permission_classes = ()
 

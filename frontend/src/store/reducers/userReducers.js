@@ -98,6 +98,15 @@ export default (state = initialState, action) => {
 		case LOGGING_OUT_USER:
 			return {
 				...state,
+				user: {
+					...state.user,
+					username: '',
+					email: '',
+					firstName: '',
+					lastName: '',
+					premium: false
+				},
+				auth: { ...state.auth, serverToken: {} },
 				userStatus: {
 					...state.userStatus,
 					fetching: false,
@@ -112,15 +121,6 @@ export default (state = initialState, action) => {
 		case LOGGED_OUT_USER:
 			return {
 				...state,
-				user: {
-					...state.user,
-					username: '',
-					email: '',
-					firstName: '',
-					lastName: '',
-					premium: false
-				},
-				auth: { ...state.auth, serverToken: {} },
 				userStatus: {
 					...state.userStatus,
 					message: action.payload

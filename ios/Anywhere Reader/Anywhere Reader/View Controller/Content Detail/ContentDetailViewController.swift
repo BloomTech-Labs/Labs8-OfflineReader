@@ -38,21 +38,6 @@ class ContentDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        // Makes sure the color of the navigation bar is animated when popping back to collection view and nightMode is off
-        let count =  self.navigationController?.viewControllers.count
-        let vc = self.navigationController?.viewControllers[(count ?? 2) - 2]
-        if let collectionVC = vc as? ContentViewController {
-            if !themeHelper.isNightMode {
-                collectionVC.navigationController?.navigationBar.barTintColor = .white
-                collectionVC.navigationController?.navigationBar.tintColor = nil
-                collectionVC.collectionView.backgroundColor = .white
-            }
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         

@@ -62,7 +62,7 @@ class ContentViewController: UIViewController {
     private let articleController = ArticleController()
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
-        if themeHelper.isNightMode {
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
             return .lightContent
         } else {
             return .default
@@ -106,7 +106,7 @@ class ContentViewController: UIViewController {
     
     private func setupSearchBar() {
         // Matches the search bar color to the navigation bar, since the nav bar lightens the r g and b values of the background color by 30
-        searchBar.backgroundColor = themeHelper.isNightMode ? UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0) : .white
+        searchBar.backgroundColor = themeHelper.getSearchBarColor()
         
         // TextField Color Customization
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
@@ -117,13 +117,9 @@ class ContentViewController: UIViewController {
         // Gets rid of bottom border of navigation bar
         navigationController?.navigationBar.shadowImage = UIImage()
         
-        if themeHelper.isNightMode {
-            navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
-            navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
-            collectionView.backgroundColor = themeHelper.getBackgroundColor()
-        } else {
-            navigationController?.navigationBar.barTintColor = .white
-        }
+        navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+        collectionView.backgroundColor = themeHelper.getBackgroundColor()
     }
     
     private func setupFRC(searchText: String? = nil) -> NSFetchedResultsController<Article> {

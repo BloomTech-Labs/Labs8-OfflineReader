@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		131601BB21C03AF700FB56E6 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131601BA21C03AF700FB56E6 /* DateHelper.swift */; };
 		132AF520219C9777008701AA /* example.json in Resources */ = {isa = PBXBuildFile; fileRef = 132AF51F219C9777008701AA /* example.json */; };
 		1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1332D85A21BF26AB006C75C8 /* APIService.swift */; };
 		1332D85D21BF30CD006C75C8 /* TokenInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1332D85C21BF30CD006C75C8 /* TokenInformation.swift */; };
@@ -16,7 +17,6 @@
 		13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ArticleController.swift */; };
 		13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* Main.storyboard */; };
 		13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3021922C9F00A8888B /* Settings.storyboard */; };
-		13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */; };
 		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
@@ -39,6 +39,7 @@
 		2275258A21B9BC13009FF546 /* AnywhereReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275258921B9BC13009FF546 /* AnywhereReaderTests.swift */; };
 		2275259721B9CCA0009FF546 /* BadJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259621B9CCA0009FF546 /* BadJSONData.swift */; };
 		2275259921B9D715009FF546 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259821B9D715009FF546 /* NetworkError.swift */; };
+		22FC1A7121C158760067B6B8 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC1A7021C158760067B6B8 /* ContentViewController.swift */; };
 		D3B4E9C9EFA70C8B02FC3CCF /* Pods_Anywhere_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		036ACFCF38AB072CCCA0C8F4 /* Pods-Anywhere Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		10DBC3271CE88F53FD615C48 /* Pods-Anywhere Reader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anywhere Reader.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader.release.xcconfig"; sourceTree = "<group>"; };
+		131601BA21C03AF700FB56E6 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		132AF51F219C9777008701AA /* example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = example.json; sourceTree = "<group>"; };
 		1332D85A21BF26AB006C75C8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		1332D85C21BF30CD006C75C8 /* TokenInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInformation.swift; sourceTree = "<group>"; };
@@ -64,7 +66,6 @@
 		13FB2E2B21921B8C00A8888B /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
 		13FB2E2E21921CD200A8888B /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		13FB2E3021922C9F00A8888B /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
-		13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCollectionViewController.swift; sourceTree = "<group>"; };
 		13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailViewController.swift; sourceTree = "<group>"; };
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +92,7 @@
 		2275258B21B9BC13009FF546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2275259621B9CCA0009FF546 /* BadJSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadJSONData.swift; sourceTree = "<group>"; };
 		2275259821B9D715009FF546 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		22FC1A7021C158760067B6B8 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anywhere_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		131601B921C03ACE00FB56E6 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				2200578C219DC40100808E4B /* ThemeHelper.swift */,
+				131601BA21C03AF700FB56E6 /* DateHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		1332D85921BF268C006C75C8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,15 +136,9 @@
 			isa = PBXGroup;
 			children = (
 				13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */,
+				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		13B013DC2193942800DA56B9 /* Segmented */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Segmented;
 			sourceTree = "<group>";
 		};
 		13FB2E2321921AA600A8888B /* Model */ = {
@@ -149,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				13B013DD219394AD00DA56B9 /* SettingsViewController.swift */,
-				13B013DC2193942800DA56B9 /* Segmented */,
 				22661E0A219268940072A4B8 /* Content Collection */,
 				22661E132194EA3E0072A4B8 /* Content Detail */,
 				222F5B7D21A4D153002B6436 /* Authentication */,
@@ -191,7 +195,6 @@
 		222F5B7D21A4D153002B6436 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
 				222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */,
 				13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */,
 			);
@@ -222,13 +225,13 @@
 			isa = PBXGroup;
 			children = (
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
-				2200578C219DC40100808E4B /* ThemeHelper.swift */,
 				13847C1F21B73C59005B533D /* Extensions */,
 				223E6F3621B5C04F0024E993 /* Core Data */,
 				2275257E21B9B67D009FF546 /* Networking */,
 				13FB2E2321921AA600A8888B /* Model */,
 				13FB2E2621921AB600A8888B /* Model Controller */,
 				13FB2E2521921AAE00A8888B /* View Controller */,
+				131601B921C03ACE00FB56E6 /* Helpers */,
 				13FB2E2821921AD400A8888B /* Resources */,
 				1332D85921BF268C006C75C8 /* Services */,
 			);
@@ -249,9 +252,9 @@
 		22661E0A219268940072A4B8 /* Content Collection */ = {
 			isa = PBXGroup;
 			children = (
-				13FB2E3421922D1900A8888B /* ContentCollectionViewController.swift */,
 				22661E06219240400072A4B8 /* ContentCollectionViewController+FlowLayoutDelegate.swift */,
 				22661E0B2193780B0072A4B8 /* Collection View Cells */,
+				22FC1A7021C158760067B6B8 /* ContentViewController.swift */,
 			);
 			path = "Content Collection";
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,
 				2275259921B9D715009FF546 /* NetworkError.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SettingsViewController.swift in Sources */,
+				131601BB21C03AF700FB56E6 /* DateHelper.swift in Sources */,
 				13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */,
 				13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */,
 				222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */,
@@ -491,8 +495,8 @@
 				13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */,
 				22661E092192688D0072A4B8 /* DocumentCollectionViewCell.swift in Sources */,
 				13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */,
-				13FB2E3521922D1900A8888B /* ContentCollectionViewController.swift in Sources */,
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
+				22FC1A7121C158760067B6B8 /* ContentViewController.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
 				1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */,

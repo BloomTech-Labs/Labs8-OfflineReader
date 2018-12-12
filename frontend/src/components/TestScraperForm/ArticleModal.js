@@ -46,12 +46,15 @@ const CloseBtn = styled.h5`
 
 const TitleHead = styled.h3`
 	font-size: 3rem;
+	letter-spacing: 0.5px;
 `;
 
 const BodyDiv = styled.div`
 	font-family: 'Roboto', sans-serif;
 	white-space: pre-wrap;
 	line-height: 4rem;
+	font-size: 2rem;
+	letter-spacing: 1px;
 	embed,
 	img,
 	p,
@@ -63,12 +66,12 @@ const BodyDiv = styled.div`
 	h6 {
 		padding: 0 0 1rem 0;
 	}
-	font-size: 2rem;
 `;
 
 const ArticleInfo = styled.div`
 	display: flex;
 	justify-content: space-between;
+	letter-spacing: 0.5px;
 `;
 
 class ArticleModal extends Component {

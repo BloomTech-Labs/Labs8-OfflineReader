@@ -24,6 +24,7 @@ const NaviSubDiv = styled.div`
 	width: 80%;
 	display: flex;
 	justify-content: space-between;
+	letter-spacing: 0.5px;
 	@media (max-width: 800px) {
 		display: none;
 	}
@@ -39,7 +40,7 @@ const NavLinkStyle = styled(NavLink).attrs({
 	color: #282e40;
 	&.${activeLink} {
 		text-decoration: underline;
-		font-weight: bold;
+		font-weight: 600;
 	}
 `;
 

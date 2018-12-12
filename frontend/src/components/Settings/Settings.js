@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { colors } from '../../styling';
 
 const SetDiv = styled.div`
+	background: ${colors.background};
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -40,6 +43,8 @@ const SetLabel = styled.label`
 	margin-bottom: 10px;
 	font-size: 1.6rem;
 `;
+
+const SubBnt = styled.input``;
 
 class Settings extends Component {
 	constructor(props) {

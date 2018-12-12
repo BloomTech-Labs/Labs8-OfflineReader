@@ -16,7 +16,7 @@ class NaviContainer extends Component {
 			<Navi
 				{...this.props}
 				signedIn={
-					this.props.serverToken.data ? (
+					this.props.userSuccess ? (
 						<NavLink to="/signout">Sign Out</NavLink>
 					) : (
 						<NavLink to="/signin">Sign In</NavLink>
@@ -28,12 +28,12 @@ class NaviContainer extends Component {
 }
 
 NaviContainer.propTypes = {
-	serverToken: PropTypes.object.isRequired
+	userSuccess: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
 	return {
-		serverToken: state.userReducers.auth.serverToken
+		userSuccess: state.userReducers.userStatus.success
 	};
 };
 

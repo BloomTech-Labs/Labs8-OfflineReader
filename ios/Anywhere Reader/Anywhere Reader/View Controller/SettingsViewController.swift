@@ -15,6 +15,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         logOutButton.layer.cornerRadius = 4.0
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,14 +75,13 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Private Functions
     
-    private func updateTheme() {
+    @objc private func updateTheme() {
         // Backgrounds
         let backgroundColor = themeHelper.getBackgroundColor()
         view.backgroundColor = backgroundColor
         subscriptionChoiceView.backgroundColor = backgroundColor
         navigationController?.navigationBar.barTintColor = backgroundColor
 
-        
         // Text
         let textColor = themeHelper.getTextColor()
         navigationController?.navigationBar.tintColor = textColor

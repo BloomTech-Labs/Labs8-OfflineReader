@@ -18,6 +18,7 @@ class APIService {
     static let baseURL = URL(string: "https://anywhere-reader-test.herokuapp.com")!
     static var currentUserToken = ""
     
+    /// - Author: Conner Alegre
     func verifyAccessToken(with accessToken: String, completion: @escaping (Result, Error?) -> Void) {
         let url = APIService.baseURL.appendingPathComponent("auth").appendingPathComponent("convert_token/")
         var request = URLRequest(url: url)
@@ -43,6 +44,29 @@ class APIService {
                 NSLog("Error with decoding Token Information")
             }
             
+            completion(.success, nil)
+        }.resume()
+    }
+    
+    /**
+     Revokes current token stored in the `APIService` static varible: `currentUserToken`
+     
+     - Author: Samantha Gatt
+     */
+    func signOut(completion: @escaping (Result, Error?) -> Void) {
+        let url = APIService.baseURL.appendingPathComponent("auth").appendingPathComponent("revoke_token/")
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: ["token": APIService.currentUserToken])
+        
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                NSLog("Error revoking token: \(error)")
+                completion(.failure, error)
+                return
+            }
             completion(.success, nil)
         }.resume()
     }

@@ -175,7 +175,7 @@ class ContentViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailViewController = segue.destination as? ContentDetailViewController {
-            let cell = sender as! DocumentCollectionViewCell
+            let cell = sender as! ArticleCollectionViewCell
             guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
             let article = fetchedResultsController.object(at: indexPath)
             let _ = detailViewController.view
@@ -247,7 +247,7 @@ extension ContentViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DocumentCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ArticleCollectionViewCell
         
         let article = fetchedResultsController.object(at: indexPath)
         cell.article = article

@@ -14,10 +14,10 @@
 		13394FA221C1B0C300841E90 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13394FA121C1B0C300841E90 /* ShareViewController.swift */; };
 		13394FA521C1B0C300841E90 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13394FA321C1B0C300841E90 /* MainInterface.storyboard */; };
 		13394FA921C1B0C300841E90 /* Anywhere Reader Share Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 13394F9F21C1B0C200841E90 /* Anywhere Reader Share Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		13394FB221C1B7E100841E90 /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ArticleController.swift */; };
 		13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */; };
 		13B013DE219394AD00DA56B9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B013DD219394AD00DA56B9 /* SettingsViewController.swift */; };
 		13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2921921B7D00A8888B /* ArticleRep.swift */; };
-		13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E2B21921B8C00A8888B /* ArticleController.swift */; };
 		13FB2E2F21921CD200A8888B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E2E21921CD200A8888B /* Main.storyboard */; };
 		13FB2E3121922C9F00A8888B /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3021922C9F00A8888B /* Settings.storyboard */; };
 		13FB2E3721922D6100A8888B /* ContentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3621922D6100A8888B /* ContentDetailViewController.swift */; };
@@ -88,6 +88,8 @@
 		13394FA121C1B0C300841E90 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		13394FA421C1B0C300841E90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		13394FA621C1B0C300841E90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13394FB421C1BACB00841E90 /* Anywhere Reader Share Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Anywhere Reader Share Extension.entitlements"; sourceTree = "<group>"; };
+		13394FB521C1BB6400841E90 /* Anywhere Reader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Anywhere Reader.entitlements"; sourceTree = "<group>"; };
 		13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extensions.swift"; sourceTree = "<group>"; };
 		13B013DD219394AD00DA56B9 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		13FB2E2921921B7D00A8888B /* ArticleRep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleRep.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		13394FA021C1B0C300841E90 /* Anywhere Reader Share Extension */ = {
 			isa = PBXGroup;
 			children = (
+				13394FB421C1BACB00841E90 /* Anywhere Reader Share Extension.entitlements */,
 				13394FA121C1B0C300841E90 /* ShareViewController.swift */,
 				13394FA321C1B0C300841E90 /* MainInterface.storyboard */,
 				13394FA621C1B0C300841E90 /* Info.plist */,
@@ -271,6 +274,7 @@
 		2233F7C421920A06001A82FF /* Anywhere Reader */ = {
 			isa = PBXGroup;
 			children = (
+				13394FB521C1BB6400841E90 /* Anywhere Reader.entitlements */,
 				2233F7C521920A06001A82FF /* AppDelegate.swift */,
 				13847C1F21B73C59005B533D /* Extensions */,
 				223E6F3621B5C04F0024E993 /* Core Data */,
@@ -423,9 +427,19 @@
 				TargetAttributes = {
 					13394F9E21C1B0C200841E90 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2233F7C121920A06001A82FF = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					2275258621B9BC13009FF546 = {
 						CreatedOnToolsVersion = 10.1;
@@ -560,7 +574,6 @@
 				2275258221B9B6AA009FF546 /* MockDataLoader.swift in Sources */,
 				2275258121B9B6AA009FF546 /* NetworkDataLoader.swift in Sources */,
 				223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */,
-				13FB2E2C21921B8C00A8888B /* ArticleController.swift in Sources */,
 				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,
 				2275259921B9D715009FF546 /* NetworkError.swift in Sources */,
 				13B013DE219394AD00DA56B9 /* SettingsViewController.swift in Sources */,
@@ -574,6 +587,7 @@
 				22661E092192688D0072A4B8 /* ArticleCollectionViewCell.swift in Sources */,
 				13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */,
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
+				13394FB221C1B7E100841E90 /* ArticleController.swift in Sources */,
 				22FC1A7121C158760067B6B8 /* ContentViewController.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
@@ -629,6 +643,7 @@
 		13394FAA21C1B0C300841E90 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Anywhere Reader Share Extension/Anywhere Reader Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "Anywhere Reader Share Extension/Info.plist";
@@ -648,6 +663,7 @@
 		13394FAB21C1B0C300841E90 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "Anywhere Reader Share Extension/Anywhere Reader Share Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "Anywhere Reader Share Extension/Info.plist";
@@ -786,6 +802,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Anywhere Reader/Anywhere Reader.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";
@@ -806,6 +823,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Anywhere Reader/Anywhere Reader.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";

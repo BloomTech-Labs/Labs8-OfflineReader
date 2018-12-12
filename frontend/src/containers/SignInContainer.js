@@ -8,7 +8,7 @@ import { SignIn } from '../components';
 
 class SignInContainer extends Component {
 	render() {
-		if (this.props.authStatus === 200) {
+		if (this.props.userSuccess) {
 			return <Redirect to="/articles" />;
 		} else {
 			return <SignIn {...this.props} />;
@@ -25,7 +25,7 @@ SignInContainer.propTypes = {
 	// 	premium: PropTypes.bool
 	// }).isRequired,
 	// auth: PropTypes.shape({
-	// 	// serverToken: PropTypes.object //TODO: flesh out this prop type
+	// 	// serverToken: PropTypes.object
 	// }).isRequired,
 	// userStatus: PropTypes.shape({
 	// 	fetching: PropTypes.bool,
@@ -36,13 +36,13 @@ SignInContainer.propTypes = {
 	// }).isRequired,
 	// registerUser: PropTypes.func.isRequired,
 	// loginUser: PropTypes.func.isRequired,
-	// logoutUser: PropTypes.func.isRequired
-	authStatus: PropTypes.number.isRequired
+	// logoutUser: PropTypes.func.isRequired,
+	userSuccess: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
 	return {
-		authStatus: state.userReducers.auth.serverToken.status || 400
+		userSuccess: state.userReducers.userStatus.success
 	};
 };
 

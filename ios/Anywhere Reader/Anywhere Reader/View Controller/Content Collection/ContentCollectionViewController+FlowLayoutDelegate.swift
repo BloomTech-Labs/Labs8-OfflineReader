@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ContentCollectionViewController: UICollectionViewDelegateFlowLayout {
+extension ContentViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var width = collectionView.safeAreaLayoutGuide.layoutFrame.width

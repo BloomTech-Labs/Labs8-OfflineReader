@@ -44,7 +44,7 @@ class ContentDetailViewController: UIViewController {
         // Makes sure the color of the navigation bar is animated when popping back to collection view and nightMode is off
         let count =  self.navigationController?.viewControllers.count
         let vc = self.navigationController?.viewControllers[(count ?? 2) - 2]
-        if let collectionVC = vc as? ContentCollectionViewController {
+        if let collectionVC = vc as? ContentViewController {
             if !themeHelper.isNightMode {
                 collectionVC.navigationController?.navigationBar.barTintColor = .white
                 collectionVC.navigationController?.navigationBar.tintColor = nil

@@ -1,8 +1,8 @@
 //
-//  SavedCollectionViewController.swift
+//  ContentViewController.swift
 //  Anywhere Reader
 //
-//  Created by Conner on 11/6/18.
+//  Created by Samantha Gatt on 12/12/18.
 //  Copyright © 2018 Samantha Gatt. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 import FacebookCore
 
-private let reuseIdentifier = "DocumentCell"
+private let reuseIdentifier = "ArticleCell"
 
-class ContentCollectionViewController: UICollectionViewController, NSFetchedResultsControllerDelegate {
+class ContentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,26 +31,36 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if themeHelper.isNightMode {
-            navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
-            navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
-            collectionView.backgroundColor = themeHelper.getBackgroundColor()
-        }
+        
+        setupSearchBar()
+        setupNavBarAndBackground()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchBar.resignFirstResponder()
+    }
+    
     
     // MARK: - Properties
     
     let themeHelper = ThemeHelper.shared
-    private let articleController = ArticleController()
+    
+    /**
+     Cache of animations to execute when the fetched Articles in CoreData are modified
+     
+     Only used in the [NSFetchedResultsControllerDelegate](https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate) extension
+     
+     - Author: Samantha Gatt
+     */
+    private var blockOperations: [BlockOperation] = []
     lazy var fetchedResultsController: NSFetchedResultsController<Article> = {
-        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.moc, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        try! frc.performFetch()
-        return frc
+        return setupFRC()
     }()
+    
+    private let articleController = ArticleController()
+    
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if themeHelper.isNightMode {
             return .lightContent
@@ -59,7 +69,76 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         }
     }
     
-    // MARK: - Private Functions
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    // MARK: - Actions
+    
+    @IBAction func addNewContent(_ sender: Any) {
+        let addLinkDialog = UIAlertController(title: "Add", message: "Insert article link", preferredStyle: .alert)
+        let save = UIAlertAction(title: "Save", style: .default, handler: { (action) -> Void in
+            if let url = addLinkDialog.textFields?[0].text {
+                self.articleController.scrape(with: url) { _ in }
+            }
+        })
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        addLinkDialog.addAction(save)
+        addLinkDialog.addAction(cancel)
+        addLinkDialog.addTextField { (textField) -> Void in
+            textField.placeholder = "http://cnn.com"
+            // Autopopulate textfield if there is something in the users clipboard
+            if let linkInClipboard = UIPasteboard.general.string {
+                textField.text = linkInClipboard
+            }
+            textField.layer.borderColor = UIColor.darkGray.cgColor
+        }
+        self.present(addLinkDialog, animated: true, completion: nil)
+    }
+    
+
+    // MARK: - Private functions
+    
+    private func setupSearchBar() {
+        // Matches the search bar color to the navigation bar, since the nav bar lightens the r g and b values of the background color by 30
+        searchBar.backgroundColor = themeHelper.isNightMode ? UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0) : .white
+        
+        // TextField Color Customization
+        let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideSearchBar?.textColor = themeHelper.isNightMode ? themeHelper.getTextColor() : .darkGray
+    }
+    
+    private func setupNavBarAndBackground() {
+        // Gets rid of bottom border of navigation bar
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        if themeHelper.isNightMode {
+            navigationController?.navigationBar.barTintColor = themeHelper.getBackgroundColor()
+            navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+            collectionView.backgroundColor = themeHelper.getBackgroundColor()
+        } else {
+            navigationController?.navigationBar.barTintColor = .white
+        }
+    }
+    
+    private func setupFRC(searchText: String? = nil) -> NSFetchedResultsController<Article> {
+        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        if let searchText = searchText {
+            let predicate = NSPredicate(format: "text CONTAINS %@", searchText)
+            fetchRequest.predicate = predicate
+        }
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
+    }
+    
     @objc private func deleteArticle(sender: UIButton) {
         let indexPath = sender.layer.value(forKey: "indexPath") as! IndexPath
         let article = self.fetchedResultsController.object(at: indexPath)
@@ -85,34 +164,27 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         self.present(deleteDialog, animated: true, completion: nil)
     }
     
-    // MARK: - Actions
-
-    @IBAction func addNewContent(_ sender: Any) {
-        let addLinkDialog = UIAlertController(title: "Add", message: "Insert article link", preferredStyle: .alert)
-        let save = UIAlertAction(title: "Save", style: .default, handler: { (action) -> Void in
-            if let url = addLinkDialog.textFields?[0].text {
-                self.articleController.scrape(with: url) { _ in }
-            }
-        })
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel button tapped")
-        }
-        addLinkDialog.addAction(save)
-        addLinkDialog.addAction(cancel)
-        addLinkDialog.addTextField { (textField) -> Void in
-            textField.placeholder = "http://cnn.com"
-            // Autopopulate textfield if there is something in the users clipboard
-            if let linkInClipboard = UIPasteboard.general.string {
-                textField.text = linkInClipboard
-            }
-            textField.layer.borderColor = UIColor.darkGray.cgColor
-        }
-        self.present(addLinkDialog, animated: true, completion: nil)
+    
+    // MARK: UICollectionView Transition
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        collectionView?.collectionViewLayout.invalidateLayout()
     }
     
-    // MARK: - CollectionView NSFetchedResultsControllerDelegate
+    // MARK: - Prepare for segue
     
-    private var blockOperations: [BlockOperation] = []
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailViewController = segue.destination as? ContentDetailViewController {
+            let cell = sender as! DocumentCollectionViewCell
+            guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+            let article = fetchedResultsController.object(at: indexPath)
+            let _ = detailViewController.view
+            detailViewController.article = article
+        }
+    }
+}
+
+extension ContentViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         blockOperations.removeAll(keepingCapacity: false)
@@ -166,40 +238,37 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
             self.blockOperations.removeAll(keepingCapacity: false)
         })
     }
-    
-    
-    // MARK: UICollectionViewDataSource
+}
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ContentViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! DocumentCollectionViewCell
         
         let article = fetchedResultsController.object(at: indexPath)
         cell.article = article
         cell.deleteButton.layer.setValue(indexPath, forKey: "indexPath")
         cell.deleteButton.addTarget(self, action: #selector(self.deleteArticle(sender:)), for: .touchUpInside)
-    
+        
         return cell
     }
-    
-    // MARK: UICollectionView Transition
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        collectionView?.collectionViewLayout.invalidateLayout()
-    }
-    
-    // MARK: - Prepare for segue
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let detailViewController = segue.destination as? ContentDetailViewController {
-            let cell = sender as! DocumentCollectionViewCell
-            guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
-            let article = fetchedResultsController.object(at: indexPath)
-            let _ = detailViewController.view
-            detailViewController.article = article
+}
+
+extension ContentViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text == "" || searchBar.text == nil {
+            fetchedResultsController = setupFRC()
+            collectionView.reloadData()
+        } else {
+            fetchedResultsController = setupFRC(searchText: searchBar.text)
+            collectionView.reloadData()
         }
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

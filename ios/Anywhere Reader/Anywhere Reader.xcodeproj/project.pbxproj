@@ -186,8 +186,8 @@
 			children = (
 				13FB2E2E21921CD200A8888B /* Main.storyboard */,
 				22661E0F2194E3A30072A4B8 /* Preferences.storyboard */,
-				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 				13FB2E3821922D7800A8888B /* Authentication.storyboard */,
+				13FB2E3021922C9F00A8888B /* Settings.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";

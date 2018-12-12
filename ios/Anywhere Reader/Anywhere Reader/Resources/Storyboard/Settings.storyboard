@@ -90,6 +90,11 @@
                         <viewLayoutGuide key="safeArea" id="hYC-nm-OsM"/>
                     </view>
                     <navigationItem key="navigationItem" id="5pe-OV-EVe">
+                        <barButtonItem key="leftBarButtonItem" title="Aa" id="7hE-aD-nPo">
+                            <connections>
+                                <action selector="presentPreferences:" destination="Enx-cX-gv1" id="K3u-aD-5Bj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MSe-rK-J5c">
                             <connections>
                                 <action selector="dismissSettingsVC:" destination="Enx-cX-gv1" id="72E-gw-3zS"/>
@@ -98,7 +103,10 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="goPremiumLabel" destination="lgj-aw-XvL" id="x1o-Ga-seF"/>
                         <outlet property="logOutButton" destination="u6o-TQ-MoL" id="MtK-qP-DFP"/>
+                        <outlet property="premiumDescriptionLabel" destination="wjY-mN-TKg" id="1Sa-Dn-KE7"/>
+                        <outlet property="subscriptionChoiceView" destination="MP0-VN-mDt" id="avM-r3-Xq3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRu-gD-j9s" userLabel="First Responder" sceneMemberID="firstResponder"/>

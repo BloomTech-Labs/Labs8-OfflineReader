@@ -13,6 +13,7 @@ const MarketingBlurb = styled.div`
 	margin: 12rem 3rem 3rem 3rem;
 	padding: 4rem;
 	font-size: 3rem;
+	font-family: sans-serif;
 	background-color: rgba(227, 220, 202, 0.4);
 	border-radius: 5px;
 	@media (max-width: 800px) {

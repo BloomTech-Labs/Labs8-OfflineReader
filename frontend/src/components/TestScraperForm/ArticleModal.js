@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const ArticleDiv = styled.div`
 	padding: 2rem;
-	margin: 4rem 0 4rem 0;
+	margin: 8rem 0 4rem 0;
 	border-radius: 7px;
 	background-color: ${colors.paper};
 	box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.66);

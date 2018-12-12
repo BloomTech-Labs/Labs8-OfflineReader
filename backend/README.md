@@ -30,6 +30,16 @@ registers and logins user
 returns:
 `{ "key": "some-string" }`
 
+### /auth/revoke_token
+
+POST
+`{ "token": <access token originally issued by django to the user> }`
+
+returns:
+
+- On success: {"message": "Successfully logged out!"} with a http 200 status
+- On failure: a stack trace and a http 500 status
+
 ### /api/users/
 
 GET

@@ -90,6 +90,11 @@
                         <viewLayoutGuide key="safeArea" id="hYC-nm-OsM"/>
                     </view>
                     <navigationItem key="navigationItem" id="5pe-OV-EVe">
+                        <barButtonItem key="leftBarButtonItem" title="Aa" id="7hE-aD-nPo">
+                            <connections>
+                                <action selector="presentPreferences:" destination="Enx-cX-gv1" id="K3u-aD-5Bj"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="stop" id="MSe-rK-J5c">
                             <connections>
                                 <action selector="dismissSettingsVC:" destination="Enx-cX-gv1" id="72E-gw-3zS"/>

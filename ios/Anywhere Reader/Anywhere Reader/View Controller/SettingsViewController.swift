@@ -17,6 +17,12 @@ class SettingsViewController: UIViewController {
         logOutButton.layer.cornerRadius = 4.0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTheme()
+    }
+    
     
     // MARK: - Outlets
     
@@ -39,5 +45,21 @@ class SettingsViewController: UIViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(signOutAction)
         present(alertController, animated: true)
+    }
+    
+    @IBAction func presentPreferences(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Preferences", bundle: nil)
+        guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
+        preferencesVC.providesPresentationContextTransitionStyle = true
+        preferencesVC.definesPresentationContext = true
+        preferencesVC.modalPresentationStyle = .overCurrentContext
+        preferencesVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(preferencesVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - Private Functions
+    private func updateTheme() {
+        
     }
 }

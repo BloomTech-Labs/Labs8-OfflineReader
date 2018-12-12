@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
+import { colors } from '../../styling';
 
 const ScraperDiv = styled.div`
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	margin: auto;
+	background: ${colors.background};
 `;
 
 class TestScraper extends Component {

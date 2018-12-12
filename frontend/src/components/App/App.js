@@ -4,15 +4,16 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import {
 	AuthHOC,
+	NaviContainer,
 	SettingsContainer,
 	SignInContainer,
+	SignOutContainer,
 	TestScraperFormContainer
 } from '../../containers';
 import {
 	LandingPage,
-	Navi,
 	// SignedUp,
-	// SignUpPage,
+	// SignUp,
 	StripeProviderStub // TODO: Create StripeProviderStubContainer for StripeProviderStub component
 } from '../';
 import { GlobalResets, SiteResets } from '../../styling';
@@ -38,7 +39,7 @@ class App extends Component {
 			<Router>
 				<AppDiv>
 					<CssResets />
-					<Navi />
+					<NaviContainer />
 					<Route exact path="/" component={LandingPage} />
 					<Route
 						path="/articles"
@@ -47,7 +48,8 @@ class App extends Component {
 					<Route path="/payment" component={AuthHOC(StripeProviderStub)} />
 					<Route path="/settings" component={AuthHOC(SettingsContainer)} />
 					<Route path="/signin" component={SignInContainer} />
-					{/* <Route path="/signup" component={SignUpPage} /> */}
+					<Route path="/signout" component={SignOutContainer} />
+					{/* <Route path="/signup" component={SignUp} /> */}
 					{/* <Route path="/signedup" component={SignedUp} /> */}
 				</AppDiv>
 			</Router>

@@ -87,6 +87,17 @@ class SettingsViewController: UIViewController {
         self.present(preferencesVC, animated: true, completion: nil)
     }
     
+    @IBAction func buyOneYear(_ sender: Any) {
+        AnywhereReaderProducts.store.requestProducts { (success, products) in
+            print(products ?? "No products returned")
+        }
+    }
+    
+    @IBAction func buyFiveYears(_ sender: Any) {
+        // TODO
+    }
+    
+    
     // MARK: - Private Functions
     
     @objc private func updateTheme() {

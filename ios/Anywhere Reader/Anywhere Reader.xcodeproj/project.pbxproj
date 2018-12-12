@@ -40,6 +40,9 @@
 		2275259721B9CCA0009FF546 /* BadJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259621B9CCA0009FF546 /* BadJSONData.swift */; };
 		2275259921B9D715009FF546 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259821B9D715009FF546 /* NetworkError.swift */; };
 		22FC1A7121C158760067B6B8 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC1A7021C158760067B6B8 /* ContentViewController.swift */; };
+		22FC1A7521C190D90067B6B8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FC1A7421C190D90067B6B8 /* StoreKit.framework */; };
+		22FC1A7721C1915B0067B6B8 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC1A7621C1915B0067B6B8 /* IAPHelper.swift */; };
+		22FC1A7921C191D00067B6B8 /* AnywhereReaderProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FC1A7821C191D00067B6B8 /* AnywhereReaderProducts.swift */; };
 		D3B4E9C9EFA70C8B02FC3CCF /* Pods_Anywhere_Reader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +96,9 @@
 		2275259621B9CCA0009FF546 /* BadJSONData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadJSONData.swift; sourceTree = "<group>"; };
 		2275259821B9D715009FF546 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		22FC1A7021C158760067B6B8 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		22FC1A7421C190D90067B6B8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		22FC1A7621C1915B0067B6B8 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
+		22FC1A7821C191D00067B6B8 /* AnywhereReaderProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnywhereReaderProducts.swift; sourceTree = "<group>"; };
 		BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Anywhere_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -102,6 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3B4E9C9EFA70C8B02FC3CCF /* Pods_Anywhere_Reader.framework in Frameworks */,
+				22FC1A7521C190D90067B6B8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +127,8 @@
 			children = (
 				2200578C219DC40100808E4B /* ThemeHelper.swift */,
 				131601BA21C03AF700FB56E6 /* DateHelper.swift */,
+				22FC1A7621C1915B0067B6B8 /* IAPHelper.swift */,
+				22FC1A7821C191D00067B6B8 /* AnywhereReaderProducts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -291,6 +300,7 @@
 		42C0FD038CDB88201F79E65C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22FC1A7421C190D90067B6B8 /* StoreKit.framework */,
 				BBC58EE977A0972BCA67A128 /* Pods_Anywhere_Reader.framework */,
 			);
 			name = Frameworks;
@@ -357,6 +367,11 @@
 				TargetAttributes = {
 					2233F7C121920A06001A82FF = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					2275258621B9BC13009FF546 = {
 						CreatedOnToolsVersion = 10.1;
@@ -486,7 +501,9 @@
 				1332D85D21BF30CD006C75C8 /* TokenInformation.swift in Sources */,
 				13FB2E2A21921B7D00A8888B /* ArticleRep.swift in Sources */,
 				22661E092192688D0072A4B8 /* ArticleCollectionViewCell.swift in Sources */,
+				22FC1A7921C191D00067B6B8 /* AnywhereReaderProducts.swift in Sources */,
 				13847C2121B73C73005B533D /* UINavigationController+Extensions.swift in Sources */,
+				22FC1A7721C1915B0067B6B8 /* IAPHelper.swift in Sources */,
 				223E6F3D21B5C5B50024E993 /* Article+Encodable.swift in Sources */,
 				22FC1A7121C158760067B6B8 /* ContentViewController.swift in Sources */,
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
@@ -649,13 +666,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84AK8SAYG2;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SamanthaGatt.Anywhere-Reader";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.AnywhereReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -668,13 +685,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 84AK8SAYG2;
+				DEVELOPMENT_TEAM = VXUQXR6S56;
 				INFOPLIST_FILE = "$(SRCROOT)/Anywhere Reader/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.SamanthaGatt.Anywhere-Reader";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lambdaschool.AnywhereReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

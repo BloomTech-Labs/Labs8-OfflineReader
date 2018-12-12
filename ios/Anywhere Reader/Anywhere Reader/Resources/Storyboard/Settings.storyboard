@@ -58,11 +58,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="196" height="38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="One year for $9.99"/>
+                                                <connections>
+                                                    <action selector="buyOneYear:" destination="Enx-cX-gv1" eventType="touchUpInside" id="vW0-cV-Ckx"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kr-Ax-nRF">
                                                 <rect key="frame" x="0.0" y="54" width="196" height="38"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                 <state key="normal" title="Five years for $49.99"/>
+                                                <connections>
+                                                    <action selector="buyFiveYears:" destination="Enx-cX-gv1" eventType="touchUpInside" id="FZ7-1E-17k"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

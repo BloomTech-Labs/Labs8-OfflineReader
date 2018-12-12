@@ -30,6 +30,10 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
                 self.present(alert, animated: true)
             }
         }
+        
+        if fetchedResultsController.fetchedObjects?.count ?? 0 > 0 {
+            collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,12 +51,8 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
     let themeHelper = ThemeHelper.shared
     private let articleController = ArticleController()
     lazy var fetchedResultsController: NSFetchedResultsController<Article> = {
-        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.moc, sectionNameKeyPath: nil, cacheName: nil)
-        frc.delegate = self
-        try! frc.performFetch()
-        return frc
+        
+        return setupFRC()
     }()
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if themeHelper.isNightMode {
@@ -60,6 +60,20 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
         } else {
             return .default
         }
+    }
+    
+    
+    private func setupFRC(searchText: String? = nil) -> NSFetchedResultsController<Article> {
+        let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
+        if let searchText = searchText {
+            let predicate = NSPredicate(format: "text CONTAINS %@", searchText)
+            fetchRequest.predicate = predicate
+        }
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.moc, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        try! frc.performFetch()
+        return frc
     }
     
     
@@ -177,6 +191,27 @@ class ContentCollectionViewController: UICollectionViewController, NSFetchedResu
             let article = fetchedResultsController.object(at: indexPath)
             let _ = detailViewController.view
             detailViewController.article = article
+        }
+    }
+}
+
+extension ContentCollectionViewController {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        // Only one supplementary view has been created so this function always returns the search bar header
+        let searchBarHeaderView =  collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SearchBarHeader", for: indexPath)
+        return searchBarHeaderView
+    }
+}
+
+extension ContentCollectionViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text == "" || searchBar.text == nil {
+            fetchedResultsController = setupFRC()
+            collectionView.reloadData()
+        } else {
+            fetchedResultsController = setupFRC(searchText: searchBar.text)
+            collectionView.reloadData()
         }
     }
 }

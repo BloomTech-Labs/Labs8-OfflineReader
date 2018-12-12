@@ -21,13 +21,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" sectionInsetReference="safeArea" id="JRY-26-GWt">
                             <size key="itemSize" width="329" height="286"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="headerReferenceSize" width="50" height="56"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DocumentCell" id="Cmv-51-zLa" customClass="DocumentCollectionViewCell" customModule="Anywhere_Reader" customModuleProvider="target">
-                                <rect key="frame" x="42.5" y="0.0" width="329" height="387"/>
+                                <rect key="frame" x="42.5" y="56" width="329" height="387"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="329" height="387"/>
@@ -106,23 +106,29 @@
                                     <segue destination="cgX-9W-mbb" kind="show" id="0Nx-97-0GR"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AudioCell" id="E2Z-nh-Fnu">
-                                <rect key="frame" x="42.5" y="387" width="329" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="286"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="Hz8-td-Yg9">
-                                <rect key="frame" x="42.5" y="673" width="329" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="329" height="286"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </view>
-                            </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchBarHeader" id="at8-hX-wjr" customClass="SearchBarHeaderCollectionReusableView" customModule="Anywhere_Reader" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qv1-8O-TNB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="72u-JM-bAQ" id="vuB-BC-MJv"/>
+                                    </connections>
+                                </searchBar>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="qv1-8O-TNB" secondAttribute="bottom" id="AjS-Qi-7hb"/>
+                                <constraint firstAttribute="trailing" secondItem="qv1-8O-TNB" secondAttribute="trailing" id="Hdo-df-yyC"/>
+                                <constraint firstItem="qv1-8O-TNB" firstAttribute="leading" secondItem="at8-hX-wjr" secondAttribute="leading" id="idt-3U-4JS"/>
+                                <constraint firstItem="qv1-8O-TNB" firstAttribute="top" secondItem="at8-hX-wjr" secondAttribute="top" id="udG-hp-gxv"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="searchBar" destination="qv1-8O-TNB" id="C7f-Nh-gVi"/>
+                            </connections>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="72u-JM-bAQ" id="SHj-sY-r9E"/>
                             <outlet property="delegate" destination="72u-JM-bAQ" id="Ueg-ck-1F5"/>

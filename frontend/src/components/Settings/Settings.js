@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SetDiv = styled.div`
-	max-width: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 100%;
 	padding-top: 100px;
 	h2 {
@@ -14,6 +16,9 @@ const SetDiv = styled.div`
 const SetForm = styled.form`
 	display: flex;
 	flex-direction: column;
+	input {
+		width: 400px;
+	}
 `;
 
 // username and email value are set to read only.
@@ -77,8 +82,9 @@ class Settings extends Component {
 	render() {
 		return (
 			<SetDiv>
+				<h2>Profile</h2>
+				<br />
 				<SetForm>
-					<h2>Profile</h2>
 					<br />
 					<SetLabel className="label">Username:</SetLabel>
 					<ReadOnlyInput

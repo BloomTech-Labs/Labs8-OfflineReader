@@ -26,9 +26,9 @@ const CssResets = createGlobalStyle`
 `;
 
 const AppDiv = styled.div`
-	display: flex;
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: center; */
 	height: 100%;
 `;
 

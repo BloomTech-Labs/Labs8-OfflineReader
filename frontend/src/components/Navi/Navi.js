@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
+const LogoDiv = styled.div`
+	width: 170px;
+	display: flex;
+	justify-content: space-between;
+	margin-right: 2rem;
+	margin-left: 2rem;
+`;
+
 const NaviDiv = styled.div`
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	margin-bottom: 2rem;
-	border-bottom: 1px solid #404040;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,13 +23,25 @@ const NaviDiv = styled.div`
 	}
 	z-index: 98;
 	position: fixed;
-	background-color: rgba(227, 220, 202, 0.85);
+	background-color: rgb(226, 207, 195);
+	box-shadow: 0px 3px 21px 0px rgba(0, 0, 0, 0.75);
 `;
 
 const NaviSubDiv = styled.div`
-	width: 80%;
+	width: 65%;
 	display: flex;
 	justify-content: space-between;
+	h3 {
+		color: black;
+		font-family: Sans-Serif;
+		font-size: 16px;
+	}
+	a {
+		text-decoration: none;
+		color: black;
+		font-family: Sans-Serif;
+		font-size: 16px;
+	}
 	@media (max-width: 800px) {
 		display: none;
 	}
@@ -99,7 +118,15 @@ class Navi extends Component {
 					</HamburgerMenu>
 				</HamburgerDiv>
 				<NaviSubDiv>
-					<h3>Anywhere Reader</h3>
+					<LogoDiv>
+						<img
+							src="https://i.imgur.com/b0dD4XV.png"
+							alt=""
+							height="25px"
+							width="25px"
+						/>
+						<h3>Anywhere Reader</h3>
+					</LogoDiv>
 					{this.linkGen(navLinks).map(link => link)}
 				</NaviSubDiv>
 			</NaviDiv>

@@ -51,16 +51,10 @@ export const loginUser = token => {
 };
 
 export const logoutUser = token => {
-	const headers = {
-		'Content-Type': 'application/json',
-		Authorization: `Bearer ${token}`
-	};
 	return dispatch => {
 		dispatch({ type: LOGGING_OUT_USER });
 		axios
-			.post(`${apiBaseUrl}/auth/revoke_token/`, {
-				headers: headers
-			})
+			.post(`${apiBaseUrl}/auth/revoke_token/`, { token })
 			.then(response =>
 				dispatch({
 					type: LOGGED_OUT_USER,

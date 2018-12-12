@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { colors } from '../../styling';
 
 const SetDiv = styled.div`
-	background: ${colors.background};
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -44,7 +42,13 @@ const SetLabel = styled.label`
 	font-size: 1.6rem;
 `;
 
-const SubBnt = styled.input``;
+const SubBnt = styled.button`
+	width: 100px;
+	height: 2.2rem;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	border-radius: 2px;
+`;
 
 class Settings extends Component {
 	constructor(props) {
@@ -129,7 +133,7 @@ class Settings extends Component {
 						value={this.state.lastName}
 						onChange={this.handleInput}
 					/>
-					<input type="submit" value="Save" />
+					<SubBnt>Save</SubBnt>
 				</SetForm>
 			</SetDiv>
 		);

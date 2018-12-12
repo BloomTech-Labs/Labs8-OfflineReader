@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
-import tableBg from '../../assets/background-pine-texture-82256.jpg';
 import { colors } from '../../styling';
 
 const ScraperDiv = styled.div`
@@ -13,7 +12,7 @@ const ScraperDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin: auto;
-	background: ${colors.white} url(${tableBg}) no-repeat top right fixed;
+	background: ${colors.background};
 `;
 
 class TestScraper extends Component {

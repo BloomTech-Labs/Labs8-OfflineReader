@@ -8,7 +8,7 @@ const ArticleDiv = styled.div`
 	padding: 2rem;
 	margin: 8rem 0 4rem 0;
 	border-radius: 7px;
-	background-color: ${colors.paper};
+	background-color: ${colors.white};
 	box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.66);
 	max-width: 700px;
 	width: 95%;
@@ -80,12 +80,7 @@ class ArticleModal extends Component {
 		return newUrl;
 	};
 
-	getDate = date => {
-		console.log(moment(this.props.page.date_saved).format('MMM Do YY'));
-	};
-
 	render() {
-		this.getDate();
 		return (
 			<ArticleDiv>
 				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
@@ -101,7 +96,11 @@ class ArticleModal extends Component {
 						<h4>{`${this.props.page.author}`}</h4>
 					)}
 					<h4>
-						<a href={this.props.page.normal_url} target="_blank">
+						<a
+							href={this.props.page.normal_url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
 							{this.getBaseURL(this.props.page.normal_url)}
 						</a>
 					</h4>

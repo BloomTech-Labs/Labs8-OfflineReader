@@ -103,7 +103,9 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="goPremiumLabel" destination="lgj-aw-XvL" id="x1o-Ga-seF"/>
                         <outlet property="logOutButton" destination="u6o-TQ-MoL" id="MtK-qP-DFP"/>
+                        <outlet property="premiumDescriptionLabel" destination="wjY-mN-TKg" id="1Sa-Dn-KE7"/>
                         <outlet property="subscriptionChoiceView" destination="MP0-VN-mDt" id="avM-r3-Xq3"/>
                     </connections>
                 </viewController>

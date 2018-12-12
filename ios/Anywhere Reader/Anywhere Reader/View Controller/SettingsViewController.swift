@@ -39,6 +39,8 @@ class SettingsViewController: UIViewController {
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var subscriptionChoiceView: UIView!
+    @IBOutlet weak var goPremiumLabel: UILabel!
+    @IBOutlet weak var premiumDescriptionLabel: UILabel!
     
     
     // MARK: - Actions
@@ -73,10 +75,17 @@ class SettingsViewController: UIViewController {
     // MARK: - Private Functions
     
     private func updateTheme() {
+        // Backgrounds
         let backgroundColor = themeHelper.getBackgroundColor()
         view.backgroundColor = backgroundColor
         subscriptionChoiceView.backgroundColor = backgroundColor
         navigationController?.navigationBar.barTintColor = backgroundColor
-        navigationController?.navigationBar.tintColor = themeHelper.getTextColor()
+
+        
+        // Text
+        let textColor = themeHelper.getTextColor()
+        navigationController?.navigationBar.tintColor = textColor
+        goPremiumLabel.textColor = textColor
+        premiumDescriptionLabel.textColor = textColor
     }
 }

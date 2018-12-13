@@ -43,12 +43,38 @@ export const fetchPages = serverToken => {
 					type: PAGES_FETCHED,
 					payload: response.data
 				});
+
+				//Determine user is offline, fetch stored offline pages
+				let offlinePageArray = [];
+
+				localforage
+					.iterate(function(value, key, iterationNumber) {
+						console.log('offlinepage value is:' + value);
+
+						offlinePageArray.push(value);
+						console.log('offlinePageArray is:' + offlinePageArray);
+						// Resulting key/value pair -- this callback
+						// will be executed for every item in the
+						// database.
+					})
+					.then(offlinePageArray => {
+						dispatch({
+							type: OFFLINE_PAGES_FETCHED,
+							payload: offlinePageArray
+						});
+						console.log('Iteration has completed');
+					})
+					.catch(function(err) {
+						// This code runs if there were any errors
+						dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
+						console.log(err);
+					});
 			})
 			.catch(err => {
-				// dispatch({ type: FETCHING_OFFLINE_PAGES });
+				dispatch({ type: FETCHING_OFFLINE_PAGES });
 
 				// //Determine user is offline, fetch stored offline pages
-				// const fetchOfflinePages = function() {
+
 				// 	localforage
 				// 		.iterate(function(value, key, iterationNumber) {
 				// 			let offlinePageArray = [];
@@ -70,9 +96,6 @@ export const fetchPages = serverToken => {
 				// 			dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
 				// 			console.log(err);
 				// 		});
-				// };
-				// fetchOfflinePages();
-				///
 
 				console.error(err);
 				dispatch({ type: PAGES_FETCH_ERROR });
@@ -172,32 +195,50 @@ export const sendUrl = (newURL, serverToken) => {
 						// 	/////////
 						// };
 						console.log('defined saveOfflinePage fxn');
-						//if the url being saved is youtube or vimeo
-						// if (
-						// 	newURL.indexOf('youtube.com') > 0 ||
-						// 	newURL.indexOf('vimeo.com') > 0
-						// ) {
-						// 	console.log('saving offline media');
-						// 	saveOfflineMedia();
-						// }
-						// //// offline storage logic for non video websites
-						// else {
-						console.log('saving offline page');
+						console.log('new url is:' + newURL.url);
+						//if the url being saved is youtube or vimeo//
+						// offline storage logic for non video websites
+						if (newURL.url.includes('youtube')) {
+							console.log('saving offline media');
+							let offlineMedia = response.data.reverse()[0];
+							axios
+								.get(
+									`https://www.saveoffline.com/process/?url=${
+										newURL.url
+									}&type=json`
+								)
+								.then(response => {
+									//create an offlinePage object of the video/audio
+									let offlineMediaStream = response.data.urls[0].id;
+									console.log('offlineMediaStream is:' + offlineMediaStream);
+									localforage
+										.setItem(offlineMedia.id.toString(), offlineMediaStream)
+										.then(function(value) {
+											dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+											// Do other things once the value has been saved.
+											console.log('offlinePage just created:', value);
+										})
+										.catch(function(err) {
+											console.log(err);
+										});
+								});
+						} else {
+							console.log('saving offline page');
 
-						console.log('response.data[0] is:', response.data.reverse()[0]);
-						let offlinePage = response.data.reverse()[0];
-						localforage
-							.setItem(offlinePage.id, offlinePage)
-							.then(function(value) {
-								dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
-								// Do other things once the value has been saved.
-								console.log('offlinePage just created:', value);
-							})
-							.catch(function(err) {
-								console.log(err);
-							});
-						/////////
-						// }
+							console.log('response.data[0] is:', response.data.reverse()[0]);
+							let offlinePage = response.data.reverse()[0];
+							localforage
+								.setItem(offlinePage.id, offlinePage)
+								.then(function(value) {
+									dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+									// Do other things once the value has been saved.
+									console.log('offlinePage just created:', value);
+								})
+								.catch(function(err) {
+									console.log(err);
+								});
+							///////
+						}
 					});
 			})
 			.catch(err => {

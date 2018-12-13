@@ -43,10 +43,11 @@ export const fetchPages = serverToken => {
 					type: PAGES_FETCHED,
 					payload: response.data
 				});
-
-				//Determine user is offline, fetch stored offline pages
+			})
+			.catch(err => {
+				// //Determine user is offline, fetch stored offline pages
+				dispatch({ type: FETCHING_OFFLINE_PAGES });
 				let offlinePageArray = [];
-
 				localforage
 					.iterate(function(value, key, iterationNumber) {
 						console.log('offlinepage value is:' + value);
@@ -69,12 +70,6 @@ export const fetchPages = serverToken => {
 						dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
 						console.log(err);
 					});
-			})
-			.catch(err => {
-				dispatch({ type: FETCHING_OFFLINE_PAGES });
-
-				// //Determine user is offline, fetch stored offline pages
-
 				// 	localforage
 				// 		.iterate(function(value, key, iterationNumber) {
 				// 			let offlinePageArray = [];

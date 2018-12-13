@@ -60,10 +60,19 @@ class CheckoutForm extends Component {
 		this.state = {
 			resp_message: '',
 			card_errors: '',
-			username: 'joebob',
-			complete: false
+			firstName: '',
+			lastName: '',
+			amount: ''
 		};
 	}
+
+	componentDidMount = () => {
+		this.setState({
+			...this.state,
+			firstName: this.props.user.firstName,
+			lastName: this.props.user.lastName
+		});
+	};
 
 	handleCardErrors = card_dets => {
 		// console.log("Card Section dets", card_dets);
@@ -74,7 +83,6 @@ class CheckoutForm extends Component {
 		}
 	};
 
-	// TODO refactor this mess
 	backendUrl = () => {
 		if (process.env.NODE_ENV === 'production') {
 			return `https://anywhere-reader-test.herokuapp.com/api/payments/create-charge/`;
@@ -91,7 +99,11 @@ class CheckoutForm extends Component {
         Element to tokenize, since there's only one in this group.
         */
 		return this.props.stripe
-			.createToken({ type: 'card', name: 'Borislav Hadzhiev' })
+			.createToken({
+				type: 'card',
+				firstName: this.state.firstName,
+				lastName: this.state.lastName
+			})
 			.then(result => {
 				if (result.error) {
 					// console.log('THERE IS AN ERROR IN YOUR FORM', result.error);

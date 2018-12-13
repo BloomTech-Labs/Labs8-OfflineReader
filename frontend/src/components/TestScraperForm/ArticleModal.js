@@ -71,6 +71,9 @@ const BodyDiv = styled.div`
 	h6 {
 		padding: 0 0 1rem 0;
 	}
+	iframe {
+		margin: 0 7%;
+	}
 `;
 
 const ArticleInfo = styled.div`

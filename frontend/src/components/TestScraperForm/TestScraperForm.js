@@ -22,6 +22,14 @@ const Input = styled.input`
 	}
 `;
 
+const SubBnt = styled.button`
+	width: 100px;
+	height: 2.2rem;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	border-radius: 2px;
+`;
+
 class TestScraperForm extends Component {
 	state = {
 		inputData: {
@@ -69,7 +77,7 @@ class TestScraperForm extends Component {
 						value={this.state.inputData.url}
 						onChange={this.handleInput}
 					/>
-					<button onClick={this.handleURL}>Save</button>
+					<SubBnt onClick={this.handleURL}>Save</SubBnt>
 				</form>
 			</Container>
 		);

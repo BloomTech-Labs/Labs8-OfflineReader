@@ -7,15 +7,10 @@ import { Page } from './';
 const PageListDiv = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	// justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
 	margin-top: 2rem;
-`;
-
-const PageListTitle = styled.div`
-	width: 100%;
-	text-align: center;
 `;
 
 class PageList extends Component {
@@ -23,10 +18,6 @@ class PageList extends Component {
 		console.log('props are:', this.props);
 		return (
 			<PageListDiv>
-				<PageListTitle>
-					<h1>Your Pages:</h1>
-					<br />
-				</PageListTitle>
 				{this.props.pages.map(page => {
 					return (
 						<Page page={page} modalPage={this.props.modalPage} key={page.id} />

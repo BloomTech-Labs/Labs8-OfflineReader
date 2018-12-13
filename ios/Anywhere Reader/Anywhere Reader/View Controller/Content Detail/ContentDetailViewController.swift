@@ -38,6 +38,21 @@ class ContentDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        
+        // Makes sure the color of the navigation bar is animated when popping back to collection view and nightMode is off
+        let count =  self.navigationController?.viewControllers.count
+        let vc = self.navigationController?.viewControllers[(count ?? 2) - 2]
+        if let collectionVC = vc as? ContentViewController {
+            if !themeHelper.isNightMode {
+                collectionVC.navigationController?.navigationBar.barTintColor = .white
+                collectionVC.navigationController?.navigationBar.tintColor = nil
+                collectionVC.collectionView.backgroundColor = .white
+            }
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -46,12 +61,14 @@ class ContentDetailViewController: UIViewController {
 
     // MARK: - Private properties
 
-    let themeHelper = ThemeHelper.shared
-    let gradientLayer = CAGradientLayer()
+    private let themeHelper = ThemeHelper.shared
+    private let gradientLayer = CAGradientLayer()
+    private let isoDateFormatter = ISO8601DateFormatter()
+    private let dateFormatter = DateFormatter()
 
     // MARK: - Public properties
 
-    public var article: ArticleRep? {
+    public var article: Article? {
         didSet {
             updateViews()
         }
@@ -96,10 +113,10 @@ class ContentDetailViewController: UIViewController {
         contentBodyLabel.text = article.text
         authorLabel.text = article.author
 
-        let url = URL(string: article.coverImage)
+        let url = URL(string: article.coverImage ?? "")
         imageView.kf.setImage(with: url)
         
-//        setupTagLabels()
+        dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }
 
     @objc private func updateTheme() {
@@ -167,4 +184,3 @@ class ContentDetailViewController: UIViewController {
         }
     }
 }
-

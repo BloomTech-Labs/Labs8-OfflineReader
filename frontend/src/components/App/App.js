@@ -4,18 +4,20 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import {
 	AuthHOC,
+	NaviContainer,
 	SettingsContainer,
 	SignInContainer,
+	SignOutContainer,
 	TestScraperFormContainer
 } from '../../containers';
 import {
 	LandingPage,
-	Navi,
 	// SignedUp,
-	// SignUpPage,
+	// SignUp,
 	StripeProviderStub // TODO: Create StripeProviderStubContainer for StripeProviderStub component
 } from '../';
 import { GlobalResets, SiteResets } from '../../styling';
+import { colors } from '../../styling';
 
 // Only *one* createGlobalStyle per project.
 // Having multiple can cause potential inheritance issues,
@@ -32,24 +34,37 @@ const AppDiv = styled.div`
 	height: 100%;
 `;
 
+const Background = styled.div`
+	background: ${colors.background};
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	z-index: -1;
+	top: 0;
+`;
+
 class App extends Component {
 	render() {
 		return (
 			<Router>
-				<AppDiv>
-					<CssResets />
-					<Navi />
-					<Route exact path="/" component={LandingPage} />
-					<Route
-						path="/articles"
-						component={AuthHOC(TestScraperFormContainer)}
-					/>
-					<Route path="/payment" component={AuthHOC(StripeProviderStub)} />
-					<Route path="/settings" component={AuthHOC(SettingsContainer)} />
-					<Route path="/signin" component={SignInContainer} />
-					{/* <Route path="/signup" component={SignUpPage} /> */}
-					{/* <Route path="/signedup" component={SignedUp} /> */}
-				</AppDiv>
+				<React.Fragment>
+					<AppDiv>
+						<CssResets />
+						<NaviContainer />
+						<Route exact path="/" component={LandingPage} />
+						<Route
+							path="/articles"
+							component={AuthHOC(TestScraperFormContainer)}
+						/>
+						<Route path="/payment" component={AuthHOC(StripeProviderStub)} />
+						<Route path="/settings" component={AuthHOC(SettingsContainer)} />
+						<Route path="/signin" component={SignInContainer} />
+						<Route path="/signout" component={SignOutContainer} />
+						{/* <Route path="/signup" component={SignUp} /> */}
+						{/* <Route path="/signedup" component={SignedUp} /> */}
+					</AppDiv>
+					<Background />
+				</React.Fragment>
 			</Router>
 		);
 	}

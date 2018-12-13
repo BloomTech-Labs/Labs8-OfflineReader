@@ -17,6 +17,7 @@ const ArticleDiv = styled.div`
 	box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.66);
 	max-width: 700px;
 	width: 95%;
+	z-index: 10;
 	img {
 		border-radius: 7px;
 		width: 100%;
@@ -76,6 +77,13 @@ const BodyDiv = styled.div`
 	}
 `;
 
+const CloseModal = styled.div`
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	top: 0;
+`;
+
 const ArticleInfo = styled.div`
 	display: flex;
 	justify-content: space-between;
@@ -93,35 +101,38 @@ class ArticleModal extends Component {
 
 	render() {
 		return (
-			<ArticleDiv>
-				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
-				{/* <img
+			<React.Fragment>
+				<ArticleDiv>
+					<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
+					{/* <img
 					src={this.props.page.cover_image}
 					alt={`${this.props.page.title} cover`}
 				/> */}
-				<TitleHead>{this.props.page.title}</TitleHead>
-				<ArticleInfo>
-					{/* {this.props.page.author === '' ? (
+					<TitleHead>{this.props.page.title}</TitleHead>
+					<ArticleInfo>
+						{/* {this.props.page.author === '' ? (
 						''
 					) : (
 						<h4>{`${this.props.page.author}`}</h4>
 					)} */}
-					<h4>
-						<a
-							href={this.props.page.normal_url}
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							{this.getBaseURL(this.props.page.normal_url)}
-						</a>
-					</h4>
-					<h4>{`Saved on ${moment(this.props.page.date_saved).format(
-						'MMM Do YY'
-					)}`}</h4>
-				</ArticleInfo>
-				<br />
-				<BodyDiv>{ReactHtmlParser(this.props.page.html)}</BodyDiv>
-			</ArticleDiv>
+						<h4>
+							<a
+								href={this.props.page.normal_url}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								{this.getBaseURL(this.props.page.normal_url)}
+							</a>
+						</h4>
+						<h4>{`Saved on ${moment(this.props.page.date_saved).format(
+							'MMM Do YY'
+						)}`}</h4>
+					</ArticleInfo>
+					<br />
+					<BodyDiv>{ReactHtmlParser(this.props.page.html)}</BodyDiv>
+				</ArticleDiv>
+				<CloseModal onClick={this.props.closeModal} />
+			</React.Fragment>
 		);
 	}
 }

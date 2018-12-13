@@ -21,21 +21,21 @@ class NaviContainer extends Component {
 		return (
 			<Navi
 				{...this.props}
-				signedIn={
-					this.props.userSuccess ? (
-						<NavLink to="/signout" className="baseNav">
-							Sign Out
-						</NavLink>
-					) : (
-						<NavLink
-							to="/signin"
-							activeClassName="activeLink"
-							className="baseNav"
-						>
-							Sign In
-						</NavLink>
-					)
-				}
+				// signedIn={
+				// 	this.props.userSuccess ? (
+				// 		<NavLink to="/signout" className="baseNav">
+				// 			Sign Out
+				// 		</NavLink>
+				// 	) : (
+				// 		<NavLink
+				// 			to="/signin"
+				// 			activeClassName="activeLink"
+				// 			className="baseNav"
+				// 		>
+				// 			Sign In
+				// 		</NavLink>
+				// 	)
+				// }
 			/>
 		);
 	}

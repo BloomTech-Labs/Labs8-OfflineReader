@@ -46,7 +46,8 @@ const mapStateToProps = state => {
 		// urlSent: state.testScraperFormReducers.urlSent,
 		pages: state.testScraperFormReducers.pages,
 		// error: state.testScraperFormReducers.error,
-		serverToken: state.userReducers.auth.serverToken
+		serverToken: state.userReducers.auth.serverToken,
+		filteredPages: state.testScraperFormReducers.filteredPages
 	};
 };
 

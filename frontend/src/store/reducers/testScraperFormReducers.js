@@ -8,11 +8,13 @@ import {
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR,
-	CLEAR_PAGES
+	CLEAR_PAGES,
+	SEARCH_PAGES
 } from '../actions';
 
 const initialState = {
 	pages: [],
+	filteredPages: [],
 	fetchingPages: false,
 	pagesFetched: false,
 	scraperResponse: [],
@@ -67,6 +69,14 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				scraperResponse: [],
 				sendingURL: false,
 				error: ''
+			};
+
+		case SEARCH_PAGES:
+			return {
+				...state,
+				filteredPages: state.pages.filter(page =>
+					page.title.toLowerCase().includes(action.payload.toLowerCase())
+				)
 			};
 
 		default:

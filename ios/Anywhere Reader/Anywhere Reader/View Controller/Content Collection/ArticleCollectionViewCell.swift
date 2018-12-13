@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class DocumentCollectionViewCell: UICollectionViewCell {
+class ArticleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     var article: Article? {

@@ -16,7 +16,6 @@ class AuthenticationViewController: UIViewController {
 
         let loginButton = LoginButton(readPermissions: [.publicProfile])
         stackView.addArrangedSubview(loginButton)
-        loginButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     

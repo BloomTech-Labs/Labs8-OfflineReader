@@ -15,12 +15,38 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         logOutButton.layer.cornerRadius = 4.0
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTheme), name: UserDefaults.didChangeNotification, object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateTheme()
+    }
+    
+    // MARK: - Properties
+    
+    private let themeHelper = ThemeHelper.shared
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {
+            return .lightContent
+        } else {
+            return .default
+        }
+    }
+    
+    
+    // MARK: - Properties
+    
+    private let apiService = APIService.shared
     
     
     // MARK: - Outlets
     
     @IBOutlet weak var logOutButton: UIButton!
+    @IBOutlet weak var subscriptionChoiceView: UIView!
+    @IBOutlet weak var goPremiumLabel: UILabel!
+    @IBOutlet weak var premiumDescriptionLabel: UILabel!
     
     
     // MARK: - Actions
@@ -35,9 +61,45 @@ class SettingsViewController: UIViewController {
         let signOutAction = UIAlertAction(title: "Sign Out", style: .destructive) { _ in
             // Logs user out using FacebookLogin SDK
             LoginManager().logOut()
+            self.apiService.signOut() { (result, error) in
+                if let error = error {
+                    NSLog("Error signing out from server: \(error)")
+                    return
+                }
+                if result == .success {
+                    NSLog("The sign out was successful")
+                }
+            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(signOutAction)
         present(alertController, animated: true)
+    }
+    
+    @IBAction func presentPreferences(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Preferences", bundle: nil)
+        guard let preferencesVC = storyboard.instantiateInitialViewController() else { return }
+        preferencesVC.providesPresentationContextTransitionStyle = true
+        preferencesVC.definesPresentationContext = true
+        preferencesVC.modalPresentationStyle = .overCurrentContext
+        preferencesVC.modalTransitionStyle = .crossDissolve
+        
+        self.present(preferencesVC, animated: true, completion: nil)
+    }
+    
+    // MARK: - Private Functions
+    
+    @objc private func updateTheme() {
+        // Backgrounds
+        let backgroundColor = themeHelper.getBackgroundColor()
+        view.backgroundColor = backgroundColor
+        subscriptionChoiceView.backgroundColor = backgroundColor
+        navigationController?.navigationBar.barTintColor = backgroundColor
+
+        // Text
+        let textColor = themeHelper.getTextColor()
+        navigationController?.navigationBar.tintColor = textColor
+        goPremiumLabel.textColor = textColor
+        premiumDescriptionLabel.textColor = textColor
     }
 }

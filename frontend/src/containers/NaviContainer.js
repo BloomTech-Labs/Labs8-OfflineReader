@@ -3,7 +3,6 @@ import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import {} from '../store/actions';
-import styled from 'styled-components';
 
 import { Navi } from '../components';
 

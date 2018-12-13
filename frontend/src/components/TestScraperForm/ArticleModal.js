@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors } from '../../styling';
 import moment from 'moment';
-import ReactHtmlParser, {
-	processNodes,
-	convertNodeToElement,
-	htmlparser2
-} from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 
 const ArticleDiv = styled.div`
 	padding: 2rem;

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const NaviDiv = styled.div`
@@ -88,14 +86,14 @@ const LinkDiv = styled.div`
 	}
 `;
 
-const navLinks = [
-	{ to: '/', exact: true, text: 'Home' },
-	{ to: '/articles', exact: false, text: 'My Pages' },
-	{ to: '/settings', exact: false, text: 'Settings' },
-	// { to: '/signup', exact: false, text: 'Sign Up' },
-	{ to: '/signin', exact: false, text: 'Sign In' },
-	{ to: '/payment', exact: false, text: 'Payment' }
-];
+// const navLinks = [
+// 	{ to: '/', exact: true, text: 'Home' },
+// 	{ to: '/articles', exact: false, text: 'My Pages' },
+// 	{ to: '/settings', exact: false, text: 'Settings' },
+// 	// { to: '/signup', exact: false, text: 'Sign Up' },
+// 	{ to: '/signin', exact: false, text: 'Sign In' },
+// 	{ to: '/payment', exact: false, text: 'Payment' }
+// ];
 
 class Navi extends Component {
 	// linkGen = linkList => {

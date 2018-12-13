@@ -91,23 +91,23 @@ const navLinks = [
 ];
 
 class Navi extends Component {
-	linkGen = linkList => {
-		let count = -1;
-		return linkList.map(link => {
-			count++;
-			return (
-				<NavLink
-					exact={link.exact}
-					to={link.to}
-					activeClassName="activeLink"
-					key={count}
-					className="baseNav"
-				>
-					{link.text}
-				</NavLink>
-			);
-		});
-	};
+	// linkGen = linkList => {
+	// 	let count = -1;
+	// 	return linkList.map(link => {
+	// 		count++;
+	// 		return (
+	// 			<NavLink
+	// 				exact={link.exact}
+	// 				to={link.to}
+	// 				activeClassName="activeLink"
+	// 				key={count}
+	// 				className="baseNav"
+	// 			>
+	// 				{link.text}
+	// 			</NavLink>
+	// 		);
+	// 	});
+	// };
 
 	render() {
 		return (
@@ -121,14 +121,14 @@ class Navi extends Component {
 						/>
 					</HamburgerButton>
 					<HamburgerMenu>
-						{this.linkGen(navLinks).map(link => link)}
-						{/* {this.props.signedIn} */}
+						{/* {this.linkGen(navLinks).map(link => link)} */}
+						{this.props.signedIn}
 					</HamburgerMenu>
 				</HamburgerDiv>
 				<NaviSubDiv>
 					<h3>Anywhere Reader</h3>
-					{this.linkGen(navLinks).map(link => link)}
-					{/* {this.props.signedIn} */}
+					{/* {this.linkGen(navLinks).map(link => link)} */}
+					{this.props.signedIn}
 				</NaviSubDiv>
 			</NaviDiv>
 		);

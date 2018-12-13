@@ -21,21 +21,58 @@ class NaviContainer extends Component {
 		return (
 			<Navi
 				{...this.props}
-				// signedIn={
-				// 	this.props.userSuccess ? (
-				// 		<NavLink to="/signout" className="baseNav">
-				// 			Sign Out
-				// 		</NavLink>
-				// 	) : (
-				// 		<NavLink
-				// 			to="/signin"
-				// 			activeClassName="activeLink"
-				// 			className="baseNav"
-				// 		>
-				// 			Sign In
-				// 		</NavLink>
-				// 	)
-				// }
+				signedIn={
+					this.props.userSuccess ? (
+						<React.Fragment>
+							<NavLink
+								to="/articles"
+								className="baseNav"
+								activeClassName="activeLink"
+							>
+								My Pages
+							</NavLink>
+							<NavLink
+								to="/settings"
+								className="baseNav"
+								activeClassName="activeLink"
+							>
+								Settings
+							</NavLink>
+							<NavLink
+								to="/payment"
+								className="baseNav"
+								activeClassName="activeLink"
+							>
+								Subscribe
+							</NavLink>
+							<NavLink
+								to="/signout"
+								className="baseNav"
+								activeClassName="activeLink"
+							>
+								Sign Out
+							</NavLink>
+						</React.Fragment>
+					) : (
+						<React.Fragment>
+							<NavLink
+								exact
+								to="/"
+								activeClassName="activeLink"
+								className="baseNav"
+							>
+								Home
+							</NavLink>
+							<NavLink
+								to="/signin"
+								activeClassName="activeLink"
+								className="baseNav"
+							>
+								Sign In
+							</NavLink>
+						</React.Fragment>
+					)
+				}
 			/>
 		);
 	}

@@ -105,8 +105,11 @@ class ContentViewController: UIViewController {
     // MARK: - Private functions
     
     private func setupSearchBar() {
-        // Matches the search bar color to the navigation bar, since the nav bar lightens the r g and b values of the background color by 30
+        // Matches the search bar color to the navigation bar, since the nav bar lightens the r g and b values of the background color
         searchBar.backgroundColor = themeHelper.getSearchBarColor()
+        searchBar.isTranslucent = false
+        // Sets the view's background color so there is no whitespace on either side of the searchBar (outside of the safeArea)
+        view.backgroundColor = themeHelper.getSearchBarColor()
         
         // TextField Color Customization
         let textFieldInsideSearchBar = searchBar.value(forKey: "searchField") as? UITextField

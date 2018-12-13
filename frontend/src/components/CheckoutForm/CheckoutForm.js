@@ -7,6 +7,35 @@ const CardStyle = styled.div`
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	padding-top: 100px;
+	margin: 0 auto;
+	h2 {
+		font-size: 2.8rem;
+		align-self: center;
+		margin-bottom: 20px;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		label {
+			font-size: 1.6rem;
+			margin-bottom: 1rem;
+		}
+		h3 {
+			font-size: 1.6rem;
+			margin-top: 1rem;
+			margin-bottom: 0.5rem;
+		}
+	}
+`;
+
+const SubBnt = styled.button`
+	width: 200px;
+	height: 2.2rem;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	border-radius: 2px;
+	align-self: center;
 `;
 
 const cardElementStyles = {
@@ -100,7 +129,16 @@ class CheckoutForm extends Component {
 		return (
 			<CardStyle>
 				<h2>Premium Subscription</h2>
-				<p>$9.99/year</p>
+				<form>
+					<label>
+						<input type="radio" value="annual" checked={true} />
+						$9.99 for one year
+					</label>
+					<label>
+						<input type="radio" value="annual" />
+						$29.99 for five year
+					</label>
+				</form>
 				{this.state.resp_message && <h2>{this.state.resp_message}</h2>}
 				<form onSubmit={this.handleSubmit}>
 					<label>
@@ -114,7 +152,7 @@ class CheckoutForm extends Component {
 							<h3>{this.state.card_errors}</h3>
 						</div>
 					</label>
-					<button className="form-btn">Confirm order</button>
+					<SubBnt className="form-btn">Confirm order</SubBnt>
 				</form>
 			</CardStyle>
 		);

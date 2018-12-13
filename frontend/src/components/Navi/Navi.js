@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import HamburgerLogo from '../../assets/hamburger.svg';
 
 const NaviDiv = styled.div`
 	width: 100%;
@@ -129,11 +130,7 @@ class Navi extends Component {
 			<NaviDiv>
 				<HamburgerDiv>
 					<HamburgerButton onClick={this.toggleHamberger}>
-						<img
-							src="https://i.imgur.com/L0Olnc0.png"
-							alt="Menu button"
-							width="100%"
-						/>
+						<img src={HamburgerLogo} alt="Menu button" width="100%" />
 					</HamburgerButton>
 					{this.state.hamberger && (
 						<HamburgerMenu>

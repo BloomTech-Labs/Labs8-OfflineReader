@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-	margin-top: 0.3rem;
+	// margin-top: 0.3rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 	z-index: 100;
@@ -24,9 +24,10 @@ const Input = styled.input`
 `;
 
 const SubBnt = styled.button`
-	width: 100px;
+	width: 50px;
 	height: 2.2rem;
 	margin-top: 2rem;
+	margin-left: 15px;
 	font-size: 1.4rem;
 	border-radius: 2px;
 `;
@@ -53,7 +54,7 @@ class TestScraperForm extends Component {
 		//Event handler for when you click a button that you want to trigger info added
 		event.preventDefault();
 		this.props.sendUrl(this.state.inputData, this.props.serverToken);
-		console.log('inputData:', this.state.inputData);
+		// console.log('inputData:', this.state.inputData);
 		this.resetForm();
 	};
 

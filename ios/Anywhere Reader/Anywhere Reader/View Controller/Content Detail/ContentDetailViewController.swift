@@ -90,18 +90,26 @@ class ContentDetailViewController: UIViewController {
     // MARK: - Private
 
     private func updateViews() {
-        guard let article = article else { return }
+        guard let article = article,
+            let coverImage = article.coverImage else { return }
 
         titleLabel.text = article.title
         contentBodyLabel.text = article.text
         authorLabel.text = article.author
-
-        ImageCache.default.retrieveImage(forKey: article.coverImage ?? "", options: nil) { (image, cacheType) in
-            if let image = image {
-                self.imageView.image = image
+        
+        let cache = ImageCache.default
+        
+        cache.retrieveImageInDiskCache(forKey: coverImage + "original") { (result) in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            case .failure(let error):
+                print(error)
             }
         }
-        
+
         dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }
 

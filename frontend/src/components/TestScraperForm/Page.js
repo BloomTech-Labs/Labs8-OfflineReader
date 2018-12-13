@@ -5,10 +5,13 @@ import { colors } from '../../styling';
 
 // TODO: Padding
 const PageCardDiv = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	border-radius: 5px;
 	padding: 1rem;
-	margin: 1rem 4%;
-	width: 25%;
+	margin: 2rem 2%;
+	width: 21%;
 	box-shadow: 0px 0px 10px -3px rgba(0, 0, 0, 0.75);
 	background: ${colors.white};
 	img {
@@ -41,6 +44,10 @@ const PageCardDiv = styled.div`
 	}
 `;
 
+const Preview = styled.div``;
+
+const Info = styled.div``;
+
 class Page extends Component {
 	clickPreview = () => {
 		this.props.modalPage(this.props.page);
@@ -55,22 +62,26 @@ class Page extends Component {
 
 	render() {
 		return (
-			<PageCardDiv onClick={this.clickPreview}>
-				<img
-					src={this.props.page.cover_image}
-					width="100%"
-					alt={this.props.page.title}
-				/>
-				<h2>{this.props.page.title}</h2>
-				<h4>
-					<a
-						href={this.props.page.normal_url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						{this.getBaseURL(this.props.page.normal_url)}
-					</a>
-				</h4>
+			<PageCardDiv>
+				<Preview onClick={this.clickPreview}>
+					<img
+						src={this.props.page.cover_image}
+						width="100%"
+						alt={this.props.page.title}
+					/>
+					<h2>{this.props.page.title}</h2>
+				</Preview>
+				<Info>
+					<h4>
+						<a
+							href={this.props.page.normal_url}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{this.getBaseURL(this.props.page.normal_url)}
+						</a>
+					</h4>
+				</Info>
 			</PageCardDiv>
 		);
 	}

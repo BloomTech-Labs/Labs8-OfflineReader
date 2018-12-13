@@ -85,7 +85,7 @@ const HamburgerMenu = styled.div`
 
 const LinkDiv = styled.div`
 	a {
-		margin-left: 25px;
+		margin-left: 70px;
 	}
 `;
 

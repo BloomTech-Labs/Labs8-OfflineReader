@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
+
+import { searchPages } from '../../store/actions';
 
 const Container = styled.div`
 	// margin-top: 0.3rem;
@@ -23,21 +26,16 @@ const Input = styled.input`
 	}
 `;
 
-const SubBnt = styled.button`
-	width: 50px;
-	height: 2.2rem;
-	margin-top: 2rem;
-	margin-left: 15px;
-	font-size: 1.4rem;
-	border-radius: 2px;
-`;
-
-class TestScraperForm extends Component {
+class Search extends Component {
 	state = {
 		inputData: {
-			url: ''
+			search: ''
 		}
 	};
+
+	componentDidUpdate() {
+		this.props.searchPages(this.state.inputData.search);
+	}
 
 	handleInput = event => {
 		//Event handler for when you start typing in a form
@@ -50,20 +48,12 @@ class TestScraperForm extends Component {
 		});
 	};
 
-	handleURL = event => {
-		//Event handler for when you click a button that you want to trigger info added
-		event.preventDefault();
-		this.props.sendUrl(this.state.inputData, this.props.serverToken);
-		// console.log('inputData:', this.state.inputData);
-		this.resetForm();
-	};
-
 	resetForm() {
 		this.setState({
 			...this.state,
 			inputData: {
 				...this.state.inputData,
-				url: ''
+				search: ''
 			}
 		});
 	}
@@ -74,21 +64,24 @@ class TestScraperForm extends Component {
 				<form>
 					<Input
 						type="text"
-						name="url"
-						placeholder="http://..."
-						value={this.state.inputData.url}
+						name="search"
+						placeholder="Search"
+						value={this.state.inputData.search}
 						onChange={this.handleInput}
 					/>
-					<SubBnt onClick={this.handleURL}>Save</SubBnt>
 				</form>
 			</Container>
 		);
 	}
 }
 
-TestScraperForm.propTypes = {
-	serverToken: PropTypes.object.isRequired,
-	sendUrl: PropTypes.func.isRequired
+const mapStateToProps = state => {
+	return {};
 };
 
-export default TestScraperForm;
+export default connect(
+	mapStateToProps,
+	{
+		searchPages
+	}
+)(Search);

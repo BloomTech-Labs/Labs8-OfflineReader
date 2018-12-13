@@ -22,7 +22,7 @@ class FBAuth extends Component {
 
 	handleResponse = data => {
 		this.setState({ error: '' });
-		console.log('FB response:', data);
+		// console.log('FB response:', data);
 		this.props.loginUser(data.tokenDetail.accessToken);
 	};
 

@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-                
+//        NotificationCenter.default.addObserver(self, selector: #selector(scrapeSharedArticle), name: UserDefaults.didChangeNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(handleAuth), name: NSNotification.Name.FBSDKAccessTokenDidChange, object: nil)
         return true
     }
@@ -27,6 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Calls the 'activate' method to log an app event for use in analytics and advertising reporting.
         AppEventsLogger.activate(application)
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        let sharedUserDefaults = UserDefaults(suiteName: "group.com.lambdaschool.AnywhereReader")
+        if let url = sharedUserDefaults?.string(forKey: "sharedURL") {
+            ArticleController.shared.scrape(with: url) { (error) in
+                if let error = error {
+                    NSLog("Error with scraping from safari extension: \(error)")
+                    return
+                }
+                sharedUserDefaults?.dictionaryRepresentation().keys.forEach { sharedUserDefaults?.removeObject(forKey: $0) }
+            }
+        }
     }
     
     

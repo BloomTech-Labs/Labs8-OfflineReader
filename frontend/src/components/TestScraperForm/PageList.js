@@ -10,7 +10,7 @@ const PageListDiv = styled.div`
 	// justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	margin-top: 2rem;
+	margin-top: 4rem;
 `;
 
 class PageList extends Component {

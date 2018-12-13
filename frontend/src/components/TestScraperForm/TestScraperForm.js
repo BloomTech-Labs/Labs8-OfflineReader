@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-	margin-top: 6rem;
+	margin-top: 0.3rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
+	z-index: 100;
 `;
 
 const Input = styled.input`

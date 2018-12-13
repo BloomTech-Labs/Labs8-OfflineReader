@@ -22,7 +22,7 @@ const NaviDiv = styled.div`
 `;
 
 const NaviSubDiv = styled.div`
-	width: 80%;
+	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	letter-spacing: 0.5px;
@@ -84,7 +84,7 @@ const HamburgerMenu = styled.div`
 
 const LinkDiv = styled.div`
 	a {
-		margin-left: 50px;
+		margin-left: 25px;
 	}
 `;
 

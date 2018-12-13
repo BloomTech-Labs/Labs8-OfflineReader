@@ -12,6 +12,6 @@ export { LandingPage } from './LandingPage';
 export { Navi } from './Navi';
 export { Settings } from './Settings';
 export { SignIn } from './SignIn';
-// export { SignOut } from './SignOut';
-export { SignedUp, SignUp } from './SignUp'; // TODO: De-integrate SignedUp
+export { SignOut } from './SignOut';
+// export { SignedUp, SignUp } from './SignUp'; // TODO: De-integrate SignedUp
 export { TestScraper } from './TestScraperForm';

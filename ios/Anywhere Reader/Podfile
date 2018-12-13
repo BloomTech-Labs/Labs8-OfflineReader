@@ -6,7 +6,7 @@ target 'Anywhere Reader' do
   use_frameworks!
 
   # Pods for Anywhere Reader
-  pod 'Kingfisher', '~> 4.0'
+  pod 'Kingfisher', '~> 5.0'
   pod 'FacebookCore'
   pod 'FacebookLogin'
 end

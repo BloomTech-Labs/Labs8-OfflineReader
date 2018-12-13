@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { LandingPageDiv } from '../../styling';
+import { colors } from '../../styling';
 
 const SignoutDiv = styled.div`
 	margin-top: 12rem;
@@ -13,7 +14,7 @@ const SignoutHeader = styled.h4`
 	margin: 3rem 2rem 3rem 2rem;
 	font-size: 2.4rem;
 	text-align: center;
-	color: #282e40;
+	color: ${colors.font};
 	border-radius: 5px;
 `;
 

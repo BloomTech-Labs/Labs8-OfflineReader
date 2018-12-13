@@ -3,14 +3,15 @@ import styled from 'styled-components';
 
 import { FBAuthContainer } from '../../containers';
 import { LandingPageDiv } from '../../styling';
+import { colors } from '../../styling';
 
 const LoginDiv = styled.div`
-	margin: 8rem 3rem 3rem 3rem;
+	margin: 12rem 3rem 3rem 3rem;
 	text-align: center;
 	width: 200px;
-	background-color: white;
-	border-radius: 10px;
-	box-shadow: 5px 4px 25px 0px rgba(0, 0, 0, 0.75);
+	background-color: ${colors.white};
+	border-radius: 5px;
+	/* box-shadow: 5px 4px 25px 0px rgba(0, 0, 0, 0.75); */
 	font-family: 'Roboto', sans-serif;
 	img {
 		border-radius: 10px 10px 0 0;

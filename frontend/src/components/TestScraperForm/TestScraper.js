@@ -12,7 +12,6 @@ const ScraperDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin: auto;
-	background: ${colors.background};
 `;
 
 class TestScraper extends Component {

@@ -15,3 +15,4 @@ export { SignIn } from './SignIn';
 export { SignOut } from './SignOut';
 // export { SignedUp, SignUp } from './SignUp'; // TODO: De-integrate SignedUp
 export { TestScraper } from './TestScraperForm';
+export { Search } from './Search';

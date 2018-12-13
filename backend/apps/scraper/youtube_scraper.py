@@ -19,7 +19,7 @@ def scrape_youtube(url, auth, user_id):
     iframe = create_iframe_tag(embed_link)
 
     r = requests.post(API_BASE_URL + 'api/pages/',
-                      json={'title': title, 'normal_url': url, 'video': embed_link, 'html': iframe, 'user_id': user_id}, headers=headers)
+                      json={'title': title, 'cover_image': a.top_image, 'normal_url': url, 'video': embed_link, 'html': iframe, 'user_id': user_id}, headers=headers)
     new_art = r.json()
     return JsonResponse(new_art, status=201)
 

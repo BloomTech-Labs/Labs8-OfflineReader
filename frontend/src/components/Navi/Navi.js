@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 
 const NaviDiv = styled.div`
@@ -81,6 +82,12 @@ const HamburgerMenu = styled.div`
 	}
 `;
 
+const LinkDiv = styled.div`
+	a {
+		margin-left: 50px;
+	}
+`;
+
 const navLinks = [
 	{ to: '/', exact: true, text: 'Home' },
 	{ to: '/articles', exact: false, text: 'My Pages' },
@@ -128,7 +135,7 @@ class Navi extends Component {
 				<NaviSubDiv>
 					<h3>Anywhere Reader</h3>
 					{/* {this.linkGen(navLinks).map(link => link)} */}
-					{this.props.signedIn}
+					<LinkDiv>{this.props.signedIn}</LinkDiv>
 				</NaviSubDiv>
 			</NaviDiv>
 		);

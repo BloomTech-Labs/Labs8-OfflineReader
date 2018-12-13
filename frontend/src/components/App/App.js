@@ -58,7 +58,7 @@ class App extends Component {
 				<React.Fragment>
 					<AppDiv>
 						<CssResets />
-						<NaviContainer {...this.props} />
+						<NaviContainer />
 						<Route exact path="/" component={LandingPage} />
 						<Route
 							path="/articles"

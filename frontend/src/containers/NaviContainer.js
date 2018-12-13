@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import {} from '../store/actions';
@@ -88,7 +88,9 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	{}
-)(NaviContainer);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{}
+	)(NaviContainer)
+);

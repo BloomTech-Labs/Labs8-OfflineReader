@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
-import { colors } from '../../styling';
 
 const ScraperDiv = styled.div`
 	width: 100%;

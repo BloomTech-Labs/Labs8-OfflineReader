@@ -27,10 +27,24 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Functions
     func updateViews() {
-        guard let article = article else { return }
+        guard let article = article,
+            let coverImage = article.coverImage else { return }
+        
+        let cache = ImageCache.default
+        
         let processor = OverlayImageProcessor(overlay: .black, fraction: 0.5) >> BlurImageProcessor(blurRadius: 6.0)
-        let url = URL(string: article.coverImage ?? "")
-        imageView.kf.setImage(with: url, options: [.processor(processor)])
+        let url = URL(string: coverImage)!
+
+        KingfisherManager.shared.retrieveImage(with: url) { result in
+            switch result {
+            case .success(let image):
+                cache.store(image.image, forKey: coverImage + "original")
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        imageView.kf.setImage(with: url, options: [.processor(processor), .diskCacheExpiration(.never)])
         
         titleLabel.text = article.title
         sourceLabel.text = article.author

@@ -14,13 +14,13 @@ const CardStyle = styled.div`
 	h2 {
 		font-size: 2.8rem;
 		align-self: center;
-		margin-bottom: 20px;
+		margin-bottom: 40px;
 	}
 
 	h3 {
 		font-size: 1.6rem;
 		margin-top: 1rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 1rem;
 	}
 `;
 
@@ -31,7 +31,11 @@ const StripeForm = styled.form`
 
 const StripeLabel = styled.label`
 	font-size: 1.6rem;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
+`;
+
+const RadioBtn = styled.input`
+	margin-right: 2rem;
 `;
 
 const SubBnt = styled.button`
@@ -149,7 +153,8 @@ class CheckoutForm extends Component {
 				<h2>Premium Subscription</h2>
 				<StripeForm>
 					<StripeLabel>
-						<input
+						{/* <input */}
+						<RadioBtn
 							type="radio"
 							value="999"
 							name="option"
@@ -159,7 +164,8 @@ class CheckoutForm extends Component {
 						$9.99 for one year
 					</StripeLabel>
 					<StripeLabel>
-						<input
+						{/* <input */}
+						<RadioBtn
 							type="radio"
 							value="2999"
 							name="option"

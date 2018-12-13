@@ -126,7 +126,7 @@ class ContentViewController: UIViewController {
         let fetchRequest: NSFetchRequest<Article> = Article.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "id", ascending: false)]
         if let searchText = searchText {
-            let predicate = NSPredicate(format: "text CONTAINS %@", searchText)
+            let predicate = NSPredicate(format: "(text CONTAINS[cd] %@) OR (title CONTAINS[cd] %@)", searchText, searchText)
             fetchRequest.predicate = predicate
         }
         let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.moc, sectionNameKeyPath: nil, cacheName: nil)

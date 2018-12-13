@@ -11,6 +11,8 @@ import CoreData
 
 class ArticleController {
     
+    static let shared = ArticleController()
+    
     // MARK: - Init
     
     /**

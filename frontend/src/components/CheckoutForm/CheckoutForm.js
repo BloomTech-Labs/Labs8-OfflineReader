@@ -1,12 +1,50 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { fetchUser } from '../../store/actions';
 
 const CardStyle = styled.div`
 	max-width: 500px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	padding-top: 100px;
+	margin: 0 auto;
+	h2 {
+		font-size: 2.8rem;
+		align-self: center;
+		margin-bottom: 40px;
+	}
+
+	h3 {
+		font-size: 1.6rem;
+		margin-top: 1rem;
+		margin-bottom: 1rem;
+	}
+`;
+
+const StripeForm = styled.form`
+	display: flex;
+	flex-direction: column;
+`;
+
+const StripeLabel = styled.label`
+	font-size: 1.6rem;
+	margin-bottom: 2rem;
+`;
+
+const RadioBtn = styled.input`
+	margin-right: 2rem;
+`;
+
+const SubBnt = styled.button`
+	width: 200px;
+	height: 2.2rem;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	border-radius: 2px;
+	align-self: center;
 `;
 
 const cardElementStyles = {
@@ -31,10 +69,17 @@ class CheckoutForm extends Component {
 		this.state = {
 			resp_message: '',
 			card_errors: '',
-			username: 'joebob',
-			complete: false
+			name: '',
+			amount: 999
 		};
 	}
+
+	componentDidMount = () => {
+		this.setState({
+			...this.state,
+			name: this.props.user.name
+		});
+	};
 
 	handleCardErrors = card_dets => {
 		// console.log("Card Section dets", card_dets);
@@ -45,7 +90,10 @@ class CheckoutForm extends Component {
 		}
 	};
 
-	// TODO refactor this mess
+	handleOptionChange = e => {
+		this.setState({ ...this.state, amount: Number(e.target.value) });
+	};
+
 	backendUrl = () => {
 		if (process.env.NODE_ENV === 'production') {
 			return `https://anywhere-reader-test.herokuapp.com/api/payments/create-charge/`;
@@ -62,7 +110,10 @@ class CheckoutForm extends Component {
         Element to tokenize, since there's only one in this group.
         */
 		return this.props.stripe
-			.createToken({ type: 'card', name: 'Borislav Hadzhiev' })
+			.createToken({
+				type: 'card',
+				name: this.state.name
+			})
 			.then(result => {
 				if (result.error) {
 					// console.log('THERE IS AN ERROR IN YOUR FORM', result.error);
@@ -77,9 +128,9 @@ class CheckoutForm extends Component {
 					// );
 					const backendApi = this.backendUrl();
 					let formData = new FormData();
-					formData.append('description', 'My form description');
+					formData.append('description', 'Premium subscription');
 					formData.append('currency', 'usd');
-					formData.append('amount', 999);
+					formData.append('amount', this.state.amount);
 					formData.append('source', result.token.id);
 					return fetch(backendApi, {
 						method: 'POST',
@@ -100,10 +151,33 @@ class CheckoutForm extends Component {
 		return (
 			<CardStyle>
 				<h2>Premium Subscription</h2>
-				<p>$9.99/year</p>
+				<StripeForm>
+					<StripeLabel>
+						{/* <input */}
+						<RadioBtn
+							type="radio"
+							value="999"
+							name="option"
+							onChange={this.handleOptionChange}
+							checked={this.state.amount === 999}
+						/>
+						$9.99 for one year
+					</StripeLabel>
+					<StripeLabel>
+						{/* <input */}
+						<RadioBtn
+							type="radio"
+							value="2999"
+							name="option"
+							onChange={this.handleOptionChange}
+							checked={this.state.amount === 2999}
+						/>
+						$29.99 for five year
+					</StripeLabel>
+				</StripeForm>
 				{this.state.resp_message && <h2>{this.state.resp_message}</h2>}
-				<form onSubmit={this.handleSubmit}>
-					<label>
+				<StripeForm onSubmit={this.handleSubmit}>
+					<StripeLabel>
 						<h3>Card Details</h3>
 						<CardElement
 							onChange={this.handleCardErrors}
@@ -113,12 +187,21 @@ class CheckoutForm extends Component {
 						<div role="alert">
 							<h3>{this.state.card_errors}</h3>
 						</div>
-					</label>
-					<button className="form-btn">Confirm order</button>
-				</form>
+					</StripeLabel>
+					<SubBnt className="form-btn">Confirm order</SubBnt>
+				</StripeForm>
 			</CardStyle>
 		);
 	}
 }
 
-export default injectStripe(CheckoutForm);
+const mapStateToProps = state => {
+	return {
+		user: state.userReducers.user
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ fetchUser }
+)(injectStripe(CheckoutForm));

@@ -5,10 +5,11 @@ import styled from 'styled-components';
 import { ArticleModal, PageList, TestScraperForm } from './';
 
 const ScraperDiv = styled.div`
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	margin: auto;
 `;
 

@@ -3,24 +3,50 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SetDiv = styled.div`
-	padding: 0 0 0 2.4rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding-top: 100px;
+	h2 {
+		font-size: 2.8rem;
+	}
 `;
 
 const SetForm = styled.form`
-	/* display: flex;
-	flex-direction: column; */
-	max-width: 170px;
-	margin-right: auto;
+	display: flex;
+	flex-direction: column;
+	input {
+		width: 400px;
+	}
+`;
+
+// username and email value are set to read only.
+const ReadOnlyInput = styled.input`
+	margin-bottom: 20px;
+	padding-left: 1%;
+	font-size: 1.4rem;
+	color: #756f79;
 `;
 
 const SetInput = styled.input`
 	margin-bottom: 20px;
-	padding-left: 10px;
-	font-size: 1rem;
+	padding-left: 1%;
+	font-size: 1.6rem;
+	color: #282e40;
 `;
 
 const SetLabel = styled.label`
 	margin-bottom: 10px;
+	font-size: 1.6rem;
+`;
+
+const SubBnt = styled.button`
+	width: 100px;
+	height: 2.2rem;
+	margin-top: 2rem;
+	font-size: 1.4rem;
+	border-radius: 2px;
 `;
 
 class Settings extends Component {
@@ -67,26 +93,27 @@ class Settings extends Component {
 				<h2>Profile</h2>
 				<br />
 				<SetForm>
+					<br />
 					<SetLabel className="label">Username:</SetLabel>
-					<SetInput
+					<ReadOnlyInput
 						type="text"
 						className="input"
 						name="username"
-						placeholder="Username"
+						// placeholder="Username"
 						value={this.state.username}
-						onChange={this.handleInput}
+						// onChange={this.handleInput}
+						readOnly
 					/>
-					<br />
 					<SetLabel className="label">Email:</SetLabel>
-					<SetInput
+					<ReadOnlyInput
 						type="text"
 						className="input"
 						name="email"
-						placeholder="Email"
+						// placeholder="Email"
 						value={this.state.email}
-						onChange={this.handleInput}
+						// onChange={this.handleInput}
+						readOnly
 					/>
-					<br />
 					<SetLabel className="label">First name:</SetLabel>
 					<SetInput
 						type="text"
@@ -96,7 +123,6 @@ class Settings extends Component {
 						value={this.state.firstName}
 						onChange={this.handleInput}
 					/>
-					<br />
 					<SetLabel className="label">Last name:</SetLabel>
 					<SetInput
 						type="text"
@@ -106,8 +132,7 @@ class Settings extends Component {
 						value={this.state.lastName}
 						onChange={this.handleInput}
 					/>
-					<br />
-					<input type="submit" value="Save" />
+					<SubBnt>Save</SubBnt>
 				</SetForm>
 			</SetDiv>
 		);

@@ -29,11 +29,9 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     func updateViews() {
         guard let article = article else { return }
         
-        ImageCache.default. =
-        
         let processor = OverlayImageProcessor(overlay: .black, fraction: 0.5) >> BlurImageProcessor(blurRadius: 6.0)
         let url = URL(string: article.coverImage ?? "")
-        imageView.kf.setImage(with: url, options: [.processor(processor)])
+        imageView.kf.setImage(with: url, options: [.processor(processor), .memoryCacheExpiration(.never)])
         
         titleLabel.text = article.title
         sourceLabel.text = article.author

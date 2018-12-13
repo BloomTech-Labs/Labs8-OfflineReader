@@ -44,7 +44,9 @@ const PageCardDiv = styled.div`
 	}
 `;
 
-const Preview = styled.div``;
+const Preview = styled.div`
+	height: 100%;
+`;
 
 const Info = styled.div``;
 

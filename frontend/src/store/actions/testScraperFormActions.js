@@ -45,33 +45,33 @@ export const fetchPages = serverToken => {
 				});
 			})
 			.catch(err => {
-				dispatch({ type: FETCHING_OFFLINE_PAGES });
+				// dispatch({ type: FETCHING_OFFLINE_PAGES });
 
-				//Determine user is offline, fetch stored offline pages
-				const fetchOfflinePages = function() {
-					localforage
-						.iterate(function(value, key, iterationNumber) {
-							let offlinePageArray = [];
-							offlinePageArray.push([key, value]);
-							// Resulting key/value pair -- this callback
-							// will be executed for every item in the
-							// database.
-							console.log([key, value]);
-						})
-						.then(offlinePageArray => {
-							dispatch({
-								type: OFFLINE_PAGES_FETCHED,
-								payload: offlinePageArray
-							});
-							console.log('Iteration has completed');
-						})
-						.catch(function(err) {
-							// This code runs if there were any errors
-							dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
-							console.log(err);
-						});
-				};
-				fetchOfflinePages();
+				// //Determine user is offline, fetch stored offline pages
+				// const fetchOfflinePages = function() {
+				// 	localforage
+				// 		.iterate(function(value, key, iterationNumber) {
+				// 			let offlinePageArray = [];
+				// 			offlinePageArray.push([key, value]);
+				// 			// Resulting key/value pair -- this callback
+				// 			// will be executed for every item in the
+				// 			// database.
+				// 			console.log([key, value]);
+				// 		})
+				// 		.then(offlinePageArray => {
+				// 			dispatch({
+				// 				type: OFFLINE_PAGES_FETCHED,
+				// 				payload: offlinePageArray
+				// 			});
+				// 			console.log('Iteration has completed');
+				// 		})
+				// 		.catch(function(err) {
+				// 			// This code runs if there were any errors
+				// 			dispatch({ type: OFFLINE_PAGES_FETCH_ERROR });
+				// 			console.log(err);
+				// 		});
+				// };
+				// fetchOfflinePages();
 				///
 
 				console.error(err);
@@ -150,6 +150,12 @@ export const sendUrl = (newURL, serverToken) => {
 						headers: headers
 					})
 					.then(response => {
+						dispatch({
+							type: PAGES_FETCHED,
+							payload: response.data
+						});
+
+						console.log('completed url submit and moving on');
 						const saveOfflinePage = function() {
 							console.log('response.data[0] is:', response.data[0]);
 							let offlinePage = response.data[0];
@@ -165,21 +171,24 @@ export const sendUrl = (newURL, serverToken) => {
 								});
 							/////////
 						};
+						console.log('defined saveOfflinePage fxn');
 						//if the url being saved is youtube or vimeo
 						if (
 							newURL.indexOf('youtube.com') > 0 ||
 							newURL.indexOf('vimeo.com') > 0
 						) {
+							console.log('saving offline media');
 							saveOfflineMedia();
 						}
 						//// offline storage logic for non video websites
 						else {
+							console.log('saving offline page');
 							saveOfflinePage();
 						}
-						dispatch({
-							type: PAGES_FETCHED,
-							payload: response.data
-						});
+						// dispatch({
+						// 	type: PAGES_FETCHED,
+						// 	payload: response.data
+						// });
 					});
 			})
 			.catch(err => {

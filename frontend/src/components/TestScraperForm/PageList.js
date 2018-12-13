@@ -10,18 +10,33 @@ const PageListDiv = styled.div`
 	// justify-content: space-between;
 	width: 100%;
 	flex-wrap: wrap;
-	margin-top: 4rem;
+	margin-top: 1rem;
 `;
 
 class PageList extends Component {
 	render() {
 		return (
 			<PageListDiv>
-				{this.props.pages.map(page => {
-					return (
-						<Page page={page} modalPage={this.props.modalPage} key={page.id} />
-					);
-				})}
+				{this.props.filteredPages === undefined ||
+				this.props.filteredPages.length === 0
+					? this.props.pages.map(page => {
+							return (
+								<Page
+									page={page}
+									modalPage={this.props.modalPage}
+									key={page.id}
+								/>
+							);
+					  })
+					: this.props.filteredPages.map(page => {
+							return (
+								<Page
+									page={page}
+									modalPage={this.props.modalPage}
+									key={page.id}
+								/>
+							);
+					  })}
 			</PageListDiv>
 		);
 	}

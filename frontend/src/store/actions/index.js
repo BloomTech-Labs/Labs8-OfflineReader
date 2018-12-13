@@ -30,9 +30,11 @@ export {
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR,
 	CLEAR_PAGES,
+	SEARCH_PAGES,
 	clearPages,
 	fetchPages,
-	sendUrl
+	sendUrl,
+	searchPages
 } from './testScraperFormActions';
 
 export {

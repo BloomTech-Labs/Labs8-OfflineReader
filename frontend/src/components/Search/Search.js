@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { searchPages } from '../../store/actions';
 
@@ -24,15 +24,6 @@ const Input = styled.input`
 		box-shadow: 0 0 3pt 2pt rgba(49, 132, 242, 1);
 		outline: none;
 	}
-`;
-
-const SubBnt = styled.button`
-	width: 50px;
-	height: 2.2rem;
-	margin-top: 2rem;
-	margin-left: 15px;
-	font-size: 1.4rem;
-	border-radius: 2px;
 `;
 
 class Search extends Component {

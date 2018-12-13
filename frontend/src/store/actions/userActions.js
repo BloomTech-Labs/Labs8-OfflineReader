@@ -36,7 +36,7 @@ export const registerUser = newUser => {
 
 export const loginUser = token => {
 	return dispatch => {
-		console.log('login action token:', token);
+		// console.log('login action token:', token);
 		dispatch({ type: LOGGING_IN_USER });
 		axios
 			.post(`${apiBaseUrl}/auth/convert_token/`, { token })

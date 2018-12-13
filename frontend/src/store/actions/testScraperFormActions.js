@@ -8,6 +8,7 @@ export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 export const CLEAR_PAGES = 'CLEAR_PAGES';
+export const SEARCH_PAGES = 'SEARCH_PAGES';
 
 // const knex = require('knex');
 // const knexConfig = require('../../../knexfile');
@@ -96,4 +97,8 @@ export const sendUrl = (newURL, serverToken) => {
 // Cleans up the testScraperFormReducers state when logging out
 export const clearPages = () => {
 	return dispatch => dispatch({ type: CLEAR_PAGES });
+};
+
+export const searchPages = searchInput => {
+	return { type: SEARCH_PAGES, payload: searchInput };
 };

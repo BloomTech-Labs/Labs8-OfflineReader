@@ -4,18 +4,20 @@ import styled from 'styled-components';
 import { FBAuthContainer } from '../../containers';
 import { LandingPageDiv } from '../../styling';
 import { colors } from '../../styling';
+import AnywhereLogo from '../../assets/AnywhereReaderLogo.svg';
 
 const LoginDiv = styled.div`
 	margin: 12rem 3rem 3rem 3rem;
 	text-align: center;
 	width: 200px;
 	background-color: ${colors.white};
-	border-radius: 5px;
+	border-radius: 10px;
 	/* box-shadow: 5px 4px 25px 0px rgba(0, 0, 0, 0.75); */
 	font-family: 'Roboto', sans-serif;
-	img {
-		border-radius: 10px 10px 0 0;
-	}
+`;
+
+const AnywhereImg = styled.img`
+	border-radius: 10px 10px 0 0;
 `;
 
 class SignIn extends Component {
@@ -43,7 +45,11 @@ class SignIn extends Component {
 		return (
 			<LandingPageDiv>
 				<LoginDiv>
-					<img src="https://i.imgur.com/b0dD4XV.png" alt="" width="200px" />
+					<AnywhereImg
+						src={AnywhereLogo}
+						alt="Anywhere Reader Logo"
+						width="200px"
+					/>
 					{/* <h1>Anywhere Reader</h1> */}
 					{/* Uncomment when implementing the backend as an OAuth2 provider */}
 					{/* <form onSubmit={this.handleSubmit}>

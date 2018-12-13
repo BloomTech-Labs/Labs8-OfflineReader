@@ -51,13 +51,14 @@ const NaviSubDiv = styled.div`
 const HamburgerDiv = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-self: flex-start;
 `;
 
-const HamburgerButton = styled.a`
+const HamburgerButton = styled.div`
 	width: 2rem;
-	padding: 0.75rem;
 	img {
-		width: 24px;
+		width: 36px;
+		margin: 1.4rem;
 	}
 	@media (min-width: 800px) {
 		display: none;
@@ -66,17 +67,18 @@ const HamburgerButton = styled.a`
 `;
 
 const HamburgerMenu = styled.div`
-	margin: 41px 0 0 0;
+	margin: 6.4rem 0 0 0;
 	z-index: 98;
+	padding: 1rem;
+	line-height: 3rem;
 	position: absolute;
-	display: none;
-	width: 20%;
-	height: 500px;
+	display: flex;
+	width: 30%;
 	flex-direction: column;
 	justify-content: space-between;
-	background: white;
+	background-color: rgba(245, 243, 237, 0.9);
 	${HamburgerDiv}:hover & {
-		display: flex;
+		cursor: pointer;
 	}
 `;
 
@@ -113,22 +115,32 @@ class Navi extends Component {
 	// 		);
 	// 	});
 	// };
+	state = {
+		hamberger: false
+	};
+
+	toggleHamberger = e => {
+		e.preventDefault();
+		this.setState({ hamberger: !this.state.hamberger });
+	};
 
 	render() {
 		return (
 			<NaviDiv>
 				<HamburgerDiv>
-					<HamburgerButton href="#">
+					<HamburgerButton onClick={this.toggleHamberger}>
 						<img
 							src="https://i.imgur.com/L0Olnc0.png"
 							alt="Menu button"
 							width="100%"
 						/>
 					</HamburgerButton>
-					<HamburgerMenu>
-						{/* {this.linkGen(navLinks).map(link => link)} */}
-						{this.props.signedIn}
-					</HamburgerMenu>
+					{this.state.hamberger && (
+						<HamburgerMenu>
+							{/* {this.linkGen(navLinks).map(link => link)} */}
+							{this.props.signedIn}
+						</HamburgerMenu>
+					)}
 				</HamburgerDiv>
 				<NaviSubDiv>
 					<h3>Anywhere Reader</h3>

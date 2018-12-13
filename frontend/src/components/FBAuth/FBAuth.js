@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import FacebookProvider, { Login } from 'react-facebook-sdk';
 import styled from 'styled-components';
+import FBLogo from '../../assets/f-ogo_RGB_HEX-58.svg';
 
 const FBClick = styled.span`
 	cursor: pointer;
+	img {
+		padding-top: 5px;
+	}
 `;
 
 class FBAuth extends Component {
@@ -34,7 +38,10 @@ class FBAuth extends Component {
 					onResponse={this.handleResponse}
 					onError={this.handleError}
 				>
-					<FBClick>Login via Facebook</FBClick>
+					<FBClick>
+						<img src={FBLogo} alt="Facebook logo" width="18px" />
+						<span> Login via Facebook</span>
+					</FBClick>
 				</Login>
 				{this.state.error.message ? (
 					<span>{this.state.error.message}</span>

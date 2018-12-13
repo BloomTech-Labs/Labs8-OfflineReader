@@ -15,7 +15,6 @@ const PageListDiv = styled.div`
 
 class PageList extends Component {
 	render() {
-		console.log('props are:', this.props);
 		return (
 			<PageListDiv>
 				{this.props.pages.map(page => {

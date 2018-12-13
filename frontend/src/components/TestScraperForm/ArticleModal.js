@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors } from '../../styling';
 import moment from 'moment';
+import ReactHtmlParser, {
+	processNodes,
+	convertNodeToElement,
+	htmlparser2
+} from 'react-html-parser';
 
 const ArticleDiv = styled.div`
 	padding: 2rem;
@@ -66,6 +71,9 @@ const BodyDiv = styled.div`
 	h6 {
 		padding: 0 0 1rem 0;
 	}
+	iframe {
+		margin: 0 7%;
+	}
 `;
 
 const ArticleInfo = styled.div`
@@ -87,17 +95,17 @@ class ArticleModal extends Component {
 		return (
 			<ArticleDiv>
 				<CloseBtn onClick={() => this.props.closeModal()}>X</CloseBtn>
-				<img
+				{/* <img
 					src={this.props.page.cover_image}
 					alt={`${this.props.page.title} cover`}
-				/>
+				/> */}
 				<TitleHead>{this.props.page.title}</TitleHead>
 				<ArticleInfo>
-					{this.props.page.author === '' ? (
+					{/* {this.props.page.author === '' ? (
 						''
 					) : (
 						<h4>{`${this.props.page.author}`}</h4>
-					)}
+					)} */}
 					<h4>
 						<a
 							href={this.props.page.normal_url}
@@ -112,7 +120,7 @@ class ArticleModal extends Component {
 					)}`}</h4>
 				</ArticleInfo>
 				<br />
-				<BodyDiv>{this.props.page.text}</BodyDiv>
+				<BodyDiv>{ReactHtmlParser(this.props.page.html)}</BodyDiv>
 			</ArticleDiv>
 		);
 	}

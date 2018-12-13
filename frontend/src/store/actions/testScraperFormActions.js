@@ -156,39 +156,48 @@ export const sendUrl = (newURL, serverToken) => {
 						});
 
 						console.log('completed url submit and moving on');
-						const saveOfflinePage = function() {
-							console.log('response.data[0] is:', response.data[0]);
-							let offlinePage = response.data[0];
-							localforage
-								.setItem(offlinePage.id, offlinePage)
-								.then(function(value) {
-									dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
-									// Do other things once the value has been saved.
-									console.log('offlinePage just created:', value);
-								})
-								.catch(function(err) {
-									console.log(err);
-								});
-							/////////
-						};
+						// const saveOfflinePage = function() {
+						// 	console.log('response.data[0] is:', response.data[0]);
+						// 	let offlinePage = response.data[0];
+						// 	localforage
+						// 		.setItem(offlinePage.id, offlinePage)
+						// 		.then(function(value) {
+						// 			dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+						// 			// Do other things once the value has been saved.
+						// 			console.log('offlinePage just created:', value);
+						// 		})
+						// 		.catch(function(err) {
+						// 			console.log(err);
+						// 		});
+						// 	/////////
+						// };
 						console.log('defined saveOfflinePage fxn');
 						//if the url being saved is youtube or vimeo
-						if (
-							newURL.indexOf('youtube.com') > 0 ||
-							newURL.indexOf('vimeo.com') > 0
-						) {
-							console.log('saving offline media');
-							saveOfflineMedia();
-						}
-						//// offline storage logic for non video websites
-						else {
-							console.log('saving offline page');
-							saveOfflinePage();
-						}
-						// dispatch({
-						// 	type: PAGES_FETCHED,
-						// 	payload: response.data
-						// });
+						// if (
+						// 	newURL.indexOf('youtube.com') > 0 ||
+						// 	newURL.indexOf('vimeo.com') > 0
+						// ) {
+						// 	console.log('saving offline media');
+						// 	saveOfflineMedia();
+						// }
+						// //// offline storage logic for non video websites
+						// else {
+						console.log('saving offline page');
+
+						console.log('response.data[0] is:', response.data.reverse()[0]);
+						let offlinePage = response.data.reverse()[0];
+						localforage
+							.setItem(offlinePage.id, offlinePage)
+							.then(function(value) {
+								dispatch({ type: OFFLINE_PAGE_SAVED, payload: value });
+								// Do other things once the value has been saved.
+								console.log('offlinePage just created:', value);
+							})
+							.catch(function(err) {
+								console.log(err);
+							});
+						/////////
+						// }
 					});
 			})
 			.catch(err => {

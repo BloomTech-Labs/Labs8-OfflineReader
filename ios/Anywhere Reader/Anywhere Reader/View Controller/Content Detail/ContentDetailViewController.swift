@@ -48,8 +48,6 @@ class ContentDetailViewController: UIViewController {
 
     private let themeHelper = ThemeHelper.shared
     private let gradientLayer = CAGradientLayer()
-    private let isoDateFormatter = ISO8601DateFormatter()
-    private let dateFormatter = DateFormatter()
 
     // MARK: - Public properties
 

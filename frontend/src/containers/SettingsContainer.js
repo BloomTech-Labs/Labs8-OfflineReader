@@ -17,7 +17,7 @@ SettingsContainer.propTypes = {
 		email: PropTypes.string,
 		firstName: PropTypes.string,
 		lastName: PropTypes.string,
-		premium: PropTypes.string
+		premium: PropTypes.bool
 	}).isRequired,
 	updateUser: PropTypes.func.isRequired
 };

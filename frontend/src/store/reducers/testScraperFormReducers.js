@@ -16,7 +16,8 @@ import {
 	//
 	INITIALIZE_URL_SUBMIT,
 	COMPLETE_URL_SUBMIT,
-	SUBMIT_URL_ERROR
+	SUBMIT_URL_ERROR,
+	CLEAR_PAGES
 } from '../actions';
 
 const initialState = {
@@ -104,6 +105,16 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				...state,
 				error: 'Error sending URL',
 				sendingURL: false
+			};
+
+		case CLEAR_PAGES:
+			return {
+				pages: [],
+				fetchingPages: false,
+				pagesFetched: false,
+				scraperResponse: [],
+				sendingURL: false,
+				error: ''
 			};
 
 		default:

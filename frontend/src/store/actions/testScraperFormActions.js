@@ -21,6 +21,7 @@ export const OFFLINE_PAGE_SAVE_ERROR = 'OFFLINE_PAGE_SAVE_ERROR';
 export const INITIALIZE_URL_SUBMIT = 'INITIALIZE_URL_SUBMIT';
 export const COMPLETE_URL_SUBMIT = 'COMPLETE_URL_SUBMIT';
 export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
+export const CLEAR_PAGES = 'CLEAR_PAGES';
 
 export const fetchPages = serverToken => {
 	return dispatch => {
@@ -187,4 +188,9 @@ export const sendUrl = (newURL, serverToken) => {
 				dispatch({ type: SUBMIT_URL_ERROR });
 			});
 	};
+};
+
+// Cleans up the testScraperFormReducers state when logging out
+export const clearPages = () => {
+	return dispatch => dispatch({ type: CLEAR_PAGES });
 };

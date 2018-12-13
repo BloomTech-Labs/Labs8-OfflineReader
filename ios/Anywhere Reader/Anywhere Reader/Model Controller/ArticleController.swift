@@ -11,6 +11,8 @@ import CoreData
 
 class ArticleController {
     
+    static let shared = ArticleController()
+    
     // MARK: - Init
     
     /**
@@ -155,6 +157,21 @@ class ArticleController {
         }
     }
     
+    /**
+     Deletes a article at a specified index
+     
+     - Author: Conner Alegre
+     
+     - Parameters:
+     - article: The the article to be deleted
+     - context: The managed object context in which to delete an article
+     */
+    func delete(article: Article, context: NSManagedObjectContext) {
+        if let article = loadSingleArticle(id: article.id, context: context) {
+            context.delete(article)
+            save(context: context)
+        }
+    }
     
     // MARK: - Network requests
     
@@ -192,6 +209,37 @@ class ArticleController {
                 NSLog("Error decoding articles")
                 completion(.badData)
             }
+        }
+    }
+    
+    /**
+     Deletes a single Article stored by current user remotely
+     
+     - Author: Conner Alegre
+     
+     - Parameters:
+     - articleId: The id of the article to be removed from remote
+     - completion: A block of code to be executed when the function has been completed
+     - error: An optional NetworkError declared in NetworkError.swift
+     */
+    func delete(articleId: Int32, completion: @escaping (_ error: NetworkError?) -> Void) {
+        let url = ArticleController.baseURL
+            .appendingPathComponent("api")
+            .appendingPathComponent("pages")
+            .appendingPathComponent("\(articleId)/")
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("Bearer \(APIService.currentUserToken)", forHTTPHeaderField: "Authorization")
+        
+        dataLoader.loadData(with: request) { (data, error) in
+            if let error = error {
+                NSLog("Error with deleting article: \(error)")
+                completion(.general)
+                return
+            }
+            
+            completion(nil)
         }
     }
     

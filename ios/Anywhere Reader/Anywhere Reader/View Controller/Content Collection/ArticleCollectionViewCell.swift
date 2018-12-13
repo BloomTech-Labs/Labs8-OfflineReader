@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class DocumentCollectionViewCell: UICollectionViewCell {
+class ArticleCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Properties
     var article: Article? {
@@ -22,8 +22,8 @@ class DocumentCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var documentTypeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     // MARK: - Functions
     func updateViews() {

@@ -96,8 +96,11 @@ class ContentDetailViewController: UIViewController {
         contentBodyLabel.text = article.text
         authorLabel.text = article.author
 
-        let url = URL(string: article.coverImage ?? "")
-        imageView.kf.setImage(with: url)
+        ImageCache.default.retrieveImage(forKey: article.coverImage ?? "", options: nil) { (image, cacheType) in
+            if let image = image {
+                self.imageView.image = image
+            }
+        }
         
         dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }

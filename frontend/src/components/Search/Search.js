@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import { searchPages } from '../../store/actions';
 
 const Container = styled.div`
-	// margin-top: 0.3rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 	z-index: 97;
@@ -20,6 +19,9 @@ const Input = styled.input`
 	box-shadow: 0px 0px 7px -3px rgba(0, 0, 0, 0.66);
 	font-size: 1.5rem;
 	width: 250px;
+	@media (max-width: 850px) {
+		width: 200px;
+	}
 	&:focus {
 		box-shadow: 0 0 3pt 2pt rgba(49, 132, 242, 1);
 		outline: none;

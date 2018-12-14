@@ -11,7 +11,7 @@ const ScraperDiv = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	margin: auto;
+	margin: 0 auto;
 `;
 
 const InputDiv = styled.div`
@@ -20,6 +20,11 @@ const InputDiv = styled.div`
 	justify-content: space-between;
 	margin-top: 9rem;
 	padding: 0 2%;
+	@media (max-width: 850px) {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
 `;
 
 class TestScraper extends Component {

@@ -3,10 +3,19 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
-	// margin-top: 0.3rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
 	z-index: 97;
+	width: 50%;
+	@media (max-width: 850px) {
+		width: 80%;
+	}
+	form {
+		display: flex;
+		justify-content: center;
+		flex-wrap: nowrap;
+		width: 100%;
+	}
 `;
 
 const Input = styled.input`
@@ -16,7 +25,7 @@ const Input = styled.input`
 	border-radius: 30px;
 	box-shadow: 0px 0px 7px -3px rgba(0, 0, 0, 0.66);
 	font-size: 1.5rem;
-	width: 250px;
+	width: 100%;
 	&:focus {
 		box-shadow: 0 0 3pt 2pt rgba(49, 132, 242, 1);
 		outline: none;

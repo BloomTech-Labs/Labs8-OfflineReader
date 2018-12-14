@@ -11,11 +11,11 @@ const NaviDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 	font-size: 2rem;
-	@media (max-width: 800px) {
+	@media (max-width: 850px) {
 		flex-direction: column;
 		justify-content: flex-start;
 	}
-	z-index: 99;
+	z-index: 100;
 	position: fixed;
 	background-color: rgba(245, 243, 237, 0.9);
 `;
@@ -25,7 +25,7 @@ const NaviSubDiv = styled.div`
 	display: flex;
 	justify-content: space-between;
 	letter-spacing: 0.5px;
-	@media (max-width: 800px) {
+	@media (max-width: 850px) {
 		display: none;
 	}
 `;
@@ -68,14 +68,11 @@ const HamburgerButton = styled.div`
 `;
 
 const HamburgerMenu = styled.div`
-	<<<<<<<HEAD
 	margin: 41px 0 0 0;
-	z-index: 99;
-	=======margin: 6.4rem 0 0 0;
-	z-index: 98;
+	z-index: 100;
+	margin: 6.4rem 0 0 0;
 	padding: 1rem;
 	line-height: 3rem;
-	>>>>>>>ae43871ec6b85d2c79e30bfa4a318b68bbdc1a72
 	position: absolute;
 	display: flex;
 	width: 30%;

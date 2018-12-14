@@ -15,6 +15,7 @@ import {
 
 const initialState = {
 	user: {
+		pk: -1,
 		username: '',
 		email: '',
 		firstName: '',
@@ -36,6 +37,7 @@ const initialState = {
 	userStatus: {
 		fetching: false,
 		success: false,
+		updating: false,
 		// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
 		// newUser: true,
 		message: '',
@@ -62,6 +64,7 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
+					pk: action.payload.pk,
 					username: action.payload.username,
 					email: action.payload.email,
 					firstName: action.payload.first_name,
@@ -81,6 +84,7 @@ export default (state = initialState, action) => {
 					...state.userStatus,
 					fetching: false,
 					success: false,
+					updating: false,
 					// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
 					// newUser: true,
 					message: '',
@@ -100,6 +104,7 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
+					pk: -1,
 					username: '',
 					email: '',
 					firstName: '',
@@ -111,6 +116,7 @@ export default (state = initialState, action) => {
 					...state.userStatus,
 					fetching: false,
 					success: false,
+					updating: false,
 					// Uncomment for NewsAPI workflow mentioned above
 					// newUser: true,
 					error: '',
@@ -131,11 +137,18 @@ export default (state = initialState, action) => {
 			return { ...state, userStatus: { ...state.userStatus, success: false } };
 
 		case PREMIUM_USER:
-			return { ...state, userStatus: { ...state.userStatus, premium: true } };
+			return {
+				...state,
+				userStatus: { ...state.userStatus, premium: action.payload.premium }
+			};
 
 		case UPDATING_USER:
 			return {
-				...state
+				...state,
+				userStatus: {
+					...state.userStatus,
+					updating: true
+				}
 			};
 
 		case UPDATED_USER:
@@ -143,10 +156,15 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
+					pk: action.payload.pk,
 					username: action.payload.username,
 					email: action.payload.email,
-					firstName: action.payload.firstName,
-					lastName: action.payload.lastName
+					firstName: action.payload.first_name,
+					lastName: action.payload.last_name
+				},
+				userStatus: {
+					...state.userStatus,
+					updating: false
 				}
 			};
 

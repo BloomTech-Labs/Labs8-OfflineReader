@@ -102,10 +102,21 @@ export const premiumUser = (user, chargeToken) => {
 	};
 };
 
-export const updateUser = user => dispatch => {
-	dispatch({ type: UPDATING_USER });
-	axios
-		.put(apiBaseUrl + '/user/')
-		.then(response => dispatch({ UPDATED_USER, payload: response.data }))
-		.catch(err => dispatch({ type: USER_ERROR, err }));
+export const updateUser = (user, accessToken) => {
+	return dispatch => {
+		dispatch({ type: UPDATING_USER });
+		let headers = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${accessToken}`
+		};
+		axios
+			.put(apiBaseUrl + '/auth/rest/user/', user, {
+				headers: headers
+			})
+			.then(response => {
+				console.log(response);
+				dispatch({ type: UPDATED_USER, payload: response.data });
+			})
+			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
 };

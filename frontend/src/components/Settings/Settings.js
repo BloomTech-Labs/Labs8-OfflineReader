@@ -53,6 +53,7 @@ class Settings extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			pk: -1,
 			username: '',
 			email: '',
 			firstName: '',
@@ -63,6 +64,7 @@ class Settings extends Component {
 	componentDidMount = () => {
 		this.setState({
 			...this.state,
+			pk: this.props.user.pk,
 			username: this.props.user.username,
 			email: this.props.user.email,
 			firstName: this.props.user.firstName,
@@ -78,13 +80,15 @@ class Settings extends Component {
 	};
 
 	handleSubmit = e => {
+		e.preventDefault();
 		const user = {
+			pk: this.state.pk,
 			username: this.state.username,
 			email: this.state.email,
-			firstName: this.state.firstName,
-			lastName: this.state.lastName
+			first_name: this.state.firstName,
+			last_name: this.state.lastName
 		};
-		this.props.updateUser(user);
+		this.props.updateUser(user, this.props.accessToken);
 	};
 
 	render() {
@@ -92,7 +96,7 @@ class Settings extends Component {
 			<SetDiv>
 				<h2>Profile</h2>
 				<br />
-				<SetForm>
+				<SetForm onSubmit={this.handleSubmit}>
 					<br />
 					<SetLabel className="label">Username:</SetLabel>
 					<ReadOnlyInput
@@ -141,12 +145,14 @@ class Settings extends Component {
 
 Settings.propTypes = {
 	user: PropTypes.shape({
+		pk: PropTypes.number,
 		username: PropTypes.string,
 		email: PropTypes.string,
 		firstName: PropTypes.string,
 		lastName: PropTypes.string,
-		premium: PropTypes.string
+		premium: PropTypes.bool
 	}).isRequired,
+	accessToken: PropTypes.string.isRequired,
 	updateUser: PropTypes.func.isRequired
 };
 

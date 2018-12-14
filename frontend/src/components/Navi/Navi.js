@@ -14,7 +14,7 @@ const NaviDiv = styled.div`
 		flex-direction: column;
 		justify-content: flex-start;
 	}
-	z-index: 98;
+	z-index: 99;
 	position: fixed;
 	background-color: rgba(245, 243, 237, 0.85);
 `;
@@ -59,7 +59,7 @@ const HamburgerButton = styled.a`
 	img {
 		width: 24px;
 	}
-	@media (min-width: 800px) {
+	@media (min-width: 850px) {
 		display: none;
 		width: 100%;
 	}
@@ -67,7 +67,7 @@ const HamburgerButton = styled.a`
 
 const HamburgerMenu = styled.div`
 	margin: 41px 0 0 0;
-	z-index: 98;
+	z-index: 99;
 	position: absolute;
 	display: none;
 	width: 20%;

@@ -9,7 +9,7 @@ const Container = styled.div`
 	// margin-top: 0.3rem;
 	text-align: center;
 	font-family: 'Roboto', sans-serif;
-	z-index: 100;
+	z-index: 97;
 `;
 
 const Input = styled.input`

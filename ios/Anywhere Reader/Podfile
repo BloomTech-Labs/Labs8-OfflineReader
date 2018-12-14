@@ -7,6 +7,7 @@ target 'Anywhere Reader' do
 
   # Pods for Anywhere Reader
   pod 'Kingfisher', '~> 5.0'
-  pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'FBSDKCoreKit', '4.38.1'
+  pod 'FBSDKLoginKit', '4.38.1'
 end

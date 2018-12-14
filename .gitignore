@@ -1,6 +1,9 @@
 # Visual Studio Code
 .vscode
 
+# Prevent accidental yarn install generated node_modules directories from springing up in the project
+node_modules
+
 # Linux.gitignore
 # https://github.com/github/gitignore/blob/master/Global/Linux.gitignore
 

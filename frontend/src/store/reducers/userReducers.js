@@ -15,6 +15,7 @@ import {
 
 const initialState = {
 	user: {
+		pk: -1,
 		username: '',
 		email: '',
 		firstName: '',
@@ -36,6 +37,7 @@ const initialState = {
 	userStatus: {
 		fetching: false,
 		success: false,
+		updating: false,
 		// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
 		// newUser: true,
 		message: '',
@@ -55,13 +57,22 @@ export default (state = initialState, action) => {
 			};
 
 		case FETCH_USER_DATA:
-			return { ...state, userStatus: { ...state.userStatus, fetching: true } };
+			return {
+				...state,
+				userStatus: {
+					...state.userStatus,
+					fetching: true,
+					message: '',
+					error: ''
+				}
+			};
 
 		case USER_DATA_FETCHED:
 			return {
 				...state,
 				user: {
 					...state.user,
+					pk: action.payload.pk,
 					username: action.payload.username,
 					email: action.payload.email,
 					firstName: action.payload.first_name,
@@ -81,6 +92,7 @@ export default (state = initialState, action) => {
 					...state.userStatus,
 					fetching: false,
 					success: false,
+					updating: false,
 					// TODO: implement to redirect to a NewsAPI page if we end up using the NewsAPI that Andrew discovered
 					// newUser: true,
 					message: '',
@@ -100,6 +112,7 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
+					pk: -1,
 					username: '',
 					email: '',
 					firstName: '',
@@ -111,6 +124,7 @@ export default (state = initialState, action) => {
 					...state.userStatus,
 					fetching: false,
 					success: false,
+					updating: false,
 					// Uncomment for NewsAPI workflow mentioned above
 					// newUser: true,
 					error: '',
@@ -131,11 +145,20 @@ export default (state = initialState, action) => {
 			return { ...state, userStatus: { ...state.userStatus, success: false } };
 
 		case PREMIUM_USER:
-			return { ...state, userStatus: { ...state.userStatus, premium: true } };
+			return {
+				...state,
+				userStatus: { ...state.userStatus, premium: action.payload.premium }
+			};
 
 		case UPDATING_USER:
 			return {
-				...state
+				...state,
+				userStatus: {
+					...state.userStatus,
+					updating: true,
+					message: '',
+					error: ''
+				}
 			};
 
 		case UPDATED_USER:
@@ -143,10 +166,16 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
-					username: action.payload.username,
-					email: action.payload.email,
-					firstName: action.payload.firstName,
-					lastName: action.payload.lastName
+					pk: action.payload.data.pk,
+					username: action.payload.data.username,
+					email: action.payload.data.email,
+					firstName: action.payload.data.first_name,
+					lastName: action.payload.data.last_name
+				},
+				userStatus: {
+					...state.userStatus,
+					updating: false,
+					message: action.payload.status.toString()
 				}
 			};
 

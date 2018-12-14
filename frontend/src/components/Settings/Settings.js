@@ -62,15 +62,33 @@ class Settings extends Component {
 	}
 
 	componentDidMount = () => {
-		this.setState({
-			...this.state,
-			pk: this.props.user.pk,
-			username: this.props.user.username,
-			email: this.props.user.email,
-			firstName: this.props.user.firstName,
-			lastName: this.props.user.lastName
-		});
+		if (
+			this.state.firstName !== this.props.firstName ||
+			this.state.lastName !== this.props.lastName
+		) {
+			this.setState({
+				...this.state,
+				pk: this.props.user.pk,
+				username: this.props.user.username,
+				email: this.props.user.email,
+				firstName: this.props.user.firstName,
+				lastName: this.props.user.lastName
+			});
+		}
 	};
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.user !== this.props.user) {
+			this.setState({
+				...this.state,
+				pk: this.props.user.pk,
+				username: this.props.user.username,
+				email: this.props.user.email,
+				firstName: this.props.user.firstName,
+				lastName: this.props.user.lastName
+			});
+		}
+	}
 
 	handleInput = e => {
 		this.setState({

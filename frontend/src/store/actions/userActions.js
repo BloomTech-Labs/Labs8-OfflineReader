@@ -103,7 +103,6 @@ export const updateUser = (user, token) => {
 		axios
 			.put(apiBaseUrl + '/auth/rest/user/', user, { headers: headers })
 			.then(response => {
-				console.log(response);
 				dispatch({ type: UPDATED_USER, payload: response });
 			})
 			.catch(err => dispatch({ type: USER_ERROR, err }));

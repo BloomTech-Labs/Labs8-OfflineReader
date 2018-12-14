@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { updateUser } from '../store/actions';
+import { fetchUser, updateUser } from '../store/actions';
 
 import { Settings } from '../components';
 
@@ -42,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ updateUser }
+	{ fetchUser, updateUser }
 )(SettingsContainer);

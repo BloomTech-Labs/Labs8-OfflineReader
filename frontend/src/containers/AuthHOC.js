@@ -16,6 +16,7 @@ const AuthHOC = Protected => {
 	}
 
 	const mapStateToProps = state => ({
+		// TODO: Update to use state.userReducers.userStatus.success
 		authStatus: state.userReducers.auth.serverToken.status || ''
 	});
 

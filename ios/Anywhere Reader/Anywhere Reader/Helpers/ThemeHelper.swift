@@ -296,9 +296,9 @@ class ThemeHelper {
         case color(from: .tan):
             return UIColor(red:0.80, green:0.74, blue:0.63, alpha:1.0)
         case color(from: .lightGray):
-            return UIColor(red:0.40, green:0.40, blue:0.40, alpha:1.0)
+            return UIColor(red:0.35, green:0.35, blue:0.35, alpha:1.0)
         case color(from: .darkGray):
-            return UIColor(red: 0.29, green: 0.29, blue: 0.29, alpha: 1.0)
+            return UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
         default:
             return .white
         }

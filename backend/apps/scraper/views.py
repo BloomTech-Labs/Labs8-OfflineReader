@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from .newspaper_scraper import scrape_article
 from .youtube_scraper import scrape_youtube
 from .vimeo_scraper import scrape_vimeo
+from .bandcamp_scraper import scrape_bandcamp
 
 
 class Scrape(APIView):
@@ -35,5 +36,9 @@ def select_scraper(url, auth, user_id):
         return scrape_youtube(url, auth, user_id)
     elif "vimeo.com" in url:
         return scrape_vimeo(url, auth, user_id)
+    elif "bandcamp.com" in url:
+        return scrape_bandcamp(url, auth, user_id)
+    elif "https://music." in url:
+        return scrape_bandcamp(url, auth, user_id)
     else:
         return scrape_article(url, auth, user_id)

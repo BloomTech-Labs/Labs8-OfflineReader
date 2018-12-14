@@ -6,6 +6,10 @@ import { updateUser } from '../store/actions';
 import { Settings } from '../components';
 
 class SettingsContainer extends Component {
+	componentDidMount = () => {
+		this.props.fetchUser(this.props.accessToken);
+	};
+
 	render() {
 		return <Settings {...this.props} />;
 	}
@@ -21,6 +25,7 @@ SettingsContainer.propTypes = {
 		premium: PropTypes.bool
 	}).isRequired,
 	accessToken: PropTypes.string.isRequired,
+	updateMessage: PropTypes.string.isRequired,
 	updateUser: PropTypes.func.isRequired
 };
 
@@ -30,7 +35,8 @@ const mapStateToProps = state => {
 		accessToken:
 			(state.userReducers.auth.serverToken.data &&
 				state.userReducers.auth.serverToken.data.access_token) ||
-			''
+			'',
+		updateMessage: state.userReducers.userStatus.message
 	};
 };
 

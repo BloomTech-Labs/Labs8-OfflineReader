@@ -8,7 +8,6 @@ import { TestScraper } from '../components';
 class TestScraperFormContainer extends Component {
 	componentDidMount() {
 		this.props.fetchPages(this.props.serverToken);
-		this.props.fetchUser(this.props.serverToken);
 	}
 
 	render() {

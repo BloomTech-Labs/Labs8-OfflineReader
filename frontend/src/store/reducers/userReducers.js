@@ -57,7 +57,15 @@ export default (state = initialState, action) => {
 			};
 
 		case FETCH_USER_DATA:
-			return { ...state, userStatus: { ...state.userStatus, fetching: true } };
+			return {
+				...state,
+				userStatus: {
+					...state.userStatus,
+					fetching: true,
+					message: '',
+					error: ''
+				}
+			};
 
 		case USER_DATA_FETCHED:
 			return {
@@ -147,7 +155,9 @@ export default (state = initialState, action) => {
 				...state,
 				userStatus: {
 					...state.userStatus,
-					updating: true
+					updating: true,
+					message: '',
+					error: ''
 				}
 			};
 
@@ -156,15 +166,16 @@ export default (state = initialState, action) => {
 				...state,
 				user: {
 					...state.user,
-					pk: action.payload.pk,
-					username: action.payload.username,
-					email: action.payload.email,
-					firstName: action.payload.first_name,
-					lastName: action.payload.last_name
+					pk: action.payload.data.pk,
+					username: action.payload.data.username,
+					email: action.payload.data.email,
+					firstName: action.payload.data.first_name,
+					lastName: action.payload.data.last_name
 				},
 				userStatus: {
 					...state.userStatus,
-					updating: false
+					updating: false,
+					message: action.payload.status.toString()
 				}
 			};
 

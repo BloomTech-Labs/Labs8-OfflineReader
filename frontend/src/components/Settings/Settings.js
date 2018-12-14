@@ -136,6 +136,9 @@ class Settings extends Component {
 						value={this.state.lastName}
 						onChange={this.handleInput}
 					/>
+					{this.props.updateMessage === '200' ? (
+						<p>Info updated successfully!</p>
+					) : null}
 					<SubBnt>Save</SubBnt>
 				</SetForm>
 			</SetDiv>
@@ -153,6 +156,7 @@ Settings.propTypes = {
 		premium: PropTypes.bool
 	}).isRequired,
 	accessToken: PropTypes.string.isRequired,
+	updateMessage: PropTypes.string.isRequired,
 	updateUser: PropTypes.func.isRequired
 };
 

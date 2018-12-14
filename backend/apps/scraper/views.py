@@ -36,7 +36,9 @@ def select_scraper(url, auth, user_id):
         return scrape_youtube(url, auth, user_id)
     elif "vimeo.com" in url:
         return scrape_vimeo(url, auth, user_id)
-    elif "bandcamp.com" or "https://music." in url:
+    elif "bandcamp.com" in url:
+        return scrape_bandcamp(url, auth, user_id)
+    elif "https://music." in url:
         return scrape_bandcamp(url, auth, user_id)
     else:
         return scrape_article(url, auth, user_id)

@@ -77,6 +77,7 @@ class Settings extends Component {
 		}
 	};
 
+	// Implemented due to a race condition where local state was getting set before global state finished updating
 	componentDidUpdate(prevProps) {
 		if (prevProps.user !== this.props.user) {
 			this.setState({

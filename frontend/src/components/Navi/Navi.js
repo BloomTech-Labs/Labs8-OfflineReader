@@ -77,6 +77,10 @@ const HamburgerMenu = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	background-color: rgba(245, 243, 237, 0.9);
+	box-shadow: 6px 5px 23px -8px rgba(0, 0, 0, 0.75);
+	@media (min-width: 800px) {
+		display: none;
+	}
 	${HamburgerDiv}:hover & {
 		cursor: pointer;
 	}

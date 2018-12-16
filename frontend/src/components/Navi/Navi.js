@@ -6,7 +6,6 @@ const NaviDiv = styled.div`
 	width: 100%;
 	height: 6.4rem;
 	margin-bottom: 2rem;
-	border-bottom: 1px solid #404040;
 	display: flex;
 	justify-content: center;
 	align-items: center;

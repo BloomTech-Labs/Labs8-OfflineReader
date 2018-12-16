@@ -38,21 +38,6 @@ class ContentDetailViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    override func willMove(toParent parent: UIViewController?) {
-        super.willMove(toParent: parent)
-        
-        // Makes sure the color of the navigation bar is animated when popping back to collection view and nightMode is off
-        let count =  self.navigationController?.viewControllers.count
-        let vc = self.navigationController?.viewControllers[(count ?? 2) - 2]
-        if let collectionVC = vc as? ContentCollectionViewController {
-            if !themeHelper.isNightMode {
-                collectionVC.navigationController?.navigationBar.barTintColor = .white
-                collectionVC.navigationController?.navigationBar.tintColor = nil
-                collectionVC.collectionView.backgroundColor = .white
-            }
-        }
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -63,8 +48,6 @@ class ContentDetailViewController: UIViewController {
 
     private let themeHelper = ThemeHelper.shared
     private let gradientLayer = CAGradientLayer()
-    private let isoDateFormatter = ISO8601DateFormatter()
-    private let dateFormatter = DateFormatter()
 
     // MARK: - Public properties
 
@@ -107,15 +90,26 @@ class ContentDetailViewController: UIViewController {
     // MARK: - Private
 
     private func updateViews() {
-        guard let article = article else { return }
+        guard let article = article,
+            let coverImage = article.coverImage else { return }
 
         titleLabel.text = article.title
         contentBodyLabel.text = article.text
         authorLabel.text = article.author
-
-        let url = URL(string: article.coverImage ?? "")
-        imageView.kf.setImage(with: url)
         
+        let cache = ImageCache.default
+        
+        cache.retrieveImageInDiskCache(forKey: coverImage + "original") { (result) in
+            switch result {
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self.imageView.image = image
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+
         dateLabel.text = "Saved on \(DateHelper.shared.ISODateToNormalDate(date: article.dateSaved ?? ""))"
     }
 
@@ -148,33 +142,6 @@ class ContentDetailViewController: UIViewController {
         gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
         imageView.layer.mask = gradientLayer
     }
-    
-//    private func setupTagLabels() {
-//        guard let article = article else { return }
-//
-//        let tagLabels = [tagLabelOne, tagLabelTwo, tagLabelThree, tagLabelFour, tagLabelFive]
-//
-//        // Get each tag, separated by a single comma, make sure each is capitalized
-//        let tags = article.tags.split(separator: ",").map { $0.capitalized }
-//        // If there are less tags than labels, hide the other tags
-//        if tags.count < tagLabels.count {
-//            // Tag labels up to the count of tags
-//            let tagLabelsToUpdate = tagLabels.prefix(tags.count)
-//            // Leftover tag labels to hide
-//            let leftoverTagLabels = tagLabels[tags.count...tagLabels.count-1]
-//            // Update text for each label
-//            tagLabelsToUpdate.enumerated().forEach { (index, label) in
-//                label?.text = tags[index]
-//            }
-//            // Hide the leftover labels
-//            leftoverTagLabels.forEach { $0?.isHidden = true }
-//        } else {
-//            // There are more tags than tagLabels (5), update each accordingly
-//            tagLabels.enumerated().forEach { (index, label) in
-//                label?.text = tags[index]
-//            }
-//        }
-//    }
     
     override var preferredStatusBarStyle : UIStatusBarStyle {
         if themeHelper.isNightMode || themeHelper.getLastStoredTheme() == .lightGray {

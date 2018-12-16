@@ -3,13 +3,23 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { ArticleModal, PageList, TestScraperForm } from './';
+import { Search } from '../';
 
 const ScraperDiv = styled.div`
-	width: 80%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: center;
 	margin: auto;
+`;
+
+const InputDiv = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 9rem;
+	padding: 0 2%;
 `;
 
 class TestScraper extends Component {
@@ -42,11 +52,14 @@ class TestScraper extends Component {
 			</ScraperDiv>
 		) : (
 			<ScraperDiv>
-				<TestScraperForm
-					sendUrl={this.props.sendUrl}
-					serverToken={this.props.serverToken}
-				/>
-				<PageList pages={this.props.pages} modalPage={this.modalPage} />
+				<InputDiv>
+					<TestScraperForm
+						sendUrl={this.props.sendUrl}
+						serverToken={this.props.serverToken}
+					/>
+					<Search pages={this.props.pages} />
+				</InputDiv>
+				<PageList modalPage={this.modalPage} {...this.props} />
 			</ScraperDiv>
 		);
 	}

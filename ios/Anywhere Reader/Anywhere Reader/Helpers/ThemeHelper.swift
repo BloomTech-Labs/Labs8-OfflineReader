@@ -197,6 +197,7 @@ class ThemeHelper {
         return ThemeHelper.Theme(rawValue: storedString) ?? .white
     }
     
+    
     // MARK: Font
     
     /**
@@ -280,6 +281,29 @@ class ThemeHelper {
             return .white
         }
     }
+    
+    /**
+     Returns the color closest to the color of the nav bar for the current background color
+     
+     The nav bar lightens the UIColor past into its `barTintColor` property, so this function returns the UIColor closest to that.
+     
+     - Author: Samantha Gatt
+     
+     - Returns: UIColor for search bar
+     */
+    public func getSearchBarColor() -> UIColor {
+        switch getBackgroundColor() {
+        case color(from: .tan):
+            return UIColor(red:0.80, green:0.74, blue:0.63, alpha:1.0)
+        case color(from: .lightGray):
+            return UIColor(red:0.35, green:0.35, blue:0.35, alpha:1.0)
+        case color(from: .darkGray):
+            return UIColor(red:0.23, green:0.23, blue:0.23, alpha:1.0)
+        default:
+            return .white
+        }
+    }
+    
     
     // MARK: Setting themes
     

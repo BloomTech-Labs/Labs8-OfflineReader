@@ -8,7 +8,6 @@ import { TestScraper } from '../components';
 class TestScraperFormContainer extends Component {
 	componentDidMount() {
 		this.props.fetchPages(this.props.serverToken);
-		this.props.fetchUser(this.props.serverToken);
 	}
 
 	render() {
@@ -46,7 +45,8 @@ const mapStateToProps = state => {
 		// urlSent: state.testScraperFormReducers.urlSent,
 		pages: state.testScraperFormReducers.pages,
 		// error: state.testScraperFormReducers.error,
-		serverToken: state.userReducers.auth.serverToken
+		serverToken: state.userReducers.auth.serverToken,
+		filteredPages: state.testScraperFormReducers.filteredPages
 	};
 };
 

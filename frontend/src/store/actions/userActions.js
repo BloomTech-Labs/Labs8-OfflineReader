@@ -5,7 +5,9 @@ import { apiBaseUrl } from './';
 export const REGISTER_USER = 'REGISTER_USER';
 export const LOGGING_IN_USER = 'LOGGING_IN_USER';
 export const LOGGED_IN_USER = 'LOGGED_IN_USER';
-export const LOGOUT_USER = 'LOGOUT_USER';
+export const LOGGING_OUT_USER = 'LOGGING_OUT_USER';
+export const LOGGED_OUT_USER = 'LOGGED_OUT_USER';
+export const LOGOUT_FLAG = 'LOGOUT_FLAG';
 export const PREMIUM_USER = 'PREMIUM_USER';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const USER_DATA_FETCHED = 'USER_DATA_FETCHED';
@@ -24,7 +26,7 @@ export const registerUser = newUser => {
 				dispatch({
 					type: REGISTER_USER,
 					payload: {
-						//the payload you're giving the API to populate the new user
+						/*the payload you're giving the API to populate the new user*/
 					}
 				})
 			)
@@ -36,49 +38,44 @@ export const loginUser = token => {
 	return dispatch => {
 		dispatch({ type: LOGGING_IN_USER });
 		axios
-			.post(`${apiBaseUrl}/auth/convert_token/`, { token })
-			.then(response =>
-				dispatch({
-					type: LOGGED_IN_USER,
-					payload: response
-				})
-			)
+			.post(apiBaseUrl + '/auth/convert_token/', { token })
+			.then(response => {
+				dispatch({ type: LOGGED_IN_USER, payload: response });
+			})
 			.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };
 
-// TODO: Update logoutUser function once there's a better understanding of how the backend will respond
-export const logoutUser = user => {
+export const logoutUser = token => {
 	return dispatch => {
-		dispatch({ type: LOGOUT_USER });
+		dispatch({ type: LOGGING_OUT_USER });
 		axios
-			.post(apiBaseUrl + '/rest-auth/logout/', user)
-			.then(response =>
-				dispatch({
-					type: LOGOUT_USER,
-					payload: {
-						//the payload you're giving the API to populate the new user
-					}
-				})
-			)
+			.post(apiBaseUrl + '/auth/revoke_token/', { token })
+			.then(response => {
+				dispatch({ type: LOGGED_OUT_USER, payload: response.status });
+			})
 			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
+};
+
+export const logoutFlag = () => {
+	return dispatch => {
+		dispatch({ type: LOGOUT_FLAG });
 	};
 };
 
 export const fetchUser = token => {
 	return dispatch => {
 		dispatch({ type: FETCH_USER_DATA });
-		axios({
-			method: 'get',
-			url: apiBaseUrl + '/auth/rest/user/',
-			headers: { Authorization: `Bearer ${token.data.access_token}` }
-		})
-			.then(response =>
-				dispatch({
-					type: USER_DATA_FETCHED,
-					payload: response.data
-				})
-			)
+		const headers = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`
+		};
+		axios
+			.get(apiBaseUrl + '/auth/rest/user/', { headers: headers })
+			.then(response => {
+				dispatch({ type: USER_DATA_FETCHED, payload: response.data });
+			})
 			.catch(err => dispatch({ type: USER_ERROR, err }));
 	};
 };
@@ -96,10 +93,18 @@ export const premiumUser = (user, chargeToken) => {
 	};
 };
 
-export const updateUser = user => dispatch => {
-	dispatch({ type: UPDATING_USER });
-	axios
-		.put(apiBaseUrl + '/user/')
-		.then(response => dispatch({ UPDATED_USER, payload: response.data }))
-		.catch(err => dispatch({ type: USER_ERROR, err }));
+export const updateUser = (user, token) => {
+	return dispatch => {
+		dispatch({ type: UPDATING_USER });
+		const headers = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${token}`
+		};
+		axios
+			.put(apiBaseUrl + '/auth/rest/user/', user, { headers: headers })
+			.then(response => {
+				dispatch({ type: UPDATED_USER, payload: response });
+			})
+			.catch(err => dispatch({ type: USER_ERROR, err }));
+	};
 };

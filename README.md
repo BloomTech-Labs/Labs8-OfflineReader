@@ -2,7 +2,7 @@
 
 ## About Us
 
-Anywhere Reader aims to be an application for iOS and the web that allows the user to grab articles and media from their favorite sources and display them in a clean, uncluttered interface. It also allows them to save these articles and media for offline viewing. 
+Anywhere Reader is an application for iOS and the web that allows the user to save articles and media from their favorite sources and display them in a clean, uncluttered interface. It also allows them to save these articles and media for offline viewing. 
 
 ## Documentation
 

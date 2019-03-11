@@ -508,7 +508,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -529,7 +529,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D2BCFB6F1316E1539B7AC56 /* [CP] Check Pods Manifest.lock */ = {

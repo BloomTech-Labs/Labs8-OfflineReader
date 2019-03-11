@@ -24,7 +24,6 @@
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
 		2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* ThemeHelper.swift */; };
-		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
 		222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
@@ -100,7 +99,6 @@
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2200578C219DC40100808E4B /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
-		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
 		222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidGradientView.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2233F7C521920A06001A82FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */,
-				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -592,7 +589,6 @@
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
 				1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */,
-				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

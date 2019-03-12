@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors } from '../../styling';
+import DeleteModal from './DeleteModal';
 
 // TODO: Padding
 const PageCardDiv = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: 5px;
@@ -64,6 +66,7 @@ class Page extends Component {
 	clickPreview = () => {
 		this.props.modalPage(this.props.page);
 	};
+
 	getBaseURL = url => {
 		var pathArray = url.split('/');
 		var protocol = pathArray[0];
@@ -97,6 +100,7 @@ class Page extends Component {
 						<DeleteButton>Delete</DeleteButton>
 					</h4>
 				</Info>
+				<DeleteModal />
 			</PageCardDiv>
 		);
 	}

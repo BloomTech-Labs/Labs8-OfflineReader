@@ -48,7 +48,17 @@ const Preview = styled.div`
 	height: 100%;
 `;
 
-const Info = styled.div``;
+const DeleteButton = styled.button`
+	cursor: pointer;
+	font-size: 1.2rem;
+	color: ${colors.secondaryText};
+	border: none;
+`;
+
+const Info = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
 class Page extends Component {
 	clickPreview = () => {
@@ -82,6 +92,9 @@ class Page extends Component {
 						>
 							{this.getBaseURL(this.props.page.normal_url)}
 						</a>
+					</h4>
+					<h4>
+						<DeleteButton>Delete</DeleteButton>
 					</h4>
 				</Info>
 			</PageCardDiv>

@@ -20,10 +20,6 @@ struct ArticleRep: Codable, Equatable {
     let datePublished: String
     let excerpt: String
     let coverImage: String
-    let video: String
-    let audio: String
-    let html: String
-    let images: String
     let text: String
     let userID: Int32
     

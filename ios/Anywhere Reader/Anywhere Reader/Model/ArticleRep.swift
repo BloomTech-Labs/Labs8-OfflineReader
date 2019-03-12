@@ -33,10 +33,6 @@ struct ArticleRep: Codable, Equatable {
         case datePublished = "date_published"
         case excerpt = "excerpt"
         case coverImage = "cover_image"
-        case video = "video"
-        case audio = "audio"
-        case html = "html"
-        case images = "images"
         case text = "text"
         case userID = "user_id"
     }

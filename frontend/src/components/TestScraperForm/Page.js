@@ -63,6 +63,10 @@ const Info = styled.div`
 `;
 
 class Page extends Component {
+	state = {
+		showingModal: false
+	};
+
 	clickPreview = () => {
 		this.props.modalPage(this.props.page);
 	};
@@ -73,6 +77,11 @@ class Page extends Component {
 		var host = pathArray[2];
 		var newUrl = protocol + '//' + host;
 		return newUrl;
+	};
+
+	handleModal = () => {
+		const visible = this.state.showingModal;
+		this.setState({ showingModal: !visible });
 	};
 
 	render() {
@@ -97,10 +106,14 @@ class Page extends Component {
 						</a>
 					</h4>
 					<h4>
-						<DeleteButton>Delete</DeleteButton>
+						<DeleteButton onClick={this.handleModal}>Delete</DeleteButton>
 					</h4>
 				</Info>
-				<DeleteModal />
+				<DeleteModal
+					{...this.state}
+					{...this.props}
+					handleModal={this.handleModal}
+				/>
 			</PageCardDiv>
 		);
 	}

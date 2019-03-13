@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors } from '../../styling';
 
 const Wrapper = styled.div`
-	display: flex;
+	display: none;
 	justify-content: space-around;
 	align-items: center;
 	position: absolute;
@@ -68,10 +68,14 @@ const CancelButton = styled(Button)`
 class DeleteModal extends Component {
 	render() {
 		return (
-			<Wrapper>
+			<Wrapper
+				style={
+					this.props.showingModal ? { display: 'flex' } : { display: 'none' }
+				}
+			>
 				<ButtonContainer>
 					<h2>Are you sure you want to delete?</h2>
-					<CancelButton>Keep</CancelButton>
+					<CancelButton onClick={this.props.handleModal}>Keep</CancelButton>
 					<DeleteButton>Delete</DeleteButton>
 				</ButtonContainer>
 				<BG />

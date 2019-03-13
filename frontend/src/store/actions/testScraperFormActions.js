@@ -24,6 +24,10 @@ export const SUBMIT_URL_ERROR = 'SUBMIT_URL_ERROR';
 export const CLEAR_PAGES = 'CLEAR_PAGES';
 export const SEARCH_PAGES = 'SEARCH_PAGES';
 
+export const DELETING_PAGE = 'DELETING_PAGE';
+export const DELETED_PAGE = 'DELETED_PAGE';
+export const DELETE_PAGE_ERROR = 'DELETE_PAGE_ERROR';
+
 export const fetchPages = serverToken => {
 	return dispatch => {
 		//Action that indicates data is being fetched
@@ -231,4 +235,39 @@ export const clearPages = () => {
 
 export const searchPages = searchInput => {
 	return { type: SEARCH_PAGES, payload: searchInput };
+};
+
+export const deletePage = (pageId, serverToken) => {
+	return dispatch => {
+		dispatch({ type: DELETING_PAGE });
+		let headers = {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${serverToken.data.access_token}`
+			// TODO: switch back after show and tell
+			// Authorization: `Token b4d264e2006c6e3b64fddd764c75eb6646b8dc8b`
+		};
+		axios
+			.delete(`${apiBaseUrl}/api/pages/${pageId}`, {
+				headers: headers
+			})
+			.then(response => {
+				dispatch({ type: DELETED_PAGE });
+				return axios
+					.get(`${apiBaseUrl}/api/pages/`, {
+						headers: headers
+					})
+					.then(response => {
+						dispatch({
+							type: PAGES_FETCHED,
+							payload: response.data
+						});
+					})
+					.catch(err => {
+						dispatch({ type: PAGES_FETCH_ERROR, payload: err });
+					});
+			})
+			.catch(err => {
+				dispatch({ type: DELETE_PAGE_ERROR, payload: err });
+			});
+	};
 };

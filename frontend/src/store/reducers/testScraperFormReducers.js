@@ -18,7 +18,11 @@ import {
 	COMPLETE_URL_SUBMIT,
 	SUBMIT_URL_ERROR,
 	CLEAR_PAGES,
-	SEARCH_PAGES
+	SEARCH_PAGES,
+	//
+	DELETING_PAGE,
+	DELETED_PAGE,
+	DELETE_PAGE_ERROR
 } from '../actions';
 
 const initialState = {
@@ -31,7 +35,8 @@ const initialState = {
 	sendingURL: false,
 	savingOfflinePage: false,
 	fetchingOfflinePages: false,
-	error: ''
+	error: '',
+	deletingPage: false
 };
 
 export const testScraperFormReducers = (state = initialState, action) => {
@@ -125,6 +130,27 @@ export const testScraperFormReducers = (state = initialState, action) => {
 				filteredPages: state.pages.filter(page =>
 					page.title.toLowerCase().includes(action.payload.toLowerCase())
 				)
+			};
+
+		case DELETING_PAGE:
+			return {
+				...state,
+				deletingPage: true,
+				error: ''
+			};
+
+		case DELETED_PAGE:
+			return {
+				...state,
+				deletingPage: false,
+				error: ''
+			};
+
+		case DELETE_PAGE_ERROR:
+			return {
+				...state,
+				deletingPage: false,
+				error: 'Error deleting page'
 			};
 
 		default:

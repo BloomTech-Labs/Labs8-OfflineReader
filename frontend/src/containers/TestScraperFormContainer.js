@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { fetchPages, fetchUser, sendUrl } from '../store/actions';
+import { fetchPages, fetchUser, sendUrl, deletePage } from '../store/actions';
 
 import { TestScraper } from '../components';
 
@@ -11,8 +11,12 @@ class TestScraperFormContainer extends Component {
 		this.props.fetchUser(this.props.serverToken);
 	}
 
+	handleDelete = pageId => {
+		this.props.deletePage(pageId, this.props.serverToken);
+	};
+
 	render() {
-		return <TestScraper {...this.props} />;
+		return <TestScraper {...this.props} handleDelete={this.handleDelete} />;
 	}
 }
 
@@ -56,6 +60,7 @@ export default connect(
 	{
 		fetchPages,
 		fetchUser,
-		sendUrl
+		sendUrl,
+		deletePage
 	}
 )(TestScraperFormContainer);

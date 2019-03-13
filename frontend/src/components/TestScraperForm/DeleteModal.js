@@ -66,6 +66,10 @@ const CancelButton = styled(Button)`
 `;
 
 class DeleteModal extends Component {
+	handleDeleteId = () => {
+		this.props.handleDelete(this.props.page.id);
+	};
+
 	render() {
 		return (
 			<Wrapper
@@ -76,7 +80,7 @@ class DeleteModal extends Component {
 				<ButtonContainer>
 					<h2>Are you sure you want to delete?</h2>
 					<CancelButton onClick={this.props.handleModal}>Keep</CancelButton>
-					<DeleteButton>Delete</DeleteButton>
+					<DeleteButton onClick={this.handleDeleteId}>Delete</DeleteButton>
 				</ButtonContainer>
 				<BG />
 			</Wrapper>

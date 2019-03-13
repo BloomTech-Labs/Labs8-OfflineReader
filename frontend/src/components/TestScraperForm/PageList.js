@@ -24,6 +24,7 @@ class PageList extends Component {
 								<Page
 									page={page}
 									modalPage={this.props.modalPage}
+									handleDelete={this.props.handleDelete}
 									key={page.id}
 								/>
 							);
@@ -33,6 +34,7 @@ class PageList extends Component {
 								<Page
 									page={page}
 									modalPage={this.props.modalPage}
+									handleDelete={this.props.handleDelete}
 									key={page.id}
 								/>
 							);

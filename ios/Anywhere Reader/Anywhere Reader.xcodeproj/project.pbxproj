@@ -24,7 +24,6 @@
 		13FB2E3921922D7800A8888B /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13FB2E3821922D7800A8888B /* Authentication.storyboard */; };
 		13FB2E3B21922DD000A8888B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */; };
 		2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2200578C219DC40100808E4B /* ThemeHelper.swift */; };
-		222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */; };
 		222F5B8421A5E961002B6436 /* TrapezoidGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */; };
 		2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2233F7C521920A06001A82FF /* AppDelegate.swift */; };
 		2233F7CD21920A09001A82FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2233F7CC21920A09001A82FF /* Assets.xcassets */; };
@@ -38,7 +37,6 @@
 		22661E102194E3A30072A4B8 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22661E0F2194E3A30072A4B8 /* Preferences.storyboard */; };
 		22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22661E112194E5430072A4B8 /* PreferencesViewController.swift */; };
 		2275258121B9B6AA009FF546 /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275257F21B9B6AA009FF546 /* NetworkDataLoader.swift */; };
-		2275258221B9B6AA009FF546 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275258021B9B6AA009FF546 /* MockDataLoader.swift */; };
 		2275258A21B9BC13009FF546 /* AnywhereReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275258921B9BC13009FF546 /* AnywhereReaderTests.swift */; };
 		2275259721B9CCA0009FF546 /* BadJSONData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259621B9CCA0009FF546 /* BadJSONData.swift */; };
 		2275259921B9D715009FF546 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2275259821B9D715009FF546 /* NetworkError.swift */; };
@@ -100,7 +98,6 @@
 		13FB2E3821922D7800A8888B /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
 		13FB2E3A21922DD000A8888B /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		2200578C219DC40100808E4B /* ThemeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelper.swift; sourceTree = "<group>"; };
-		222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+GradientAndMask.swift"; sourceTree = "<group>"; };
 		222F5B8321A5E961002B6436 /* TrapezoidGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrapezoidGradientView.swift; sourceTree = "<group>"; };
 		2233F7C221920A06001A82FF /* Anywhere Reader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Anywhere Reader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2233F7C521920A06001A82FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +113,6 @@
 		22661E0F2194E3A30072A4B8 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		22661E112194E5430072A4B8 /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		2275257F21B9B6AA009FF546 /* NetworkDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
-		2275258021B9B6AA009FF546 /* MockDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		2275258721B9BC13009FF546 /* AnywhereReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnywhereReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2275258921B9BC13009FF546 /* AnywhereReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnywhereReaderTests.swift; sourceTree = "<group>"; };
 		2275258B21B9BC13009FF546 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -184,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				13847C2021B73C73005B533D /* UINavigationController+Extensions.swift */,
-				222F5B8121A4D35B002B6436 /* UIView+GradientAndMask.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -323,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				2275257F21B9B6AA009FF546 /* NetworkDataLoader.swift */,
-				2275258021B9B6AA009FF546 /* MockDataLoader.swift */,
 				2275259821B9D715009FF546 /* NetworkError.swift */,
 			);
 			path = Networking;
@@ -508,7 +502,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -529,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Anywhere Reader/Pods-Anywhere Reader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6D2BCFB6F1316E1539B7AC56 /* [CP] Check Pods Manifest.lock */ = {
@@ -571,7 +565,6 @@
 			files = (
 				223E6F3821B5C0750024E993 /* CoreDataStack.swift in Sources */,
 				2233F7C621920A06001A82FF /* AppDelegate.swift in Sources */,
-				2275258221B9B6AA009FF546 /* MockDataLoader.swift in Sources */,
 				2275258121B9B6AA009FF546 /* NetworkDataLoader.swift in Sources */,
 				223E6F3B21B5C08A0024E993 /* Anywhere Reader.xcdatamodeld in Sources */,
 				223E6F3F21B5C8370024E993 /* Article+ConvenienceInit.swift in Sources */,
@@ -592,7 +585,6 @@
 				22661E122194E5430072A4B8 /* PreferencesViewController.swift in Sources */,
 				2200578D219DC40100808E4B /* ThemeHelper.swift in Sources */,
 				1332D85B21BF26AB006C75C8 /* APIService.swift in Sources */,
-				222F5B8221A4D35B002B6436 /* UIView+GradientAndMask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

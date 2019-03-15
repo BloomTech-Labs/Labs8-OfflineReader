@@ -41,7 +41,7 @@ class ContentDetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        gradientLayer.frame = imageView.bounds
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: imageView.bounds.size.width, height: 285)
     }
 
     // MARK: - Private properties

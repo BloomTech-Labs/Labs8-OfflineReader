@@ -36,9 +36,7 @@ class ThemeHelper {
     // MARK: - User Defaults Keys
 
     static let textColorKey = "textColor"
-    static let customTextColorKey = "customTextColor"
     static let backgroundColorKey = "backgroundColor"
-    static let customBackgroundColorKey = "customBackgroundColor"
     static let fontSizeKey = "fontSize"
     static let bodyFontKey = "bodyFont"
     static let titleFontKey = "titleFont"

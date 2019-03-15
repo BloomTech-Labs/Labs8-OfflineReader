@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors } from '../../styling';
+import DeleteModal from './DeleteModal';
 
 // TODO: Padding
 const PageCardDiv = styled.div`
 	display: flex;
+	position: relative;
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: 5px;
@@ -48,18 +50,38 @@ const Preview = styled.div`
 	height: 100%;
 `;
 
-const Info = styled.div``;
+const DeleteButton = styled.button`
+	cursor: pointer;
+	font-size: 1.2rem;
+	color: ${colors.secondaryText};
+	border: none;
+`;
+
+const Info = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
 class Page extends Component {
+	state = {
+		showingModal: false
+	};
+
 	clickPreview = () => {
 		this.props.modalPage(this.props.page);
 	};
+
 	getBaseURL = url => {
 		var pathArray = url.split('/');
 		var protocol = pathArray[0];
 		var host = pathArray[2];
 		var newUrl = protocol + '//' + host;
 		return newUrl;
+	};
+
+	handleModal = () => {
+		const visible = this.state.showingModal;
+		this.setState({ showingModal: !visible });
 	};
 
 	render() {
@@ -83,7 +105,15 @@ class Page extends Component {
 							{this.getBaseURL(this.props.page.normal_url)}
 						</a>
 					</h4>
+					<h4>
+						<DeleteButton onClick={this.handleModal}>Delete</DeleteButton>
+					</h4>
 				</Info>
+				<DeleteModal
+					{...this.state}
+					{...this.props}
+					handleModal={this.handleModal}
+				/>
 			</PageCardDiv>
 		);
 	}

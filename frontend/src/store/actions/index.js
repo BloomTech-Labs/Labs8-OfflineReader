@@ -31,10 +31,14 @@ export {
 	SUBMIT_URL_ERROR,
 	CLEAR_PAGES,
 	SEARCH_PAGES,
+	DELETING_PAGE,
+	DELETED_PAGE,
+	DELETE_PAGE_ERROR,
 	clearPages,
 	fetchPages,
 	sendUrl,
-	searchPages
+	searchPages,
+	deletePage
 } from './testScraperFormActions';
 
 export {
